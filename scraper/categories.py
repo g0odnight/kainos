@@ -31,6 +31,8 @@ META = [
 
 # (kategorija, regex) – tikrinimo tvarka
 RULES = [
+    ("duona", r"(\bbatonas\b|prancuziskas batonas|bagete)"),
+    ("bakaleja", r"(pagalveles|kukuruzu dribs|avizin)"),
     ("gyvunai", r"(katem|kates\b|kaciu|kaciuk|katei\b|\bsun(ims|u|ys|iui|eliams)\b|sunim|sunu\b|gyvun|pasaras|pasaro|kraik|grauzik|papug|akvarium|pedigree|whiskas|felix|friskies|purina|kitekat|chappi)"),
     ("vaikai", r"(kudik|sauskel|vystykl|zinduk|pampers|huggies|nuo \d+ men|vaikisk|vaikams)"),
     ("buitine", r"(\bw5\b|svaros prek|skalb|indaplov|ploviklis|plovikl|valikl|minkstikl|balikl|dezinf|kalkiu|\bwc\b|siuksliu|maiseli|kempin|sluost|\bariel|persil|lenor|fairy|finish|domestos|vanish|calgon|\bcif\b|purio|formil|silan|tualetinis popier|popierinis ranksl|servetel|kvapikl|oro gaiv|allin ?(1|one)|\bdiscs\b|folija|kepimo popier|maistine pleve)"),

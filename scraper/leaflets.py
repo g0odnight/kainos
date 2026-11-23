@@ -156,7 +156,7 @@ def lt_range(text):
 
 _UN = r"(?:g|kg|ml|l|vnt\.?)"
 MX_REC = re.compile(r"(?P<name>[^€]{4,220}?\b\d+(?:[.,]\d+)?\s?" + _UN + r"(?![\wąčęėįšųūž])(?:\s*[,;]?\s*sveriamas,?\s*1 kg)?)\s*(?:1 (?:kg|l) [–≤≤-]+ \d+,\d{2} €\s*)?(?P<e>\d{1,3}) (?P<c>\d{2}) €(?:\s+(?P<reg>\d+,\d{2}) €)?")
-MX_LEAD = re.compile(r"^(?:(?:-\d+\s?%|Iki \d+ kg|Perkant \d+ ar daugiau|\d+ vnt\.|ĮPRASTA KAINA|PIGIAUSIAS\* PASIRINKIMAS MAXIMOJE|KASDIEN PIGIAU! Sunku patikėti, lengva palyginti!|NAUJIENA!?|\*+)\s*)+")
+MX_LEAD = re.compile(r"^(?:(?:Kai pigu – Kalėdos be ribų|SALDUMYNŲ IR UŽKANDŽIŲ DIENOS|GARDŪS GAMINIAI, sukurti mėgautis|Šventinis skonis\. Džiuginanti kaina\.|-\d+\s?%|Iki \d+ kg|Perkant \d+ ar daugiau|\d+ vnt\.|ĮPRASTA KAINA|PIGIAUSIAS\* PASIRINKIMAS MAXIMOJE|KASDIEN PIGIAU! Sunku patikėti, lengva palyginti!|NAUJIENA!?|\*+)\s*)+")
 MX_CUT = re.compile(r"^.*(?:Page number \d+|Page \d+|MAXIMA\.|MAXIMOJE|Lietuva“|Vilnius\.|\d+-\d+ / \d+|\.\.\.)\s+", re.S)
 
 def is_maxima_text(text):
