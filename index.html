@@ -14,6 +14,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 header{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 2px 4px}
 h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:var(--ac)}
 .pill{font-size:12.5px;border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 12px;display:flex;align-items:center;gap:6px}
+.pill.rf{font-size:17px;padding:4px 12px;color:var(--tx)}.pill.rf.spin{animation:sp 1.2s linear infinite;color:var(--ac)}@keyframes sp{to{transform:rotate(360deg)}}
+.inp{width:100%;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:14px;border-radius:12px;padding:12px;margin:8px 0}
+.steps{font-size:14px;line-height:1.5;padding-left:20px;margin:8px 0}.steps a{color:var(--ac2)}
+.prog{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;font-size:14px}.prog b{display:block;font-size:15px;margin-bottom:4px}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--ac)}.pill.old i{background:#e3a008}
 .top{position:sticky;top:0;z-index:6;background:var(--bg);margin:0 -16px;padding:8px 16px 6px;transition:box-shadow .2s}
 .top.stuck{box-shadow:0 8px 16px -14px rgba(0,0,0,.35)}
@@ -89,7 +93,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 .srow .mid div{font-size:13px;color:var(--mu)}
 #sentinel{height:1px}
 </style></head><body>
-<header><h1>Kainos<span>.</span></h1><button class="pill" id="fresh"><i></i><span>…</span></button></header>
+<header><h1>Kainos<span>.</span></h1><div style="display:flex;gap:8px"><button class="pill" id="fresh"><i></i><span>…</span></button><button class="pill rf" id="rf" aria-label="Atnaujinti kainas dabar" title="Atnaujinti kainas dabar">↻</button></div></header>
 
 <main id="v1">
  <div class="top" id="top">
@@ -237,6 +241,50 @@ $("#fresh").onclick=()=>{const st=DB.status||{};
  $("#sheetc").innerHTML=`<h2>Duomenys</h2><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+".<br>Kainos iš parduotuvių leidinių, atnaujinamos kasdien ~08:00.":""}</div>${rows}<div class="sticky-b"><button class="btn" id="cl">Uždaryti</button></div>`;
  $("#sheet").classList.add("show");$("#cl").onclick=closeSheet};
 
+// ---------- atnaujinimas iš programėlės (GitHub Actions per API) ----------
+const GH=(()=>{const h=location.hostname,p=location.pathname.split("/").filter(Boolean);return h.endsWith("github.io")?{o:h.split(".")[0],r:p[0]||"kainos"}:{o:"g0odnight",r:"kainos"}})();
+const API=`https://api.github.com/repos/${GH.o}/${GH.r}/actions`;
+const tok=()=>ls("ghtok")||"";
+async function gh(path,opt={}){const r=await fetch(API+path,{...opt,headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+tok(),"X-GitHub-Api-Version":"2022-11-28",...(opt.headers||{})}});
+ if(r.status==401||r.status==403)throw new Error("Raktas netinka arba neturi teisės „Actions: Read and write“.");
+ if(!r.ok&&r.status!=204)throw new Error("GitHub klaida "+r.status);return r.status==204?null:r.json()}
+let job=ls("rfjob")||null,pollT=null;
+function rfSheet(msg){const has=!!tok();
+ $("#sheetc").innerHTML=`<h2>Atnaujinti kainas dabar</h2>`+(job?`<div class="prog" id="prog"><b>${esc(job.msg||"Vykdoma…")}</b>Paleista ${new Date(job.t).toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"})}. Užtrunka ~20–30 min., programėlę galima uždaryti.</div>`:"")+
+ (msg?`<div class="note">${esc(msg)}</div>`:"")+
+ (has?`<p class="sum">Paleis tą patį kainų surinkimą, kuris vyksta kasdien 08:00. Kai baigsis, kainos programėlėje atsinaujins pačios.</p>
+   <div class="sticky-b"><button class="btn gh" id="tokx">Pamiršti raktą</button><button class="btn" id="go" ${job?"disabled style='opacity:.5'":""}>↻ Paleisti</button></div>`
+  :`<p class="sum">Vienkartinis nustatymas: reikia GitHub prieigos rakto, kuris leidžia tik paleisti šio repo kainų surinkimą. Raktas saugomas tik šiame telefone.</p>
+   <ol class="steps"><li>Atidaryk <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com → Fine-grained token</a>.</li>
+   <li><b>Token name</b>: kainos · <b>Expiration</b>: pvz. 1 metai.</li><li><b>Repository access</b> → <i>Only select repositories</i> → <b>${GH.o}/${GH.r}</b>.</li>
+   <li><b>Permissions → Repository → Actions</b>: <i>Read and write</i>. Daugiau nieko nežymėk.</li><li><b>Generate token</b>, nukopijuok ir įklijuok čia:</li></ol>
+   <input class="inp" id="tokin" placeholder="github_pat_…" autocomplete="off" spellcheck="false">
+   <div class="sticky-b"><button class="btn gh" id="cl2">Uždaryti</button><button class="btn" id="tokok">Išsaugoti ir paleisti</button></div>`);
+ $("#sheet").classList.add("show");
+ const c2=$("#cl2");if(c2)c2.onclick=closeSheet;
+ const tx=$("#tokx");if(tx)tx.onclick=()=>{ls("ghtok","");rfSheet()};
+ const ok=$("#tokok");if(ok)ok.onclick=()=>{const v=$("#tokin").value.trim();if(!/^(github_pat_|ghp_)\w{20,}/.test(v))return rfSheet("Tai nepanašu į GitHub raktą (turi prasidėti github_pat_…).");ls("ghtok",v);startRun()};
+ const go=$("#go");if(go&&!job)go.onclick=startRun}
+async function startRun(){try{
+  const t=new Date().toISOString();
+  await gh("/workflows/scrape.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
+  try{await gh("/workflows/scrape-local.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})})}catch(e){}
+  job={t,msg:"Paleista, laukiama eilėje…",upd:DB.updated};ls("rfjob",job);rfSheet();poll()
+ }catch(e){rfSheet(e.message)}}
+async function poll(){clearTimeout(pollT);if(!job)return;$("#rf").classList.add("spin");
+ try{
+  if(!job.done){const r=await gh("/workflows/scrape.yml/runs?event=workflow_dispatch&per_page=5");
+   const run=(r.workflow_runs||[]).find(x=>x.created_at>=job.t.slice(0,19)+"Z"||new Date(x.created_at)>=new Date(job.t)-60000);
+   if(run){job.msg=run.status=="completed"?(run.conclusion=="success"?"Surinkta, laukiama kol atsinaujins puslapis…":"Nepavyko ("+run.conclusion+")"):run.status=="in_progress"?"Renkamos kainos…":"Laukiama eilėje…";
+    if(run.status=="completed"){if(run.conclusion!="success"){job=null;ls("rfjob",null);$("#rf").classList.remove("spin");toast("Atnaujinti nepavyko");return}job.done=Date.now()}}}
+  if(job.done){const j=await (await fetch("prices.json?"+Date.now(),{cache:"no-store"})).json();
+   if(j.updated&&j.updated!=job.upd){init(j,false);job=null;ls("rfjob",null);$("#rf").classList.remove("spin");toast("Kainos atnaujintos ✓");if($("#prog"))rfSheet();return}
+   if(Date.now()-job.done>15*60e3){job=null;ls("rfjob",null);$("#rf").classList.remove("spin");return}}
+  ls("rfjob",job);const p=$("#prog");if(p)p.querySelector("b").textContent=job.msg;
+ }catch(e){job.msg=e.message}
+ pollT=setTimeout(poll,20000)}
+$("#rf").onclick=()=>rfSheet();
+if(job){if(Date.now()-new Date(job.t)>90*60e3){job=null;ls("rfjob",null)}else poll()}
 cart=Array.isArray(ls("cart3"))?ls("cart3"):[];
 sortBy=ls("sort3")||"price";$("#sort").value=sortBy;
 load();
