@@ -67,6 +67,8 @@ def find_pdfs(page, url, viewer_re=None):
         dump("leaflet_" + re.sub(r"\W+", "_", url)[-60:] + ".txt", "\n".join(hrefs))
         pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)", h, re.I)}
         if viewer_re: viewers |= {h for h in hrefs if re.search(viewer_re, h)}
+        viewers |= {h for h in hrefs if re.search(r"ipaper\.io|issuu\.com/|publitas\.com|leaflets\.schwarz|flippingbook|yumpu|/leidinys/|/leidiniai/[\w-]+", h)
+                    and "cookie" not in h and "privacy" not in h}
     except Exception as e:
         print("   leidinių puslapis nepavyko:", url, e)
     finally:
@@ -78,16 +80,25 @@ def ocr_image(body):
         f.write(body); f.flush()
         return leaflets._run(["tesseract", f.name, "stdout", "-l", "lit+eng", "--psm", "6"], 120)
 
+def page_text(pg):
+    parts = []
+    for f in pg.frames:
+        try:
+            parts.append(f.inner_text("body"))
+            parts += f.eval_on_selector_all("noscript", "e=>e.map(x=>x.textContent)")
+        except Exception: pass
+    return "\n".join(p for p in parts if p)
+
 def crawl_viewer(ctx, url, store, idx):
     """Atidaro leidinio peržiūros puslapį ir renka: PDF, JSON su prekėmis, puslapių paveikslėlius (OCR)."""
-    pg = ctx.new_page(); pdfs, imgs, jsons = set(), {}, []
+    pg = ctx.new_page(); pdfs, imgs, jsons = set(), {}, []; viewer_text = ""
     def on_resp(r):
         try:
             ct = (r.headers.get("content-type") or "").lower()
             if "pdf" in ct: pdfs.add(r.url)
             elif ct.startswith("image/") and "svg" not in ct:
                 b = r.body()
-                if len(b) > 120000: imgs[r.url] = b
+                if len(b) > 40000: imgs[r.url] = b
             elif "json" in ct:
                 it = []; from common import walk; walk(r.json(), it)
                 if it: jsons.extend(it)
@@ -97,28 +108,54 @@ def crawl_viewer(ctx, url, store, idx):
         pg.goto(url, wait_until="domcontentloaded", timeout=90000)
         try: pg.wait_for_load_state("networkidle", timeout=15000)
         except Exception: pass
-        for _ in range(12):  # varto puslapius
-            pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(700)
-        if DEBUG: dump(f"viewer_{store}_{idx}.txt", f"{url}\npdf={sorted(pdfs)}\nimgs={list(imgs)[:40]}\njson_items={len(jsons)}")
+        texts = [page_text(pg)]
+        hrefs = pg.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href)")
+        pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)|download|atsisiust", h, re.I) and not h.startswith("javascript")}
+        if re.search(r"ipaper|leidiniai\.rimi", url + " " + " ".join(f.url for f in pg.frames)):
+            base = url.split("?")[0]
+            for n in range(2, 90):   # ipaper: tekstas kiekviename puslapyje per ?Page=N
+                try:
+                    pg.goto(f"{base}?Page={n}", wait_until="domcontentloaded", timeout=60000)
+                    t = page_text(pg)
+                except Exception: break
+                if not t.strip() or t == texts[-1]: break
+                texts.append(t)
+        for _ in range(40 if len(texts) < 3 else 0):  # varto puslapius
+            pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(600)
+        viewer_text = "\n".join(dict.fromkeys("\n".join(texts).splitlines()))
+        if DEBUG:
+            frames = [f.url for f in pg.frames]
+            dump(f"viewer_{store}_{idx}.txt", f"{url}\nframes={frames}\npdf={sorted(pdfs)}\nimgs={list(imgs)[:60]}\njson_items={len(jsons)}")
+            try: dump(f"viewer_{store}_{idx}.png.b64", __import__("base64").b64encode(pg.screenshot()).decode())
+            except Exception: pass
     except Exception as e:
         print("   peržiūra nepavyko:", url, e)
     finally:
         pg.close()
-    return pdfs, imgs, jsons
+    return pdfs, imgs, jsons, viewer_text
 
 def crawl_leaflets(ctx, page, store, c):
     year = datetime.date.today().year
     pdfs = set(c.get("pdfs", [])); viewers = set(c.get("viewers", []))
     for u in c.get("pages", []):
         p, v = find_pdfs(page, u, c.get("viewer_regex")); pdfs |= p; viewers |= v
+    if not viewers and not pdfs:   # nieko neradom - bandom pačius puslapius kaip peržiūrą
+        viewers = set(c.get("pages", []))
+        print(f"   {store}: nuorodų nerasta, bandom pačius puslapius")
     items, texts = {}, []
     for k, v in enumerate(sorted(viewers)[:c.get("max_viewers", 6)]):
-        p, imgs, jsons = crawl_viewer(ctx, v, store, k)
+        p, imgs, jsons, vtext = crawl_viewer(ctx, v, store, k)
         pdfs |= p
         print(f"   peržiūra {v[-50:]}: pdf {len(p)}, paveikslėlių {len(imgs)}, json prekių {len(jsons)}")
         for n, pr in jsons: items[(n, pr)] = ""
-        if not p:
-            txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:40])
+        if vtext.strip():
+            if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
+            res = leaflets.parse_text(vtext, year)
+            print(f"      tekstas: {len(res)} prekių")
+            for n, pr, until in res: items[(n, pr)] = until
+        if not p and not items:
+            txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
+            if DEBUG: dump(f"ocr_{store}_{k}.txt", txt[:20000])
             if txt.strip():
                 res = leaflets.parse_text(txt, year)
                 print(f"      OCR: {len(res)} prekių")
@@ -134,6 +171,8 @@ def crawl_leaflets(ctx, page, store, c):
             for n, p, until in res: items[(n, p)] = until
         except Exception as e:
             print("   PDF klaida:", u, e)
+    today = datetime.date.today().isoformat()
+    items = {k: u for k, u in items.items() if not u or u >= today}
     return items
 
 def main():

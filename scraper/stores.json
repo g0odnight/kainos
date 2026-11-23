@@ -7,7 +7,18 @@
         "url": "https://barbora.lt/",
         "regex": "^https://barbora\\.lt/[a-z0-9-]+$"
       },
-      "category_urls": [],
+      "category_urls": [
+        "https://barbora.lt/darzoves-ir-vaisiai",
+        "https://barbora.lt/pieno-produktai-ir-kiausiniai",
+        "https://barbora.lt/mesa-zuvis-ir-kulinarija",
+        "https://barbora.lt/duonos-gaminiai-ir-konditerija",
+        "https://barbora.lt/bakaleja",
+        "https://barbora.lt/saldytas-maistas",
+        "https://barbora.lt/gerimai",
+        "https://barbora.lt/kudikiu-prekes",
+        "https://barbora.lt/higienos-ir-grozio-prekes",
+        "https://barbora.lt/namu-kasdienybei"
+      ],
       "page_param": "page",
       "max_pages": 40,
       "selectors": {
@@ -24,7 +35,7 @@
         "https://www.maxima.lt/leidiniai"
       ],
       "pdfs": [],
-      "viewer_regex": "maxima\\\\.lt/leidiniai/[A-Za-z0-9_-]+$"
+      "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+"
     }
   },
   "Rimi": {
@@ -48,9 +59,10 @@
     "leaflets": {
       "enabled": true,
       "pages": [
-        "https://www.rimi.lt/akcijos"
+        "https://www.rimi.lt/asortimentas/rimi-savaitinis-leidinys"
       ],
-      "pdfs": []
+      "pdfs": [],
+      "viewer_regex": "leidiniai\\.rimi\\.lt/\\d{4}/weekly/[\\w-]+/?$"
     }
   },
   "Lidl": {
@@ -67,7 +79,7 @@
         "https://www.lidl.lt/c/kainu-leidiniai/s10020254"
       ],
       "pdfs": [],
-      "viewer_regex": "lidl\\\\.lt/l/lt/leidinys/(maisto-prekiu|ne-maisto|bajoru|maisto-idejos)",
+      "viewer_regex": "lidl\\.lt/l/lt/leidinys/(maisto-prekiu|ne-maisto|bajoru|maisto-idejos)",
       "max_viewers": 4
     }
   },
@@ -85,7 +97,7 @@
         "https://iki.lt/leidiniai/"
       ],
       "pdfs": [],
-      "viewer_regex": "iki\\\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+      "viewer_regex": "iki\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
     }
   },
   "Norfa": {
@@ -102,7 +114,7 @@
         "https://www.norfa.lt/leidiniai/"
       ],
       "pdfs": [],
-      "viewer_regex": "norfa\\\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+      "viewer_regex": "norfa\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
     }
   },
   "Promo": {
@@ -119,7 +131,7 @@
         "https://epromo.lt/lt/leidiniai"
       ],
       "pdfs": [],
-      "viewer_regex": "epromo\\\\.lt/lt/leidiniai/[A-Za-z0-9_-]+"
+      "viewer_regex": "epromo\\.lt/lt/leidiniai/[A-Za-z0-9_-]+"
     }
   }
 }
