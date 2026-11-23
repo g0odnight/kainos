@@ -203,7 +203,7 @@ def crawl_leaflets(ctx, page, store, c):
             with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
                 f.write(body); f.flush()
                 res, mode = leaflets.parse_pdf(f.name)
-                if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]); dump("pdflayout_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets._run(["pdftotext", "-layout", "-f", "2", "-l", "3", f.name, "-"], 120)[:15000])
+                if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]); dump("pdfbbox_" + re.sub(r"\W+", "_", u)[-40:] + ".html", leaflets._run(["pdftotext", "-bbox-layout", "-f", "3", "-l", "3", f.name, "-"], 120)[:60000]); dump("pdflayout_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets._run(["pdftotext", "-layout", "-f", "2", "-l", "3", f.name, "-"], 120)[:15000])
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
             d0 = PDF_DATES.get(u, ("", ""))
             for n, p, until, frm in res: items[(n, p)] = (until or d0[1], frm or d0[0])
