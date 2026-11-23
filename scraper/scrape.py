@@ -174,7 +174,34 @@ def crawl_viewer(ctx, url, store, idx):
         pg.close()
     return pdfs, imgs, jsons, viewer_text
 
+def crawl_norfa(ctx, page, url):
+    """Norfa: sąrašo puslapyje kortelės su data ir „Atsisiųsti leidinį“ (/leidiniai/download/N -> PDF)."""
+    import norfa
+    page.goto(url, wait_until="domcontentloaded", timeout=90000)
+    cards = page.evaluate("""()=>[...document.querySelectorAll('[href*="/leidiniai/download/"]')].map(e=>{let c=e;for(let i=0;i<8&&c;i++){if(/\\d{4}\\.\\d\\d\\.\\d\\d\\s*-\\s*\\d{4}\\.\\d\\d\\.\\d\\d/.test(c.innerText||''))break;c=c.parentElement}
+      const m=((c&&c.innerText)||'').match(/(\\d{4})\\.(\\d\\d)\\.(\\d\\d)\\s*-\\s*(\\d{4})\\.(\\d\\d)\\.(\\d\\d)/);
+      return [e.getAttribute('href'), m?m[1]+'-'+m[2]+'-'+m[3]:'', m?m[4]+'-'+m[5]+'-'+m[6]:'']})""")
+    items, seen = {}, set()
+    for href, frm, until in cards:
+        if href in seen: continue
+        seen.add(href)
+        try:
+            r = ctx.request.get("https://www.norfa.lt" + href, timeout=400000); b = r.body()
+            if b[:4] != b"%PDF": print("   Norfa: ne PDF", href); continue
+            with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
+                f.write(b); f.flush()
+                res = norfa.parse(f.name, until, frm)
+            print(f"   Norfa {href} ({frm}–{until}): {len(res)} prekių")
+            for x in res: items[(x[0], x[1])] = (x[2], x[3], x[4])
+        except Exception as e:
+            print("   Norfa klaida:", href, e)
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("norfa"):
+        items = crawl_norfa(ctx, page, c["pages"][0])
+        today = datetime.date.today().isoformat()
+        return {k: u for k, u in items.items() if not u[0] or u[0] >= today}
     year = datetime.date.today().year
     pdfs = set(c.get("pdfs", [])); viewers = set(c.get("viewers", []))
     for u in c.get("pages", []):

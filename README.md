@@ -12,12 +12,13 @@ Serverio nėra: GitHub Actions kasdien ~08:00 (Vilniaus laiku) surenka leidinius
 | Maxima | maxima.lt/leidiniai (iPaper tekstas) | GitHub debesyje |
 | Rimi | rimi.lt savaitinis leidinys (iPaper tekstas) | GitHub debesyje |
 | Lidl | lidl.lt leidinių PDF | GitHub debesyje |
-| IKI, Norfa, Promo | jų leidinių puslapiai | **tavo kompiuteryje** (žr. žemiau) |
+| Norfa | norfa.lt/leidiniai → „Atsisiųsti leidinį“ PDF | GitHub debesyje |
+| IKI, Promo | jų leidinių puslapiai | **tavo kompiuteryje** (žr. žemiau) |
 
-IKI ir Promo svetainės saugomos „Cloudflare“, Norfos leidiniai – „yumpu“. Jie atmeta užklausas iš debesų serverių,
-todėl šias tris parduotuves renka tas pats skriptas, paleistas tavo kompiuteryje įprastame Chrome lange.
+IKI ir Promo svetainės saugomos „Cloudflare“ ir atmeta užklausas iš debesų serverių,
+todėl šias dvi parduotuves renka tas pats skriptas, paleistas tavo kompiuteryje įprastame Chrome lange.
 
-## IKI, Norfa, Promo: rinkimas tavo kompiuteryje (nebūtina)
+## IKI ir Promo: rinkimas tavo kompiuteryje (nebūtina)
 
 Kompiuteris turi būti įjungtas apie 08:40. Vienkartinis nustatymas (~10 min.):
 

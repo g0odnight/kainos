@@ -110,11 +110,10 @@
     },
     "leaflets": {
       "enabled": true,
+      "norfa": true,
       "pages": [
         "https://www.norfa.lt/leidiniai/"
-      ],
-      "pdfs": [],
-      "viewer_regex": "norfa\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+      ]
     }
   },
   "Promo": {

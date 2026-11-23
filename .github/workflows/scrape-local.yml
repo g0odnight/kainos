@@ -1,5 +1,5 @@
 name: scrape-local
-# IKI, Norfa ir Promo blokuoja debesų serverius, todėl šis darbas vykdomas TAVO kompiuteryje
+# IKI ir Promo blokuoja debesų serverius, todėl šis darbas vykdomas TAVO kompiuteryje
 # (GitHub "self-hosted runner"). Įsijungia tik kai repo kintamasis LOCAL_RUNNER = 1.
 on:
   schedule:
@@ -15,14 +15,14 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - name: Scrape IKI, Norfa, Promo
+      - name: Scrape IKI, Promo
         shell: pwsh
         env:
           PYTHONIOENCODING: utf-8
         run: |
           python -m pip install -q -r scraper/requirements.txt
           python -m playwright install chromium
-          python scraper/scrape.py --store IKI,Norfa,Promo --local
+          python scraper/scrape.py --store IKI,Promo --local
       - name: Commit
         shell: pwsh
         run: |
