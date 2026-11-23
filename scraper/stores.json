@@ -1,0 +1,29 @@
+{
+  "_pastaba": "VISI URL ir selektoriai NEPATIKRINTI. Derink su: python scraper/scrape.py --probe URL. 'catalog' = e-parduotuvės katalogas, 'leaflets' = kainų leidiniai (PDF).",
+  "Maxima": {
+    "catalog": {"enabled": true, "discover": {"url": "https://barbora.lt/", "regex": "^https://barbora\\.lt/[a-z0-9-]+$"}, "category_urls": [], "page_param": "page", "max_pages": 40,
+      "selectors": {"item": "[id^=fti-product], .b-product--wrap, li[class*=product]", "name": "[class*=title], [class*=name], a", "price": "[class*=price]"}},
+    "leaflets": {"enabled": true, "pages": ["https://www.maxima.lt/akcijos"], "pdfs": []}
+  },
+  "Rimi": {
+    "catalog": {"enabled": true, "discover": {"url": "https://www.rimi.lt/e-parduotuve/lt/produktai", "regex": "/e-parduotuve/lt/produktai/[a-z0-9-]+$"}, "category_urls": [], "page_param": "page", "max_pages": 40,
+      "selectors": {"item": ".product-grid__item, .js-product-container, [class*=product-card]", "name": "[class*=name], [class*=title], a", "price": "[class*=price]"}},
+    "leaflets": {"enabled": true, "pages": ["https://www.rimi.lt/akcijos"], "pdfs": []}
+  },
+  "Lidl": {
+    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
+    "leaflets": {"enabled": true, "pages": ["https://www.lidl.lt/"], "pdfs": []}
+  },
+  "IKI": {
+    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
+    "leaflets": {"enabled": true, "pages": ["https://www.iki.lt/"], "pdfs": []}
+  },
+  "Norfa": {
+    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
+    "leaflets": {"enabled": true, "pages": ["https://www.norfa.lt/"], "pdfs": []}
+  },
+  "Promo": {
+    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
+    "leaflets": {"enabled": true, "pages": ["https://www.promo.lt/"], "pdfs": []}
+  }
+}
