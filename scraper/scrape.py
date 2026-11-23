@@ -8,7 +8,7 @@
 import argparse, datetime, json, os, pathlib, re, tempfile, time
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 from playwright.sync_api import sync_playwright
-import leaflets
+import leaflets, categories
 from common import HERE, UA, scrape_page
 
 ROOT = HERE.parent
@@ -48,7 +48,7 @@ def crawl_catalog(page, store, c, budget_s=1500):
             res = scrape_page(page, url, c.get("selectors"), tag)
             new = [r for r in res if r not in items]
             if not new: break
-            for r in new: items[r] = ("", "")
+            for r in new: items[r] = ("", "", None)
             time.sleep(1.0)
         print(f"   {cat[-50:]}: viso {len(items)}")
     return items
@@ -82,6 +82,12 @@ def find_pdfs(page, url, viewer_re=None):
         except Exception: pass
         hrefs = sorted(set(page.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href)")))
         dump("leaflet_" + re.sub(r"\W+", "_", url)[-60:] + ".txt", "\n".join(hrefs))
+        try:
+            dl = page.evaluate("""()=>[...document.querySelectorAll('a,button,[data-href],[data-url],[download]')].filter(e=>/atsisi|download|pdf/i.test((e.innerText||'')+' '+e.outerHTML)).slice(0,20).map(e=>e.outerHTML.slice(0,600))""")
+            dump("dl_" + re.sub(r"\W+", "_", url)[-60:] + ".txt", "\n\n".join(dl))
+            for h in page.evaluate("""()=>[...document.querySelectorAll('[data-href],[data-url],[data-file],[download]')].map(e=>e.getAttribute('data-href')||e.getAttribute('data-url')||e.getAttribute('data-file')||e.href).filter(Boolean)"""):
+                if re.search(r"\.pdf($|\?)", h, re.I): pdfs.add(h)
+        except Exception: pass
         pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)", h, re.I)}
         if viewer_re: viewers |= {h for h in hrefs if re.search(viewer_re, h)}
         viewers |= {h for h in hrefs if re.search(r"ipaper\.io|issuu\.com/|publitas\.com|leaflets\.schwarz|flippingbook|yumpu|/leidinys/|/leidiniai/[\w-]+", h)
@@ -182,19 +188,19 @@ def crawl_leaflets(ctx, page, store, c):
         pdfs |= p
         print(f"   peržiūra {v[-50:]}: pdf {len(p)}, paveikslėlių {len(imgs)}, json prekių {len(jsons)}")
         jr = leaflets.valid_range(vtext, year) if vtext else ("", "")
-        for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0])
+        for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0], None)
         if vtext.strip() and not jsons:
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
             res = (leaflets.parse_maxima(vtext, year) if leaflets.is_maxima_text(vtext) else leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year))
             print(f"      tekstas: {len(res)} prekių")
-            for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
+            for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
         if not p and not items:
             txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
             if DEBUG: dump(f"ocr_{store}_{k}.txt", txt[:20000])
             if txt.strip():
                 res = leaflets.parse_text(txt, year)
                 print(f"      OCR: {len(res)} prekių")
-                for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
+                for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
     print(f"{store}: rasta {len(pdfs)} PDF, {len(viewers)} peržiūros nuorodų")
     pdfs = {u for u in pdfs if not re.search(r"NE-MAISTO|Zaislu|Tapk-LIDL", u, re.I)}
     for u in sorted(pdfs)[:12]:
@@ -202,11 +208,11 @@ def crawl_leaflets(ctx, page, store, c):
             body = ctx.request.get(u, timeout=400000).body()
             with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
                 f.write(body); f.flush()
-                res, mode = leaflets.parse_pdf(f.name)
-                if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]); dump("pdfbbox_" + re.sub(r"\W+", "_", u)[-40:] + ".xml", leaflets._run(["pdftotext", "-bbox-layout", f.name, "-"], 600)[:8000000]); dump("pdflayout_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets._run(["pdftotext", "-layout", "-f", "2", "-l", "3", f.name, "-"], 120)[:15000])
+                res, mode = leaflets.parse_pdf(f.name, store=store)
+                if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]);
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
             d0 = PDF_DATES.get(u, ("", ""))
-            for n, p, until, frm in res: items[(n, p)] = (until or d0[1], frm or d0[0])
+            for r in res: items[(r[0], r[1])] = (r[2] or d0[1], r[3] or d0[0], r[4] if len(r) > 4 else None)
         except Exception as e:
             print("   PDF klaida:", u, e)
     today = datetime.date.today().isoformat()
@@ -216,6 +222,7 @@ def crawl_leaflets(ctx, page, store, c):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--store"); ap.add_argument("--probe"); ap.add_argument("--pdf")
+    ap.add_argument("--local", action="store_true", help="tavo kompiuteryje: tikras Chrome langas")
     a = ap.parse_args()
     if a.pdf:
         res, mode = leaflets.parse_pdf(a.pdf)
@@ -224,7 +231,11 @@ def main():
         return
     cfg = {k: v for k, v in json.load(open(HERE / "stores.json", encoding="utf-8")).items() if not k.startswith("_")}
     with sync_playwright() as pw:
-        br = pw.chromium.launch(headless=True)
+        if a.local:
+            try: br = pw.chromium.launch(channel="chrome", headless=False)
+            except Exception: br = pw.chromium.launch(headless=False)
+        else:
+            br = pw.chromium.launch(headless=True)
         ctx = br.new_context(user_agent=UA, locale="lt-LT")
         page = ctx.new_page()
         if a.probe:
@@ -236,15 +247,15 @@ def main():
             print("Žr. scraper/debug/probe.*"); return
         try: old = json.load(open(ROOT / "prices.json", encoding="utf-8"))
         except Exception: old = {"stores": [], "items": []}
-        if old.get("v") != 10: old = {"stores": [], "items": []}   # seni (šlamštiniai) duomenys nebelaikomi
+        if old.get("v") not in (10, 11): old = {"stores": [], "items": []}   # seni (šlamštiniai) duomenys nebelaikomi
         oldmap = {}
         for i in old["items"]:
-            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "")
+            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "", i[6] if len(i) > 6 else None)
             oldmap.setdefault((s, k), {})[(n, p)] = u
         stores = list(cfg)
         new, status = {}, {}
         for store, c in cfg.items():
-            if a.store and store != a.store: continue
+            if a.store and store not in a.store.split(","): continue
             st = {}
             for kind, key, fn in (("e", "catalog", lambda: crawl_catalog(page, store, c["catalog"])),
                                   ("l", "leaflets", lambda: crawl_leaflets(ctx, page, store, c["leaflets"]))):
@@ -263,9 +274,10 @@ def main():
     for store in stores:
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
-            for (n, p), u in d.items(): out_items.append([stores.index(store), n, p, kind, u[0], u[1]])
+            for (n, p), u in d.items():
+                out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(categories.classify(n))])
     out_items.sort(key=lambda x: (x[1], x[2]))
-    out = {"v": 10, "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
+    out = {"v": 11, "cats": [{"id": c[0], "name": c[1], "icon": c[2]} for c in categories.META], "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
     (ROOT / "prices.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(json.dumps(status, ensure_ascii=False, indent=1), "iš viso:", len(out_items))
 

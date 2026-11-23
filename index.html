@@ -1,167 +1,236 @@
 <!doctype html>
 <html lang="lt"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kainų palyginimas</title>
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1f7a4d"><link rel="icon" href="icon.svg">
+<title>Kainos</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0f9d58"><link rel="icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
-:root{--bg:#f3f5f2;--card:#fff;--tx:#14201a;--mu:#6b776f;--ac:#12a05c;--ac2:#0b7a45;--bd:#e4e9e3;--ok:#e3f6ec;--warn:#fff3da;--warnt:#8a5a00;--sh:0 1px 2px rgba(10,30,20,.05),0 6px 20px rgba(10,30,20,.06);--r:18px;color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c110e;--card:#171e19;--tx:#e8efe9;--mu:#92a095;--ac:#3fcb86;--ac2:#2fae70;--bd:#26302a;--ok:#14301f;--warn:#33280f;--warnt:#f0c36a;--sh:none;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0c110e;--card:#171e19;--tx:#e8efe9;--mu:#92a095;--ac:#3fcb86;--ac2:#2fae70;--bd:#26302a;--ok:#14301f;--warn:#33280f;--warnt:#f0c36a;--sh:none;color-scheme:dark}
+:root{--bg:#f2f4f1;--card:#fff;--tx:#122018;--mu:#69766d;--ac:#0f9d58;--ac2:#0a7a43;--acs:#e2f5ea;--bd:#e3e8e3;--red:#e5484d;--warn:#fff2d6;--warnt:#8a5a00;--sh:0 1px 2px rgba(10,30,20,.05),0 8px 24px rgba(10,30,20,.07);--r:20px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b100d;--card:#161d18;--tx:#e9f0ea;--mu:#8f9c93;--ac:#3fcb86;--ac2:#36b877;--acs:#14301f;--bd:#243028;--red:#ff6b6f;--warn:#33280f;--warnt:#f0c36a;--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b100d;--card:#161d18;--tx:#e9f0ea;--mu:#8f9c93;--ac:#3fcb86;--ac2:#36b877;--acs:#14301f;--bd:#243028;--red:#ff6b6f;--warn:#33280f;--warnt:#f0c36a;--sh:none;color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0}
-body{background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:0 14px 100px}
-header{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top,0px)) 2px 6px}
-h1{font-size:24px;margin:0;letter-spacing:-.5px;font-weight:800}h1 span{color:var(--ac)}
-.fresh{font-size:12.5px;border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:6px 12px}
-.fresh.old{background:var(--warn);color:var(--warnt);border-color:transparent}
-.top{position:sticky;top:0;z-index:6;background:linear-gradient(var(--bg) 82%,transparent);padding:6px 0 10px;margin:0 -14px;padding-left:14px;padding-right:14px}
-.sb{display:flex;align-items:center;background:var(--card);border:1.5px solid var(--bd);border-radius:20px;box-shadow:var(--sh);padding:0 6px 0 16px}
+body{background:var(--bg);color:var(--tx);font:16px/1.4 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:760px;margin:0 auto;padding:0 16px 110px}
+button{font:inherit;color:inherit;cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 2px 4px}
+h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:var(--ac)}
+.pill{font-size:12.5px;border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 12px;display:flex;align-items:center;gap:6px}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--ac)}.pill.old i{background:#e3a008}
+.top{position:sticky;top:0;z-index:6;background:var(--bg);margin:0 -16px;padding:8px 16px 6px;transition:box-shadow .2s}
+.top.stuck{box-shadow:0 8px 16px -14px rgba(0,0,0,.35)}
+.sb{display:flex;align-items:center;background:var(--card);border:1.5px solid var(--bd);border-radius:18px;box-shadow:var(--sh);padding:0 6px 0 14px}
 .sb:focus-within{border-color:var(--ac)}
-.sb input{flex:1;border:0;background:transparent;color:var(--tx);font:inherit;font-size:17px;padding:15px 8px;outline:0;min-width:0}
-.sb button{border:0;background:transparent;color:var(--mu);font-size:20px;padding:8px 10px}
-.row-s{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}.row-s::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1.5px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 14px;font:inherit;font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}
-.chip i{width:10px;height:10px;border-radius:50%;display:block}.chip:not(.on) i{opacity:.35}
+.sb svg{flex:none;color:var(--mu)}
+.sb input{flex:1;border:0;background:transparent;color:var(--tx);font:inherit;font-size:16.5px;padding:14px 10px;outline:0;min-width:0}
+.sb input::-webkit-search-cancel-button{display:none}
+.sb .x{border:0;background:var(--bg);color:var(--mu);width:30px;height:30px;border-radius:50%;font-size:14px}
+.hs{display:flex;gap:8px;overflow-x:auto;padding:10px 0 0;scrollbar-width:none;margin:0 -16px;padding-left:16px;padding-right:16px}.hs::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 13px;font-size:14px;font-weight:650;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.chip .dot{width:10px;height:10px;border-radius:50%}.chip:not(.on) .dot{opacity:.3}
 .chip.on{color:var(--tx);border-color:var(--tx)}
-.chip.cat.on{background:var(--ac);border-color:var(--ac);color:#fff}
-.chip small{font-weight:500;opacity:.7}
-.lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:8px 2px -4px;font-weight:700}
-.ctl{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 4px;gap:8px}
+.chip.cat.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
+.chip small{font-weight:500;opacity:.65}
+.chip.more{border-style:dashed}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 2px;gap:10px}
 .sum{font-size:14px;color:var(--mu)}.sum b{color:var(--tx)}
-.seg{display:flex;background:var(--bd);border-radius:12px;padding:3px}
-.seg button{border:0;background:transparent;color:var(--mu);font:inherit;font-size:13px;padding:6px 10px;border-radius:9px;font-weight:600}
-.seg button.on{background:var(--card);color:var(--tx);box-shadow:var(--sh)}
-.card{position:relative;display:flex;align-items:center;gap:12px;background:var(--card);border-radius:var(--r);padding:12px 12px 12px 16px;margin:9px 0;box-shadow:var(--sh);border:1.5px solid transparent;overflow:hidden;cursor:pointer}
-.card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c)}
-.card:active{transform:scale(.99)}
-.card.best{border-color:var(--ac);background:var(--ok)}
-.ic{flex:none;width:44px;height:44px;border-radius:14px;background:var(--bg);display:grid;place-items:center;font-size:23px}
-.mid{flex:1;min-width:0}.nm{font-size:15px;line-height:1.28;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.meta{font-size:12.5px;color:var(--mu);margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.st{color:#fff;border-radius:6px;padding:1px 7px;font-weight:700;font-size:11.5px}
-.tag{background:var(--bg);border-radius:6px;padding:1px 7px}
-.pr{text-align:right;flex:none}.pr b{font-size:19px;display:block;letter-spacing:-.3px}.pr small{font-size:12px;color:var(--mu)}
-.best .pr b{color:var(--ac2)}.bt{display:inline-block;background:var(--ac);color:#fff;border-radius:6px;font-size:10.5px;padding:1px 6px;margin-bottom:2px;font-weight:700}
-.add{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:24px;line-height:1;box-shadow:0 4px 10px rgba(18,160,92,.3)}
-.add.in{background:var(--ac2);font-size:15px;font-weight:700}
-.ghost{border:1.5px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:11px 16px;font:inherit;font-weight:600;display:block;margin:12px auto}
-.cta{width:100%;border:0;background:var(--ac);color:#fff;font:inherit;font-weight:700;border-radius:16px;padding:14px;margin:10px 0}
-.empty{text-align:center;color:var(--mu);padding:40px 10px}.empty big{display:block;font-size:44px}
-nav{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--bd);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:9}
-nav div{display:flex;width:100%;max-width:720px}
-nav button{flex:1;border:0;background:transparent;color:var(--mu);font:inherit;font-size:12.5px;padding:9px 0 8px;font-weight:600}
-nav button.on{color:var(--ac2)}nav button span{display:block;font-size:21px;line-height:1.1}
-.q{display:flex;align-items:center;gap:4px}.q button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;width:32px;height:32px;font-size:17px}
-.sheet{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:20;display:none;align-items:flex-end;justify-content:center}.sheet.show{display:flex}
-.sheet>div{background:var(--bg);width:100%;max-width:720px;border-radius:24px 24px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom,0px));max-height:80vh;overflow:auto}
-h3{margin:16px 2px 4px;font-size:15px}
-#toast{position:fixed;left:50%;bottom:78px;transform:translateX(-50%) translateY(20px);background:#1d2a22;color:#fff;padding:10px 18px;border-radius:99px;font-size:14px;opacity:0;pointer-events:none;transition:.2s;z-index:30}#toast.show{opacity:1;transform:translateX(-50%)}
-.demo{background:var(--warn);color:var(--warnt);border-radius:12px;padding:9px 12px;font-size:13.5px;margin:8px 0}
+.sel{appearance:none;border:1.5px solid var(--bd);background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2369766d' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--tx);font:inherit;font-size:14px;font-weight:600;border-radius:12px;padding:8px 32px 8px 12px}
+.card{position:relative;display:flex;align-items:center;gap:12px;background:var(--card);border-radius:var(--r);padding:12px;margin:10px 0;box-shadow:var(--sh);border:1.5px solid transparent;cursor:pointer;transition:transform .08s}
+.card:active{transform:scale(.985)}
+.card.best{border-color:var(--ac)}
+.ic{flex:none;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:24px;position:relative}
+.ic:after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--c);opacity:.12}
+.mid{flex:1;min-width:0}
+.nm{font-size:15px;line-height:1.3;font-weight:620;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.meta{font-size:12.5px;color:var(--mu);margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.st{color:#fff;border-radius:7px;padding:1px 7px;font-weight:750;font-size:11.5px;letter-spacing:.1px}
+.tg{background:var(--bg);border-radius:7px;padding:1px 7px}.tg.soon{background:var(--warn);color:var(--warnt)}
+.pr{text-align:right;flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.pr b{font-size:19px;letter-spacing:-.4px;line-height:1.1}
+.pr s{font-size:12.5px;color:var(--mu)}
+.off{background:var(--red);color:#fff;border-radius:7px;font-size:11.5px;font-weight:800;padding:1px 6px}
+.bt{background:var(--ac);color:#fff;border-radius:7px;font-size:10.5px;padding:1px 6px;font-weight:800;letter-spacing:.3px}
+.add{flex:none;width:40px;height:40px;border-radius:14px;border:0;background:var(--acs);color:var(--ac2);font-size:24px;font-weight:500;line-height:1;display:grid;place-items:center}
+.add.in{background:var(--ac);color:#fff;font-size:14px;font-weight:800}
+.empty{text-align:center;color:var(--mu);padding:46px 16px}.empty big{display:block;font-size:46px;margin-bottom:6px}
+.btn{border:0;background:var(--ac);color:#fff;font-weight:750;border-radius:16px;padding:14px 18px;width:100%}
+.btn.gh{background:var(--card);color:var(--tx);border:1.5px solid var(--bd)}
+.btn.sm{width:auto;padding:9px 14px;border-radius:12px;font-size:14px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:9;display:flex;justify-content:center;padding:0 16px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+nav div{pointer-events:auto;display:flex;gap:4px;background:color-mix(in srgb,var(--card) 86%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--bd);border-radius:22px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+nav button{border:0;background:transparent;color:var(--mu);font-size:14px;font-weight:700;padding:10px 18px;border-radius:17px;display:flex;align-items:center;gap:8px}
+nav button.on{background:var(--tx);color:var(--bg)}
+nav .cnt{background:var(--ac);color:#fff;border-radius:99px;font-size:11.5px;padding:0 7px;min-width:20px;text-align:center}
+nav .cnt:empty{display:none}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:20;display:none;align-items:flex-end;justify-content:center}.sheet.show{display:flex}
+.sheet>div{background:var(--bg);width:100%;max-width:760px;border-radius:26px 26px 0 0;padding:20px 16px calc(18px + env(safe-area-inset-bottom,0px));max-height:86vh;overflow:auto;animation:up .2s ease-out}
+@keyframes up{from{transform:translateY(30px);opacity:.5}}
+.sheet h2{font-size:20px;margin:0 0 14px;letter-spacing:-.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.gc{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--bd);border-radius:16px;padding:11px 12px;text-align:left;font-size:14px;font-weight:600}
+.gc span{font-size:22px}.gc small{margin-left:auto;color:var(--mu);font-weight:500}
+.gc.on{border-color:var(--ac);background:var(--acs)}
+.sticky-b{position:sticky;bottom:-18px;background:var(--bg);padding:12px 0 2px;display:flex;gap:8px}
+h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu)}
+.store-h{display:flex;align-items:center;justify-content:space-between;margin:20px 2px 4px}
+.store-h b{font-size:16px}
+.ci{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:16px;padding:10px 12px;margin:8px 0;box-shadow:var(--sh)}
+.ci.done .nm{text-decoration:line-through;opacity:.5}
+.ck{flex:none;width:26px;height:26px;border-radius:9px;border:2px solid var(--bd);background:transparent;display:grid;place-items:center;font-size:14px;color:#fff;padding:0}
+.ci.done .ck{background:var(--ac);border-color:var(--ac)}
+.q{display:flex;align-items:center;gap:2px}.q button{border:0;background:var(--bg);width:30px;height:30px;border-radius:10px;font-size:17px}.q b{min-width:22px;text-align:center;font-size:15px}
+.del{border:0;background:transparent;color:var(--mu);font-size:18px;width:32px;height:32px}
+.tot{background:var(--tx);color:var(--bg);border-radius:20px;padding:16px;margin:18px 0 10px}
+.tot .r{display:flex;justify-content:between;justify-content:space-between;font-size:14px;opacity:.85;margin:3px 0}
+.tot .big{font-size:26px;font-weight:850;letter-spacing:-.5px;opacity:1}
+#toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(16px);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:30}#toast.show{opacity:1;transform:translateX(-50%)}
+.note{background:var(--warn);color:var(--warnt);border-radius:14px;padding:10px 12px;font-size:13.5px;margin:10px 0}
+.srow{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:16px;padding:12px;margin:8px 0}
+.srow .mid div{font-size:13px;color:var(--mu)}
+#sentinel{height:1px}
 </style></head><body>
-<header><h1>Kainos<span>.</span></h1><button class="fresh" id="fresh">…</button></header>
-<div id="v1">
- <div class="top"><div class="sb"><span>🔎</span><input id="q" type="search" enterkeyhint="search" placeholder="Ieškok prekės (nebūtina)" autocomplete="off"><button id="x" hidden aria-label="Išvalyti">✕</button></div>
- <div class="row-s" id="stores"></div>
- <div class="row-s" id="cats"></div></div>
- <div class="ctl"><div class="sum" id="sum"></div><div class="seg" id="sort"><button data-s="price" class="on">€ ↑</button><button data-s="desc">€ ↓</button><button data-s="unit">€/kg·l</button><button data-s="az">A–Z</button></div></div>
- <div id="res"></div>
-</div>
-<div id="v2" hidden><div id="cart"></div></div>
-<nav><div><button id="n1" class="on"><span>🏷️</span>Pasiūlymai</button><button id="n2"><span>🧺</span>Krepšelis <b id="cc"></b></button></div></nav>
+<header><h1>Kainos<span>.</span></h1><button class="pill" id="fresh"><i></i><span>…</span></button></header>
+
+<main id="v1">
+ <div class="top" id="top">
+  <div class="sb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+   <input id="q" type="search" enterkeyhint="search" placeholder="Ieškoti prekės…" autocomplete="off" aria-label="Paieška"><button class="x" id="x" hidden aria-label="Išvalyti">✕</button></div>
+  <div class="hs" id="stores"></div>
+  <div class="hs" id="cats"></div>
+ </div>
+ <div class="bar"><div class="sum" id="sum"></div>
+  <select class="sel" id="sort" aria-label="Rūšiuoti"><option value="price">Pigiausios</option><option value="desc">Brangiausios</option><option value="unit">€ už kg / l</option><option value="off">Didžiausia nuolaida</option><option value="az">A–Ž</option></select></div>
+ <div id="res"></div><div id="sentinel"></div>
+</main>
+<main id="v2" hidden><div id="cart"></div></main>
+
+<nav><div><button id="n1" class="on">🏷️ Pasiūlymai</button><button id="n2">🧺 Krepšelis <span class="cnt" id="cc"></span></button></div></nav>
 <div id="toast"></div>
 <div class="sheet" id="sheet"><div id="sheetc"></div></div>
+
 <script>
-const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#64748b"};
-const CATS=[
- ["higiena","Namai ir higiena","🧴",/tualet|popier|sampun|muil|dantu|skalb|plovikl|valikl|kapsul|vystykl|higien|dezodor|kosmet|rankslu|servet|maisel|minkstikl|kriauk|kremas|odos|plauk|dantų/],
- ["saldyta","Šaldyti","🧊",/saldyt|salto|\bpica|koldun|virtiniai|ledai/],
- ["gerimai","Gėrimai","🥤",/gerim|sultys|vanduo|vandens|limonad|\balus|\bvyn|degtin|viski|kava|kavos|arbat|kakav|sidras|konjak|energ|\bcola|\bkola|sulciu|gin\b|romas|likeris|šampan|alaus/],
- ["mesa","Mėsa ir žuvis","🥩",/\bmes|vistien|vistuk|kiauli|jautien|desr|kumpi|sosis|zuv|lasis|silk|krevet|paukst|skilandis|rukyt|strimel|ikrai|tunas|tunai|sprot|skumbr|antien|kalakut|faršas|farsas|kepsn|broiler|blauzdel|filė|file\b/],
- ["pienas","Pieno produktai ir kiaušiniai","🥛",/pien|jogurt|kefyr|varsk|\bsuris|\bsuri|surel|sviest|grietin|kiausin|margarin|pudingas/],
- ["vaisiai","Vaisiai ir daržovės","🥦",/obuol|banan|mandarin|apelsin|citrin|kiwi|kivi|agurk|pomidor|morkos|bulv|kopust|svogun|darzov|vaisi|avokad|persimon|\buog|salot|paprik|brokol|grybai|ananas|vynuog|kriaus|bulves|cesnak/],
- ["duona","Duona ir kepiniai","🍞",/duon|batonas|bulel|kepin|bandel|raguol|croissant|pyragas(?!.*sokolad)/],
- ["saldumynai","Saldumynai ir užkandžiai","🍫",/sokolad|saldum|saldain|sausain|vafl|keksiuk|zefyr|pyrag|tort|chips|trauksn|riesut|uzkand|kramtom|batonel|kalėdin|kaledin|saldus/],
- ["bakaleja","Bakalėja","🥫",/makaron|\bryz|kruop|miltai|cukrus|druska|aliej|actas|konserv|padaz|kecup|majonez|zirnel|pupel|dribs|avizin|medus|uogiene|\bpasta|sriuba|prieskon|spagec|sausas|aliejus|kukurūz|kukuruz|ramen|nuddel|makaronai/],
- ["kita","Kita","🛒",/./]
-];
-const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/,/g,".").replace(/%/g,"");
-const catOf=n=>{const t=norm(n);for(const c of CATS)if(c[3].test(t))return c[0];return"kita"};
-const CI=Object.fromEntries(CATS.map(c=>[c[0],c]));
-let DB={stores:[],rows:[],updated:null,status:{}},sel=new Set(),cat="all",cart=[],sortBy="price",demo=false,Q="",lim=50;
+const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#475569"};
+const FALLBACK_CATS=[{id:"kita",name:"Kita",icon:"🛒"}];
+let DB={stores:[],rows:[],cats:FALLBACK_CATS,updated:null,status:{}},sel=new Set(),cats=new Set(),cart=[],sortBy="price",Q="",lim=60,demo=false;
 const $=s=>document.querySelector(s);
 const ls=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
-const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/,/g,".");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const eur=n=>n.toFixed(2).replace(".",",")+" €";
 const col=s=>COL[s]||"#475569";
-const fd=d=>d?d.slice(5).replace("-","."):"";
-const valid=r=>r.from&&r.until?`Galioja ${fd(r.from)} – ${fd(r.until)}`:r.until?`Galioja iki ${fd(r.until)}`:"Galiojimas nenurodytas";
-function unit(n,p){const m=norm(n).match(/(\d+(?:\.\d+)?)\s*(kg|g|ml|l)\b/);
- if(!m){return /\bkg\b/.test(norm(n))?{v:p,l:"kg"}:null}
- const q=parseFloat(m[1]);if(!q)return null;const t=m[2];
- return t=="g"?{v:p/q*1000,l:"kg"}:t=="ml"?{v:p/q*1000,l:"l"}:{v:p/q,l:t}}
+const today=(d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10))(new Date());
+const fd=d=>d?d.slice(8,10)+"."+d.slice(5,7):"";
+function valid(r){if(r.from&&r.from>today)return `<span class="tg soon">Nuo ${fd(r.from)}</span>`;
+ if(r.until==today)return `<span class="tg soon">Baigiasi šiandien</span>`;
+ return r.from&&r.until?`<span>${fd(r.from)}–${fd(r.until)}</span>`:r.until?`<span>iki ${fd(r.until)}</span>`:""}
+function unit(n,p){const t=norm(n),m=t.match(/(\d+(?:\.\d+)?)\s*(?:x\s*(\d+(?:\.\d+)?)\s*)?(kg|g|ml|l)\b/);
+ if(!m)return null;let q=parseFloat(m[1])*(m[2]?parseFloat(m[2]):1);if(!q)return null;const u=m[3];
+ const v=u=="g"?p/q*1000:u=="ml"?p/q*1000:p/q;return{v,l:u=="g"||u=="kg"?"kg":"l"}}
+const catOf=id=>DB.cats.find(c=>c.id==id)||DB.cats[DB.cats.length-1];
+
 function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
- const B=[["Pienas ŽEMAITIJOS 1,5% 1 l",1.09],["Vištienos filė šaldyta 1 kg",7.5],["Kiaušiniai M 10 vnt.",2.9],["Duona juoda 600 g",1.4],["Bananai 1 kg",1.5],["Spagečiai 500 g",1.8],["Kava malta 250 g",3.4],["Šokoladas 100 g",1.2],["Tualetinis popierius 8 rit.",3.9]];
- const items=[];B.forEach(([n,p])=>S.forEach((s,j)=>items.push([j,n,+(p*k[j]).toFixed(2),"l","2026-12-31","2026-12-01"])));
- return{stores:S,items,updated:new Date().toISOString(),status:{}}}
-function init(j,d){demo=!!d;DB=j;
- DB.rows=j.items.filter(a=>(a[3]||"e")=="l").map((a,i)=>({id:i,s:j.stores[a[0]],name:a[1],price:a[2],until:a[4]||"",from:a[5]||"",n:norm(a[1]),u:unit(a[1],a[2]),c:catOf(a[1])}));
- const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel2");
+ const C=[{id:"vaisiai",name:"Vaisiai ir daržovės",icon:"🥦"},{id:"mesa",name:"Mėsa",icon:"🥩"},{id:"pienas",name:"Pieno gaminiai",icon:"🥛"},{id:"duona",name:"Duona",icon:"🍞"},{id:"bakaleja",name:"Bakalėja",icon:"🍝"},{id:"kita",name:"Kita",icon:"🛒"}];
+ const B=[["Pienas ŽEMAITIJOS 2,5 % 1 l",1.09,2],["Vištienos krūtinėlės filė 1 kg",7.5,1],["Kiaušiniai M 10 vnt.",2.9,2],["Duona juoda 600 g",1.4,3],["Bananai 1 kg",1.5,0],["Spagečiai 500 g",1.8,4]];
+ const items=[];B.forEach(([n,p,c])=>S.forEach((s,j)=>items.push([j,n,+(p*k[j]).toFixed(2),"l","2099-12-31","2026-01-01",+(p*1.3).toFixed(2),c])));
+ return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
+function init(j,d){demo=!!d;DB=j;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
+ DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
+  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2])}});
+ const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));if(!sel.size)sel=new Set(have);
- drawChips();draw();fresh()}
+ const sc=ls("cats3");cats=new Set((sc||[]).filter(c=>DB.cats.some(x=>x.id==c)));
+ drawStores();draw();fresh()}
 async function load(){try{const r=await fetch("prices.json",{cache:"no-cache"});const j=await r.json();if(!j.items||!j.items.length)throw 0;init(j,false)}catch(e){init(demoData(),true)}}
-function fresh(){const b=$("#fresh");if(!DB.updated){b.textContent="Nėra duomenų";return}
- const d=new Date(DB.updated),h=(Date.now()-d)/36e5,t=d.toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"});
- const same=d.toDateString()==new Date().toDateString();
- b.textContent=demo?"Demo duomenys":(same?"Šiandien "+t:"Atnaujinta "+d.toLocaleDateString("lt-LT",{month:"2-digit",day:"2-digit"})+" "+t);
- b.classList.toggle("old",demo||h>36)}
-const bySearch=()=>{const t=norm(Q).split(/\s+/).filter(Boolean);return DB.rows.filter(r=>t.every(x=>r.n.includes(x)))};
-function filtered(skipCat){return bySearch().filter(r=>sel.has(r.s)&&(skipCat||cat=="all"||r.c==cat))}
-function drawChips(){const have=[...new Set(DB.rows.map(r=>r.s))];
- $("#stores").innerHTML=have.map(s=>`<button class="chip ${sel.has(s)?"on":""}" data-s="${s}"><i style="background:${col(s)}"></i>${s}</button>`).join("")}
-function drawCats(){const base=filtered(true),cnt={};base.forEach(r=>cnt[r.c]=(cnt[r.c]||0)+1);
- $("#cats").innerHTML=`<button class="chip cat ${cat=="all"?"on":""}" data-c="all">Visos <small>${base.length}</small></button>`+CATS.filter(c=>cnt[c[0]]).map(c=>`<button class="chip cat ${cat==c[0]?"on":""}" data-c="${c[0]}">${c[2]} ${c[1]} <small>${cnt[c[0]]}</small></button>`).join("");}
-$("#stores").onclick=e=>{const b=e.target.closest("[data-s]");if(!b)return;const s=b.dataset.s;sel.has(s)?sel.size>1&&sel.delete(s):sel.add(s);ls("sel2",[...sel]);lim=50;drawChips();draw()};
-$("#cats").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;cat=b.dataset.c;lim=50;draw()};
-const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:r.price;
+function fresh(){const b=$("#fresh"),t=b.querySelector("span");if(!DB.updated){t.textContent="Nėra duomenų";return}
+ const d=new Date(DB.updated),h=(Date.now()-d)/36e5,tm=d.toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"});
+ t.textContent=demo?"Demo":(d.toDateString()==new Date().toDateString()?"Šiandien "+tm:fd(d.toISOString().slice(0,10))+" "+tm);
+ b.classList.toggle("old",demo||h>30)}
+
+// ---------- filtrai ----------
+const terms=()=>norm(Q).split(/\s+/).filter(Boolean);
+const matchQ=(r,t)=>t.every(x=>r.n.includes(x));
+function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
+function list(){return base().filter(r=>!cats.size||cats.has(r.c))}
+function drawStores(){const have=[...new Set(DB.rows.map(r=>r.s))],all=have.every(s=>sel.has(s));
+ $("#stores").innerHTML=`<button class="chip ${all?"on":""}" data-all="1">Visos</button>`+have.map(s=>`<button class="chip ${sel.has(s)&&!all?"on":""}" data-s="${s}"><span class="dot" style="background:${col(s)}"></span>${s}</button>`).join("")}
+$("#stores").onclick=e=>{const b=e.target.closest("button");if(!b)return;const have=[...new Set(DB.rows.map(r=>r.s))];
+ if(b.dataset.all)sel=new Set(have);else{const s=b.dataset.s,all=have.every(x=>sel.has(x));
+  if(all)sel=new Set([s]);else{sel.has(s)?sel.delete(s):sel.add(s);if(!sel.size)sel=new Set(have)}}
+ ls("sel3",[...sel]);lim=60;drawStores();draw()};
+function catCounts(){const c={};base().forEach(r=>c[r.c]=(c[r.c]||0)+1);return c}
+function drawCats(){const cnt=catCounts(),tot=Object.values(cnt).reduce((a,b)=>a+b,0);
+ const vis=DB.cats.filter(c=>cnt[c.id]||cats.has(c.id));
+ $("#cats").innerHTML=`<button class="chip cat ${!cats.size?"on":""}" data-c="">Visos <small>${tot}</small></button>`+
+  vis.map(c=>`<button class="chip cat ${cats.has(c.id)?"on":""}" data-c="${c.id}">${c.icon} ${esc(c.name)} <small>${cnt[c.id]||0}</small></button>`).join("")+
+  `<button class="chip more" data-sheet="1">☰ Kategorijos</button>`}
+$("#cats").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.sheet)return catSheet();
+ const c=b.dataset.c;if(!c)cats.clear();else{cats.has(c)?cats.delete(c):(cats.clear(),cats.add(c))}ls("cats3",[...cats]);lim=60;draw()};
+function catSheet(){const cnt=catCounts();let pick=new Set(cats);
+ const render=()=>{$("#sheetc").innerHTML=`<h2>Kategorijos</h2><div class="grid"><button class="gc ${!pick.size?"on":""}" data-c=""><span>✨</span>Visi pasiūlymai</button>`+
+  DB.cats.map(c=>`<button class="gc ${pick.has(c.id)?"on":""}" data-c="${c.id}" ${cnt[c.id]?"":"style='opacity:.45'"}><span>${c.icon}</span>${esc(c.name)}<small>${cnt[c.id]||0}</small></button>`).join("")+
+  `</div><div class="sticky-b"><button class="btn gh" id="cl0">Atšaukti</button><button class="btn" id="ap">Taikyti</button></div>`;
+  $("#sheetc .grid").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;const c=b.dataset.c;if(!c)pick.clear();else pick.has(c)?pick.delete(c):pick.add(c);render()};
+  $("#cl0").onclick=closeSheet;$("#ap").onclick=()=>{cats=pick;ls("cats3",[...cats]);lim=60;closeSheet();draw()}};
+ render();$("#sheet").classList.add("show")}
+const closeSheet=()=>$("#sheet").classList.remove("show");
+$("#sheet").onclick=e=>{if(e.target.id=="sheet")closeSheet()};
+
+// ---------- sąrašas ----------
+const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:sortBy=="off"?-r.off:r.price;
 const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a.price-b.price;
-function card(r,best){const inc=cart.find(c=>c.id==r.id),u=r.u?`<span class="tag">${eur(r.u.v)}/${r.u.l}</span>`:"";
- return `<div class="card ${best?"best":""}" style="--c:${col(r.s)}" data-id="${r.id}"><div class="ic">${CI[r.c][2]}</div><div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${u}<span>${valid(r)}</span></div></div><div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':""}<b>${eur(r.price)}</b></div><button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
-function drawSearch(){
- const q=Q.trim();$("#x").hidden=!q;drawCats();
- const r=filtered().sort(cmp),el=$("#res");
- $("#sum").innerHTML=`Rasta <b>${r.length}</b>`+(r.length&&q?` · pigiausia <b>${eur(Math.min(...r.map(x=>x.price)))}</b>`:"");
- if(!r.length){el.innerHTML=`<div class="empty"><big>🤷</big>Nieko nerasta${q?` „${esc(q)}“`:""}.<br>Pabandyk kitą žodį, kategoriją ar parduotuvę.</div>`;return}
- const minP=Math.min(...r.map(x=>x.price));
- let h=demo?`<div class="demo">Rodomi demo duomenys – tikri dar neįkelti.</div>`:"";
- h+=r.slice(0,lim).map(x=>card(x,!!q&&x.price===minP)).join("");
- if(r.length>lim)h+=`<button class="ghost" id="more">Rodyti daugiau (${r.length-lim})</button>`;
- el.innerHTML=h;const m=$("#more");if(m)m.onclick=()=>{lim+=100;drawSearch()}}
-function addItem(id){const r=DB.rows[id];if(!r)return;const f=cart.find(c=>c.s==r.s&&c.name==r.name&&c.price==r.price);
- f?f.n++:cart.push({id:r.id,s:r.s,name:r.name,price:r.price,until:r.until,from:r.from,n:1});ls("cart2",cart);draw();toast("Pridėta į krepšelį")}
-let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("show"),1300)}
-$("#res").addEventListener("click",e=>{const t=e.target.closest("[data-id]");if(t)addItem(+t.dataset.id)});
-function drawCart(){
- $("#cc").textContent=cart.length?"("+cart.length+")":"";
- const el=$("#cart");if(!cart.length){el.innerHTML=`<div class="empty"><big>🧺</big>Krepšelis tuščias.<br>Spausk prekę ar „+“ pasiūlymų sąraše.</div>`;return}
- let tot=0,cnt=0;const by={};let h="<h3>Prekės</h3>";
- cart.forEach((c,i)=>{tot+=c.price*c.n;cnt+=c.n;by[c.s]=(by[c.s]||0)+c.price*c.n;
-  h+=`<div class="card" style="--c:${col(c.s)};cursor:default"><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span class="st" style="background:${col(c.s)}">${c.s}</span><span>${valid(c)}</span><span>${eur(c.price)} × ${c.n}</span></div></div><div class="q"><button data-m="${i}">−</button><b>${c.n}</b><button data-p="${i}">+</button><button data-del="${i}" aria-label="Pašalinti">🗑</button></div></div>`});
- h+="<h3>Pagal parduotuvę</h3>"+Object.entries(by).sort((a,b)=>a[1]-b[1]).map(([s,v])=>`<div class="card" style="--c:${col(s)};cursor:default"><div class="mid"><span class="st" style="background:${col(s)}">${s}</span></div><div class="pr"><b>${eur(v)}</b></div></div>`).join("");
- h+=`<div class="card best" style="--c:var(--ac);cursor:default"><div class="mid"><b>Iš viso (${cnt} vnt.)</b></div><div class="pr"><b>${eur(tot)}</b></div></div><button class="ghost" id="clr">Išvalyti visą krepšelį</button>`;
- el.innerHTML=h;$("#clr").onclick=()=>{if(confirm("Išvalyti visą krepšelį?")){cart=[];ls("cart2",cart);draw()}}}
-$("#cart").onclick=e=>{const b=e.target.closest("button");if(!b)return;const m=b.dataset.m,p=b.dataset.p,d=b.dataset.del;if(d!=null)cart.splice(d,1);else if(m!=null){cart[m].n--;if(cart[m].n<1)cart.splice(m,1)}else if(p!=null)cart[p].n++;else return;ls("cart2",cart);draw()};
-function draw(){drawSearch();drawCart()}
-function tab(n){$("#v1").hidden=n!=1;$("#v2").hidden=n!=2;$("#n1").classList.toggle("on",n==1);$("#n2").classList.toggle("on",n==2);scrollTo(0,0);draw()}
+function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
+ return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${ct.icon}</div>
+ <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
+ <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.old?`<s>${eur(r.old)}</s>`:""}</div>
+ <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
+let cur=[];
+function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
+ cur=list().sort(cmp);const el=$("#res");
+ const minP=cur.length?Math.min(...cur.map(x=>x.price)):0;
+ $("#sum").innerHTML=`<b>${cur.length}</b> ${cur.length%10==1&&cur.length%100!=11?"pasiūlymas":"pasiūlymai"}`;
+ if(!cur.length){el.innerHTML=`<div class="empty"><big>🔍</big>Nieko nerasta${q?` pagal „${esc(q)}“`:""}.<br>Pabandyk kitą žodį, kategoriją ar parduotuvę.</div>`;return}
+ el.innerHTML=(demo?`<div class="note">Rodomi pavyzdiniai duomenys – tikri dar neįkelti.</div>`:"")+cur.slice(0,lim).map(x=>card(x,!!q&&x.price===minP&&sortBy=="price")).join("")}
+new IntersectionObserver(es=>{if(es[0].isIntersecting&&!$("#v1").hidden&&cur.length>lim){lim+=80;$("#res").insertAdjacentHTML("beforeend",cur.slice(lim-80,lim).map(x=>card(x,false)).join(""))}},{rootMargin:"800px"}).observe($("#sentinel"));
+$("#res").addEventListener("click",e=>{const t=e.target.closest("[data-id]");if(!t)return;addItem(+t.dataset.id,t)});
+function addItem(id,el){const r=DB.rows[id];if(!r)return;const f=cart.find(c=>c.id==r.id||(c.s==r.s&&c.name==r.name&&c.price==r.price));
+ f?f.n++:cart.push({id:r.id,s:r.s,name:r.name,price:r.price,old:r.old,until:r.until,from:r.from,n:1,done:false});saveCart();
+ if(el){const b=el.querySelector(".add"),n=cart.find(c=>c.id==r.id)?.n||1;b.classList.add("in");b.textContent="✓"+(n>1?n:"")}
+ toast(`Pridėta: ${r.name.slice(0,34)}${r.name.length>34?"…":""}`)}
+const saveCart=()=>{ls("cart3",cart);$("#cc").textContent=cart.length||""};
+let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("show"),1400)}
+
+// ---------- krepšelis ----------
+function drawCart(){saveCart();const el=$("#cart");
+ if(!cart.length){el.innerHTML=`<div class="empty"><big>🧺</big>Krepšelis tuščias.<br>Pasiūlymų sąraše spausk prekę arba „+“.</div>`;return}
+ const g={};cart.forEach((c,i)=>(g[c.s]=g[c.s]||[]).push([c,i]));
+ let tot=0,save=0,cnt=0,h="";
+ Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+c.price*c.n,0);
+  h+=`<div class="store-h"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="sum">${eur(sub)}</span></div>`;
+  arr.forEach(([c,i])=>{tot+=c.price*c.n;cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
+   h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}</span>${c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
+   <div class="q"><button data-m="${i}" aria-label="Mažiau">−</button><b>${c.n}</b><button data-p="${i}" aria-label="Daugiau">+</button></div><button class="del" data-del="${i}" aria-label="Pašalinti">🗑</button></div>`})});
+ h=`<div class="tot"><div class="r"><span>${cnt} prek.</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
+  `<div style="display:flex;gap:8px;margin-top:18px"><button class="btn gh" id="cdone">Išvalyti nupirktas</button><button class="btn gh" id="clr" style="color:var(--red)">Išvalyti viską</button></div>`;
+ el.innerHTML=h;
+ $("#clr").onclick=()=>{if(confirm("Išvalyti visą krepšelį?")){cart=[];drawCart()}};
+ $("#cdone").onclick=()=>{cart=cart.filter(c=>!c.done);drawCart()}}
+$("#cart").onclick=e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+ if(d.del!=null)cart.splice(+d.del,1);else if(d.m!=null){cart[d.m].n--;if(cart[d.m].n<1)cart.splice(+d.m,1)}else if(d.p!=null)cart[d.p].n++;else if(d.ck!=null)cart[d.ck].done=!cart[d.ck].done;else return;drawCart()};
+
+function draw(){drawList();saveCart()}
+function tab(n){$("#v1").hidden=n!=1;$("#v2").hidden=n!=2;$("#n1").classList.toggle("on",n==1);$("#n2").classList.toggle("on",n==2);scrollTo(0,0);n==1?drawList():drawCart()}
 $("#n1").onclick=()=>tab(1);$("#n2").onclick=()=>tab(2);
-let tm;$("#q").oninput=e=>{clearTimeout(tm);tm=setTimeout(()=>{Q=e.target.value;lim=50;drawSearch()},120)};
-$("#x").onclick=()=>{$("#q").value="";Q="";drawSearch();$("#q").focus()};
-$("#sort").onclick=e=>{const s=e.target.dataset.s;if(!s)return;sortBy=s;[...$("#sort").children].forEach(b=>b.classList.toggle("on",b.dataset.s==s));lim=50;drawSearch()};
-$("#fresh").onclick=()=>{const per=DB.stores.map(s=>{const r=DB.rows.filter(x=>x.s==s);const w=Object.values((DB.status||{})[s]||{}).filter(v=>typeof v=="string").join("; ");
-  const ds=[...new Set(r.map(x=>x.until).filter(Boolean))].sort().pop();
-  return `<div class="card" style="--c:${col(s)};cursor:default"><div class="mid"><span class="st" style="background:${col(s)}">${s}</span><div class="meta">${r.length?`prekių: ${r.length}${ds?" · galioja iki "+fd(ds):""}`:"nėra duomenų"}${w?`<span class="tag">${esc(w)}</span>`:""}</div></div></div>`}).join("");
- $("#sheetc").innerHTML=`<h3 style="margin-top:0">Duomenų šaltiniai</h3><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+". Kainos atnaujinamos kasdien ~08:00.":""}</div>${per}<button class="cta" id="cl">Uždaryti</button>`;
- $("#sheet").classList.add("show");$("#cl").onclick=()=>$("#sheet").classList.remove("show")};
-$("#sheet").onclick=e=>{if(e.target.id=="sheet")$("#sheet").classList.remove("show")};
-cart=Array.isArray(ls("cart2"))?ls("cart2"):[];
+let tm;$("#q").oninput=e=>{clearTimeout(tm);tm=setTimeout(()=>{Q=e.target.value;lim=60;drawList()},140)};
+$("#x").onclick=()=>{$("#q").value="";Q="";lim=60;drawList();$("#q").focus()};
+$("#sort").onchange=e=>{sortBy=e.target.value;ls("sort3",sortBy);lim=60;drawList()};
+addEventListener("scroll",()=>$("#top").classList.toggle("stuck",scrollY>60),{passive:true});
+$("#fresh").onclick=()=>{const st=DB.status||{};
+ const rows=DB.stores.map(s=>{const r=DB.rows.filter(x=>x.s==s),last=[...new Set(r.map(x=>x.until).filter(Boolean))].sort().pop();
+  const w=Object.values(st[s]||{}).filter(v=>typeof v=="string").join("; ");
+  return `<div class="srow"><span class="st" style="background:${col(s)}">${s}</span><div class="mid"><div>${r.length?`${r.length} pasiūlymų${last?` · iki ${fd(last)}`:""}`:"Leidinių gauti nepavyko"}</div>${w?`<div>${esc(w)}</div>`:""}</div></div>`}).join("");
+ $("#sheetc").innerHTML=`<h2>Duomenys</h2><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+".<br>Kainos iš parduotuvių leidinių, atnaujinamos kasdien ~08:00.":""}</div>${rows}<div class="sticky-b"><button class="btn" id="cl">Uždaryti</button></div>`;
+ $("#sheet").classList.add("show");$("#cl").onclick=closeSheet};
+
+cart=Array.isArray(ls("cart3"))?ls("cart3"):[];
+sortBy=ls("sort3")||"price";$("#sort").value=sortBy;
 load();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script></body></html>

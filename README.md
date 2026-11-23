@@ -1,28 +1,44 @@
-# Kainų palyginimas (be serverio)
+# Kainos
 
-Kasdien ~08:00 (Vilniaus laiku) GitHub Actions surenka e-parduotuvių katalogus ir kainų leidinius (PDF) į `prices.json`.
-Programėlė (`index.html`, PWA) atsisiunčia tą failą ir **ieško pati telefone** – iškart, be serverio.
-Kešas galioja iki kito surinkimo (programėlė kaskart patikrina ar `prices.json` pasikeitė).
+Programėlė: https://g0odnight.github.io/kainos/
 
-## Paleidimas
-1. Sukurk viešą GitHub repo, aplanke: `git init -b main && git add . && git commit -m init && git remote add origin https://github.com/TAVO_VARDAS/kainos.git && git push -u origin main`
-2. Settings → Pages → Deploy from a branch → `main` / `(root)`.
-3. Settings → Actions → General → Workflow permissions → **Read and write**.
-4. Actions → `scrape` → **Run workflow** (pirmas paleidimas gali užtrukti 20–60 min).
-5. Telefone: `https://TAVO_VARDAS.github.io/kainos/` → Chrome meniu → „Įdiegti programėlę“.
-6. Programėlėje viršuje dešinėje paspaudus datą matysi kiek prekių surinkta iš kiekvienos parduotuvės.
+Parduotuvių **kainų leidinių** akcijos vienoje vietoje: paieška, parduotuvių ir kategorijų filtrai, rūšiavimas, krepšelis.
+Serverio nėra: GitHub Actions kasdien ~08:00 (Vilniaus laiku) surenka leidinius į `prices.json`, o programėlė telefone tik skaito tą failą.
 
-## Derinimas (NEPATIKRINTA – tikėtina, kad teks taisyti)
-Visi URL ir selektoriai `scraper/stores.json` yra spėjimai. Lokaliai:
-`pip install -r scraper/requirements.txt && playwright install chromium` (+ `poppler-utils`, `tesseract-ocr`, `tesseract-ocr-lit` leidiniams)
-- `python scraper/scrape.py --probe "URL" --store Rimi` – parodo kiek prekių ir kokių PDF rado puslapyje; HTML išsaugo `scraper/debug/probe.html`.
-- `python scraper/scrape.py --pdf leidinys.pdf` – parodo kaip išparsinamas leidinys.
-- `python scraper/scrape.py --store Rimi` – viena parduotuvė (kitų duomenys paliekami).
-- Jei parduotuvė grąžina <30 % ankstesnio kiekio, paliekami seni duomenys ir programėlėje rodomas įspėjimas.
-- Workflow įkelia `debug` artefaktą: jei neišeina, atsiųsk man `*.json` ir dalį `*.html`.
+## Kaip tai veikia
 
-## Pastabos
-- E-parduotuvių kainos gali skirtis nuo kainų parduotuvėje.
-- Leidiniai: jei PDF turi tekstą – skaitoma tiesiogiai, jei paveikslėliai – OCR (mažiau tikslu). Kai kurie leidiniai būna ne PDF, o interaktyvūs katalogai; tada reikia rasti jų duomenų URL.
-- GitHub cron gali vėluoti; jei diena praleista, paleisk rankiniu būdu. Viešuose repo suplanuoti workflow išsijungia po 60 d. be aktyvumo.
-- Prieš naudodamas pasitikrink parduotuvių naudojimo sąlygas; skriptas daro ~1 užklausą per sekundę.
+| Parduotuvė | Šaltinis | Kur renkama |
+|---|---|---|
+| Maxima | maxima.lt/leidiniai (iPaper tekstas) | GitHub debesyje |
+| Rimi | rimi.lt savaitinis leidinys (iPaper tekstas) | GitHub debesyje |
+| Lidl | lidl.lt leidinių PDF | GitHub debesyje |
+| IKI, Norfa, Promo | jų leidinių puslapiai | **tavo kompiuteryje** (žr. žemiau) |
+
+IKI ir Promo svetainės saugomos „Cloudflare“, Norfos leidiniai – „yumpu“. Jie atmeta užklausas iš debesų serverių,
+todėl šias tris parduotuves renka tas pats skriptas, paleistas tavo kompiuteryje įprastame Chrome lange.
+
+## IKI, Norfa, Promo: rinkimas tavo kompiuteryje (nebūtina)
+
+Kompiuteris turi būti įjungtas apie 08:40. Vienkartinis nustatymas (~10 min.):
+
+1. Įdiek Python 3.12: `winget install Python.Python.3.12` (PowerShell) ir Google Chrome, jei dar nėra.
+2. GitHub: repo **Settings → Actions → Runners → New self-hosted runner → Windows**. Įvykdyk ten parodytas komandas
+   PowerShell'e (aplanke, pvz., `C:\actions-runner`). Paskutinį žingsnį `./run.cmd` pakeisk į `./svc.cmd install` ir `./svc.cmd start`,
+   kad veiktų fone.
+   *Pastaba:* kad atsidarytų Chrome langas, runner turi veikti kaip tavo vartotojas, ne kaip „Network Service“.
+   Paprasčiausia – nediegti kaip paslaugos, o įdėti `run.cmd` į *Startup* aplanką (Win+R → `shell:startup`).
+3. Repo **Settings → Secrets and variables → Actions → Variables → New variable**: `LOCAL_RUNNER` = `1`.
+4. Patikrink: **Actions → scrape-local → Run workflow**.
+
+Jei svetainė vis tiek parodys „ar ne robotas“ patikrinimą, tą dieną tos parduotuvės duomenys tiesiog liks seni.
+
+## Rankinis paleidimas
+
+**Actions → scrape → Run workflow** (debesis) arba **scrape-local** (kompiuteris).
+
+## Failai
+
+- `index.html`, `sw.js`, `manifest.webmanifest`, `icon.svg` – programėlė (PWA, galima „Įdiegti“ į telefono ekraną).
+- `prices.json` – duomenys (generuojami automatiškai, ranka neredaguoti).
+- `scraper/scrape.py` – rinkimas; `leaflets.py`, `lidl.py` – leidinių skaitymas; `categories.py` – kategorijos; `stores.json` – adresai.
+- Diagnostika po kiekvieno paleidimo įrašoma į šaką `debug-out`.

@@ -5,19 +5,32 @@ from common import PRICE_RE
 LET = re.compile(r"[^\W\d_]")
 DATE_RES = [re.compile(r"(20\d{2})[-./](\d{1,2})[-./](\d{1,2})"), re.compile(r"iki\s+(\d{1,2})[-./](\d{1,2})", re.I)]
 
+import shutil
+
 def _run(cmd, timeout=300):
-    return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout).stdout
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout).stdout
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return ""
 
 def pdf_text(path, max_pages=60):
-    txt = _run(["pdftotext", "-raw", "-l", str(max_pages), str(path), "-"], 120)
-    if len(LET.findall(txt)) >= 400:
+    """Tekstas iš PDF: pdftotext (Linux) -> pypdf (Windows be poppler) -> OCR (jei yra tesseract)."""
+    txt = ""
+    if shutil.which("pdftotext"):
+        txt = _run(["pdftotext", "-raw", "-l", str(max_pages), str(path), "-"], 180)
+    else:
+        try:
+            from pypdf import PdfReader
+            txt = "\n".join((p.extract_text() or "") for p in PdfReader(str(path)).pages[:max_pages])
+        except Exception as e:
+            print("   pypdf klaida:", e)
+    if len(LET.findall(txt)) >= 400 or not (shutil.which("pdftoppm") and shutil.which("tesseract")):
         return txt, "text"
     out = []
     with tempfile.TemporaryDirectory() as d:
-        subprocess.run(["pdftoppm", "-r", "170", "-l", str(max_pages), "-png", str(path), d + "/p"], timeout=600)
+        subprocess.run(["pdftoppm", "-r", "170", "-l", str(max_pages), "-png", str(path), d + "/p"], timeout=900)
         for img in sorted(glob.glob(d + "/p*.png")):
-            t = _run(["tesseract", img, "stdout", "-l", "lit+eng", "--psm", "6"], 120)
-            out.append(t)
+            out.append(_run(["tesseract", img, "stdout", "-l", "lit+eng", "--psm", "6"], 120))
     return "\n".join(out), "ocr"
 
 RANGE_RE = re.compile(r"(20\d{2})\s*[-./ ]\s*(\d{1,2})\s*[-./ ]\s*(\d{1,2})\s*(?:d\.?)?\s*[–—-]\s*(?:(20\d{2})\s*[-./ ]\s*)?(\d{1,2})\s*[-./ ]\s*(\d{1,2})")
@@ -45,11 +58,17 @@ def valid_range(text, year):
 def valid_until(text, year):
     return valid_range(text, year)[1]
 
-JUNK = re.compile(r"vnt\.\s*=|lidl\s*plus|nuopirmadienio|remiantis|nuolaida|prekių kiekis|galioja|www\.|\bkaina\b|pasiūlymas|^[/*\d\W]|=\s*/|€\s*/|\bišpardav", re.I)
+JUNK = re.compile(r"vnt\.\s*=|lidl\s*plus|nuopirmadienio|remiantis|nuolaida|prekių kiekis|galioja|www\.|\bkaina\b|kaina perkant|pasiūlymas|^[/*\d\W]|=\s*/|€\s*/|\bišpardav|verta[.!]|sutaupyk|darbo laikas|iki pat kalėd|pažymėtoms|netaikoma|informacija-klientui|parduodama ir|neljapäev|kuni\b|^(arba|su|ir|bei)\s|pasilepinti|džiuginanti kaina|sukurti mėgautis|nevartoti", re.I)
+NOISE = re.compile(r"\s*(Ieškoti šaldytuve|NAUJA!|NAUJIENA!?|\bTIK\b|\bH\b|\bIKI\b(?= -)|Įvairių rūšių|\(\s*\))\s*")
 
-def good_name(n):
+def clean(n):
+    n = NOISE.sub(" ", n)
+    n = re.sub(r"\s+", " ", n).strip(" ,;-–")
+    return n
+
+def good_name(n, minw=2):
     words = [w for w in re.findall(r"[^\W\d_]{3,}", n) if w.lower() not in ("vnt", "rink", "pak", "kaina")]
-    return len(words) >= 2 and not JUNK.search(n)
+    return len(words) >= minw and not JUNK.search(n)
 
 def parse_text(text, year=None):
     """Eilutė su kaina -> pavadinimas iš tos eilutės arba iš 1-3 ankstesnių.
@@ -76,16 +95,23 @@ def parse_text(text, year=None):
                 for p, u in units:
                     u = u.lower(); pv = round(float(p.replace(",", ".")), 2)
                     if u in ("kg", "l") and 0.05 < pv < 300 and not re.search(r"\b1\s*(kg|l)\b", name, re.I):
-                        items.append((f"{name[:110]} 1 {u}", pv, until, frm))
+                        items.append((f"{name[:110]} 1 {u}", pv, until, frm, None))
                 if prices:
                     price = min(float(p.replace(",", ".")) for p in prices)
-                    if 0.05 < price < 300: items.append((name[:120], round(price, 2), until, frm))
+                    if 0.05 < price < 300: items.append((name[:120], round(price, 2), until, frm, None))
             prev = []
         elif len(LET.findall(line)) >= 3:
             prev.append(line); prev = prev[-3:]
     return list(dict.fromkeys(x for x in items if good_name(x[0])))
 
-def parse_pdf(path, year=None):
+def parse_pdf(path, year=None, store=None):
+    if store == "Lidl" and shutil.which("pdftotext"):
+        try:
+            import lidl
+            res = lidl.parse(path)
+            if len(res) >= 15: return res, "bbox"
+        except Exception as e:
+            print("   lidl bbox klaida:", e)
     text, mode = pdf_text(path)
     return parse_text(text, year), mode
 
@@ -111,7 +137,9 @@ def parse_ipaper(text, year=None):
         u = UNIT_TOK.match(name)
         name = (u.group(1) if u else name[:90]).strip(" ,;-")
         p = float(m.group(2).replace(",", "."))
-        if len(name) >= 4 and 0.05 < p < 500: out.append((name[:120], round(p, 2), until, frm))
+        old = float(m.group(3).replace(",", ".")) if m.group(3) else None
+        if old is not None and old <= p: old = None
+        if good_name(name, 1) and 0.05 < p < 500: out.append((clean(name)[:120], round(p, 2), until, frm, old))
     return list(dict.fromkeys(out))
 
 
@@ -145,5 +173,7 @@ def parse_maxima(text, year=None):
         n = MX_LEAD.sub("", n).strip(" ,;")
         n = n.replace("**", "").strip()
         p = round(int(m.group("e")) + int(m.group("c")) / 100, 2)
-        if len(n) >= 4 and 0.05 < p < 500: out.append((n[:120], p, until, frm))
+        old = float(m.group("reg").replace(",", ".")) if m.group("reg") else None
+        if old is not None and old <= p: old = None
+        if good_name(n, 1) and 0.05 < p < 500: out.append((clean(n)[:120], p, until, frm, old))
     return list(dict.fromkeys(out))
