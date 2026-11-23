@@ -107,3 +107,37 @@ def parse_ipaper(text, year=None):
         p = float(m.group(2).replace(",", "."))
         if len(name) >= 4 and 0.05 < p < 500: out.append((name[:120], round(p, 2), until, frm))
     return list(dict.fromkeys(out))
+
+
+LT_MONTHS = {"sausio":1,"vasario":2,"kovo":3,"balandžio":4,"gegužės":5,"birželio":6,"liepos":7,"rugpjūčio":8,"rugsėjo":9,"spalio":10,"lapkričio":11,"gruodžio":12}
+LT_RANGE = re.compile(r"(20\d{2})\s*m\.?\s*(" + "|".join(LT_MONTHS) + r")\s+(\d{1,2})\s*[–-]\s*(?:(" + "|".join(LT_MONTHS) + r")\s+)?(\d{1,2})")
+
+def lt_range(text):
+    m = LT_RANGE.search(text)
+    if not m: return "", ""
+    y, m1, d1, m2, d2 = m.groups()
+    a, b = LT_MONTHS[m1], LT_MONTHS[m2] if m2 else LT_MONTHS[m1]
+    y = int(y); yb = y + 1 if b < a else y
+    return "%04d-%02d-%02d" % (y, a, int(d1)), "%04d-%02d-%02d" % (yb, b, int(d2))
+
+_UN = r"(?:g|kg|ml|l|vnt\.?)"
+MX_REC = re.compile(r"(?P<name>[^€]{4,220}?\b\d+(?:[.,]\d+)?\s?" + _UN + r"(?![\wąčęėįšųūž])(?:\s*[,;]?\s*sveriamas,?\s*1 kg)?)\s*(?:1 (?:kg|l) [–≤≤-]+ \d+,\d{2} €\s*)?(?P<e>\d{1,3}) (?P<c>\d{2}) €(?:\s+(?P<reg>\d+,\d{2}) €)?")
+MX_LEAD = re.compile(r"^(?:(?:-\d+\s?%|Iki \d+ kg|Perkant \d+ ar daugiau|\d+ vnt\.|ĮPRASTA KAINA|PIGIAUSIAS\* PASIRINKIMAS MAXIMOJE|KASDIEN PIGIAU! Sunku patikėti, lengva palyginti!|NAUJIENA!?|\*+)\s*)+")
+MX_CUT = re.compile(r"^.*(?:Page number \d+|Page \d+|MAXIMA\.|MAXIMOJE|Lietuva“|Vilnius\.|\d+-\d+ / \d+|\.\.\.)\s+", re.S)
+
+def is_maxima_text(text):
+    return len(MX_REC.findall(re.sub(r"\s+", " ", text))) >= 5 and "ĮPRASTA KAINA" in text
+
+def parse_maxima(text, year=None):
+    """Maxima iPaper: 'Pavadinimas, 500 g [1 kg – 2,98 €] 1 49 € 2,19 € -31 %' -> kaina 1,49 (centai atskirti tarpu)."""
+    frm, until = lt_range(text)
+    if not until: frm, until = valid_range(text, year or 2026)
+    t = re.sub(r"</?[a-zA-Z][^>]*>", " ", text).replace("&#215;", "×")
+    t = re.sub(r"\s+", " ", t); out = []
+    for m in MX_REC.finditer(t):
+        n = MX_CUT.sub("", m.group("name")).strip()
+        n = MX_LEAD.sub("", n).strip(" ,;")
+        n = n.replace("**", "").strip()
+        p = round(int(m.group("e")) + int(m.group("c")) / 100, 2)
+        if len(n) >= 4 and 0.05 < p < 500: out.append((n[:120], p, until, frm))
+    return list(dict.fromkeys(out))

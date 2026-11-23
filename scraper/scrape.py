@@ -144,7 +144,7 @@ def crawl_viewer(ctx, url, store, idx):
         hrefs = pg.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href)")
         pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)|download|atsisiust", h, re.I) and not h.startswith("javascript")}
         if re.search(r"ipaper|leidiniai\.rimi", url + " " + " ".join(f.url for f in pg.frames)):
-            base = next((f.url for f in pg.frames if "viewer.ipaper.io" in f.url), url).split("?")[0]
+            base = (url if re.search(r"ipaper|leidiniai\.rimi", url) else next((f.url for f in pg.frames if "viewer.ipaper.io" in f.url), url)).split("?")[0]
             for n in range(2, 90):   # ipaper: tekstas kiekviename puslapyje per ?Page=N
                 try:
                     pg.goto(f"{base}?Page={n}", wait_until="domcontentloaded", timeout=60000)
@@ -185,7 +185,7 @@ def crawl_leaflets(ctx, page, store, c):
         for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0])
         if vtext.strip() and not jsons:
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
-            res = leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year)
+            res = (leaflets.parse_maxima(vtext, year) if leaflets.is_maxima_text(vtext) else leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year))
             print(f"      tekstas: {len(res)} prekių")
             for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
         if not p and not items:
@@ -203,6 +203,7 @@ def crawl_leaflets(ctx, page, store, c):
             with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
                 f.write(body); f.flush()
                 res, mode = leaflets.parse_pdf(f.name)
+                if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000])
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
             d0 = PDF_DATES.get(u, ("", ""))
             for n, p, until, frm in res: items[(n, p)] = (until or d0[1], frm or d0[0])
