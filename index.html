@@ -185,7 +185,7 @@ let cur=[];
 function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
  cur=list().sort(cmp);const el=$("#res");
  const minP=cur.length?Math.min(...cur.map(x=>x.price)):0;
- $("#sum").innerHTML=`<b>${cur.length}</b> ${cur.length%10==1&&cur.length%100!=11?"pasiūlymas":"pasiūlymai"}`;
+ $("#sum").innerHTML=`<b>${cur.length}</b> ${(n=>n%10==1&&n%100!=11?"pasiūlymas":(n%10==0||(n%100>10&&n%100<20))?"pasiūlymų":"pasiūlymai")(cur.length)}`;
  if(!cur.length){el.innerHTML=`<div class="empty"><big>🔍</big>Nieko nerasta${q?` pagal „${esc(q)}“`:""}.<br>Pabandyk kitą žodį, kategoriją ar parduotuvę.</div>`;return}
  el.innerHTML=(demo?`<div class="note">Rodomi pavyzdiniai duomenys – tikri dar neįkelti.</div>`:"")+cur.slice(0,lim).map(x=>card(x,!!q&&x.price===minP&&sortBy=="price")).join("")}
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!$("#v1").hidden&&cur.length>lim){lim+=80;$("#res").insertAdjacentHTML("beforeend",cur.slice(lim-80,lim).map(x=>card(x,false)).join(""))}},{rootMargin:"800px"}).observe($("#sentinel"));
