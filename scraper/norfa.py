@@ -31,7 +31,7 @@ def parse_page(bl):
     desc = [b for b in bl if b["h"] < 13 and re.search(r"[^\W\d_]{3}", b["t"]) or UNIT.search(b["t"])]
     out = []
     for b in _merge(desc):
-        t = re.sub(r"\s+", " ", b["t"]).strip()
+        t = re.sub(r"\s+", " ", b["t"].replace("\u00ad ", "").replace("\u00ad", "")).strip()
         t = re.sub(r"(?<=[a-ząčęėįšųūž])-\s(?=[a-ząčęėįšųūž])", "", t)
         um = UNIT.search(t)
         if not um: continue
@@ -46,7 +46,8 @@ def parse_page(bl):
         if abs(best - cand) <= max(0.03, best * 0.012):
             name = t[:ws[0].start()].strip(" ,")
             name = f"{name}, {w.group(0)}" if name else ""
-            if len(re.findall(r"[^\W\d_]", name)) >= 4:
+            core = re.sub(r"\(?\d+\s*rūšių\)?|,\s*" + re.escape(w.group(0)) + "$", "", name)
+            if len(re.findall(r"[^\W\d_]", core)) >= 4:
                 out.append((name[:120], round(best, 2)))
     return out
 
