@@ -82,3 +82,28 @@ def parse_text(text, year=None):
 def parse_pdf(path, year=None):
     text, mode = pdf_text(path)
     return parse_text(text, year), mode
+
+
+IP_PAT = re.compile(r"(?:(-\d{1,2})\s?%\s+|TIK\s+)?(\d{1,3},\d{2})(?:\s+(\d{1,3},\d{2}))?\s+(?=[A-ZĄČĘĖĮŠŲŪŽ])")
+UNIT_PAREN = re.compile(r"\(\d[\d,.]*\s*€\s*/\s*(?:kg|l|vnt\.?)\)")
+UNIT_TOK = re.compile(r"^(.*?\b\d+(?:[.,]\d+)?\s?(?:g|kg|ml|l|vnt\.?|rit\.?)(?![\wąčęėįšųūž]))")
+
+def is_ipaper_text(text):
+    return len(IP_PAT.findall(text)) >= 5 and "€ / " in text
+
+def parse_ipaper(text, year=None):
+    """iPaper SEO tekstas: '-35% 1,29 1,99 Pavadinimas, 500 g (2,58 € / kg)' -> (vardas, akcijos kaina, iki, nuo)."""
+    import datetime
+    year = year or datetime.date.today().year
+    frm, until = valid_range(text, year)
+    text = re.sub(r"</?[a-zA-Z][^>]*>", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    ms = list(IP_PAT.finditer(text)); out = []
+    for k, m in enumerate(ms):
+        end = ms[k + 1].start() if k + 1 < len(ms) else len(text)
+        name = UNIT_PAREN.split(text[m.end():end])[0].strip()
+        u = UNIT_TOK.match(name)
+        name = (u.group(1) if u else name[:90]).strip(" ,;-")
+        p = float(m.group(2).replace(",", "."))
+        if len(name) >= 4 and 0.05 < p < 500: out.append((name[:120], round(p, 2), until, frm))
+    return list(dict.fromkeys(out))

@@ -99,6 +99,8 @@ def ocr_image(body):
         f.write(body); f.flush()
         return leaflets._run(["tesseract", f.name, "stdout", "-l", "lit+eng", "--psm", "6"], 120)
 
+PDF_DATES = {}
+
 def page_text(pg):
     parts = []
     for f in pg.frames:
@@ -124,6 +126,10 @@ def crawl_viewer(ctx, url, store, idx):
                 if re.search(r"schwarz|ipaper|enrich|flyer", r.url): walk_loose(data, it)
                 else: walk(data, it)
                 if it: jsons.extend(it)
+                fl = data.get("flyer") if isinstance(data, dict) else None
+                if isinstance(fl, dict) and fl.get("pdfUrl"):
+                    pdfs.add(fl["pdfUrl"])
+                    PDF_DATES[fl["pdfUrl"]] = (fl.get("offerStartDate") or fl.get("startDate") or "", fl.get("offerEndDate") or fl.get("endDate") or "")
                 if re.search(r"schwarz|ipaper|enrich|flyer", r.url) and "Statistics" not in r.url and len(bodies) < 8:
                     bodies.append((r.url, json.dumps(data, ensure_ascii=False)[:15000]))
         except Exception: pass
@@ -179,7 +185,7 @@ def crawl_leaflets(ctx, page, store, c):
         for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0])
         if vtext.strip() and not jsons:
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
-            res = leaflets.parse_text(vtext, year)
+            res = leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year)
             print(f"      tekstas: {len(res)} prekių")
             for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
         if not p and not items:
@@ -190,14 +196,16 @@ def crawl_leaflets(ctx, page, store, c):
                 print(f"      OCR: {len(res)} prekių")
                 for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
     print(f"{store}: rasta {len(pdfs)} PDF, {len(viewers)} peržiūros nuorodų")
+    pdfs = {u for u in pdfs if not re.search(r"NE-MAISTO|Zaislu|Tapk-LIDL", u, re.I)}
     for u in sorted(pdfs)[:12]:
         try:
-            body = ctx.request.get(u, timeout=120000).body()
+            body = ctx.request.get(u, timeout=400000).body()
             with tempfile.NamedTemporaryFile(suffix=".pdf") as f:
                 f.write(body); f.flush()
                 res, mode = leaflets.parse_pdf(f.name)
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
-            for n, p, until, frm in res: items[(n, p)] = (until, frm)
+            d0 = PDF_DATES.get(u, ("", ""))
+            for n, p, until, frm in res: items[(n, p)] = (until or d0[1], frm or d0[0])
         except Exception as e:
             print("   PDF klaida:", u, e)
     today = datetime.date.today().isoformat()
@@ -227,6 +235,7 @@ def main():
             print("Žr. scraper/debug/probe.*"); return
         try: old = json.load(open(ROOT / "prices.json", encoding="utf-8"))
         except Exception: old = {"stores": [], "items": []}
+        if old.get("v") != 10: old = {"stores": [], "items": []}   # seni (šlamštiniai) duomenys nebelaikomi
         oldmap = {}
         for i in old["items"]:
             s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "")
@@ -255,7 +264,7 @@ def main():
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items(): out_items.append([stores.index(store), n, p, kind, u[0], u[1]])
     out_items.sort(key=lambda x: (x[1], x[2]))
-    out = {"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
+    out = {"v": 10, "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
     (ROOT / "prices.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(json.dumps(status, ensure_ascii=False, indent=1), "iš viso:", len(out_items))
 
