@@ -48,6 +48,8 @@ def parse_text(text, year=None):
     import datetime
     year = year or datetime.date.today().year
     until = valid_until(text, year)
+    text = "\n".join(x for x in text.splitlines() if not re.search(r"viewBox|xmlns|<path|<svg|\{|\}", x))
+    text = re.sub(r"</?[a-zA-Z][^>]*>", " ", text)
     items, prev = [], []
     for raw in text.splitlines():
         line = raw.strip()

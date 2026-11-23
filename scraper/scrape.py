@@ -53,6 +53,23 @@ def crawl_catalog(page, store, c, budget_s=1500):
         print(f"   {cat[-50:]}: viso {len(items)}")
     return items
 
+def click_discover(page, url, limit=8):
+    """Kortelės be <a href>: paspaudžiam ir žiūrim, į kokį URL nuvedė."""
+    found = set()
+    try:
+        cards = page.evaluate("""()=>[...document.querySelectorAll('[class*=card],[class*=leaflet],[class*=leidin],[class*=flyer],[role=link],[onclick],article,li')]
+          .filter(e=>{const t=(e.innerText||'').trim();return t.length>8&&t.length<160&&/leidin|katalog|akcij|20\\d\\d/i.test(t)}).length""")
+        dump("click_cards_" + re.sub(r"\W+", "_", url)[-40:] + ".txt", f"kandidatų: {cards}")
+        for i in range(min(cards, limit)):
+            page.goto(url, wait_until="domcontentloaded", timeout=60000); page.wait_for_timeout(1500)
+            ok = page.evaluate("""(i)=>{const c=[...document.querySelectorAll('[class*=card],[class*=leaflet],[class*=leidin],[class*=flyer],[role=link],[onclick],article,li')]
+              .filter(e=>{const t=(e.innerText||'').trim();return t.length>8&&t.length<160&&/leidin|katalog|akcij|20\\d\\d/i.test(t)});if(!c[i])return false;c[i].click();return true}""", i)
+            page.wait_for_timeout(3000)
+            if ok and page.url.split("?")[0] != url.split("?")[0]: found.add(page.url)
+    except Exception as e:
+        print("   click_discover klaida:", e)
+    return found
+
 def find_pdfs(page, url, viewer_re=None):
     """Grąžina (pdf nuorodos, leidinių peržiūros puslapių nuorodos)."""
     pdfs, viewers = set(), set()
@@ -69,6 +86,8 @@ def find_pdfs(page, url, viewer_re=None):
         if viewer_re: viewers |= {h for h in hrefs if re.search(viewer_re, h)}
         viewers |= {h for h in hrefs if re.search(r"ipaper\.io|issuu\.com/|publitas\.com|leaflets\.schwarz|flippingbook|yumpu|/leidinys/|/leidiniai/[\w-]+", h)
                     and "cookie" not in h and "privacy" not in h}
+        if viewer_re and not viewers and not pdfs:
+            viewers |= click_discover(page, url)
     except Exception as e:
         print("   leidinių puslapis nepavyko:", url, e)
     finally:
@@ -103,6 +122,8 @@ def crawl_viewer(ctx, url, store, idx):
                 it = []; from common import walk; walk(r.json(), it)
                 if it: jsons.extend(it)
         except Exception: pass
+    netlog = []
+    pg.on("response", lambda r: netlog.append(f"{r.status} {(r.headers.get('content-type') or '')[:30]} {r.url[:220]}"))
     pg.on("response", on_resp)
     try:
         pg.goto(url, wait_until="domcontentloaded", timeout=90000)
@@ -126,7 +147,8 @@ def crawl_viewer(ctx, url, store, idx):
         if DEBUG:
             frames = [f.url for f in pg.frames]
             dump(f"viewer_{store}_{idx}.txt", f"{url}\nframes={frames}\npdf={sorted(pdfs)}\nimgs={list(imgs)[:60]}\njson_items={len(jsons)}")
-            try: dump(f"viewer_{store}_{idx}.png.b64", __import__("base64").b64encode(pg.screenshot()).decode())
+            dump(f"net_{store}_{idx}.txt", "\n".join(netlog[:400]))
+            try: dump(f"links_{store}_{idx}.txt", "\n".join(sorted(set(hrefs))))
             except Exception: pass
     except Exception as e:
         print("   peržiūra nepavyko:", url, e)
