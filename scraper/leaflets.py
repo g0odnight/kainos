@@ -45,6 +45,12 @@ def valid_range(text, year):
 def valid_until(text, year):
     return valid_range(text, year)[1]
 
+JUNK = re.compile(r"vnt\.\s*=|lidl\s*plus|nuopirmadienio|remiantis|nuolaida|prekių kiekis|galioja|www\.|\bkaina\b|pasiūlymas|^[/*\d\W]|=\s*/|€\s*/|\bišpardav", re.I)
+
+def good_name(n):
+    words = [w for w in re.findall(r"[^\W\d_]{3,}", n) if w.lower() not in ("vnt", "rink", "pak", "kaina")]
+    return len(words) >= 2 and not JUNK.search(n)
+
 def parse_text(text, year=None):
     """Eilutė su kaina -> pavadinimas iš tos eilutės arba iš 1-3 ankstesnių.
     Kaina už kg/l (pvz. '3,99 Eur/kg') išsaugoma kaip prekė '<vardas> 1 kg'. Pagrindinė kaina - mažiausia ne-vieneto kaina."""
@@ -77,7 +83,7 @@ def parse_text(text, year=None):
             prev = []
         elif len(LET.findall(line)) >= 3:
             prev.append(line); prev = prev[-3:]
-    return list(dict.fromkeys(items))
+    return list(dict.fromkeys(x for x in items if good_name(x[0])))
 
 def parse_pdf(path, year=None):
     text, mode = pdf_text(path)
