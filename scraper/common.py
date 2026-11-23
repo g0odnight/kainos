@@ -105,3 +105,39 @@ def scrape_page(page, url, sel, debug_tag=None, links=False):
         page.remove_listener("response", on_resp)
     res = list(dict.fromkeys(found))
     return (res, hrefs) if links else res
+
+
+LNAME = ("title", "name", "productname", "product_name", "headline", "label", "heading", "description", "text")
+def _lnum(v):
+    if isinstance(v, bool): return None
+    if isinstance(v, (int, float)):
+        f = float(v); return round(f, 2) if 0.05 < f < 500 else None
+    if isinstance(v, str): return num(v)
+    return None
+
+def _lprice(d, depth=0):
+    """Ieško kainos bet kuriame rakte, kurio varde 'price'/'kaina'/'amount'."""
+    for k, v in d.items():
+        kl = str(k).lower()
+        if (any(x in kl for x in ("price", "kaina", "amount")) or (depth > 0 and kl in ("value", "current", "now"))) and "old" not in kl and "regular" not in kl and "before" not in kl:
+            if isinstance(v, dict) and depth < 2:
+                p = _lprice(v, depth + 1)
+                if p: return p
+            elif isinstance(v, list) and v and isinstance(v[0], dict) and depth < 2:
+                p = _lprice(v[0], depth + 1)
+                if p: return p
+            else:
+                p = _lnum(v)
+                if p: return p
+    return None
+
+def walk_loose(o, out):
+    """Laisvesnis variantas: bet koks dict su tekstiniu pavadinimu ir kaina viename ar giliau rakte (raktai nejautrūs raidžių dydžiui)."""
+    if isinstance(o, dict):
+        low = {str(k).lower(): v for k, v in o.items()}
+        n = next((low[k] for k in LNAME if isinstance(low.get(k), str) and len(low[k].strip()) > 3), None)
+        p = _lprice(o)
+        if n and p: out.append((n.strip().replace("\n", " ")[:140], p))
+        for v in o.values(): walk_loose(v, out)
+    elif isinstance(o, list):
+        for v in o: walk_loose(v, out)

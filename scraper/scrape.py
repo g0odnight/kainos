@@ -48,7 +48,7 @@ def crawl_catalog(page, store, c, budget_s=1500):
             res = scrape_page(page, url, c.get("selectors"), tag)
             new = [r for r in res if r not in items]
             if not new: break
-            for r in new: items[r] = ""
+            for r in new: items[r] = ("", "")
             time.sleep(1.0)
         print(f"   {cat[-50:]}: viso {len(items)}")
     return items
@@ -110,7 +110,7 @@ def page_text(pg):
 
 def crawl_viewer(ctx, url, store, idx):
     """Atidaro leidinio peržiūros puslapį ir renka: PDF, JSON su prekėmis, puslapių paveikslėlius (OCR)."""
-    pg = ctx.new_page(); pdfs, imgs, jsons = set(), {}, []; viewer_text = ""
+    pg = ctx.new_page(); pdfs, imgs, jsons = set(), {}, []; viewer_text = ""; bodies = []
     def on_resp(r):
         try:
             ct = (r.headers.get("content-type") or "").lower()
@@ -119,8 +119,13 @@ def crawl_viewer(ctx, url, store, idx):
                 b = r.body()
                 if len(b) > 40000: imgs[r.url] = b
             elif "json" in ct:
-                it = []; from common import walk; walk(r.json(), it)
+                from common import walk, walk_loose
+                data = r.json(); it = []
+                if re.search(r"schwarz|ipaper|enrich|flyer", r.url): walk_loose(data, it)
+                else: walk(data, it)
                 if it: jsons.extend(it)
+                if re.search(r"schwarz|ipaper|enrich|flyer", r.url) and "Statistics" not in r.url and len(bodies) < 8:
+                    bodies.append((r.url, json.dumps(data, ensure_ascii=False)[:15000]))
         except Exception: pass
     netlog = []
     pg.on("response", lambda r: netlog.append(f"{r.status} {(r.headers.get('content-type') or '')[:30]} {r.url[:220]}"))
@@ -133,7 +138,7 @@ def crawl_viewer(ctx, url, store, idx):
         hrefs = pg.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href)")
         pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)|download|atsisiust", h, re.I) and not h.startswith("javascript")}
         if re.search(r"ipaper|leidiniai\.rimi", url + " " + " ".join(f.url for f in pg.frames)):
-            base = url.split("?")[0]
+            base = next((f.url for f in pg.frames if "viewer.ipaper.io" in f.url), url).split("?")[0]
             for n in range(2, 90):   # ipaper: tekstas kiekviename puslapyje per ?Page=N
                 try:
                     pg.goto(f"{base}?Page={n}", wait_until="domcontentloaded", timeout=60000)
@@ -148,6 +153,7 @@ def crawl_viewer(ctx, url, store, idx):
             frames = [f.url for f in pg.frames]
             dump(f"viewer_{store}_{idx}.txt", f"{url}\nframes={frames}\npdf={sorted(pdfs)}\nimgs={list(imgs)[:60]}\njson_items={len(jsons)}")
             dump(f"net_{store}_{idx}.txt", "\n".join(netlog[:400]))
+            for bi, (bu, bt) in enumerate(bodies): dump(f"json_{store}_{idx}_{bi}.txt", bu + "\n\n" + bt)
             try: dump(f"links_{store}_{idx}.txt", "\n".join(sorted(set(hrefs))))
             except Exception: pass
     except Exception as e:
@@ -169,19 +175,20 @@ def crawl_leaflets(ctx, page, store, c):
         p, imgs, jsons, vtext = crawl_viewer(ctx, v, store, k)
         pdfs |= p
         print(f"   peržiūra {v[-50:]}: pdf {len(p)}, paveikslėlių {len(imgs)}, json prekių {len(jsons)}")
-        for n, pr in jsons: items[(n, pr)] = ""
-        if vtext.strip():
+        jr = leaflets.valid_range(vtext, year) if vtext else ("", "")
+        for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0])
+        if vtext.strip() and not jsons:
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
             res = leaflets.parse_text(vtext, year)
             print(f"      tekstas: {len(res)} prekių")
-            for n, pr, until in res: items[(n, pr)] = until
+            for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
         if not p and not items:
             txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
             if DEBUG: dump(f"ocr_{store}_{k}.txt", txt[:20000])
             if txt.strip():
                 res = leaflets.parse_text(txt, year)
                 print(f"      OCR: {len(res)} prekių")
-                for n, pr, until in res: items[(n, pr)] = until
+                for n, pr, until, frm in res: items[(n, pr)] = (until, frm)
     print(f"{store}: rasta {len(pdfs)} PDF, {len(viewers)} peržiūros nuorodų")
     for u in sorted(pdfs)[:12]:
         try:
@@ -190,11 +197,11 @@ def crawl_leaflets(ctx, page, store, c):
                 f.write(body); f.flush()
                 res, mode = leaflets.parse_pdf(f.name)
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
-            for n, p, until in res: items[(n, p)] = until
+            for n, p, until, frm in res: items[(n, p)] = (until, frm)
         except Exception as e:
             print("   PDF klaida:", u, e)
     today = datetime.date.today().isoformat()
-    items = {k: u for k, u in items.items() if not u or u >= today}
+    items = {k: u for k, u in items.items() if not u[0] or u[0] >= today}
     return items
 
 def main():
@@ -222,7 +229,7 @@ def main():
         except Exception: old = {"stores": [], "items": []}
         oldmap = {}
         for i in old["items"]:
-            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = i[4] if len(i) > 4 else ""
+            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "")
             oldmap.setdefault((s, k), {})[(n, p)] = u
         stores = list(cfg)
         new, status = {}, {}
@@ -244,9 +251,9 @@ def main():
         br.close()
     out_items = []
     for store in stores:
-        for kind in ("e", "l"):
+        for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
-            for (n, p), u in d.items(): out_items.append([stores.index(store), n, p, kind, u])
+            for (n, p), u in d.items(): out_items.append([stores.index(store), n, p, kind, u[0], u[1]])
     out_items.sort(key=lambda x: (x[1], x[2]))
     out = {"updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
     (ROOT / "prices.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
