@@ -20,37 +20,59 @@ def pdf_text(path, max_pages=60):
             out.append(t)
     return "\n".join(out), "ocr"
 
+RANGE_RE = re.compile(r"(20\d{2})\s*[-./ ]\s*(\d{1,2})\s*[-./ ]\s*(\d{1,2})\s*(?:d\.?)?\s*[–—-]\s*(?:(20\d{2})\s*[-./ ]\s*)?(\d{1,2})\s*[-./ ]\s*(\d{1,2})")
+UNIT_RE = re.compile(r"(\d{1,3}[.,]\d{2})\s*(?:Eur|EUR|eur|€)\s*/\s*(kg|l|vnt)", re.I)
+
 def valid_until(text, year):
+    head = text[:8000]
     best = ""
-    for m in DATE_RES[0].finditer(text[:6000]):
+    for m in RANGE_RE.finditer(head):
+        y1, m1, d1, y2, m2, d2 = m.groups()
+        y2 = int(y2) if y2 else int(y1)
+        if int(m2) < int(m1) and not m.group(4): y2 += 1
+        if 1 <= int(m2) <= 12 and 1 <= int(d2) <= 31:
+            best = max(best, "%04d-%02d-%02d" % (y2, int(m2), int(d2)))
+    if best: return best
+    for m in DATE_RES[0].finditer(head):
         best = max(best, "%04d-%02d-%02d" % tuple(map(int, m.groups())))
     if not best:
-        for m in DATE_RES[1].finditer(text[:6000]):
+        for m in DATE_RES[1].finditer(head):
             mo, d = int(m.group(1)), int(m.group(2))
             if 1 <= mo <= 12 and 1 <= d <= 31:
                 best = max(best, "%04d-%02d-%02d" % (year, mo, d))
     return best
 
-def parse_text(text, year):
-    """Euristika: eilutė su kaina -> pavadinimas iš tos eilutės arba iš 1-2 ankstesnių eilučių."""
+def parse_text(text, year=None):
+    """Eilutė su kaina -> pavadinimas iš tos eilutės arba iš 1-3 ankstesnių.
+    Kaina už kg/l (pvz. '3,99 Eur/kg') išsaugoma kaip prekė '<vardas> 1 kg'. Pagrindinė kaina - mažiausia ne-vieneto kaina."""
+    import datetime
+    year = year or datetime.date.today().year
     until = valid_until(text, year)
     items, prev = [], []
     for raw in text.splitlines():
         line = raw.strip()
         if not line: continue
-        prices = PRICE_RE.findall(line)
-        words = PRICE_RE.sub("", line).strip(" -–€*:;")
-        if prices:
-            name = words if len(LET.findall(words)) >= 4 else " ".join(prev[-2:])
+        units = UNIT_RE.findall(line)
+        plain = UNIT_RE.sub(" ", line)
+        prices = PRICE_RE.findall(plain)
+        words = PRICE_RE.sub("", plain).strip(" -–€*:;")
+        if prices or units:
+            name = words if len(LET.findall(words)) >= 4 else " ".join(prev[-3:])
+            if prev and len(LET.findall(words)) >= 4 and len(words) < 14: name = " ".join(prev[-3:] + [words])
             name = re.sub(r"\s+", " ", name).strip()
             if len(name) >= 4:
-                price = min(float(p.replace(",", ".")) for p in prices)
-                if 0.05 < price < 300: items.append((name[:120], round(price, 2), until))
+                for p, u in units:
+                    u = u.lower(); pv = round(float(p.replace(",", ".")), 2)
+                    if u in ("kg", "l") and 0.05 < pv < 300 and not re.search(r"\b1\s*(kg|l)\b", name, re.I):
+                        items.append((f"{name[:110]} 1 {u}", pv, until))
+                if prices:
+                    price = min(float(p.replace(",", ".")) for p in prices)
+                    if 0.05 < price < 300: items.append((name[:120], round(price, 2), until))
             prev = []
         elif len(LET.findall(line)) >= 3:
             prev.append(line); prev = prev[-3:]
     return list(dict.fromkeys(items))
 
-def parse_pdf(path, year):
+def parse_pdf(path, year=None):
     text, mode = pdf_text(path)
     return parse_text(text, year), mode

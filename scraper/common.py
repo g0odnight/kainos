@@ -38,12 +38,30 @@ def walk(o, out):
     elif isinstance(o, list):
         for v in o: walk(v, out)
 
+CARD_JS = """(els)=>{const out=[],seen=new Set();for(const a of els){let c=a,t='';for(let i=0;i<7&&c;i++){const x=c.innerText||'';if(/\\d[.,]\\d{2}\\s*€|€\\s*\\d/.test(x)){t=x;break}c=c.parentElement}
+if(!t||seen.has(t))continue;seen.add(t);const img=a.querySelector('img')||(c&&c.querySelector('img'));out.push([(a.innerText||'').trim(),a.getAttribute('title')||a.getAttribute('aria-label')||'',img?(img.alt||''):'',t])}return out}"""
+
+def card_items(page, link_sel):
+    """Be selektorių klasių: paima nuorodas į prekes ir artimiausią tėvinį bloką su kaina €."""
+    out = []
+    try:
+        for a, title, alt, block in page.eval_on_selector_all(link_sel, CARD_JS):
+            name = next((x.strip() for x in (title, alt, a, block.split("\n")[0]) if x and len(x.strip()) > 3), "")
+            name = name.split("\n")[0]
+            p = num(block.replace("\n", " "))
+            if name and p: out.append((name, p))
+    except Exception as e:
+        print("   kortelių klaida:", e)
+    return out
+
 def from_dom(page, sel):
     out = []
     try:
         for t in page.eval_on_selector_all('script[type="application/ld+json"]', "e=>e.map(x=>x.textContent)"):
             try: walk(json.loads(t), out)
             except Exception: pass
+        if sel and sel.get("link"):
+            out.extend(card_items(page, sel["link"]))
         if sel and sel.get("item"):
             rows = page.eval_on_selector_all(
                 sel["item"],
@@ -56,9 +74,9 @@ def from_dom(page, sel):
         print("   dom klaida:", e)
     return out
 
-def scrape_page(page, url, sel, debug_tag=None):
+def scrape_page(page, url, sel, debug_tag=None, links=False):
     """Atidaro puslapį, grąžina [(pavadinimas, kaina)] iš XHR JSON, JSON-LD ir DOM selektorių."""
-    found, blobs = [], []
+    found, blobs, hrefs = [], [], []
     def on_resp(r):
         try:
             if "json" in (r.headers.get("content-type") or ""):
@@ -68,12 +86,15 @@ def scrape_page(page, url, sel, debug_tag=None):
             pass
     page.on("response", on_resp)
     try:
-        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        page.goto(url, wait_until="domcontentloaded", timeout=90000)
         try: page.wait_for_load_state("networkidle", timeout=12000)
         except Exception: pass
         for _ in range(3):
             page.mouse.wheel(0, 3000); page.wait_for_timeout(400)
         dom = from_dom(page, sel); found.extend(dom)
+        hrefs = []
+        if links:
+            hrefs = page.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href.split('#')[0])")
         if debug_tag:
             d = HERE / "debug"; d.mkdir(exist_ok=True)
             (d / f"{debug_tag}.html").write_text(page.content()[:300000], encoding="utf-8")
@@ -82,4 +103,5 @@ def scrape_page(page, url, sel, debug_tag=None):
         print("   klaida:", url, e)
     finally:
         page.remove_listener("response", on_resp)
-    return list(dict.fromkeys(found))
+    res = list(dict.fromkeys(found))
+    return (res, hrefs) if links else res

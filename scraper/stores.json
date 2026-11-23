@@ -1,29 +1,125 @@
 {
-  "_pastaba": "VISI URL ir selektoriai NEPATIKRINTI. Derink su: python scraper/scrape.py --probe URL. 'catalog' = e-parduotuvės katalogas, 'leaflets' = kainų leidiniai (PDF).",
+  "_pastaba": "Pirmas bandymas. Po paleidimo žiūrėk debug artefaktą: *_discover.txt (surastos nuorodos), leaflet_*.txt (leidinių puslapių nuorodos). Į leaflets.pdfs gali įrašyti tiesiogines PDF nuorodas.",
   "Maxima": {
-    "catalog": {"enabled": true, "discover": {"url": "https://barbora.lt/", "regex": "^https://barbora\\.lt/[a-z0-9-]+$"}, "category_urls": [], "page_param": "page", "max_pages": 40,
-      "selectors": {"item": "[id^=fti-product], .b-product--wrap, li[class*=product]", "name": "[class*=title], [class*=name], a", "price": "[class*=price]"}},
-    "leaflets": {"enabled": true, "pages": ["https://www.maxima.lt/akcijos"], "pdfs": []}
+    "catalog": {
+      "enabled": true,
+      "discover": {
+        "url": "https://barbora.lt/",
+        "regex": "^https://barbora\\.lt/[a-z0-9-]+$"
+      },
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 40,
+      "selectors": {
+        "item": "[id^=fti-product], .b-product--wrap, li[class*=product]",
+        "name": "[class*=title], [class*=name], a",
+        "price": "[class*=price]",
+        "link": "a[href*='/produktai/']"
+      },
+      "max_categories": 40
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://www.maxima.lt/leidiniai"
+      ],
+      "pdfs": [],
+      "viewer_regex": "maxima\\\\.lt/leidiniai/[A-Za-z0-9_-]+$"
+    }
   },
   "Rimi": {
-    "catalog": {"enabled": true, "discover": {"url": "https://www.rimi.lt/e-parduotuve/lt/produktai", "regex": "/e-parduotuve/lt/produktai/[a-z0-9-]+$"}, "category_urls": [], "page_param": "page", "max_pages": 40,
-      "selectors": {"item": ".product-grid__item, .js-product-container, [class*=product-card]", "name": "[class*=name], [class*=title], a", "price": "[class*=price]"}},
-    "leaflets": {"enabled": true, "pages": ["https://www.rimi.lt/akcijos"], "pdfs": []}
+    "catalog": {
+      "enabled": true,
+      "discover": {
+        "url": "https://www.rimi.lt/e-parduotuve/en/",
+        "regex": "/e-parduotuve/en/products/[A-Za-z0-9-]+/c/[A-Za-z0-9-]+$"
+      },
+      "category_urls": [],
+      "page_param": "currentPage",
+      "max_pages": 25,
+      "max_categories": 40,
+      "selectors": {
+        "link": "a[href*='/p/']",
+        "item": ".product-grid__item, .js-product-container",
+        "name": "[class*=name], a",
+        "price": "[class*=price]"
+      }
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://www.rimi.lt/akcijos"
+      ],
+      "pdfs": []
+    }
   },
   "Lidl": {
-    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
-    "leaflets": {"enabled": true, "pages": ["https://www.lidl.lt/"], "pdfs": []}
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://www.lidl.lt/c/kainu-leidiniai/s10020254"
+      ],
+      "pdfs": [],
+      "viewer_regex": "lidl\\\\.lt/l/lt/leidinys/(maisto-prekiu|ne-maisto|bajoru|maisto-idejos)",
+      "max_viewers": 4
+    }
   },
   "IKI": {
-    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
-    "leaflets": {"enabled": true, "pages": ["https://www.iki.lt/"], "pdfs": []}
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://iki.lt/leidiniai/"
+      ],
+      "pdfs": [],
+      "viewer_regex": "iki\\\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+    }
   },
   "Norfa": {
-    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
-    "leaflets": {"enabled": true, "pages": ["https://www.norfa.lt/"], "pdfs": []}
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://www.norfa.lt/leidiniai/"
+      ],
+      "pdfs": [],
+      "viewer_regex": "norfa\\\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+    }
   },
   "Promo": {
-    "catalog": {"enabled": false, "category_urls": [], "page_param": "page", "max_pages": 20, "selectors": {}},
-    "leaflets": {"enabled": true, "pages": ["https://www.promo.lt/"], "pdfs": []}
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "pages": [
+        "https://epromo.lt/lt/leidiniai"
+      ],
+      "pdfs": [],
+      "viewer_regex": "epromo\\\\.lt/lt/leidiniai/[A-Za-z0-9_-]+"
+    }
   }
 }
