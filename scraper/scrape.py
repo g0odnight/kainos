@@ -8,7 +8,7 @@
 import argparse, datetime, json, os, pathlib, re, tempfile, time
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 from playwright.sync_api import sync_playwright
-import leaflets, categories
+import leaflets, categories, fixnames
 from common import HERE, UA, scrape_page
 
 ROOT = HERE.parent
@@ -482,17 +482,18 @@ def _clean_score(n):
     """Kuo „švaresnis“ pavadinimas: lietuviškos raidės +, keisti simboliai -."""
     return len(re.findall(r"[ąčęėįšųūžĄČĘĖĮŠŲŪŽ]", n)) - 3 * len(re.findall(r"[\"'|<>{}\[\]~^]", n)) - 0.01 * len(n)
 
-def dedupe(items):
+def dedupe(items, only=()):
     """Ta pati prekė iš kelių leidinio versijų (OCR pavadinimas šiek tiek skiriasi): ta pati parduotuvė, kaina,
     kiekis ir pirmi žodžiai -> paliekam švariausią pavadinimą."""
-    best = {}
+    best, rest = {}, []
     for it in items:
+        if it[0] not in only: rest.append(it); continue
         n = categories.norm(it[1])
-        words = [w for w in re.findall(r"[a-z]{3,}", n)][:2]
+        words = [w for w in re.findall(r"[a-z]{3,}", n.replace("y", "u"))][:2]
         size = re.findall(r"\d+(?:[.,]\d+)?\s*(?:kg|g|ml|l|vnt)\b", n)
         k = (it[0], it[2], " ".join(words), size[-1].replace(" ", "") if size else "")
         if k not in best or _clean_score(it[1]) > _clean_score(best[k][1]): best[k] = it
-    return list(best.values())
+    return rest + list(best.values())
 
 def cat_of(n, u):
     c = categories.classify(n)
@@ -553,12 +554,17 @@ def main():
             status[store] = st
         br.close()
     out_items = []
+    OCR = {"IKI", "Promo"}
+    vocab = fixnames.build_vocab([n for st in stores if st not in OCR for (n, _p) in new.get((st, "l"), oldmap.get((st, "l"), {}))])
     for store in stores:
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items():
+                if store in OCR:
+                    n = re.sub(r"\s[\"'|~^]+[^\W\d_]{0,2}(?=\s)", "", fixnames.restore(n, vocab))
+                if fixnames.is_fragment(n): continue
                 out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(cat_of(n, u)), u[3] if len(u) > 3 else ""])
-    out_items = dedupe(out_items)
+    out_items = dedupe(out_items, {stores.index(s) for s in OCR if s in stores})
     out_items.sort(key=lambda x: (x[1], x[2]))
     for _s in cfg:
         if _s not in status and _s in old.get("status", {}): status[_s] = old["status"][_s]   # nevykdyta – paliekam seną informaciją

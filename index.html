@@ -158,14 +158,14 @@ const ICONS=[
  [/skonio|sk\.|prieskon|makaron|lakst|ramen|sultinys|trasku|cips/,null],
  [/kac|katem|sun(ims|u)\b|gyvun|pasaras/,"🐾"],[/sauskel|vystykl|kudik/,"🍼"],
  [/tualetin|popierin|servetel/,"🧻"],[/skalb|indaplov|plovikl|valikl|minkstikl/,"🧼"],[/sampun|muil|dantu|dezodor|(veido|ranku|kuno|rank) krem|kremas (veid|rank|kun)|losjon|dus(o|ui) (gel|zel)/,"🧴"],
- [/\balus\b|\balaus\b/,"🍺"],[/vyn(as|o)\b|sampan|prosecco|cava\b/,"🍷"],[/degtin|viski|whisk|konjak|brend|romas|\bgin\b|dzinas|likeris|tekila/,"🥃"],
- [/kava|kavos/,"☕"],[/arbat/,"🍵"],[/sultys|sulciu|nektar/,"🧃"],[/vanduo|vandens/,"💧"],[/cola|limonad|gaivus|gazuot/,"🥤"],
+ [/\balus\b|\balaus\b/,"🍺"],[/vyn(as|o)\b|sampan|prosecco|cava\b/,"🍷"],[/degtin|\bviski|whisk|konjak|brend|romas|\bgin\b|dzinas|likeris|tekila/,"🥃"],
+ [/kava|kavos/,"☕"],[/arbat/,"🍵"],[/sultys|sulciu|nektar/,"🧃"],[/vanduo|vandens/,"💧"],[/cola|limonad|gaivus|gazuot/,"🥤"],[/^(?!.*(pien|kefyr|jogurt|kakav|alus|vyn)).*(gerim|\bger\.)/,"🥤"],
  [/ledai|plombyr/,"🍦"],[/pica|picos/,"🍕"],[/koldun|virtiniai|ceburek/,"🥟"],[/susi|sushi/,"🍣"],
  [/krevet|midij|kalmar|krab|juru ?geryb/,"🦐"],[/zuv|lasis|lasiu|silk|skumbr|menk|tun(as|ai|u)\b|sprot|strimel|upetak|karp/,"🐟"],
  [/desr|sosis|dešr/,"🌭"],[/kumpi|bekon|sonin|saliam|skiland|vytint|rukyt/,"🥓"],
  [/visti|vistuk|visciuk|broiler|kalakut|antien|paukst|blauzdel|sparnel|kuls/,"🍗"],
  [/kiauli|sprandin|karbonad|nugarin|mente|sonkaul/,"🥩"],[/jautien|versien|aviena|fars|malt(a|os) mes/,"🥩"],
- [/kiausin/,"🥚"],[/sviest|margarin/,"🧈"],[/sur(is|io|iai|eliai|elis)|mocarel|mozzarel|feta\b|gouda|parmez|brie|cheddar/,"🧀"],
+ [/kiausin/,"🥚"],[/pupel/,"🫘"],[/sviest|margarin/,"🧈"],[/sur(is|io|iai|eliai|elis)|mocarel|mozzarel|feta\b|gouda|parmez|brie|cheddar/,"🧀"],
  [/jogurt|kefyr|pien|grietin|varsk|rugpien/,"🥛"],
  [/duon|batonas|baget|bandel|ciabat|tosto|kruasan|croissant/,"🍞"],[/tort|pyrag|keks|panet|eklera|spurg/,"🍰"],
  [/sokolad|batonel/,"🍫"],[/saldain|guminuk|marmelad|zefyr|karamel/,"🍬"],[/sausain|vafl|krekeri/,"🍪"],[/riesut|migdol|lazdyn|anakard|pistacij|sauleg/,"🥜"],
@@ -196,7 +196,9 @@ function fresh(){const b=$("#fresh"),t=b.querySelector("span");if(!DB.updated){t
  b.classList.toggle("old",demo||h>30)}
 
 // ---------- filtrai ----------
-const terms=()=>norm(Q).split(/\s+/).filter(Boolean);
+// paprastas lietuviškų galūnių nukirpimas: „kiaušiniai“ randa ir „kiaušinių“, „pienas“ – ir „pieno“
+const stem=w=>{if(w.length<5)return w;const m=w.match(/^(.{4,}?)(iais|iams|iai|iu|ius|ais|ams|ai|as|is|ys|us|es|os|ems|ui|e|a|o|u|i|y)$/);return m?m[1]:w};
+const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(stem);
 const matchQ=(r,t)=>t.every(x=>r.n.includes(x));
 function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
 function list(){return base().filter(r=>!cats.size||cats.has(r.c))}
@@ -272,7 +274,7 @@ function drawCart(){saveCart();const el=$("#cart");
   arr.forEach(([c,i])=>{tot+=c.price*c.n;cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
    h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}${/vnt\. už/.test(c.deal||"")?"/vnt.":""}</span>${c.deal?`<span class="deal">${esc(c.deal)}</span>`:""}${c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
    <div class="q"><button data-m="${i}" aria-label="Mažiau">−</button><b>${c.n}</b><button data-p="${i}" aria-label="Daugiau">+</button></div><button class="del" data-del="${i}" aria-label="Pašalinti">🗑</button></div>`})});
- h=`<div class="tot"><div class="r"><span>${cnt} prek.</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
+ h=`<div class="tot"><div class="r"><span>${cart.length} prek.${cnt>cart.length?` · ${cnt} vnt.`:""}</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
   `<div style="display:flex;gap:8px;margin-top:18px"><button class="btn gh" id="cdone">Išvalyti nupirktas</button><button class="btn gh" id="clr" style="color:var(--red)">Išvalyti viską</button></div>`;
  el.innerHTML=h;
  $("#clr").onclick=()=>{if(confirm("Išvalyti visą krepšelį?")){cart=[];drawCart()}};
