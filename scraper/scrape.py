@@ -91,6 +91,12 @@ def find_pdfs(page, url, viewer_re=None):
         except Exception: pass
         pdfs |= {h for h in hrefs if re.search(r"\.pdf($|\?)", h, re.I)}
         if viewer_re: viewers |= {h for h in hrefs if re.search(viewer_re, h)}
+        try:   # leidinio kortelės tekstas (galiojimo datos) prie kiekvienos nuorodos – peržiūroje datų dažnai nėra
+            cards = page.evaluate("""()=>[...document.querySelectorAll('a[href]')].map(a=>{let e=a,t='';for(let i=0;i<5&&e;i++,e=e.parentElement){t=e.innerText||'';if(/20\\d\\d/.test(t))break}return [a.href,t.slice(0,400)]})""")
+            for h, t in cards:
+                r = leaflets.valid_range(t, datetime.date.today().year) if t else ("", "")
+                if r[1] and h not in VIEWER_DATES: VIEWER_DATES[h] = r
+        except Exception: pass
         viewers |= {h for h in hrefs if re.search(r"ipaper\.io|issuu\.com/|publitas\.com|leaflets\.schwarz|flippingbook|yumpu|/leidinys/|/leidiniai/[\w-]+", h)
                     and "cookie" not in h and "privacy" not in h}
         if viewer_re and not viewers and not pdfs:
@@ -107,6 +113,7 @@ def ocr_image(body):
         return leaflets._run(["tesseract", f.name, "stdout", "-l", "lit+eng", "--psm", "6"], 120)
 
 PDF_DATES = {}
+VIEWER_DATES = {}   # peržiūros nuoroda -> (nuo, iki) iš leidinių sąrašo
 STATS, CUR = {}, {"store": ""}
 
 DOM = {"Maxima": "maxima.lt", "Rimi": "rimi.lt", "Lidl": "lidl.lt", "Norfa": "norfa.lt", "IKI": "iki.lt", "Promo": "promo.lt"}
@@ -597,13 +604,14 @@ def crawl_official(ctx, page, store, c):
         pdfs |= p
         print(f"   peržiūra {v[-50:]}: pdf {len(p)}, paveikslėlių {len(imgs)}, json prekių {len(jsons)}")
         jr = leaflets.valid_range(vtext, year) if vtext else ("", "")
+        if not jr[1]: jr = VIEWER_DATES.get(v, jr)
         for n, pr in jsons: items[(n, pr)] = (jr[1], jr[0], None)
         if vtext.strip() and not jsons:
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
             res = (leaflets.parse_maxima(vtext, year) if leaflets.is_maxima_text(vtext) else leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year))
             print(f"      tekstas: {len(res)} prekių")
             note(DOM.get(CUR["store"], "") + " leidinys", pubs=1, parsed=len(res))
-            for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
+            for r in res: items[(r[0], r[1])] = (r[2] or jr[1], r[3] or jr[0], r[4] if len(r) > 4 else None)
         if not p and not items:
             txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
             if DEBUG: dump(f"ocr_{store}_{k}.txt", txt[:20000])

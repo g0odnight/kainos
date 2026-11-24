@@ -9,14 +9,14 @@ Serverio nėra: GitHub Actions kasdien ~09:00 (Vilniaus laiku) surenka pasiūlym
 
 | Parduotuvė | Iš kur renkama |
 |---|---|
-| Maxima | maxima.lt/pasiulymai + leidinys iš akcijuseklys.lt |
+| Maxima | maxima.lt/pasiulymai + teminiai leidiniai (Kalėdų mėnuo ir pan.) + savaitės leidinys iš akcijuseklys.lt |
 | Rimi | rimi.lt e. parduotuvės akcijos, savaitinis leidinys + katalogai iš akcijuseklys.lt |
 | Lidl | lidl.lt leidinių PDF + ne maisto ir kiti leidiniai iš akcijuseklys.lt |
 | Norfa | norfa.lt leidinių PDF + kalėdinis katalogas iš akcijuseklys.lt |
 | IKI, Promo, Šilas, Vynoteka | akcijuseklys.lt (atsarginis variantas IKI, Promo, Šilui – leidinio paveikslėlių OCR) |
 
 Ta pati prekė iš kelių šaltinių rodoma vieną kartą (ta pati kaina ir panašus pavadinimas).
-Grupinės nuolaidos be konkrečios kainos („-30 % visiems šampūnams“) nerodomos.
+Grupinės nuolaidos be konkrečios kainos („-30 % visiems šampūnams“) rodomos kaip „−30 % grupei“.
 
 ## Paleidimas
 

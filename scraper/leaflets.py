@@ -155,9 +155,28 @@ def lt_range(text):
     return "%04d-%02d-%02d" % (y, a, int(d1)), "%04d-%02d-%02d" % (yb, b, int(d2))
 
 _UN = r"(?:g|kg|ml|l|vnt\.?)"
-MX_REC = re.compile(r"(?P<name>[^€]{4,220}?\b\d+(?:[.,]\d+)?\s?" + _UN + r"(?![\wąčęėįšųūž])(?:\s*[,;]?\s*sveriamas,?\s*1 kg)?)\s*(?:1 (?:kg|l) [–≤≤-]+ \d+,\d{2} €\s*)?(?P<e>\d{1,3}) (?P<c>\d{2}) €(?:\s+(?P<reg>\d+,\d{2}) €)?")
+MX_REC = re.compile(r"(?P<name>[^€]{4,220}?\b\d+(?:[.,]\d+)?\s?" + _UN + r"(?![\wąčęėįšųūž])(?:\s*[,;]?\s*sveriamas,?\s*1 kg)?)\s*(?:1 (?:kg|l) [–≤≤-]+ (?P<unit>\d+,\d{2}) €\s*)?(?P<e>\d{1,3}) (?P<c>\d{1,2}) €(?:\s+(?P<reg>\d+,\d{2}) €)?")
 MX_LEAD = re.compile(r"^(?:(?:Kai pigu – Kalėdos be ribų|SALDUMYNŲ IR UŽKANDŽIŲ DIENOS|GARDŪS GAMINIAI, sukurti mėgautis|Šventinis skonis\. Džiuginanti kaina\.|-\d+\s?%|Iki \d+ kg|Perkant \d+ ar daugiau|\d+ vnt\.|ĮPRASTA KAINA|PIGIAUSIAS\* PASIRINKIMAS MAXIMOJE|KASDIEN PIGIAU! Sunku patikėti, lengva palyginti!|NAUJIENA!?|\*+)\s*)+")
 MX_CUT = re.compile(r"^.*(?:Page number \d+|Page \d+|MAXIMA\.|MAXIMOJE|Lietuva“|Vilnius\.|\d+-\d+ / \d+|\.\.\.)\s+", re.S)
+
+def _qty_kg(name):
+    """Paskutinis kiekis pavadinime kg/l („2 × 500 ml“ -> 1.0)."""
+    ms = list(re.finditer(r"(?:(\d+)\s*[x×]\s*)?(\d+(?:[.,]\d+)?)\s?(kg|g|ml|l)(?![\wąčęėįšųūž])", name))
+    if not ms: return None
+    m = ms[-1]; q = float(m.group(2).replace(",", ".")) * (int(m.group(1)) if m.group(1) else 1)
+    return q / 1000 if m.group(3) in ("g", "ml") else q
+
+def _mx_fix(p, e, c, name, unit, old):
+    """Kalėdų leidinyje stambi kaina kartais perskaitoma atvirkščiai: „99 39 €“ = 39,99 €, „89 9 €“ = 9,89 €.
+    Teisingą variantą renkamės pagal kainą už kg/l × kiekį (arba seną kainą)."""
+    alt = round(int(c) + int(e) / 100, 2) if len(e) == 2 else None
+    if len(c) == 1 and alt is None: return p
+    if alt is None or alt == p: return p
+    q = _qty_kg(name); u = float(unit.replace(",", ".")) if unit else None
+    if q and u:
+        return min((p, alt), key=lambda x: abs(x - q * u))
+    if old: return alt if alt < old and (p >= old or p < old * 0.3) else p
+    return alt if len(c) == 1 or p >= 50 else p
 
 def is_maxima_text(text):
     return len(MX_REC.findall(re.sub(r"\s+", " ", text))) >= 5 and "ĮPRASTA KAINA" in text
@@ -174,6 +193,7 @@ def parse_maxima(text, year=None):
         n = n.replace("**", "").strip()
         p = round(int(m.group("e")) + int(m.group("c")) / 100, 2)
         old = float(m.group("reg").replace(",", ".")) if m.group("reg") else None
+        p = _mx_fix(p, m.group("e"), m.group("c"), n, m.group("unit"), old)
         if old is not None and old <= p: old = None
         if good_name(n, 1) and 0.05 < p < 500: out.append((clean(n)[:120], p, until, frm, old))
     return list(dict.fromkeys(out))
