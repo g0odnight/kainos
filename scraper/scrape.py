@@ -457,23 +457,26 @@ def ak_leaflet(html, store=""):
             # šaltinis neatskiria „pirk 2 – pigiau“ nuo pakuotės „2 but. × 2 l“, todėl kainos nedalinam
             deal = f"kaina už {int(mv.group(1))} vnt."
         det = ak_details(x.get("details"))
-        raw = re.sub(r"\s+", " ", unescape(x.get("details") or ""))
-        if re.search(r"rinkin", x.get("title") or "", re.I) and re.search(r"sudaro", raw, re.I):
-            # dovanų rinkinys („Rinkinys Nr. 6“): vietoj kiekių – pirmos kelios sudėties prekės
-            parts = [re.sub(r"^\d{1,2}[.)]?\s*", "", p).strip(" ,;.") for p in re.split(r"(?:^|[,;]\s*|\s)(?=\d{2}\s+[A-ZĄČĘĖĮŠŲŪŽ])", re.split(r"sudaro:?", raw, flags=re.I)[1])]
-            parts = [re.split(r",|\s[–-]\s", p)[0].strip() for p in parts if len(p) > 2]
-            cut = lambda p: p if len(p) <= 40 else p[:40].rsplit(" ", 1)[0] + "…"
-            det = "sudėtis: " + ", ".join(cut(p) for p in parts[:3]) + (" ir kt." if len(parts) > 3 else "")
+        raw = re.sub(r"\s+", " ", unescape(x.get("details") or "")).strip()
+        is_set = re.search(r"rinkin", x.get("title") or "", re.I) and len(raw) > 12
+        if is_set:
+            # dovanų rinkinys („Rinkinys Nr. 6“): aprašas – tai sudėtis; paliekam jį (be numeracijos ir pasikartojimų)
+            c = re.sub(r"^(rinkinys\s*(nr\.?\s*\d+)?\s*[:(]?|rinkinį sudaro:?)\s*", "", raw, flags=re.I).strip()
+            if c.endswith(")") and c.count(")") > c.count("("): c = c[:-1].strip()
+            c = re.sub(r"(^|;\s*)\d{2}\s+", r"\1", c)
+            c = re.sub(r"\s*;\s*", ", ", c)
+            det = c if len(c) <= 110 else c[:110].rsplit(" ", 1)[0].rstrip(",;") + "…"
         title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
         if store == "Lidl" and title.isupper() and len(title.split()) <= 4 and not re.search(r"\d", title):
             continue   # leidinio skyriaus antraštė („MUZIKOS INSTRUMENTAI“, „ŽINOMI PREKIŲ ŽENKLAI“), ne prekė
-        name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
+        name = (f"{title}: {det}" if is_set else f"{title}, {det}") if det and det.lower() not in title.lower() else title
         if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()
         frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
+        name = name[:180] if is_set else name[:140]
         if price is None:
-            out.append((name[:140], None, frm, until, None, deal))
+            out.append((name, None, frm, until, None, deal))
         elif 0.05 < price < 5000:
-            out.append((name[:140], round(price + 1e-9, 3 if deal and re.search(r"\d\+\d", deal) else 2), frm, until,
+            out.append((name, round(price + 1e-9, 3 if deal and re.search(r"\d\+\d", deal) else 2), frm, until,
                         round(old, 2) if old and old > price + 0.004 else None, deal))
     return out
 
