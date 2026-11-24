@@ -416,7 +416,7 @@ def ak_details(det):
         seg = seg.strip(" ,.")
         if not seg or re.search(r"€|Eur\b|Eur/|kaina|art\.|^ir IKI|IKI EXPRESS|nurodytos su nuolaida|^\d{5,}$", seg, re.I): continue
         if re.match(r"įvairių (spalvų|rūšių|dydžių|dizainų)$", seg, re.I): continue
-        if re.match(r"nuo \d", seg, re.I) or "®" in seg: continue
+        if re.match(r"(nuo \d|ieškoti)", seg, re.I) or "®" in seg: continue
         if len(seg) > 25 and not re.search(r"\d\s*(g|kg|ml|l|vnt|pak|por\w*|rink)\b", seg): continue
         keep.append(seg)
     return ", ".join(keep)[:70]
@@ -436,16 +436,16 @@ def ak_leaflet(html, store=""):
         if mb and int(mb.group(1)) + int(mb.group(2)) > 1:   # „2+1“: moki už 2, gauni 3
             q = int(mb.group(1)) + int(mb.group(2)); price = total / q; deal = f"{lab}: {q} vnt. už {_eur(total)}"
             old = old / q if old else None
-        elif mv and int(mv.group(1)) > 1:                    # „2 vnt. už 3,49 €“, „4 = pigiau“, „3x“
-            q = int(mv.group(1)); price = total / q; deal = f"{q} vnt. už {_eur(total)}"
-            old = old / q if old else None
+        elif mv and int(mv.group(1)) > 1:                    # „2 vnt.“, „4 = pigiau“, „3x“
+            # šaltinis neatskiria „pirk 2 – pigiau“ nuo pakuotės „2 but. × 2 l“, todėl kainos nedalinam
+            deal = f"kaina už {int(mv.group(1))} vnt."
         det = ak_details(x.get("details"))
         title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
         name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
         if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()
         frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
         if 0.05 < price < 5000:
-            out.append((name[:140], round(price + 1e-9, 3 if deal and "vnt. už" in deal else 2), frm, until,
+            out.append((name[:140], round(price + 1e-9, 3 if deal and re.search(r"\d\+\d", deal) else 2), frm, until,
                         round(old, 2) if old and old > price + 0.004 else None, deal))
     return out
 
@@ -456,7 +456,7 @@ def crawl_akcijuseklys(ctx, slug, store=""):
     r = get(f"{base}/parduotuve/{slug}")
     if r.status != 200: print("   akcijuseklys:", r.status); return {}
     links = list(dict.fromkeys(re.findall(r'href="(/parduotuve/' + re.escape(slug) + r'/br_[0-9a-f]+)"', r.text())))
-    today = datetime.date.today().isoformat(); items = {}; old_streak = 0
+    today = datetime.date.today().isoformat(); items = {}; seen = {}; old_streak = 0
     for ln in links[:25]:
         r = get(base + ln)
         if r.status != 200: continue
@@ -467,7 +467,13 @@ def crawl_akcijuseklys(ctx, slug, store=""):
             if old_streak >= 4: break   # toliau tik seni leidiniai
             continue
         old_streak = 0
-        for name, price, frm, until, old, deal in live: items.setdefault((name, price), (until, frm, old, deal))
+        for name, price, frm, until, old, deal in live:
+            # ta pati prekė keliuose leidiniuose / versijose – paliekam vieną (ilgesnį pavadinimą, su kortelės žyme)
+            k = (" ".join(sorted(_toks(name.split(",")[0]))), round(price, 3))
+            prev = seen.get(k)
+            if prev and (len(prev[0]) >= len(name) or not deal): continue
+            if prev: items.pop(prev, None)
+            seen[k] = (name, price); items[(name, price)] = (until, frm, old, deal)
         print(f"   akcijuseklys {ln}: {len(live)} prekių su kaina")
         note("akcijuseklys.lt leidiniai", pubs=1, found=len(live))
         time.sleep(0.4)
@@ -479,11 +485,16 @@ def _toks(n):
 def merge_extra(base, extra):
     """Pridedam papildomo šaltinio prekes, kurių dar nėra (ta pati kaina ir panašus pavadinimas = ta pati prekė)."""
     by_price = {}
-    for (n, p) in base: by_price.setdefault(round(p, 2), []).append(_toks(n))
+    for (n, p), u in base.items():
+        by_price.setdefault(round(p, 2), []).append(_toks(n))
+        m = re.search(r"(\d+) vnt\. už (\d+),(\d{2})", (u[3] if len(u) > 3 else "") or "")   # „2 vnt. už 1,59 €“ – ir bendra kaina
+        if m: by_price.setdefault(round(int(m.group(2)) + int(m.group(3)) / 100, 2), []).append(_toks(n))
     added = 0
     for (n, p), u in extra.items():
-        t = _toks(n)
-        dup = any(len(t & o) >= max(1, 0.5 * min(len(t), len(o))) for o in by_price.get(round(p, 2), []) if o)
+        t = _toks(n); ps = {round(p, 2)}
+        m = re.search(r"vnt\. už (\d+),(\d{2})", (u[3] if len(u) > 3 else "") or "")
+        if m: ps.add(round(int(m.group(1)) + int(m.group(2)) / 100, 2))
+        dup = any(len(t & o) >= max(1, 0.5 * min(len(t), len(o))) for q in ps for o in by_price.get(q, []) if o)
         if not dup:
             base[(n, p)] = u; by_price.setdefault(round(p, 2), []).append(t); added += 1
     return added
