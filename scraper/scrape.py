@@ -310,7 +310,13 @@ def crawl_rimi_offers(page, url):
             print("   Rimi akcijų klaida:", e); break
         new = [c for c in cards if c["id"] not in seen]
         if DEBUG and n < 2: dump(f"rimi_offers_{n}.json", json.dumps(cards[:60], ensure_ascii=False, indent=1))
-        if not new: break
+        if not new and n and len(cards) < 5:   # tuščias puslapis – gal laikina klaida, bandom dar kartą
+            page.wait_for_timeout(5000)
+            try:
+                page.goto(u, wait_until="domcontentloaded", timeout=90000); page.wait_for_timeout(3000)
+                cards = page.evaluate(RIMI_JS); new = [c for c in cards if c["id"] not in seen]
+            except Exception: pass
+        if not new: print(f"   Rimi akcijos: pabaiga ties psl. {n + 1} (kortelių {len(cards)})"); break
         for c in new:
             seen.add(c["id"])
             name = (c["name"] or "").strip()
