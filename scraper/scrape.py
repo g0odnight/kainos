@@ -414,7 +414,11 @@ def _eur(v): return f"{v:.2f}".replace(".", ",") + " €"
 def ak_details(det):
     """Aprašą sutrumpinam iki to, kas naudinga: kiekis, rūšys, dydis. Kainos, art. nr., ilgi aprašymai – lauk."""
     keep = []
-    for seg in re.split(r"\s*[•;]\s*|,\s+(?=\D)", det or ""):
+    det = re.sub(r"\s+(TIK|Ir IKI EXPRESS)\b.*$", "", det or "")
+    # kainos už kg/l ir pan. – programėlė skaičiuoja pati: „1 l = 0,33 €“, „(12,38 € / kg)“, „1,06 Eur/l*“, „1 l – 3,92 EUR“
+    det = re.sub(r"\(?\s*\d+[,.]\d{2}\s*(€|eur)\s*/\s*[^\W\d_]+\.?\*?\s*\)?", "", det, flags=re.I)
+    det = re.sub(r"/?\s*1\s*(kg|l|vnt\.?)\s*[=–—-]\s*\d+[,.]\d{2}\s*(€|eur)\*?", "", det, flags=re.I)
+    for seg in re.split(r"\s*[•;|]\s*|,\s+|\s+/\s+", det):   # LT skaičiai rašomi be tarpo po kablelio („1,5 l“)
         seg = seg.strip(" ,.")
         if not seg or re.search(r"€|Eur\b|Eur/|kaina|art\.|^ir IKI|IKI EXPRESS|nurodytos su nuolaida|^\d{5,}$", seg, re.I): continue
         if re.match(r"įvairių (spalvų|rūšių|dydžių|dizainų)$", seg, re.I): continue
