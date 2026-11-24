@@ -53,6 +53,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .pr b{font-size:19px;letter-spacing:-.4px;line-height:1.1}
 .pr s{font-size:12.5px;color:var(--mu)}
 .off{background:var(--red);color:#fff;border-radius:7px;font-size:11.5px;font-weight:800;padding:1px 6px}
+.deal{background:#1d4ed8;color:#fff;border-radius:7px;font-size:11px;font-weight:800;padding:1px 6px;white-space:nowrap}
 .bt{background:var(--ac);color:#fff;border-radius:7px;font-size:10.5px;padding:1px 6px;font-weight:800;letter-spacing:.3px}
 .add{flex:none;width:40px;height:40px;border-radius:14px;border:0;background:var(--acs);color:var(--ac2);font-size:24px;font-weight:500;line-height:1;display:grid;place-items:center}
 .add.in{background:var(--ac);color:#fff;font-size:14px;font-weight:800}
@@ -139,7 +140,7 @@ function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
  return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
 function init(j,d){demo=!!d;DB=j;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
-  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2])}});
+  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));if(!sel.size)sel=new Set(have);
  const sc=ls("cats3");cats=new Set((sc||[]).filter(c=>DB.cats.some(x=>x.id==c)));
@@ -191,7 +192,7 @@ const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a
 function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
  return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${ct.icon}</div>
  <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
- <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.old?`<s>${eur(r.old)}</s>`:""}</div>
+ <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:r.old?`<s>${eur(r.old)}</s>`:""}</div>
  <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
 let cur=[];
 function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
@@ -203,7 +204,7 @@ function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!$("#v1").hidden&&cur.length>lim){lim+=80;$("#res").insertAdjacentHTML("beforeend",cur.slice(lim-80,lim).map(x=>card(x,false)).join(""))}},{rootMargin:"800px"}).observe($("#sentinel"));
 $("#res").addEventListener("click",e=>{const t=e.target.closest("[data-id]");if(!t)return;addItem(+t.dataset.id,t)});
 function addItem(id,el){const r=DB.rows[id];if(!r)return;const f=cart.find(c=>c.id==r.id||(c.s==r.s&&c.name==r.name&&c.price==r.price));
- f?f.n++:cart.push({id:r.id,s:r.s,name:r.name,price:r.price,old:r.old,until:r.until,from:r.from,n:1,done:false});saveCart();
+ f?f.n++:cart.push({id:r.id,s:r.s,name:r.name,price:r.price,deal:r.deal,old:r.old,until:r.until,from:r.from,n:1,done:false});saveCart();
  if(el){const b=el.querySelector(".add"),n=cart.find(c=>c.id==r.id)?.n||1;b.classList.add("in");b.textContent="✓"+(n>1?n:"")}
  toast(`Pridėta: ${r.name.slice(0,34)}${r.name.length>34?"…":""}`)}
 const saveCart=()=>{ls("cart3",cart);$("#cc").textContent=cart.length||""};
@@ -217,7 +218,7 @@ function drawCart(){saveCart();const el=$("#cart");
  Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+c.price*c.n,0);
   h+=`<div class="store-h"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="sum">${eur(sub)}</span></div>`;
   arr.forEach(([c,i])=>{tot+=c.price*c.n;cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
-   h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}</span>${c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
+   h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}${c.deal?"/vnt.":""}</span>${c.deal?`<span class="deal">${esc(c.deal)}</span>`:c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
    <div class="q"><button data-m="${i}" aria-label="Mažiau">−</button><b>${c.n}</b><button data-p="${i}" aria-label="Daugiau">+</button></div><button class="del" data-del="${i}" aria-label="Pašalinti">🗑</button></div>`})});
  h=`<div class="tot"><div class="r"><span>${cnt} prek.</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
   `<div style="display:flex;gap:8px;margin-top:18px"><button class="btn gh" id="cdone">Išvalyti nupirktas</button><button class="btn gh" id="clr" style="color:var(--red)">Išvalyti viską</button></div>`;

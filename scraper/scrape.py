@@ -206,8 +206,11 @@ def parse_maxima_card(t, year):
     m = re.search(r"(?<![\d,])(\d{1,3})\s+(\d{2})\s*€", flat)
     if not m: return None
     price = int(m.group(1)) + int(m.group(2)) / 100
-    if re.search(r"\d+\s*vnt\.?\s*už", flat, re.I):
-        k = re.search(r"(\d+)\s*vnt\.?\s*už", flat, re.I); price = price / int(k.group(1))
+    deal = ""
+    k = re.search(r"(\d+)\s*vnt\.?\s*už", flat, re.I)
+    if k:
+        deal = f"{k.group(1)} vnt. už " + f"{price:.2f}".replace(".", ",") + " €"
+        price = price / int(k.group(1))
     old = None
     for o in re.findall(r"(?<!– )(?<!≤ )(\d{1,3},\d{2})\s*€", flat):
         v = float(o.replace(",", "."))
@@ -220,7 +223,7 @@ def parse_maxima_card(t, year):
     names = [l for l in lines if len(re.findall(r"[^\W\d_]", l)) >= 4 and not re.match(r"^(Iki|Tik su|ačiū|1 (kg|l|vnt)|nuo|\d+ vnt\.? už|Pasiūlym|Įprasta)", l, re.I) and "€" not in l]
     if not names: return None
     name = max(names[:3], key=len).replace("*", "").strip()
-    return name[:120], round(price, 2), until, "", old
+    return name[:120], round(price, 3) if deal else round(price, 2), until, "", old, deal
 
 def crawl_maxima_offers(page, url):
     year = datetime.date.today().year
@@ -246,7 +249,7 @@ def crawl_maxima_offers(page, url):
     items = {}
     for t in cards:
         r = parse_maxima_card(t, year)
-        if r: items[(r[0], r[1])] = (r[2], r[3], r[4])
+        if r: items[(r[0], r[1])] = (r[2], r[3], r[4], r[5])
     print(f"   Maxima pasiūlymai: {len(cards)} kortelių, {len(items)} prekių")
     return items
 
@@ -366,7 +369,7 @@ def main():
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items():
-                out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(categories.classify(n))])
+                out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(categories.classify(n)), u[3] if len(u) > 3 else ""])
     out_items.sort(key=lambda x: (x[1], x[2]))
     out = {"v": 11, "cats": [{"id": c[0], "name": c[1], "icon": c[2]} for c in categories.META], "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
     (ROOT / "prices.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
