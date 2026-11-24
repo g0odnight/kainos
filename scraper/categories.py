@@ -57,7 +57,7 @@ RULES = [
     ("buitine", r"(valymo putos|kvapui|demems|tirpikl|valymo irengin)"),
     ("vaikai", r"(lipduk|automodel|automobilio model|modelis 1:|pies\. rinkin|piesimo rinkin|play-doh|littlest pet|slime|gleiv|mokyklin|^(?!.*(sald|sokolad)).*kamuol|\blel(e|ems|es|iu)\b|vienarag|mikroskop|eksperiment|paspirtuk|arkliuk|clementoni|mini brands|miniatiur|^(?!.*(sokolad|kinder|smarties|kit kat|saldain|favorina)).*figurel|zaisl|\blego\b|delion|konstrukt|kurybinis rinkinys|kurybos rinkin|hot wheels|barbie|stalo zaidim|\brc\b|balansinis|spalvinimo|plius\.|pliusin|kemperis|robotas|magnetuk|\d+ m\+)"),
     ("pienas", r"(\bkiausiniai\b|kiausiniu \d|kefyro gerim|pieno gerim|kastinys)"),
-    ("saldyta", r"(alaus tesloje|\bledai\b|\bledu\b(?! saldain))"),
+    ("saldyta", r"(alaus tesloje|\bledai\b|\bledams\b|\bledu\b(?! saldain))"),
     ("kulinarija", r"(\bkibin(as|ai)\b|sumustinis\b|kebabo)"),
     ("duona", r"(plesomosios bandel|brioche)"),
     ("konservai", r"(konservuoti|marinuoti .{0,30}agurk|sviestines pupel|pomidoru pasta|krienai|remulad)"),

@@ -437,13 +437,20 @@ def ak_leaflet(html, store=""):
     if not m: return None
     d = json.loads(m.group(1)); out = []
     for x in d.get("deals", []):
-        if not x.get("promoPrice") or not x.get("title"): continue   # grupinė nuolaida be kainos („-25 % gėrimams“) – nerodom
-        total = float(x["promoPrice"]); old = float(x["regularPrice"]) if x.get("regularPrice") else None
+        if not x.get("title"): continue
         lab = (x.get("promoLabel") or "").strip(); n = x.get("bundleQuantity") or 1
-        price, deal = total, ""
+        if not x.get("promoPrice"):
+            # grupinė nuolaida be konkrečios kainos („-25 % TYMBARK gėrimams“): kaina None, žymė – procentas
+            mp = re.match(r"^[-−–]?\s*(\d{1,2})\s*%$", lab)
+            if not mp: continue
+            total, old, price, deal = None, None, None, f"−{mp.group(1)} % grupei"
+        else:
+            total = float(x["promoPrice"]); old = float(x["regularPrice"]) if x.get("regularPrice") else None
+            price, deal = total, ""
         mb = re.match(r"^(\d+)\s*\+\s*(\d+)$", lab)
         mv = re.match(r"^(\d+)\s*(vnt\.?|x|=\s*pigiau)$", lab, re.I)
-        if mb and int(mb.group(1)) + int(mb.group(2)) > 1:   # „2+1“: moki už 2, gauni 3
+        if price is None: pass
+        elif mb and int(mb.group(1)) + int(mb.group(2)) > 1:   # „2+1“: moki už 2, gauni 3
             q = int(mb.group(1)) + int(mb.group(2)); price = total / q; deal = f"{lab}: {q} vnt. už {_eur(total)}"
             old = old / q if old else None
         elif mv and int(mv.group(1)) > 1:                    # „2 vnt.“, „4 = pigiau“, „3x“
@@ -463,7 +470,9 @@ def ak_leaflet(html, store=""):
         name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
         if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()
         frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
-        if 0.05 < price < 5000:
+        if price is None:
+            out.append((name[:140], None, frm, until, None, deal))
+        elif 0.05 < price < 5000:
             out.append((name[:140], round(price + 1e-9, 3 if deal and re.search(r"\d\+\d", deal) else 2), frm, until,
                         round(old, 2) if old and old > price + 0.004 else None, deal))
     return out
@@ -488,7 +497,7 @@ def crawl_akcijuseklys(ctx, slug, store=""):
         old_streak = 0
         for name, price, frm, until, old, deal in live:
             # ta pati prekė keliuose leidiniuose / versijose – paliekam vieną (ilgesnį pavadinimą, su kortelės žyme)
-            k = (" ".join(sorted(_toks(name.split(",")[0]))), round(price, 3))
+            k = (" ".join(sorted(_toks(name.split(",")[0]))), round(price, 3) if price is not None else deal)
             prev = seen.get(k)
             if prev and (len(prev[0]) >= len(name) or not deal): continue
             if prev: items.pop(prev, None)
@@ -505,11 +514,14 @@ def merge_extra(base, extra):
     """Pridedam papildomo šaltinio prekes, kurių dar nėra (ta pati kaina ir panašus pavadinimas = ta pati prekė)."""
     by_price = {}
     for (n, p), u in base.items():
+        if p is None: continue
         by_price.setdefault(round(p, 2), []).append(_toks(n))
         m = re.search(r"(\d+) vnt\. už (\d+),(\d{2})", (u[3] if len(u) > 3 else "") or "")   # „2 vnt. už 1,59 €“ – ir bendra kaina
         if m: by_price.setdefault(round(int(m.group(2)) + int(m.group(3)) / 100, 2), []).append(_toks(n))
     added = 0
     for (n, p), u in extra.items():
+        if p is None:   # grupinė nuolaida – oficialūs šaltiniai jų neturi, pridedam visada
+            base[(n, p)] = u; added += 1; continue
         t = _toks(n); ps = {round(p, 2)}
         m = re.search(r"vnt\. už (\d+),(\d{2})", (u[3] if len(u) > 3 else "") or "")
         if m: ps.add(round(int(m.group(1)) + int(m.group(2)) / 100, 2))
@@ -702,7 +714,7 @@ def main():
                 if fixnames.is_fragment(n): continue
                 out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(cat_of(n, u)), u[3] if len(u) > 3 else ""])
     out_items = dedupe(out_items, {stores.index(s) for s in OCR if s in stores})
-    out_items.sort(key=lambda x: (x[1], x[2]))
+    out_items.sort(key=lambda x: (x[1], x[2] if x[2] is not None else -1))
     for _s in cfg:
         if _s not in status and _s in old.get("status", {}): status[_s] = old["status"][_s]   # nevykdyta – paliekam seną informaciją
     out = {"v": 11, "run": {"url": os.environ.get("RUN_URL", ""), "event": os.environ.get("EVENT", "")}, "cats": [{"id": c[0], "name": c[1], "icon": c[2]} for c in categories.META], "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}

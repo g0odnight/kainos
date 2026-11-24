@@ -35,7 +35,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .chip.on{color:var(--tx);border-color:var(--tx)}
 .chip.cat.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
 .chip small{font-weight:500;opacity:.65}
-.pn{font-size:12px;font-weight:600;opacity:.7;margin-left:3px;letter-spacing:0}
+.gp{color:var(--red,#e5484d)}.pn{font-size:12px;font-weight:600;opacity:.7;margin-left:3px;letter-spacing:0}
 .wrapchips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0 0}.wrapchips .chip{padding:6px 11px;font-size:13.5px;gap:6px}
 .chip.more{border-style:dashed}
 .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 2px;gap:10px}
@@ -143,7 +143,9 @@ const $=s=>document.querySelector(s);
 const ls=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}};
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/,/g,".");
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const eur=n=>n.toFixed(2).replace(".",",")+" €";
+const eur=n=>n==null?"":n.toFixed(2).replace(".",",")+" €";
+// grupinė nuolaida (be konkrečios kainos): procentas iš žymės „−40 % grupei“; žymėje paliekam tik kortelės informaciją
+const gpct=d=>{const m=/−(\d+) % grupei/.exec(d||"");return m?+m[1]:0};const gdeal=d=>(d||"").replace(/,?\s*−\d+ % grupei/,"").trim();
 const col=s=>COL[s]||"#475569";
 const today=(d=>new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10))(new Date());
 const fd=d=>d?d.slice(8,10)+"."+d.slice(5,7):"";
@@ -220,7 +222,8 @@ function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
  return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
 function init(j,d){demo=!!d;DB=j;DB.items_total=(j.items||[]).length;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
-  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:multi(a[1])?null:unit(a[1],/kaina už (\d+) vnt/.test(a[8]||"")?a[2]/+/kaina už (\d+) vnt/.exec(a[8])[1]:a[2]),sz:multi(a[1])?"":sizeOf(a[1])}});
+  const grp=a[2]==null;
+  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],grp,deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:grp?gpct(a[8]):old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:grp||multi(a[1])?null:unit(a[1],/kaina už (\d+) vnt/.test(a[8]||"")?a[2]/+/kaina už (\d+) vnt/.exec(a[8])[1]:a[2]),sz:multi(a[1])?"":sizeOf(a[1])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  const known=ls("known3")||(saved||[]);
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));
@@ -240,8 +243,8 @@ function fresh(){const b=$("#fresh"),t=b.querySelector("span");if(!DB.updated){t
 // jo formas („ledų“, „pieno“), bet ne kitus žodžius („pledas“, „pelėda“); nebaigtas rašyti žodis („kiau“) – kaip pradžia.
 const END="iais|iams|iai|iu|ius|ais|ams|ai|as|is|ys|us|es|os|ems|ui|e|a|o|u|i|y";
 const esc_re=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-const term=w=>{const m=w.length>=5&&w.match(new RegExp("^([a-z0-9]{3,}?)("+END+")$"));
- return m?new RegExp("(^|[^a-z0-9])"+esc_re(m[1])+"[a-z]{1,3}(?![a-z])"):new RegExp("(^|[^a-z0-9])"+esc_re(w))};
+const term=w=>{const m=w.length>=4&&w.match(new RegExp("^([a-z0-9]{3,}?)("+END+")$"));
+ return m?new RegExp("(^|[^a-z0-9])("+esc_re(m[1])+"[a-z]{1,4}(?![a-z])|"+esc_re(w)+")"):new RegExp("(^|[^a-z0-9])"+esc_re(w))};
 const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(term);
 const matchQ=(r,t)=>t.every(x=>x.test(r.n));
 function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
@@ -280,20 +283,20 @@ const closeSheet=()=>$("#sheet").classList.remove("show");
 $("#sheet").onclick=e=>{if(e.target.id=="sheet")closeSheet()};
 
 // ---------- sąrašas ----------
-const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:sortBy=="off"?-r.off:r.price;
-const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a.price-b.price;
+const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="off"?-r.off:r.grp?1e9:sortBy=="desc"?-r.price:r.price;
+const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||(a.price||0)-(b.price||0);
 // kas yra rodoma kaina: „/vnt.“ (vieneto kaina, kai akcija „2 vnt. už“ ar „1+1“), „už N vnt.“ (kaina už kelis kartu)
 const pnote=r=>{const d=r.deal||"",m=/kaina už (\d+) vnt/.exec(d);return m?`už ${m[1]} vnt.`:/vnt\. už|\d\+\d/.test(d)?"/vnt.":""};
 const multi=n=>/rinkinys nr/i.test(n)||new Set((n.match(/\d+(?:[.,]\d+)?\s*(kg|g|ml|l)(?![\wąčęėįšųūž])/gi)||[]).map(x=>x.replace(/\s/g,"").toLowerCase())).size>=3;
 function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
  return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${iconOf(r)}</div>
  <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
- <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}${pnote(r)?`<small class="pn">${pnote(r)}</small>`:""}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s>${eur(r.old)}</s>`:""}</div>
+ <div class="pr">${r.grp?`<b class="gp">−${r.off} %<small class="pn">grupei</small></b>${gdeal(r.deal)?`<span class="deal">${esc(gdeal(r.deal))}</span>`:""}`:`${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}${pnote(r)?`<small class="pn">${pnote(r)}</small>`:""}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s>${eur(r.old)}</s>`:""}`}</div>
  <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
 let cur=[];
 function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
  cur=list().sort(cmp);const el=$("#res");
- const minP=cur.length?Math.min(...cur.map(x=>x.price)):0;
+ const pr=cur.filter(x=>!x.grp).map(x=>x.price),minP=pr.length?Math.min(...pr):-1;
  $("#sum").innerHTML=`<b>${cur.length}</b> ${(n=>n%10==1&&n%100!=11?"pasiūlymas":(n%10==0||(n%100>10&&n%100<20))?"pasiūlymų":"pasiūlymai")(cur.length)}`;
  if(!cur.length){el.innerHTML=`<div class="empty"><big>🔍</big>Nieko nerasta${q?` pagal „${esc(q)}“`:""}.<br>Pabandyk kitą žodį, kategoriją ar parduotuvę.</div>`;return}
  el.innerHTML=(demo?`<div class="note">Rodomi pavyzdiniai duomenys – tikri dar neįkelti.</div>`:"")+cur.slice(0,lim).map(x=>card(x,!!q&&x.price===minP&&sortBy=="price")).join("")}
@@ -303,7 +306,7 @@ function detail(id){const r=DB.rows[id];if(!r)return;const ct=catOf(r.c),inc=car
  $("#sheetc").innerHTML=`<div class="det"><div class="ic" style="--c:${col(r.s)};width:56px;height:56px;font-size:28px">${iconOf(r)}</div>
   <h2 style="margin:12px 0 6px;line-height:1.25">${esc(r.name)}</h2>
   <div class="meta" style="font-size:14px"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}<span class="tg">${ct.icon} ${esc(ct.name)}</span></div>
-  <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}${pnote(r)?`<small class="pn" style="font-size:16px"> ${pnote(r)}</small>`:""}</b>${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>${r.deal?`<div style="margin:2px 0 6px"><span class="deal">${esc(r.deal)}</span></div>`:""}
+  ${r.grp?`<div style="margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">−${r.off} %</b> <span class="sum">nuolaida grupei</span></div>${gdeal(r.deal)?`<div style="margin:2px 0 6px"><span class="deal">${esc(gdeal(r.deal))}</span></div>`:""}<div class="sum" style="margin:4px 0 6px">Nuolaida taikoma nurodytoms prekėms – tikslios kainos leidinyje nėra, ji priklauso nuo pasirinktos prekės.</div>`:`<div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}${pnote(r)?`<small class="pn" style="font-size:16px"> ${pnote(r)}</small>`:""}</b>${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>${r.deal?`<div style="margin:2px 0 6px"><span class="deal">${esc(r.deal)}</span></div>`:""}`}
   <div class="sum" style="margin-bottom:6px">${r.from||r.until?"Galioja "+(r.from?fd(r.from)+" – ":"iki ")+fd(r.until):"Galiojimas nenurodytas"}</div></div>
   <div class="sticky-b"><button class="btn gh" id="cl3">Uždaryti</button><button class="btn" id="add3">${inc?"+1 (krepšelyje "+inc.n+")":"+ Į krepšelį"}</button></div>`;
  $("#sheet").classList.add("show");$("#cl3").onclick=closeSheet;$("#add3").onclick=()=>{addItem(id,document.querySelector(`.card[data-id="${id}"]`));closeSheet()}}
@@ -313,7 +316,7 @@ function addItem(id,el){const r=DB.rows[id];if(!r)return;const f=cart.find(c=>c.
  toast(`Pridėta: ${r.name.slice(0,34)}${r.name.length>34?"…":""}`)}
 const saveCart=()=>{ls("cart3",cart);$("#cc").textContent=cart.length||""};
 // eilutės kaina: „1+1: 2 vnt. už 1,09 €“ – pilnos poros pagal bendrą kainą, likutis pagal vieneto kainą
-function lineCost(c){const m=/(\d+) vnt\. už (\d+),(\d{2})/.exec(c.deal||"");if(m&&/\d\+\d/.test(c.deal)){const q=+m[1],t=+m[2]+m[3]/100;return Math.floor(c.n/q)*t+Math.round(c.price*(c.n%q)*100)/100}return Math.round(c.price*c.n*100)/100}
+function lineCost(c){if(c.price==null)return 0;const m=/(\d+) vnt\. už (\d+),(\d{2})/.exec(c.deal||"");if(m&&/\d\+\d/.test(c.deal)){const q=+m[1],t=+m[2]+m[3]/100;return Math.floor(c.n/q)*t+Math.round(c.price*(c.n%q)*100)/100}return Math.round(c.price*c.n*100)/100}
 let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("show"),1400)}
 
 // ---------- krepšelis ----------
@@ -323,7 +326,7 @@ function drawCart(){saveCart();const el=$("#cart");
  let tot=0,save=0,cnt=0,h="";
  Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+lineCost(c),0);
   h+=`<div class="store-h"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="sum">${eur(sub)}</span></div>`;
-  arr.forEach(([c,i])=>{tot+=lineCost(c);cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
+  arr.forEach(([c,i])=>{tot+=lineCost(c);cnt+=c.n;if(c.old&&c.price!=null)save+=(c.old-c.price)*c.n;
    h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}${/vnt\. už/.test(c.deal||"")?"/vnt.":""}</span>${c.deal?`<span class="deal">${esc(c.deal)}</span>`:""}${c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
    <div class="q"><button data-m="${i}" aria-label="Mažiau">−</button><b>${c.n}</b><button data-p="${i}" aria-label="Daugiau">+</button></div><button class="del" data-del="${i}" aria-label="Pašalinti">🗑</button></div>`})});
  h=`<div class="tot"><div class="r"><span>${cart.length} prek.${cnt>cart.length?` · ${cnt} vnt.`:""}</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
@@ -343,7 +346,7 @@ $("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");cons
 const SRC={Maxima:"maxima.lt + akcijuseklys.lt",Rimi:"rimi.lt akcijos + leidiniai",Lidl:"lidl.lt PDF + akcijuseklys.lt",Norfa:"norfa.lt PDF + akcijuseklys.lt",Promo:"akcijuseklys.lt leidiniai",IKI:"akcijuseklys.lt leidiniai","Šilas":"akcijuseklys.lt leidiniai",Vynoteka:"akcijuseklys.lt leidiniai"};
 function drawInfo(){const st=DB.status||{},el=$("#info");
  const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
- let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – ${new Date().getHours()<9&&!(u&&u.toDateString()==new Date().toDateString()&&u.getHours()>=9)?"šiandien":"rytoj"} ~09:00.<br>Rodomos tik prekės su konkrečia kaina – grupinės nuolaidos („-30 % visiems šampūnams“) nerodomos.</div>
+ let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – ${new Date().getHours()<9&&!(u&&u.toDateString()==new Date().toDateString()&&u.getHours()>=9)?"šiandien":"rytoj"} ~09:00.<br>Grupinės nuolaidos („−30 % visiems šampūnams“) rodomos su procentu vietoj kainos.</div>
   <div class="ist"><div class="nums"><div><small>Rodoma programėlėje</small><b>${shown}</b></div><div><small>Parduotuvių su duomenimis</small><b>${new Set(DB.rows.map(r=>r.s)).size} / ${DB.stores.length}</b></div><div><small>Pasibaigusių paslėpta</small><b>${Math.max(0,all-shown)}</b></div></div></div>`;
  DB.stores.forEach(s=>{const x=st[s]||{},rows=DB.rows.filter(r=>r.s==s),n=rows.length,disc=rows.filter(r=>r.old).length,last=[...new Set(rows.map(r=>r.until).filter(Boolean))].sort().pop();
   const cls=n==0?"no":x.warn?"part":"ok",lbl=n==0?"Nėra duomenų":x.warn?"Dalinai":"Veikia";
