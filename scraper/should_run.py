@@ -7,7 +7,9 @@ if os.environ.get("EVENT") == "schedule":
     run = now.hour >= 8
     try:
         u = json.load(open(pathlib.Path(__file__).resolve().parent.parent / "prices.json"))["updated"]
-        if u and datetime.datetime.fromisoformat(u).astimezone(tz).date() == now.date(): run = False
+        t = datetime.datetime.fromisoformat(u).astimezone(tz) if u else None
+        # praleidžiam tik jei šiandien jau atnaujinta PO 08:00 (naktiniai rankiniai paleidimai nesiskaito)
+        if t and t.date() == now.date() and t.hour >= 8: run = False
     except Exception: pass
 print("run =", run)
 with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as f: f.write(f"run={'true' if run else 'false'}\n")

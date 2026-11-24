@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: "0 5 * * *"   # 08:00 Vilniuje vasarą
     - cron: "0 6 * * *"   # 08:00 Vilniuje žiemą (should_run.py praleidžia nereikalingą)
+    - cron: "40 6 * * *"  # atsarginiai: GitHub kartais praleidžia ar vėlina suplanuotus paleidimus
+    - cron: "30 7 * * *"
+    - cron: "30 9 * * *"
   workflow_dispatch:
 permissions:
   contents: write
