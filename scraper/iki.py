@@ -31,8 +31,14 @@ def parse_lines(lines):
         unit = int(um.group(1)) + int(um.group(2)) / 100
         qms = list(QTY.finditer(before))
         qm = qms[-1] if qms else None
+        tol = 0.011
         if per == "vnt":
-            cand = unit; qtxt = qm.group(0) if qm else ""
+            nm = re.search(r"(\d+)\s*vnt", before)
+            n = int(nm.group(1)) if nm else 1
+            # „12 vnt., 0,12 Eur/vnt.“ – tai vieno vieneto kaina; pakuotės kaina = 12 × 0,12 (± apvalinimas),
+            # todėl tokią prekę imame tik jei šalia perskaityta stambi kaina tai patvirtina
+            cand = n * unit; tol = 0.011 if n == 1 else 0.006 * n + 0.01
+            qtxt = (qm.group(0) if qm else "") or (nm.group(0) if nm else "")
         else:
             if not qm:   # „Supakuota“ ženkliukas su kiekiu šalia
                 for l in lines:
@@ -46,12 +52,15 @@ def parse_lines(lines):
             cand = kg * unit; qtxt = qm.group(0)
         if not (0.1 < cand < 200): continue
         price = round(cand + 1e-6, 2)   # apvalinimas „half-up“ (0,5 × 2,97 = 1,485 -> 1,49)
-        for b in lines:   # stambi kaina šalia – jei skaitmenys sutampa ±1 ct, imame ją
+        snapped = False
+        for b in lines:   # stambi kaina šalia – jei skaitmenys sutampa, imame ją
             if b["h"] < 120 or not (-1200 < b["x0"] - u["x0"] < 1400 and -900 < b["y0"] - u["y0"] < 600): continue
             d = re.sub(r"\D", "", b["t"])
-            for n in (3, 4):
-                if len(d) >= n and abs(int(d[:n]) / 100 - cand) <= 0.011: price = int(d[:n]) / 100
+            for k in (3, 4):
+                if len(d) >= k and abs(int(d[:k]) / 100 - cand) <= tol: price = int(d[:k]) / 100; snapped = True
+        if tol > 0.011 and not snapped: continue
         name = before[:qms[-1].start()] if qms else before
+        if per == "vnt" and not qms and nm: name = before[:nm.start()]
         name = re.sub(r"\b\d+\s*rūšių\b|įvairių rūšių|TIK\b", "", name, flags=re.I).strip(" ,;*")
         name = re.sub(r"^[^A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]+", "", name)
         if len(re.findall(r"[^\W\d_]", name)) < 5: continue
