@@ -95,6 +95,10 @@ def find_pdfs(page, url, viewer_re=None):
             cards = page.evaluate("""()=>[...document.querySelectorAll('a[href]')].map(a=>{let e=a,t='';for(let i=0;i<5&&e;i++,e=e.parentElement){t=e.innerText||'';if(/20\\d\\d/.test(t))break}return [a.href,t.slice(0,400)]})""")
             for h, t in cards:
                 r = leaflets.valid_range(t, datetime.date.today().year) if t else ("", "")
+                m = re.search(r"(20\d\d)\s+(\d{1,2})\s+(\d{1,2})\s*[–-]\s*(?:(\d{1,2})\s+)?(\d{1,2})\b", t or "")
+                if not r[1] and m:   # Maxima: „2026 11 24–30“, „2026 11 24–12 07“
+                    y, m1, d1, m2, d2 = int(m[1]), int(m[2]), int(m[3]), int(m[4] or m[2]), int(m[5])
+                    r = ("%04d-%02d-%02d" % (y, m1, d1), "%04d-%02d-%02d" % (y + (m2 < m1), m2, d2))
                 if r[1] and h not in VIEWER_DATES: VIEWER_DATES[h] = r
         except Exception: pass
         viewers |= {h for h in hrefs if re.search(r"ipaper\.io|issuu\.com/|publitas\.com|leaflets\.schwarz|flippingbook|yumpu|/leidinys/|/leidiniai/[\w-]+", h)
