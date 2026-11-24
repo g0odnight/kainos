@@ -78,7 +78,7 @@ RULES = [
     ("mesa", r"(servelat|sardel|kabanos|varliu slaunel)"),
     ("saldumynai", r"(saldumynu rinkin|saldainiu rinkin|saldiniu rinkin|ledinuk|celebrations|snow balls)"),
     ("buitine", r"(avalynes|impregnant|namu kvap|automobiliu kvap)"),
-    ("namai", r"((torto|pyrago|keksiuk\w*|kepimo|sausainiu) form|^(?!.*(vaik|kudik|huggies|pampers)).*(kepur|pirstin|salikas|ausines|gobtuv|beret|slepet|kojin|apatiniai|marskinel|trumpik|kelnait|pizam|bokser|liemenel|megztin|striuk)|(?<!pl\. )(?<!plauku )dazai|drob(e|iu)|pakabai|pjovimo|slifav|kombain|lygintuv|klaviatur|\bpele\b|fotoaparat|patefon|knyg|aukst\w* slegio|kaledin(e|es|iai|is) (dekor|egl|papuos|kepur)|dekoracij|girliand|dirbtine eglut|egles virsune|eglutes papuos|dubenel|tortine|\bsamtis|serviravimo|zirkles|atidarytuv|asotis|gertuve|termo |kanceliar|tusinuk|piesimo|kaledu senis su)"),
+    ("namai", r"((torto|pyrago|keksiuk\w*|kepimo|sausainiu) form|^(?!.*(vaik|kudik|huggies|pampers)).*(kepur|pirstin|salikas|ausines|gobtuv|beret|slepet|kojin|apatiniai|marskinel|trumpik|kelnait|pizam|bokser|liemenel|megztin|striuk|dzemper|kelnes|marskiniai|tampres|pedkelnes|chalat|sortai)|(?<!pl\. )(?<!plauku )dazai|drob(e|iu)|pakabai|pjovimo|slifav|kombain|lygintuv|klaviatur|\bpele\b|fotoaparat|patefon|knyg|aukst\w* slegio|kaledin(e|es|iai|is) (dekor|egl|papuos|kepur)|dekoracij|girliand|dirbtine eglut|egles virsune|eglutes papuos|dubenel|tortine|\bsamtis|serviravimo|zirkles|atidarytuv|asotis|gertuve|termo |kanceliar|tusinuk|piesimo|kaledu senis su)"),
     ("duona", r"(\bbatonas\b|prancuziskas batonas|bagete)"),
     ("bakaleja", r"(pagalveles|kukuruzu dribs|avizin)"),
     ("gyvunai", r"(katem|kates\b|kaciu|kaciuk|katei\b|\bsun(ims|u|ys|iui|eliams)\b|sunim|sunu\b|gyvun|pasaras|pasaro|kraik|grauzik|papug|akvarium|pedigree|whiskas|felix|friskies|purina|kitekat|chappi)"),
@@ -103,7 +103,7 @@ RULES = [
     ("duona", r"(baget|duon|grudaini|batonas|\bbaton\b|bandel|bandut|raguol|ciabat|bagete|\bbagel|tortilij|lavas|\bpita\b|skrebuc|tosto|kepinys|kepiniai|plutele|sumustiniu)"),
     ("uzkandziai", r"(riesut|migdol|lazdyn|anakard|pistacij|sauleg|moliugu sekl|uzkand|alyvuog(?!.{0,15}aliej))"),
     ("vaisiai", r"(mangas|mandar ?nai|obuol|banan|mandarin|apelsin|citrin|\bkiv|kiwi|agurk|pomidor|\bmork|bulv|kopust|svogun|darzov|vaisi(ai|u)\b|avokad|persimon|\buog(os|u)\b|braskes|avietes|melynes|spanguol|salotos lap|salotu lap|paprik|brokol|kalafior|grybai|grybu|pievagryb|ananas|vynuog|kriaus|cesnak|burokel|cukinij|moliug|granat|greipfrut|laim(as|ai)\b|petrazol|krapai|ridik|salier|porai|sparag|mango|slyv|abrikos|persik|nektarin|arbuz|melion|datul|figos|imbier|zalumyn|rukola|spinat|batat|artisok|kokos(as|ai)\b)"),
-    ("konservai", r"(catnis|konserv|zirnel|pupel|kukuruz|pomidoru padaz|savo sultyse|marinuot|raugint|agurkeliai|troskin|uogien|dzem|kompot|\bmedus|kecup|majonez|garstyc|padaz|uztepel|tyre|alyvuoges)"),
+    ("konservai", r"(catnis|konserv|zirnel|pupel|kukuruz|pomidoru padaz|savo sultyse|marinuot|raugint|agurkeliai|troskin|uogien|dzem(?!per)|kompot|\bmedus|kecup|majonez|garstyc|padaz|uztepel|tyre|alyvuoges)"),
     ("bakaleja", r"(raviol|makaron|spagec|\bryz(iai|iu|ai)|balandos|dziuvesel|panko|kruop|grikiai|miltai|cukrus|cukraus|druska|druskos|aliejus|aliejaus|aliejui|\bactas|dribs|avizin|musli|granol|prieskon|pipir|cinamonas|vanil|mieles|sultinys|buljon|kubel|ramen|nudel|lakst|kuskus|bulgur|avinzirn|lesi(ai|u)|\bpasta\b|kepimo|glajus|glazur|papuosim|pabarstuk|sirup|cukruot|razin|dziovint|sekl(os|u)|kokoso droz|krakmol|zelatin|tagliolin|penne|fusilli|kepiniams)"),
 ]
 
