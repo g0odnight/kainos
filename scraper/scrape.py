@@ -609,7 +609,7 @@ def crawl_official(ctx, page, store, c):
                 print(f"      OCR: {len(res)} prekių")
                 for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
     print(f"{store}: rasta {len(pdfs)} PDF, {len(viewers)} peržiūros nuorodų")
-    pdfs = {u for u in pdfs if not re.search(r"NE-MAISTO|Zaislu|Tapk-LIDL", u, re.I)}
+    pdfs = {u for u in pdfs if not re.search(r"Tapk-LIDL", u, re.I)}   # ne maisto ir žaislų leidiniai – taip pat renkami
     for u in sorted(pdfs)[:12]:
         try:
             body = ctx.request.get(u, timeout=400000).body()
