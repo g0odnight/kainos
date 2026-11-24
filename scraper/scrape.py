@@ -372,9 +372,10 @@ def crawl_promo(ctx, page, url, max_pages=60):
         note("akcijos.lt Promo leidiniai (OCR)", pubs=1, pages=min(n, max_pages), parsed=got)
     return items
 
-def crawl_manoakcijos(ctx, page, slug, max_pages=60):
+def crawl_manoakcijos(ctx, page, slug, max_pages=60, parser="iki"):
     """manoakcijos.lt (Moja Gazetka) leidinių paveikslėliai -> OCR (iki.py): kaina = kiekis × kaina už kg/l."""
-    import iki
+    import importlib
+    mod = importlib.import_module(parser)
     page.goto(f"https://manoakcijos.lt/parduotuves/{slug}", wait_until="domcontentloaded", timeout=90000)
     try: page.wait_for_load_state("networkidle", timeout=15000)
     except Exception: pass
@@ -394,7 +395,7 @@ def crawl_manoakcijos(ctx, page, slug, max_pages=60):
             try:
                 r = ctx.request.get(f"https://app.manoakcijos.lt/{d}/image{k:02d}.webp", timeout=60000)
                 if r.status != 200: break
-                res = iki.parse_image(r.body()); done += 1
+                res = mod.parse_image(r.body()); done += 1
             except Exception as e:
                 print("   OCR klaida:", e); continue
             for name, price in res: items[(name, price)] = (until, frm, None); got += 1
@@ -404,7 +405,7 @@ def crawl_manoakcijos(ctx, page, slug, max_pages=60):
 
 def crawl_leaflets(ctx, page, store, c):
     if c.get("manoakcijos"):
-        try: return crawl_manoakcijos(ctx, page, c["manoakcijos"])
+        try: return crawl_manoakcijos(ctx, page, c["manoakcijos"], parser=c.get("parser", "iki"))
         except Exception as e:
             print("   manoakcijos klaida:", e); return {}
     if c.get("promo_akcijos"):
@@ -554,7 +555,7 @@ def main():
             status[store] = st
         br.close()
     out_items = []
-    OCR = {"IKI", "Promo"}
+    OCR = {"IKI", "Promo", "Šilas"}
     vocab = fixnames.build_vocab([n for st in stores if st not in OCR for (n, _p) in new.get((st, "l"), oldmap.get((st, "l"), {}))])
     for store in stores:
         for kind in ("l",):

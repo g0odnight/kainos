@@ -134,7 +134,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 <div class="sheet" id="sheet"><div id="sheetc"></div></div>
 
 <script>
-const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#475569"};
+const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#475569","Šilas":"#15803d"};
 const FALLBACK_CATS=[{id:"kita",name:"Kita",icon:"🛒"}];
 let DB={stores:[],rows:[],cats:FALLBACK_CATS,updated:null,status:{}},sel=new Set(),cats=new Set(),cart=[],sortBy="price",Q="",lim=60,demo=false;
 const $=s=>document.querySelector(s);
@@ -288,7 +288,7 @@ function tab(n){[1,2,3].forEach(k=>$("#v"+k).hidden=n!=k);$("#n1").classList.tog
  scrollTo(0,0);n==1?drawList():n==2?drawCart():drawInfo()}
 $("#menu").onclick=()=>$("#dr").classList.add("show");
 $("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");const b=e.target.closest("[data-t]");if(b)tab(+b.dataset.t)};
-const SRC={Maxima:"maxima.lt pasiūlymai",Rimi:"rimi.lt akcijos + leidinys",Lidl:"lidl.lt leidiniai (PDF)",Norfa:"norfa.lt leidiniai (PDF)",Promo:"akcijos.lt leidiniai (OCR)",IKI:"manoakcijos.lt leidiniai (OCR)"};
+const SRC={Maxima:"maxima.lt pasiūlymai",Rimi:"rimi.lt akcijos + leidinys",Lidl:"lidl.lt leidiniai (PDF)",Norfa:"norfa.lt leidiniai (PDF)",Promo:"akcijos.lt leidiniai (OCR)",IKI:"manoakcijos.lt leidiniai (OCR)","Šilas":"manoakcijos.lt leidiniai (OCR)"};
 function drawInfo(){const st=DB.status||{},el=$("#info");
  const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
  let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~08:00.</div>

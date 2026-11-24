@@ -132,5 +132,20 @@
       "promo_akcijos": "https://akcijos.lt/promo-cash-carry-akcijos"
     },
     "info": "Leidinių paveikslėliai iš akcijos.lt, skaitomi OCR. Rodomos tik patikrintos kainos, todėl ne visos prekės."
+  },
+  "Šilas": {
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "manoakcijos": "silas",
+      "parser": "silas"
+    },
+    "info": "Šilo leidiniai iš manoakcijos.lt (paveikslėliai, OCR). Kaina apskaičiuojama iš kiekio ir kainos už kg/l, todėl prekės be jų (pvz. drabužiai, „-25 % visiems…“) neįtraukiamos."
   }
 }
