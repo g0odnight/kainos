@@ -22,7 +22,41 @@ def _merge(desc):
     return out
 
 
+CPRICE = re.compile(r"^\s*(\d{1,3}),(\d{2})\s*€")
+
+
+def parse_catalog_page(bl):
+    """Kalėdinio katalogo maketas: „Pavadinimas, 75 g, 29,20 Eur/kg“ ir šalia „2,19 €“."""
+    prices = [b for b in bl if b["h"] >= 18 and CPRICE.match(b["t"])]
+    names = [b for b in bl if 12 <= b["h"] < 18 and len(re.findall(r"[^\W\d_]", b["t"])) >= 6]
+    cands = []
+    for ni, n in enumerate(names):
+        t = re.sub(r"\s+", " ", n["t"].replace("\u00ad", "")).strip()
+        um = UNIT.search(t); unit = float(um.group(1) + "." + um.group(2)) if um else None
+        ws = list(W.finditer(t[:um.start()] if um else t))
+        kg = None
+        if ws:
+            w = ws[-1]; q = float(w.group(2).replace(",", ".")) * (int(w.group(1)) if w.group(1) else 1)
+            kg = q / 1000 if w.group(3).lower() in ("g", "ml") else q
+        for pi, p in enumerate(prices):
+            dx, dy = p["x0"] - n["x0"], p["y0"] - n["y0"]
+            if not (-15 < dx < 260 and -15 < dy < 45): continue
+            m = CPRICE.match(p["t"]); price = int(m.group(1)) + int(m.group(2)) / 100
+            ok = unit and kg and abs(kg * unit - price) <= max(0.03, price * 0.015)
+            cands.append(((0 if ok else 1000) + abs(dx) + abs(dy) * 2, ni, pi, price, t, um))
+    cands.sort(); used_n, used_p, out = set(), set(), []
+    for _, ni, pi, price, t, um in cands:
+        if ni in used_n or pi in used_p: continue
+        used_n.add(ni); used_p.add(pi)
+        name = t[:um.start()] if um else t
+        name = re.sub(r",?\s*art\.\s*[\w().\-/]+", "", name).strip(" ,")
+        if len(re.findall(r"[^\W\d_]", name)) >= 4: out.append((name[:120], round(price, 2)))
+    return out
+
+
 def parse_page(bl):
+    if not any(BIG.match(b["t"]) and b["h"] >= 20 for b in bl):
+        return parse_catalog_page(bl)
     prices = []
     for b in bl:
         m = BIG.match(b["t"])

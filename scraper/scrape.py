@@ -197,33 +197,36 @@ def crawl_norfa(ctx, page, url):
             print("   Norfa klaida:", href, e)
     return items
 
-MX_CARDS_JS = """()=>{const all=[...document.querySelectorAll('div,li,article,a')].filter(e=>{const t=e.innerText||'';return /Iki\\s*\\d{1,2}\\.\\d{2}/.test(t)&&/€/.test(t)&&t.length<700&&t.split('\\n').some(l=>(l.match(/[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]/g)||[]).length>=10&&!/^(Iki|Tik su)/i.test(l.trim()))});
- const min=all.filter(e=>!all.some(o=>o!==e&&e.contains(o)));return min.map(e=>e.innerText)}"""
+MX_CARDS_JS = """()=>[...document.querySelectorAll('.offer-card')].map(c=>{const t=s=>{const e=c.querySelector(s);return e?(e.textContent||'').replace(/\\s+/g,' ').trim():''};
+  const all=(c.textContent||'').replace(/\\s+/g,' ').trim();
+  return {name:t('h4')||t('h3'),int:t('.offer-price-tag__price-integer'),frac:t('.offer-price-tag__price-fraction'),old:t('.offer-price-tag__old-price'),
+          off:t('.offer-price-tag__bottom-discount'),meta:[...c.querySelectorAll('.offer-price-tag__meta-line, .offer-price-tag__bottom')].map(e=>(e.textContent||'').replace(/\\s+/g,' ').trim()).join(' | '),
+          card:(c.querySelector('.offer-price-tag__icon img')||{}).alt||'',all}})"""
 
-def parse_maxima_card(t, year):
-    lines = [l.strip() for l in t.split("\n") if l.strip()]
-    flat = " ".join(lines)
-    m = re.search(r"(?<![\d,])(\d{1,3})\s+(\d{2})\s*€", flat)
-    if not m: return None
-    price = int(m.group(1)) + int(m.group(2)) / 100
+def parse_maxima_card(c, year):
+    """c – struktūrizuota .offer-card informacija iš maxima.lt/pasiulymai."""
+    name = (c.get("name") or "").replace("*", "").strip()
+    if not name or not c.get("int"): return None
+    try: price = int(re.sub(r"\D", "", c["int"])) + int(re.sub(r"\D", "", c.get("frac") or "0") or 0) / 100
+    except ValueError: return None
+    flat = c.get("all", "") + " " + c.get("meta", "")
     deal = ""
     k = re.search(r"(\d+)\s*vnt\.?\s*už", flat, re.I)
     if k:
         deal = f"{k.group(1)} vnt. už " + f"{price:.2f}".replace(".", ",") + " €"
         price = price / int(k.group(1))
     old = None
-    for o in re.findall(r"(?<!– )(?<!≤ )(\d{1,3},\d{2})\s*€", flat):
-        v = float(o.replace(",", "."))
-        if price < v < price * 4 and not re.search(r"1\s*(kg|l|vnt\.?)\s*[–≤≤-]\s*" + re.escape(o), flat): old = v; break
-    u = re.search(r"Iki\s*(\d{1,2})\.(\d{2})", flat)
+    om = re.search(r"(\d{1,3}),(\d{2})", c.get("old") or "")
+    if om:
+        v = float(om.group(1) + "." + om.group(2))
+        if v > price + 0.004: old = v
     until = ""
+    u = re.search(r"Iki\s*(\d{1,2})\.(\d{2})", flat)
     if u:
         mo, d = int(u.group(1)), int(u.group(2)); y = year + (1 if mo < datetime.date.today().month - 6 else 0)
         until = "%04d-%02d-%02d" % (y, mo, d)
-    names = [l for l in lines if len(re.findall(r"[^\W\d_]", l)) >= 4 and not re.match(r"^(Iki|Tik su|ačiū|1 (kg|l|vnt)|nuo|\d+ vnt\.? už|Pasiūlym|Įprasta)", l, re.I) and "€" not in l]
-    if not names: return None
-    name = max(names[:3], key=len).replace("*", "").strip()
-    return name[:120], round(price, 3) if deal else round(price, 2), until, "", old, deal
+    if c.get("card") and "kortel" in c["card"].lower() and not deal: deal = "su AČIŪ kortele"
+    return name[:120], (round(price, 3) if k else round(price, 2)), until, "", old, deal
 
 def crawl_maxima_offers(page, url):
     year = datetime.date.today().year
@@ -242,10 +245,16 @@ def crawl_maxima_offers(page, url):
         n = len(page.evaluate(MX_CARDS_JS))
         if n == last: break
         last = n
+    n0 = len(page.evaluate(MX_CARDS_JS))
+    for txt in ("Žiūrėti visus", "Rodyti visus", "Visi pasiūlymai", "Žiūrėti daugiau"):
+        for b in page.query_selector_all(f"text={txt}"):
+            try: b.click(timeout=1500); page.wait_for_timeout(1500)
+            except Exception: pass
+    for _ in range(10): page.mouse.wheel(0, 4000); page.wait_for_timeout(500)
     cards = page.evaluate(MX_CARDS_JS)
+    print(f"   Maxima .offer-card: prieš {n0}, po paspaudimų {len(cards)}")
     if DEBUG:
-        dump("maxima_offers_cards.txt", "\n\n=====\n".join(cards[:400]))
-        dump("maxima_offers_page.txt", page.content()[:400000])
+        dump("maxima_offers_cards.json", json.dumps(cards[:600], ensure_ascii=False, indent=1))
     items = {}
     for t in cards:
         r = parse_maxima_card(t, year)
@@ -288,12 +297,10 @@ def crawl_rimi_offers(page, url):
     return items
 
 def crawl_leaflets(ctx, page, store, c):
-    if c.get("rimi_offers"):
-        try:
-            items = crawl_rimi_offers(page, c["rimi_offers"])
-            if len(items) >= 30: return items
-        except Exception as e:
-            print("   Rimi akcijų klaida:", e)
+    pre = {}
+    if c.get("rimi_offers"):   # e. parduotuvės akcijos + toliau savaitinis leidinys (sujungiama)
+        try: pre = crawl_rimi_offers(page, c["rimi_offers"])
+        except Exception as e: print("   Rimi akcijų klaida:", e)
     if c.get("offers_url"):
         try:
             items = crawl_maxima_offers(page, c["offers_url"])
@@ -351,6 +358,8 @@ def crawl_leaflets(ctx, page, store, c):
             print("   PDF klaida:", u, e)
     today = datetime.date.today().isoformat()
     items = {k: u for k, u in items.items() if not u[0] or u[0] >= today}
+    if pre: print(f"   {store}: leidinys {len(items)} + e. parduotuvės akcijos {len(pre)}")
+    for k, u in pre.items(): items.setdefault(k, u)
     return items
 
 def main():
