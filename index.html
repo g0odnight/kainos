@@ -14,7 +14,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 header{display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) 2px 4px}
 h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:var(--ac)}
 .pill{font-size:12.5px;border:1px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 12px;display:flex;align-items:center;gap:6px}
-.pill.rf{font-size:17px;padding:4px 12px;color:var(--tx)}.pill.rf.spin{animation:sp 1.2s linear infinite;color:var(--ac)}@keyframes sp{to{transform:rotate(360deg)}}
+.pill.rf{font-size:17px;width:40px;height:34px;padding:0;justify-content:center;color:var(--tx)}.pill.rf span{display:inline-block;line-height:1}.pill.rf.spin{color:var(--ac);border-color:var(--ac)}.pill.rf.spin span{animation:sp 1.1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
 .inp{width:100%;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:14px;border-radius:12px;padding:12px;margin:8px 0}
 .steps{font-size:14px;line-height:1.5;padding-left:20px;margin:8px 0}.steps a{color:var(--ac2)}
 .prog{background:var(--card);border-radius:16px;padding:14px;margin:10px 0;font-size:14px}.prog b{display:block;font-size:15px;margin-bottom:4px}
@@ -93,7 +93,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 .srow .mid div{font-size:13px;color:var(--mu)}
 #sentinel{height:1px}
 </style></head><body>
-<header><h1>Kainos<span>.</span></h1><div style="display:flex;gap:8px"><button class="pill" id="fresh"><i></i><span>…</span></button><button class="pill rf" id="rf" aria-label="Atnaujinti kainas dabar" title="Atnaujinti kainas dabar">↻</button></div></header>
+<header><h1>Kainos<span>.</span></h1><div style="display:flex;gap:8px"><button class="pill" id="fresh"><i></i><span>…</span></button><button class="pill rf" id="rf" aria-label="Atnaujinti kainas dabar" title="Atnaujinti kainas dabar"><span>↻</span></button></div></header>
 
 <main id="v1">
  <div class="top" id="top">
