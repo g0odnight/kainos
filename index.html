@@ -155,27 +155,61 @@ function unit(n,p){const t=norm(n),m=t.match(/(\d+(?:\.\d+)?)\s*(?:x\s*(\d+(?:\.
 const SZ=/(\d+\s*[x×]\s*)?\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(kg|g|ml|l|vnt\.?|rit\.?|pak\.?)(?![\wąčęėįšųūž])/gi;
 const sizeOf=n=>{const m=n.match(SZ);if(!m)return"";const w=m.filter(x=>/(kg|g|ml|l)\b/i.test(x));return (w.length?w[w.length-1]:m[m.length-1]).replace(/\s+/g," ").trim()};
 // Tikslesnė ikona pagal pavadinimą (jei neatpažinta – kategorijos ikona). Tikrinama iš eilės.
+// [regex, ikonėlė, kategorijos (kuriose taisyklė galioja)] – tikrinama iš eilės; null = imti kategorijos ikonėlę
+const FOOD=["vaisiai","mesa","zuvis","pienas","duona","kulinarija","konditerija","saldyta","saldumynai","uzkandziai","bakaleja","konservai","kava","gerimai","alkoholis","kita"];
+const NONF=["namai","vaikai","kosmetika","buitine","augalai","gyvunai","kita"];
 const ICONS=[
- [/skonio|sk\.|prieskon|makaron|lakst|ramen|sultinys|trasku|cips/,null],
- [/kac|katem|sun(ims|u)\b|gyvun|pasaras/,"🐾"],[/sauskel|vystykl|kudik/,"🍼"],
- [/tualetin|popierin|servetel/,"🧻"],[/skalb|indaplov|plovikl|valikl|minkstikl/,"🧼"],[/sampun|muil|dantu|dezodor|(veido|ranku|kuno|rank) krem|kremas (veid|rank|kun)|losjon|dus(o|ui) (gel|zel)/,"🧴"],
- [/\balus\b|\balaus\b/,"🍺"],[/vyn(as|o)\b|sampan|prosecco|cava\b/,"🍷"],[/degtin|\bviski|whisk|konjak|brend|romas|\bgin\b|dzinas|likeris|tekila/,"🥃"],
- [/kava|kavos/,"☕"],[/arbat/,"🍵"],[/sultys|sulciu|nektar/,"🧃"],[/vanduo|vandens/,"💧"],[/cola|limonad|gaivus|gazuot/,"🥤"],[/^(?!.*(pien|kefyr|jogurt|kakav|alus|vyn)).*(gerim|\bger\.)/,"🥤"],
- [/ledai|plombyr/,"🍦"],[/pica|picos/,"🍕"],[/koldun|virtiniai|ceburek/,"🥟"],[/susi|sushi/,"🍣"],
- [/krevet|midij|kalmar|krab|juru ?geryb/,"🦐"],[/zuv|lasis|lasiu|silk|skumbr|menk|tun(as|ai|u)\b|sprot|strimel|upetak|karp/,"🐟"],
- [/desr|sosis|dešr/,"🌭"],[/kumpi|bekon|sonin|saliam|skiland|vytint|rukyt/,"🥓"],
- [/visti|vistuk|visciuk|broiler|kalakut|antien|paukst|blauzdel|sparnel|kuls/,"🍗"],
- [/kiauli|sprandin|karbonad|nugarin|mente|sonkaul/,"🥩"],[/jautien|versien|aviena|fars|malt(a|os) mes/,"🥩"],
- [/kiausin/,"🥚"],[/pupel/,"🫘"],[/sviest|margarin/,"🧈"],[/sur(is|io|iai|eliai|elis)|mocarel|mozzarel|feta\b|gouda|parmez|brie|cheddar/,"🧀"],
- [/jogurt|kefyr|pien|grietin|varsk|rugpien/,"🥛"],
- [/duon|batonas|baget|bandel|ciabat|tosto|kruasan|croissant/,"🍞"],[/tort|pyrag|keks|panet|eklera|spurg/,"🍰"],
- [/sokolad|batonel/,"🍫"],[/saldain|guminuk|marmelad|zefyr|karamel/,"🍬"],[/sausain|vafl|krekeri/,"🍪"],[/riesut|migdol|lazdyn|anakard|pistacij|sauleg/,"🥜"],
- [/obuol/,"🍎"],[/banan/,"🍌"],[/mandarin|apelsin|citrin|greipfrut|laim/,"🍊"],[/vynuog/,"🍇"],[/kriaus/,"🍐"],[/brask|aviet|melyn|uog/,"🍓"],[/kiv|kiwi/,"🥝"],[/avokad/,"🥑"],[/ananas/,"🍍"],
- [/bulv/,"🥔"],[/mork/,"🥕"],[/pomidor/,"🍅"],[/agurk/,"🥒"],[/svogun|cesnak/,"🧅"],[/kopust|brokol|kalafior|salot/,"🥬"],[/paprik/,"🫑"],[/grybai|pievagryb/,"🍄"],[/moliug|cukinij|batat/,"🎃"],
- [/ryz/,"🍚"],[/miltai|kruop|grikiai|dribs|avizin|musli/,"🌾"],[/aliej/,"🫒"],[/cukrus|druska/,"🧂"],[/medus/,"🍯"],[/kecup|padaz|majonez|garstyc|konserv|pupel|zirnel|kukuruz/,"🥫"],
- [/advento kalend/,"🎁"],[/zvak|girliand|dekoracij|eglut|egle\b|zaisl/,"🎄"]
+ // ne maisto prekės
+ [/kac|katem|sun(ims|u|ys)\b|gyvun|pasaras|edal|kraik|skanest/,"🐾",["gyvunai"]],[/sauskel|vystykl|kudik|huggies|pampers|lupilu/,"🍼",NONF],
+ [/zvak/,"🕯️",NONF],[/kalendori/,"🎁",NONF],[/dovan/,"🎁",NONF],
+ [/girliand|eglut|\begle|kaledin\w* (dekor|papuos|figur|zaisl)|egles (zaisl|papuos|virsun)|dekoracij|papuosim|varvekl|snaig/,"🎄",NONF],
+ [/kamuol/,"⚽",NONF],[/delion/,"🧩",NONF],[/knyg|lipduk/,"📚",NONF],
+ [/piesim|spalvin|tusinuk|piestuk|kanceliar|plastilin|akriliniai dazai|drob(e|es|iu)\b|flomaster/,"🖍️",NONF],
+ [/zaisl|pliusin|plius\.|\blel(e|es|iu|ems)\b|figurel|\blego\b|konstr|play-doh|hot wheels|barbie|automodel|masinel|robot|vienarag|mikroskop|teleskop|eksperiment|paspirtuk|zaidim|zaidimu/,"🧸",NONF],
+ [/kojin|pedkel|pedk\.|kojinait/,"🧦",NONF],[/pirstin/,"🧤",NONF],[/salikas|\bsalik/,"🧣",NONF],[/kepur|beret|ausines/,"🧢",NONF],
+ [/marskin|apatin|kelnait|liemenel|trumpik|bokser|drabuz|megztin|chalat|pizam|tampres|sortai|striuk/,"👕",NONF],
+ [/slepet|batai|avalyn|vidpad/,"🥿",NONF],
+ [/garsiakal|ausinuk|radij|racij|sintezator|patefon/,"🎧",NONF],
+ [/akumuliator|baterij|kabel|lemp|zibint|elektr|pelė|\bpele\b|klaviat|fotoaparat|lygintuv|dziovintuv|kombain|maisytuv|virdul|gruzdintuv|svarstykl|plauku dziov/,"🔌",NONF],
+ [/irank|grezt|slifuok|pjovim|kompresor|atsuktuv|plaktuk|parkside|disk(ai|as)|valymo irengin|aukst\w* slegio/,"🛠️",NONF],
+ [/keptuv|puod(as|ai|u|elis|eliai|elio)|dubenel|samtis|lekst|stiklin|taure|indu rinkin|form(a|os|eles|eliu)\b|peil|zirkl|atidarytuv|serviravimo|termos|gertuv|pjaustykl|tortine|asotis|kepimo/,"🍳",NONF],
+ [/rozes|\bgel(e|es|iu)\b|puoks|chrizant|frezij|tulp|orchid|vazon|augal|eustom|amarili|puansetij|sodinuk/,"🌹",NONF],
+ [/sampun|kondicion|muil|dus(o|ui) (gel|zel)|prausikl|vonios/,"🧴",NONF],[/dantu/,"🪥",NONF],
+ [/kvepal|\blupu\b|\blup\.|balzam|nagu|makiaz|tusas|pudr|plauku dazai|pl\. ?dazai|\bdazai/,"💄",NONF],
+ [/tualetin|popierin|servetel|rankslu|krepinis popier/,"🧻",NONF],[/siuksl/,"🗑️",NONF],
+ [/skalb|indaplov|plovikl|valikl|minkstikl|balikl|dezinf/,"🧼",NONF],
+ [/gaivikl|kvapas|kvapo|\baut\.|automobil|automodel/,"🚗",NONF],[/rakt/,"🔑",NONF],
+ // maistas
+ [/\balus\b|\balaus\b|\bsidras/,"🍺",FOOD],[/putojant|sampan|prosecco|cremant|cava\b/,"🥂",FOOD],
+ [/vyn(as|o|ai)\b|chardonnay|merlot|sauvignon|cabernet|riesling|appassimento|primitivo|rioja|\bvino\b/,"🍷",FOOD],
+ [/degtin|\bviski|whisk|konjak|brend|romas|\brum\b|\bgin\b|dzinas|likeris|tekila|spiritin|trauktin/,"🥃",FOOD],
+ [/kava|kavos|espresso|cappuccino/,"☕",["kava","gerimai"]],[/arbat/,"🍵",["kava","gerimai"]],[/kakav/,"☕",["kava"]],
+ [/sultys|sulciu|nektar/,"🧃",["gerimai","vaisiai"]],[/vanduo|vandens/,"💧",["gerimai"]],
+ [/cola|limonad|gaivus|gazuot|energin|gerim|\bger\.|tonik/,"🥤",["gerimai","vaisiai","kava"]],
+ [/ledai|ledu|plombyr/,"🍦",FOOD],[/pica|picos/,"🍕",FOOD],[/koldun|virtini|ceburek|khinkali|cepelin|pelmen|dumpling/,"🥟",FOOD],[/susi|sushi/,"🍣",FOOD],
+ [/krevet|midij|kalmar|krab|austr|omar/,"🦐",FOOD],[/ikrai|\bikr/,"🐟",FOOD],
+ [/zuv|lasis|lasiu|lasis|silk|skumbr|menk|tun(as|ai|u)\b|sprot|strimel|upetak|karp|pleksn|sardin|eserio|eseriu|dorad|polok/,"🐟",FOOD],
+ [/desr|sosis|sardel/,"🌭",FOOD],[/kumpi|bekon|sonin|saliam|skiland|vytint|rukyt|prosciutto|chorizo/,"🥓",["mesa","kulinarija"]],
+ [/visti|vistuk|visciuk|broiler|kalakut|antien|anties|\bantis\b|paukst|blauzdel|sparnel|kuls/,"🍗",["mesa","kulinarija","saldyta"]],
+ [/kiauli|sprandin|karbonad|nugarin|mente|sonkaul|jautien|versien|aviena|fars|malt(a|os) mes|kepsn/,"🥩",["mesa","kulinarija","saldyta"]],
+ [/kiausin/,"🥚",["pienas"]],[/sviest|margarin/,"🧈",["pienas"]],
+ [/sur(is|io|iai|eliai|elis|elio)|mocarel|mozzarel|feta\b|gouda|parmez|brie\b|cheddar|maskarpon|mascarpon|rikota|camembert/,"🧀",["pienas","kulinarija"]],
+ [/jogurt|kefyr|pien|grietin|varsk|rugpien|pasuk/,"🥛",["pienas","gerimai"]],
+ [/kruasan|croissant|raguol/,"🥐",["duona","konditerija"]],
+ [/tort|pyrag|keks|panet|pandoro|eklera|spurg|brownie|stolen|muffin/,"🍰",["konditerija","saldumynai","duona"]],
+ [/duon|batonas|baton(ai|eliai)\b|baget|bandel|ciabat|tosto|tortilij|skrebuc|lavas|pita\b/,"🍞",["duona","konditerija"]],
+ [/sokolad|batonel|javain|kit kat|snickers|twix|bounty|kinder/,"🍫",["saldumynai","uzkandziai"]],
+ [/saldain|guminuk|marmelad|zefyr|karamel|ledinuk|marcipan|triufel|draze/,"🍬",["saldumynai"]],
+ [/sausain|vafl|krekeri|meduol|imbierin/,"🍪",["saldumynai","uzkandziai","konditerija"]],
+ [/riesut|migdol|lazdyn|anakard|pistacij|sauleg|moliugu sekl|sekl/,"🥜",["uzkandziai"]],
+ [/obuol/,"🍎",["vaisiai"]],[/banan/,"🍌",["vaisiai"]],[/mandarin|apelsin|citrin|greipfrut|laim|pomel/,"🍊",["vaisiai"]],[/vynuog/,"🍇",["vaisiai"]],[/kriaus/,"🍐",["vaisiai"]],[/brask|aviet|melyn|uog|spanguol/,"🍓",["vaisiai"]],[/kiv|kiwi/,"🥝",["vaisiai"]],[/avokad/,"🥑",["vaisiai"]],[/ananas/,"🍍",["vaisiai"]],[/mang/,"🥭",["vaisiai"]],[/datul|dziovint|razin|slyv/,"🍇",["vaisiai"]],
+ [/bulv|batat/,"🥔",["vaisiai"]],[/mork/,"🥕",["vaisiai"]],[/pomidor/,"🍅",["vaisiai"]],[/agurk/,"🥒",["vaisiai"]],[/svogun|cesnak|poras/,"🧅",["vaisiai"]],[/kopust|brokol|kalafior|salot/,"🥬",["vaisiai"]],[/paprik/,"🫑",["vaisiai"]],[/grybai|grybu|pievagryb/,"🍄",["vaisiai","konservai"]],[/moliug|cukinij/,"🎃",["vaisiai"]],[/baklaz/,"🍆",["vaisiai"]],[/krapai|petraz|bazilik|zalumyn|zoleles/,"🌿",["vaisiai","bakaleja"]],
+ [/ryz/,"🍚",["bakaleja","kulinarija"]],[/miltai|kruop|grikiai|dribs|avizin|musli|granol|kuskus|bulgur/,"🌾",["bakaleja"]],[/aliej|alyvuog/,"🫒",["bakaleja","uzkandziai","konservai"]],
+ [/cukrus|cukraus|druska|pipir|cinamon|vanil/,"🧂",["bakaleja"]],[/medus/,"🍯",FOOD],
+ [/kecup|padaz|majonez|garstyc|konserv|pupel|zirnel|kukuruz|uzpil|dzem|uogien|tyre/,"🥫",["konservai","bakaleja"]],
+ [/makaron|spagec|penne|fusilli|lazanij/,"🍝",["bakaleja"]],
 ];
-const iconOf=r=>{const t=r.n;for(const [re,ic] of ICONS){if(re.test(t)){if(ic)return ic;break}}return catOf(r.c).icon};
+const iconOf=r=>{const t=norm(r.name);for(const [re,ic,cs] of ICONS){if(cs&&!cs.includes(r.c))continue;if(re.test(t))return ic||catOf(r.c).icon}return catOf(r.c).icon};
 const catOf=id=>DB.cats.find(c=>c.id==id)||DB.cats[DB.cats.length-1];
 
 function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
