@@ -43,7 +43,7 @@ RULES = [
     ("pienas", r"(suriams|pelesiniams)"),
     ("zuvis", r"(\btunams|sukutes)"),
     ("saldumynai", r"(saldumynams|saldumynai geisha|hematogen|magic of winter)"),
-    ("bakaleja", r"(saus[ie]ems pusryciams|sultiniams|sultiniai|sriuboms|(produkcij\w*|visai|produktams).{0,30}(maggi|knorr|santa maria|bonduelle|oetker|gourmet green|bornibus)|(maggi|knorr|bonduelle|oetker|bornibus).{0,20}produkcij|\bmedui\b)"),
+    ("bakaleja", r"(sausi[ae]ms pusryciams|sultiniams|sultiniai|sriuboms|(produkcij\w*|visai|produktams).{0,30}(maggi|knorr|santa maria|bonduelle|oetker|gourmet green|bornibus)|(maggi|knorr|bonduelle|oetker|bornibus).{0,20}produkcij|\bmedui\b)"),
     ("uzkandziai", r"(o!nuts|onuts)"),
     ("gerimai", r"(\bgirai\b)"),
     ("vaikai", r"((?<!kirpimo )masinel|traukin|kaladel|gelezinkel|virtuvel|vagonel|lavinam|ridenimo|teleskop|sraigtaspar|kvadrokopter|nuotoliniu budu valdom|muzikos instrument|klavisin|sintezator|zemelap|mokomas|walkie|spalvoti piestuk)"),
