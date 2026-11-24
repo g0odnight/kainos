@@ -153,6 +153,28 @@ function unit(n,p){const t=norm(n),m=t.match(/(\d+(?:\.\d+)?)\s*(?:x\s*(\d+(?:\.
  const v=u=="g"?p/q*1000:u=="ml"?p/q*1000:p/q;return{v,l:u=="g"||u=="kg"?"kg":"l"}}
 const SZ=/(\d+\s*[x×]\s*)?\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(kg|g|ml|l|vnt\.?|rit\.?|pak\.?)(?![\wąčęėįšųūž])/gi;
 const sizeOf=n=>{const m=n.match(SZ);if(!m)return"";const w=m.filter(x=>/(kg|g|ml|l)\b/i.test(x));return (w.length?w[w.length-1]:m[m.length-1]).replace(/\s+/g," ").trim()};
+// Tikslesnė ikona pagal pavadinimą (jei neatpažinta – kategorijos ikona). Tikrinama iš eilės.
+const ICONS=[
+ [/skonio|sk\.|prieskon|makaron|lakst|ramen|sultinys|trasku|cips/,null],
+ [/kac|katem|sun(ims|u)\b|gyvun|pasaras/,"🐾"],[/sauskel|vystykl|kudik/,"🍼"],
+ [/tualetin|popierin|servetel/,"🧻"],[/skalb|indaplov|plovikl|valikl|minkstikl/,"🧼"],[/sampun|muil|dantu|dezodor|krem|losjon|dus(o|ui)/,"🧴"],
+ [/\balus\b|\balaus\b/,"🍺"],[/vyn(as|o)\b|sampan|prosecco|cava\b/,"🍷"],[/degtin|viski|whisk|konjak|brend|romas|\bgin\b|dzinas|likeris|tekila/,"🥃"],
+ [/kava|kavos/,"☕"],[/arbat/,"🍵"],[/sultys|sulciu|nektar/,"🧃"],[/vanduo|vandens/,"💧"],[/cola|limonad|gaivus|gazuot/,"🥤"],
+ [/ledai|plombyr/,"🍦"],[/pica|picos/,"🍕"],[/koldun|virtiniai|ceburek/,"🥟"],[/susi|sushi/,"🍣"],
+ [/krevet|midij|kalmar|krab|juru ?geryb/,"🦐"],[/zuv|lasis|lasiu|silk|skumbr|menk|tun(as|ai|u)\b|sprot|strimel|upetak|karp/,"🐟"],
+ [/desr|sosis|dešr/,"🌭"],[/kumpi|bekon|sonin|saliam|skiland|vytint|rukyt/,"🥓"],
+ [/visti|vistuk|visciuk|broiler|kalakut|antien|paukst|blauzdel|sparnel|kuls/,"🍗"],
+ [/kiauli|sprandin|karbonad|nugarin|mente|sonkaul/,"🥩"],[/jautien|versien|aviena|fars|malt(a|os) mes/,"🥩"],
+ [/kiausin/,"🥚"],[/sviest|margarin/,"🧈"],[/sur(is|io|iai|eliai|elis)|mocarel|mozzarel|feta\b|gouda|parmez|brie|cheddar/,"🧀"],
+ [/jogurt|kefyr|pien|grietin|varsk|rugpien/,"🥛"],
+ [/duon|batonas|baget|bandel|ciabat|tosto|kruasan|croissant/,"🍞"],[/tort|pyrag|keks|panet|eklera|spurg/,"🍰"],
+ [/sokolad|batonel/,"🍫"],[/saldain|guminuk|marmelad|zefyr|karamel/,"🍬"],[/sausain|vafl|krekeri/,"🍪"],[/riesut|migdol|lazdyn|anakard|pistacij|sauleg/,"🥜"],
+ [/obuol/,"🍎"],[/banan/,"🍌"],[/mandarin|apelsin|citrin|greipfrut|laim/,"🍊"],[/vynuog/,"🍇"],[/kriaus/,"🍐"],[/brask|aviet|melyn|uog/,"🍓"],[/kiv|kiwi/,"🥝"],[/avokad/,"🥑"],[/ananas/,"🍍"],
+ [/bulv/,"🥔"],[/mork/,"🥕"],[/pomidor/,"🍅"],[/agurk/,"🥒"],[/svogun|cesnak/,"🧅"],[/kopust|brokol|kalafior|salot/,"🥬"],[/paprik/,"🫑"],[/grybai|pievagryb/,"🍄"],[/moliug|cukinij|batat/,"🎃"],
+ [/ryz/,"🍚"],[/miltai|kruop|grikiai|dribs|avizin|musli/,"🌾"],[/aliej/,"🫒"],[/cukrus|druska/,"🧂"],[/medus/,"🍯"],[/kecup|padaz|majonez|garstyc|konserv|pupel|zirnel|kukuruz/,"🥫"],
+ [/advento kalend/,"🎁"],[/zvak|girliand|dekoracij|eglut|egle\b|zaisl/,"🎄"]
+];
+const iconOf=r=>{const t=r.n;for(const [re,ic] of ICONS){if(re.test(t)){if(ic)return ic;break}}return catOf(r.c).icon};
 const catOf=id=>DB.cats.find(c=>c.id==id)||DB.cats[DB.cats.length-1];
 
 function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
@@ -212,7 +234,7 @@ $("#sheet").onclick=e=>{if(e.target.id=="sheet")closeSheet()};
 const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:sortBy=="off"?-r.off:r.price;
 const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a.price-b.price;
 function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
- return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${ct.icon}</div>
+ return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${iconOf(r)}</div>
  <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
  <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s>${eur(r.old)}</s>`:""}</div>
  <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
@@ -226,7 +248,7 @@ function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!$("#v1").hidden&&cur.length>lim){lim+=80;$("#res").insertAdjacentHTML("beforeend",cur.slice(lim-80,lim).map(x=>card(x,false)).join(""))}},{rootMargin:"800px"}).observe($("#sentinel"));
 $("#res").addEventListener("click",e=>{const t=e.target.closest("[data-id]");if(!t)return;if(e.target.closest(".add"))addItem(+t.dataset.id,t);else detail(+t.dataset.id)});
 function detail(id){const r=DB.rows[id];if(!r)return;const ct=catOf(r.c),inc=cart.find(c=>c.id==r.id);
- $("#sheetc").innerHTML=`<div class="det"><div class="ic" style="--c:${col(r.s)};width:56px;height:56px;font-size:28px">${ct.icon}</div>
+ $("#sheetc").innerHTML=`<div class="det"><div class="ic" style="--c:${col(r.s)};width:56px;height:56px;font-size:28px">${iconOf(r)}</div>
   <h2 style="margin:12px 0 6px;line-height:1.25">${esc(r.name)}</h2>
   <div class="meta" style="font-size:14px"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}<span class="tg">${ct.icon} ${esc(ct.name)}</span></div>
   <div style="display:flex;align-items:baseline;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>

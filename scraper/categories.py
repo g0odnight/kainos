@@ -43,6 +43,7 @@ RULES = [
     ("kava", r"(kava|kavos|kavine|lavazza|jacobs|nescafe|paulig|pellini|dallmayr|arbat|kakava|kakavos (milt|gerim)|cikorij|karstas sokoladas)"),
     ("gerimai", r"(gerim|sultys\b|sulciu|nektar|vanduo|vandens|mineralin|limonad|gira\b|\bcola\b|coca|pepsi|fanta|sprite|energin|tonik|kokteil|smoothie|kombuc|depozit|nealkohol|tymbark|oshee)"),
     ("uzkandziai", r"(trasku|\bcips|chips|popcorn|spragesi|krekeri|snack|lay.?s|pringles|estrella)"),
+    ("bakaleja", r"(prieskon|makaron|lakst|ramen|nudel|sultinys|buljon|\bpadaz(as|ai)\b|marinat|kosė .*knorr|kose .*knorr)"),
     ("saldyta", r"((?<!at)saldyt(?!uv)|\bledai|ledai|\bledu\b|plombyr|\bpica|picos|koldun|virtiniai|ceburek|panzerotti)"),
     ("kulinarija", r"(kulinar|apkepel|rizotas|\bsalotos\b(?! lap)|salotos,|\bsalotu\b|susi\b|sushi|griliu? visti|kepta visti|paruostas maist|patiekal|cepelin|balandel|vedarai|kugel|suktinuk|wrap|kotlet|\bblynai|\bplovas|sriuba(?!.{0,20}(sausa|koncentr|kub))|paruosti valgyti|vitello|lasagn|lazanij)"),
     ("zuvis", r"(zuv|lasis|lasiu|lasisa|lasisos|silk|krevet|ikrai|\bikr|tun(as|ai|u)\b|sprot|skumbr|strimel|menk|upetak|karpi|lydek|kalmar|midij|krab|surimi|juru ?geryb|wide ocean|\beser|juri?nis eser|ersket|stint|omar|astuonkoj|polok|heke|tilapij|dorad|lasis)"),
