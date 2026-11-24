@@ -571,7 +571,9 @@ def crawl_official(ctx, page, store, c):
             items = crawl_maxima_offers(page, c["offers_url"])
             if len(items) >= 30:
                 today = datetime.date.today().isoformat()
-                return {k: u for k, u in items.items() if not u[0] or u[0] >= today}
+                offers = {k: u for k, u in items.items() if not u[0] or u[0] >= today}
+                if not c.get("themed_viewers"): return offers
+                pre, c = offers, dict(c, merge_pre=True)   # + teminiai leidiniai (Kalėdų mėnuo ir pan.) iš peržiūros
         except Exception as e:
             print("   Maxima pasiūlymų klaida:", e)
     if c.get("norfa"):
@@ -582,6 +584,7 @@ def crawl_official(ctx, page, store, c):
     pdfs = set(c.get("pdfs", [])); viewers = set(c.get("viewers", []))
     for u in c.get("pages", []):
         p, v = find_pdfs(page, u, c.get("viewer_regex")); pdfs |= p; viewers |= v
+    if c.get("viewer_skip"): viewers = {v for v in viewers if not re.search(c["viewer_skip"], v)}
     for v in list(viewers):   # Rimi: naujas savaitinis leidinys kartais pasirodo anksčiau nei nuoroda puslapyje
         m = re.search(r"(savaitinis-leidinys-nr-)(\d+)", v)
         if m: viewers.add(v.replace(m.group(0), m.group(1) + str(int(m.group(2)) + 1)))
@@ -626,6 +629,8 @@ def crawl_official(ctx, page, store, c):
     today = datetime.date.today().isoformat()
     items = {k: u for k, u in items.items() if not u[0] or u[0] >= today}
     if pre: print(f"   {store}: leidinys {len(items)} + e. parduotuvės akcijos {len(pre)}")
+    if c.get("merge_pre"):   # leidinio prekės prie pasiūlymų – be dublių
+        n = merge_extra(pre, items); print(f"   + teminiai leidiniai: {n} papildomų prekių (iš {len(items)})"); return pre
     for k, u in pre.items(): items.setdefault(k, u)
     return items
 
