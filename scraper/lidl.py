@@ -98,6 +98,43 @@ def parse_page(bl):
     return out
 
 
+BIGP = re.compile(r"^(\d{1,4})(?:[,.](\d{2}))?\s*€?\s*\*?$")
+OLDP = re.compile(r"(\d{1,4}),(\d{2})\s*$")
+CODE = re.compile(r"^\d{6}$")
+
+
+def parse_page_codes(bl):
+    """Ne maisto leidinio maketas: pavadinimas (šriftas ~12) → aprašas → 6 skaitmenų prekės kodas; šalia stambi
+    kaina („30€*“, „69,99*“) ir virš jos sena kaina su nuolaida („-50﹪ 59,99“). Prekes atpažįstam nuo kodo."""
+    codes = [b for b in bl if CODE.match(b["t"].strip()) and b["h"] < 9]
+    if not codes: return []
+    prices = [b for b in bl if b["h"] >= 38 and BIGP.match(b["t"].strip().replace(" ", ""))]
+    titles = [b for b in bl if 11.3 <= b["h"] <= 12.7 and len(re.findall(r"[^\W\d_]", b["t"])) >= 4]
+    cands = []
+    for ci, c in enumerate(codes):
+        for pi, p in enumerate(prices):
+            dx, dy = p["x0"] - c["x0"], p["y0"] - c["y0"]
+            if -40 < dx < 230 and -150 < dy < 90:
+                cands.append(((dx * dx + (dy * 1.5) ** 2) ** 0.5, ci, pi))
+    cands.sort(); used_c, used_p, out = set(), set(), []
+    for _, ci, pi in cands:
+        if ci in used_c or pi in used_p: continue
+        c, p = codes[ci], prices[pi]
+        above = [t for t in titles if abs(t["x0"] - c["x0"]) < 15 and 0 < c["y0"] - t["y0"] < 130]
+        if not above: continue
+        used_c.add(ci); used_p.add(pi)
+        t = max(above, key=lambda t: t["y0"])
+        m = BIGP.match(p["t"].strip().replace(" ", "")); price = int(m.group(1)) + (int(m.group(2)) / 100 if m.group(2) else 0)
+        old = None
+        for o in bl:   # „-50﹪ 59,99“ tiesiai virš stambios kainos
+            if 10 < o["h"] < 38 and -15 < o["x0"] - p["x0"] < 40 and 0 < p["y0"] - o["y0"] < 40:
+                mo = OLDP.search(o["t"])
+                if mo and price < int(mo.group(1)) + int(mo.group(2)) / 100 < price * 4: old = int(mo.group(1)) + int(mo.group(2)) / 100
+        name = re.sub(r"\s+", " ", t["t"]).strip()
+        if 0.3 < price < 3000: out.append((name[:120], round(price, 2), old))
+    return out
+
+
 def parse(path):
     xml = subprocess.run(["pdftotext", "-bbox-layout", str(path), "-"], capture_output=True, text=True,
                          encoding="utf-8", errors="replace", timeout=900).stdout
@@ -107,6 +144,10 @@ def parse(path):
 def parse_xml(xml):
     res = []
     for bl in _blocks(xml):
-        for name, price, old in parse_page(bl):
+        page = parse_page(bl)
+        names = {n.split(",")[0].lower() for n, _, _ in page}
+        for n, p, o in parse_page_codes(bl):   # ne maisto puslapiai: prekės, kurių maisto maketo skaitytuvas nerado
+            if n.lower() not in names: page.append((n, p, o))
+        for name, price, old in page:
             res.append((name, price, "", "", old))
     return list(dict.fromkeys(res))
