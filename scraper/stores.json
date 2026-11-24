@@ -98,13 +98,9 @@
     },
     "leaflets": {
       "enabled": true,
-      "pages": [
-        "https://iki.lt/leidiniai/"
-      ],
-      "pdfs": [],
-      "viewer_regex": "iki\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
+      "manoakcijos": "iki"
     },
-    "info": "iki.lt blokuoja automatinį rinkimą (Cloudflare). Galima rinkti tik tavo kompiuteryje."
+    "info": "IKI leidiniai iš manoakcijos.lt (paveikslėliai, OCR). Kaina apskaičiuojama iš kiekio ir kainos už kg/l, todėl prekės be jų (pvz. „-40 % kruopoms“, „1+1“) neįtraukiamos."
   },
   "Norfa": {
     "catalog": {

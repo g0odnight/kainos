@@ -366,7 +366,41 @@ def crawl_promo(ctx, page, url, max_pages=60):
         note("akcijos.lt Promo leidiniai (OCR)", pubs=1, pages=min(n, max_pages), parsed=got)
     return items
 
+def crawl_manoakcijos(ctx, page, slug, max_pages=60):
+    """manoakcijos.lt (Moja Gazetka) leidinių paveikslėliai -> OCR (iki.py): kaina = kiekis × kaina už kg/l."""
+    import iki
+    page.goto(f"https://manoakcijos.lt/parduotuves/{slug}", wait_until="domcontentloaded", timeout=90000)
+    try: page.wait_for_load_state("networkidle", timeout=15000)
+    except Exception: pass
+    imgs = page.eval_on_selector_all("img", "e=>e.map(x=>x.currentSrc||x.src||'')")
+    dirs = {}
+    for x in imgs:
+        m = re.search(r"app\.manoakcijos\.lt/((\d{6})_(\d{6})_" + re.escape(slug) + r"_(\w+))/image00", x)
+        if m: dirs[m.group(1)] = ("20" + m.group(3)[:2] + "-" + m.group(3)[2:4] + "-" + m.group(3)[4:], "20" + m.group(2)[:2] + "-" + m.group(2)[2:4] + "-" + m.group(2)[4:])
+    today = datetime.date.today().isoformat()
+    dirs = {d: v for d, v in dirs.items() if v[1] >= today}
+    print(f"   manoakcijos {slug}: {len(dirs)} leidiniai")
+    items, done = {}, 0
+    for d, (frm, until) in dirs.items():
+        got = 0
+        for k in range(1, 40):
+            if done >= max_pages: break
+            try:
+                r = ctx.request.get(f"https://app.manoakcijos.lt/{d}/image{k:02d}.webp", timeout=60000)
+                if r.status != 200: break
+                res = iki.parse_image(r.body()); done += 1
+            except Exception as e:
+                print("   OCR klaida:", e); continue
+            for name, price in res: items[(name, price)] = (until, frm, None); got += 1
+        print(f"   {d}: {k - 1} psl., {got} prekių")
+        note("manoakcijos.lt leidiniai (OCR)", pubs=1, pages=k - 1, parsed=got)
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("manoakcijos"):
+        try: return crawl_manoakcijos(ctx, page, c["manoakcijos"])
+        except Exception as e:
+            print("   manoakcijos klaida:", e); return {}
     if c.get("promo_akcijos"):
         try: return crawl_promo(ctx, page, c["promo_akcijos"])
         except Exception as e:
