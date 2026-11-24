@@ -35,6 +35,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .chip.on{color:var(--tx);border-color:var(--tx)}
 .chip.cat.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
 .chip small{font-weight:500;opacity:.65}
+.pn{font-size:12px;font-weight:600;opacity:.7;margin-left:3px;letter-spacing:0}
 .wrapchips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0 0}.wrapchips .chip{padding:6px 11px;font-size:13.5px;gap:6px}
 .chip.more{border-style:dashed}
 .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 2px;gap:10px}
@@ -219,7 +220,7 @@ function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
  return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
 function init(j,d){demo=!!d;DB=j;DB.items_total=(j.items||[]).length;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
-  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2]),sz:sizeOf(a[1])}});
+  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:multi(a[1])?null:unit(a[1],/kaina už (\d+) vnt/.test(a[8]||"")?a[2]/+/kaina už (\d+) vnt/.exec(a[8])[1]:a[2]),sz:multi(a[1])?"":sizeOf(a[1])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  const known=ls("known3")||(saved||[]);
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));
@@ -281,10 +282,13 @@ $("#sheet").onclick=e=>{if(e.target.id=="sheet")closeSheet()};
 // ---------- sąrašas ----------
 const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:sortBy=="off"?-r.off:r.price;
 const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a.price-b.price;
+// kas yra rodoma kaina: „/vnt.“ (vieneto kaina, kai akcija „2 vnt. už“ ar „1+1“), „už N vnt.“ (kaina už kelis kartu)
+const pnote=r=>{const d=r.deal||"",m=/kaina už (\d+) vnt/.exec(d);return m?`už ${m[1]} vnt.`:/vnt\. už|\d\+\d/.test(d)?"/vnt.":""};
+const multi=n=>/rinkinys nr/i.test(n)||new Set((n.match(/\d+(?:[.,]\d+)?\s*(kg|g|ml|l)(?![\wąčęėįšųūž])/gi)||[]).map(x=>x.replace(/\s/g,"").toLowerCase())).size>=3;
 function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
  return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${iconOf(r)}</div>
  <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
- <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s>${eur(r.old)}</s>`:""}</div>
+ <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}${pnote(r)?`<small class="pn">${pnote(r)}</small>`:""}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s>${eur(r.old)}</s>`:""}</div>
  <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
 let cur=[];
 function drawList(){drawCats();const q=Q.trim();$("#x").hidden=!q;
@@ -299,7 +303,7 @@ function detail(id){const r=DB.rows[id];if(!r)return;const ct=catOf(r.c),inc=car
  $("#sheetc").innerHTML=`<div class="det"><div class="ic" style="--c:${col(r.s)};width:56px;height:56px;font-size:28px">${iconOf(r)}</div>
   <h2 style="margin:12px 0 6px;line-height:1.25">${esc(r.name)}</h2>
   <div class="meta" style="font-size:14px"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}<span class="tg">${ct.icon} ${esc(ct.name)}</span></div>
-  <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}</b>${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>${r.deal?`<div style="margin:2px 0 6px"><span class="deal">${esc(r.deal)}</span></div>`:""}
+  <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}${pnote(r)?`<small class="pn" style="font-size:16px"> ${pnote(r)}</small>`:""}</b>${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>${r.deal?`<div style="margin:2px 0 6px"><span class="deal">${esc(r.deal)}</span></div>`:""}
   <div class="sum" style="margin-bottom:6px">${r.from||r.until?"Galioja "+(r.from?fd(r.from)+" – ":"iki ")+fd(r.until):"Galiojimas nenurodytas"}</div></div>
   <div class="sticky-b"><button class="btn gh" id="cl3">Uždaryti</button><button class="btn" id="add3">${inc?"+1 (krepšelyje "+inc.n+")":"+ Į krepšelį"}</button></div>`;
  $("#sheet").classList.add("show");$("#cl3").onclick=closeSheet;$("#add3").onclick=()=>{addItem(id,document.querySelector(`.card[data-id="${id}"]`));closeSheet()}}

@@ -450,6 +450,13 @@ def ak_leaflet(html, store=""):
             # šaltinis neatskiria „pirk 2 – pigiau“ nuo pakuotės „2 but. × 2 l“, todėl kainos nedalinam
             deal = f"kaina už {int(mv.group(1))} vnt."
         det = ak_details(x.get("details"))
+        raw = re.sub(r"\s+", " ", unescape(x.get("details") or ""))
+        if re.search(r"rinkin", x.get("title") or "", re.I) and re.search(r"sudaro", raw, re.I):
+            # dovanų rinkinys („Rinkinys Nr. 6“): vietoj kiekių – pirmos kelios sudėties prekės
+            parts = [re.sub(r"^\d{1,2}[.)]?\s*", "", p).strip(" ,;.") for p in re.split(r"(?:^|[,;]\s*|\s)(?=\d{2}\s+[A-ZĄČĘĖĮŠŲŪŽ])", re.split(r"sudaro:?", raw, flags=re.I)[1])]
+            parts = [re.split(r",|\s[–-]\s", p)[0].strip() for p in parts if len(p) > 2]
+            cut = lambda p: p if len(p) <= 40 else p[:40].rsplit(" ", 1)[0] + "…"
+            det = "sudėtis: " + ", ".join(cut(p) for p in parts[:3]) + (" ir kt." if len(parts) > 3 else "")
         title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
         if store == "Lidl" and title.isupper() and len(title.split()) <= 4 and not re.search(r"\d", title):
             continue   # leidinio skyriaus antraštė („MUZIKOS INSTRUMENTAI“, „ŽINOMI PREKIŲ ŽENKLAI“), ne prekė
