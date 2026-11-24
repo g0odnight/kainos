@@ -345,7 +345,7 @@ function drawInfo(){const st=DB.status||{},el=$("#info");
   const cls=n==0?"no":x.warn?"part":"ok",lbl=n==0?"Nėra duomenų":x.warn?"Dalinai":"Veikia";
   const src=(x.sources||[]).slice().sort((a,b)=>/akcijuseklys/.test(a)-/akcijuseklys/.test(b)).map(v=>v.replace(/\s*\(.*?\)/g,"")).join(" + ")||SRC[s]||"";
   h+=`<div class="ist"><div class="hd"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="bdg ${cls}">${lbl}</span></div>
-   <div class="nums"><div><small>Rodoma prekių</small><b>${n}</b></div><div><small>Su sena kaina</small><b>${disc||"–"}</b></div><div><small>Galioja iki</small><b>${last?fd(last):"–"}</b></div></div>
+   <div class="nums"><div><small>Rodoma prekių</small><b>${n}</b></div><div><small>Su nuolaida</small><b>${disc||"–"}</b></div><div><small>Galioja iki</small><b>${last?fd(last):"–"}</b></div></div>
    <p>Šaltinis: ${esc(src)}</p>
    ${x.warn?`<p>⚠️ ${esc(x.warn)}</p>`:""}${x.info?`<p>${esc(x.info)}</p>`:""}</div>`});
  h+=DB.run&&DB.run.url?`<p class="sum" style="margin:14px 2px">Techninė informacija: <a href="${DB.run.url}" target="_blank" rel="noopener" style="color:var(--ac2)">rinkimo žurnalas GitHub</a></p>`:"";
