@@ -105,7 +105,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 .tot{background:var(--tx);color:var(--bg);border-radius:20px;padding:16px;margin:18px 0 10px}
 .tot .r{display:flex;justify-content:between;justify-content:space-between;font-size:14px;opacity:.85;margin:3px 0}
 .tot .big{font-size:26px;font-weight:850;letter-spacing:-.5px;opacity:1}
-#toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%) translateY(16px);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:30}#toast.show{opacity:1;transform:translateX(-50%)}
+#toast{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top));bottom:auto;max-width:calc(100% - 32px);transform:translateX(-50%) translateY(-16px);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.2s;z-index:30}#toast.show{opacity:1;transform:translateX(-50%)}
 .note{background:var(--warn);color:var(--warnt);border-radius:14px;padding:10px 12px;font-size:13.5px;margin:10px 0}
 .srow{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:16px;padding:12px;margin:8px 0}
 .srow .mid div{font-size:13px;color:var(--mu)}
@@ -294,15 +294,17 @@ function detail(id){const r=DB.rows[id];if(!r)return;const ct=catOf(r.c),inc=car
  $("#sheetc").innerHTML=`<div class="det"><div class="ic" style="--c:${col(r.s)};width:56px;height:56px;font-size:28px">${iconOf(r)}</div>
   <h2 style="margin:12px 0 6px;line-height:1.25">${esc(r.name)}</h2>
   <div class="meta" style="font-size:14px"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}<span class="tg">${ct.icon} ${esc(ct.name)}</span></div>
-  <div style="display:flex;align-items:baseline;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:""}${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>
+  <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:16px 0 4px"><b style="font-size:34px;letter-spacing:-1px">${eur(r.price)}</b>${r.old?`<s style="color:var(--mu)">${eur(r.old)}</s>`:""}${r.off>=1?`<span class="off">−${r.off}%</span>`:""}</div>${r.deal?`<div style="margin:2px 0 6px"><span class="deal">${esc(r.deal)}</span></div>`:""}
   <div class="sum" style="margin-bottom:6px">${r.from||r.until?"Galioja "+(r.from?fd(r.from)+" – ":"iki ")+fd(r.until):"Galiojimas nenurodytas"}</div></div>
-  <div class="sticky-b"><button class="btn gh" id="cl3">Uždaryti</button><button class="btn" id="add3">${inc?"✓ Krepšelyje ("+inc.n+") · +1":"+ Į krepšelį"}</button></div>`;
+  <div class="sticky-b"><button class="btn gh" id="cl3">Uždaryti</button><button class="btn" id="add3">${inc?"+1 (krepšelyje "+inc.n+")":"+ Į krepšelį"}</button></div>`;
  $("#sheet").classList.add("show");$("#cl3").onclick=closeSheet;$("#add3").onclick=()=>{addItem(id,document.querySelector(`.card[data-id="${id}"]`));closeSheet()}}
 function addItem(id,el){const r=DB.rows[id];if(!r)return;const f=cart.find(c=>c.id==r.id||(c.s==r.s&&c.name==r.name&&c.price==r.price));
  f?f.n++:cart.push({id:r.id,s:r.s,name:r.name,price:r.price,deal:r.deal,old:r.old,until:r.until,from:r.from,n:1,done:false});saveCart();
  if(el){const b=el.querySelector(".add"),n=cart.find(c=>c.id==r.id)?.n||1;b.classList.add("in");b.textContent="✓"+(n>1?n:"")}
  toast(`Pridėta: ${r.name.slice(0,34)}${r.name.length>34?"…":""}`)}
 const saveCart=()=>{ls("cart3",cart);$("#cc").textContent=cart.length||""};
+// eilutės kaina: „1+1: 2 vnt. už 1,09 €“ – pilnos poros pagal bendrą kainą, likutis pagal vieneto kainą
+function lineCost(c){const m=/(\d+) vnt\. už (\d+),(\d{2})/.exec(c.deal||"");if(m&&/\d\+\d/.test(c.deal)){const q=+m[1],t=+m[2]+m[3]/100;return Math.floor(c.n/q)*t+Math.round(c.price*(c.n%q)*100)/100}return Math.round(c.price*c.n*100)/100}
 let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>e.classList.remove("show"),1400)}
 
 // ---------- krepšelis ----------
@@ -310,9 +312,9 @@ function drawCart(){saveCart();const el=$("#cart");
  if(!cart.length){el.innerHTML=`<div class="empty"><big>🧺</big>Krepšelis tuščias.<br>Pasiūlymų sąraše spausk „+“ prie prekės.</div>`;return}
  const g={};cart.forEach((c,i)=>(g[c.s]=g[c.s]||[]).push([c,i]));
  let tot=0,save=0,cnt=0,h="";
- Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+c.price*c.n,0);
+ Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+lineCost(c),0);
   h+=`<div class="store-h"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="sum">${eur(sub)}</span></div>`;
-  arr.forEach(([c,i])=>{tot+=c.price*c.n;cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
+  arr.forEach(([c,i])=>{tot+=lineCost(c);cnt+=c.n;if(c.old)save+=(c.old-c.price)*c.n;
    h+=`<div class="ci ${c.done?"done":""}"><button class="ck" data-ck="${i}" aria-label="Pažymėti nupirktą">${c.done?"✓":""}</button><div class="mid"><div class="nm">${esc(c.name)}</div><div class="meta"><span>${eur(c.price)}${/vnt\. už/.test(c.deal||"")?"/vnt.":""}</span>${c.deal?`<span class="deal">${esc(c.deal)}</span>`:""}${c.old?`<s>${eur(c.old)}</s>`:""}${valid(c)}</div></div>
    <div class="q"><button data-m="${i}" aria-label="Mažiau">−</button><b>${c.n}</b><button data-p="${i}" aria-label="Daugiau">+</button></div><button class="del" data-del="${i}" aria-label="Pašalinti">🗑</button></div>`})});
  h=`<div class="tot"><div class="r"><span>${cart.length} prek.${cnt>cart.length?` · ${cnt} vnt.`:""}</span><span>${Object.keys(g).length} parduot.</span></div><div class="r"><span>Iš viso</span><span class="big">${eur(tot)}</span></div>${save>0.004?`<div class="r"><span>Sutaupai pagal leidinius</span><span>${eur(save)}</span></div>`:""}</div>`+h+
@@ -336,7 +338,7 @@ function drawInfo(){const st=DB.status||{},el=$("#info");
   <div class="ist"><div class="nums"><div><small>Rodoma programėlėje</small><b>${shown}</b></div><div><small>Parduotuvių su duomenimis</small><b>${new Set(DB.rows.map(r=>r.s)).size} / ${DB.stores.length}</b></div><div><small>Pasibaigusių paslėpta</small><b>${Math.max(0,all-shown)}</b></div></div></div>`;
  DB.stores.forEach(s=>{const x=st[s]||{},rows=DB.rows.filter(r=>r.s==s),n=rows.length,disc=rows.filter(r=>r.old).length,last=[...new Set(rows.map(r=>r.until).filter(Boolean))].sort().pop();
   const cls=n==0?"no":x.warn?"part":"ok",lbl=n==0?"Nėra duomenų":x.warn?"Dalinai":"Veikia";
-  const src=(x.sources||[]).map(v=>v.replace(/\s*\(.*?\)/g,"")).join(" + ")||SRC[s]||"";
+  const src=(x.sources||[]).slice().sort((a,b)=>/akcijuseklys/.test(a)-/akcijuseklys/.test(b)).map(v=>v.replace(/\s*\(.*?\)/g,"")).join(" + ")||SRC[s]||"";
   h+=`<div class="ist"><div class="hd"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="bdg ${cls}">${lbl}</span></div>
    <div class="nums"><div><small>Rodoma prekių</small><b>${n}</b></div><div><small>Su sena kaina</small><b>${disc||"–"}</b></div><div><small>Galioja iki</small><b>${last?fd(last):"–"}</b></div></div>
    <p>Šaltinis: ${esc(src)}</p>

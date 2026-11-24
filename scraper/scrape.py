@@ -684,6 +684,8 @@ def main():
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items():
+                n = re.sub(r",?\s+\b(AW|SS|CH|HW|FW)\d{2}\b", "", n).strip(" ,")   # sezonų kodai (Rimi)
+                n = re.sub(r"\s+\d{6,}$", "", n)                                       # prekės kodas gale
                 if store in OCR:
                     n = re.sub(r"\s[\"'|~^]+[^\W\d_]{0,2}(?=\s)", "", fixnames.restore(n, vocab))
                 if fixnames.is_fragment(n): continue
