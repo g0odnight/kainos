@@ -106,6 +106,13 @@ def ocr_image(body):
         return leaflets._run(["tesseract", f.name, "stdout", "-l", "lit+eng", "--psm", "6"], 120)
 
 PDF_DATES = {}
+STATS, CUR = {}, {"store": ""}
+
+def note(source=None, **counts):
+    """Statistika programėlės „Informacija“ puslapiui: šaltiniai ir kiekiai."""
+    st = STATS.setdefault(CUR["store"], {"sources": [], "found": 0, "parsed": 0})
+    if source and source not in st["sources"]: st["sources"].append(source)
+    for k, v in counts.items(): st[k] = st.get(k, 0) + v
 
 def page_text(pg):
     parts = []
@@ -192,6 +199,7 @@ def crawl_norfa(ctx, page, url):
                 f.write(b); f.flush()
                 res = norfa.parse(f.name, until, frm)
             print(f"   Norfa {href} ({frm}–{until}): {len(res)} prekių")
+            note("norfa.lt leidiniai (PDF)", parsed=len(res), pubs=1)
             for x in res: items[(x[0], x[1])] = (x[2], x[3], x[4])
         except Exception as e:
             print("   Norfa klaida:", href, e)
@@ -260,6 +268,7 @@ def crawl_maxima_offers(page, url):
         r = parse_maxima_card(t, year)
         if r: items[(r[0], r[1])] = (r[2], r[3], r[4], r[5])
     print(f"   Maxima pasiūlymai: {len(cards)} kortelių, {len(items)} prekių")
+    note("maxima.lt/pasiulymai", found=len(cards), parsed=len(items))
     return items
 
 RIMI_JS = """()=>[...document.querySelectorAll('.js-product-container')].map(e=>{
@@ -294,6 +303,7 @@ def crawl_rimi_offers(page, url):
             old = reg if c["label"] and reg and reg > price + 0.004 else None
             items[(name[:120], round(price, 2))] = ("", "", old)
         print(f"   Rimi akcijos psl. {n + 1}: +{len(new)} (viso {len(items)})")
+    note("rimi.lt e. parduotuvės akcijos", found=len(seen), parsed=len(items))
     return items
 
 def crawl_promo(ctx, page, url, max_pages=60):
@@ -334,6 +344,7 @@ def crawl_promo(ctx, page, url, max_pages=60):
             for name, price, _ in res:
                 items[(name, price)] = (until, frm, None); got += 1
         print(f"   Promo {pub.split('/')[-1]}: {n} psl., {got} prekių")
+        note("akcijos.lt Promo leidiniai (OCR)", pubs=1, pages=min(n, max_pages), parsed=got)
     return items
 
 def crawl_leaflets(ctx, page, store, c):
@@ -378,6 +389,7 @@ def crawl_leaflets(ctx, page, store, c):
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
             res = (leaflets.parse_maxima(vtext, year) if leaflets.is_maxima_text(vtext) else leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year))
             print(f"      tekstas: {len(res)} prekių")
+            note("leidinys (iPaper tekstas)", pubs=1, parsed=len(res))
             for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
         if not p and not items:
             txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
@@ -396,6 +408,7 @@ def crawl_leaflets(ctx, page, store, c):
                 res, mode = leaflets.parse_pdf(f.name, store=store)
                 if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]);
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
+            note("leidinių PDF", pubs=1, parsed=len(res))
             d0 = PDF_DATES.get(u, ("", ""))
             for r in res: items[(r[0], r[1])] = (r[2] or d0[1], r[3] or d0[0], r[4] if len(r) > 4 else None)
         except Exception as e:
@@ -437,13 +450,13 @@ def main():
         if old.get("v") not in (10, 11): old = {"stores": [], "items": []}   # seni (šlamštiniai) duomenys nebelaikomi
         oldmap = {}
         for i in old["items"]:
-            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "", i[6] if len(i) > 6 else None)
+            s, n, p, k = old["stores"][i[0]], i[1], i[2], i[3]; u = (i[4] if len(i) > 4 else "", i[5] if len(i) > 5 else "", i[6] if len(i) > 6 else None, i[8] if len(i) > 8 else "")
             oldmap.setdefault((s, k), {})[(n, p)] = u
         stores = list(cfg)
         new, status = {}, {}
         for store, c in cfg.items():
             if a.store and store not in a.store.split(","): continue
-            st = {}
+            st = {}; CUR["store"] = store; t0 = time.time()
             for kind, key, fn in (("e", "catalog", lambda: crawl_catalog(page, store, c["catalog"])),
                                   ("l", "leaflets", lambda: crawl_leaflets(ctx, page, store, c["leaflets"]))):
                 if not c.get(key, {}).get("enabled"): continue
@@ -451,10 +464,12 @@ def main():
                 except Exception as e: got = {}; print(store, key, "klaida:", e)
                 prev = oldmap.get((store, kind), {})
                 if prev and len(got) < 0.3 * len(prev):
-                    st[key] = f"įspėjimas: rasta {len(got)} (buvo {len(prev)}), palikti seni"; got = prev
+                    st["warn"] = f"rasta tik {len(got)} (anksčiau {len(prev)}) – palikti ankstesni duomenys"; st[key] = len(prev); got = prev
                 else:
                     st[key] = len(got)
                 new[(store, kind)] = got
+            st.update(STATS.get(store, {})); st["seconds"] = round(time.time() - t0)
+            if c.get("info"): st["info"] = c["info"]
             status[store] = st
         br.close()
     out_items = []
@@ -464,7 +479,9 @@ def main():
             for (n, p), u in d.items():
                 out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(categories.classify(n)), u[3] if len(u) > 3 else ""])
     out_items.sort(key=lambda x: (x[1], x[2]))
-    out = {"v": 11, "cats": [{"id": c[0], "name": c[1], "icon": c[2]} for c in categories.META], "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
+    for _s in cfg:
+        if _s not in status and _s in old.get("status", {}): status[_s] = old["status"][_s]   # nevykdyta – paliekam seną informaciją
+    out = {"v": 11, "run": {"url": os.environ.get("RUN_URL", ""), "event": os.environ.get("EVENT", "")}, "cats": [{"id": c[0], "name": c[1], "icon": c[2]} for c in categories.META], "updated": datetime.datetime.now(datetime.timezone.utc).isoformat(), "stores": stores, "status": status, "items": out_items}
     (ROOT / "prices.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(json.dumps(status, ensure_ascii=False, indent=1), "iš viso:", len(out_items))
 

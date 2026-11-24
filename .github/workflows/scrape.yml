@@ -32,6 +32,8 @@ jobs:
         run: python scraper/scrape.py
         env:
           DEBUG: "1"
+          EVENT: ${{ github.event_name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
       - if: always() && steps.chk.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:

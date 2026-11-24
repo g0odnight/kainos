@@ -37,7 +37,8 @@
       "pdfs": [],
       "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+",
       "offers_url": "https://www.maxima.lt/pasiulymai"
-    }
+    },
+    "info": "Savaitės pasiūlymai iš maxima.lt/pasiulymai, dauguma su AČIŪ kortele."
   },
   "Rimi": {
     "catalog": {
@@ -65,7 +66,8 @@
       "pdfs": [],
       "viewer_regex": "leidiniai\\.rimi\\.lt/\\d{4}/weekly/[\\w-]+/?$",
       "rimi_offers": "https://www.rimi.lt/e-parduotuve/lt/akcijos"
-    }
+    },
+    "info": "E. parduotuvės akcijos (kainos su Mano Rimi kortele; dalis gali galioti tik internetu) ir savaitinis leidinys."
   },
   "Lidl": {
     "catalog": {
@@ -83,7 +85,8 @@
       "pdfs": [],
       "viewer_regex": "lidl\\.lt/l/lt/leidinys/(maisto-prekiu|ne-maisto|bajoru|maisto-idejos)",
       "max_viewers": 4
-    }
+    },
+    "info": "Leidinių PDF iš lidl.lt."
   },
   "IKI": {
     "catalog": {
@@ -100,7 +103,8 @@
       ],
       "pdfs": [],
       "viewer_regex": "iki\\.lt/leidiniai/[A-Za-z0-9_-]+/?$"
-    }
+    },
+    "info": "iki.lt blokuoja automatinį rinkimą (Cloudflare). Galima rinkti tik tavo kompiuteryje."
   },
   "Norfa": {
     "catalog": {
@@ -116,7 +120,8 @@
       "pages": [
         "https://www.norfa.lt/leidiniai/"
       ]
-    }
+    },
+    "info": "Leidinių PDF iš norfa.lt (kaina tikrinama pagal kainą už kg/l)."
   },
   "Promo": {
     "catalog": {
@@ -129,6 +134,7 @@
     "leaflets": {
       "enabled": true,
       "promo_akcijos": "https://akcijos.lt/promo-cash-carry-akcijos"
-    }
+    },
+    "info": "Leidinių paveikslėliai iš akcijos.lt, skaitomi OCR. Rodomos tik patikrintos kainos, todėl ne visos prekės."
   }
 }

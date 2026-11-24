@@ -62,6 +62,20 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .btn{border:0;background:var(--ac);color:#fff;font-weight:750;border-radius:16px;padding:14px 18px;width:100%}
 .btn.gh{background:var(--card);color:var(--tx);border:1.5px solid var(--bd)}
 .btn.sm{width:auto;padding:9px 14px;border-radius:12px;font-size:14px}
+.pill.mb{font-size:18px;width:40px;height:36px;padding:0;justify-content:center;color:var(--tx)}
+.dr{position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.4);display:none}.dr.show{display:block}
+.dr aside{position:absolute;left:0;top:0;bottom:0;width:min(280px,80vw);background:var(--bg);border-right:1px solid var(--bd);padding:calc(18px + env(safe-area-inset-top,0px)) 12px 20px;display:flex;flex-direction:column;gap:4px;animation:sl .18s ease-out}
+@keyframes sl{from{transform:translateX(-30px);opacity:.4}}
+.drh{padding:0 8px 14px}.dr aside>button{border:0;background:transparent;text-align:left;font-size:16px;font-weight:700;padding:13px 14px;border-radius:14px;color:var(--mu);display:flex;gap:12px;align-items:center}
+.dr aside>button.on{background:var(--card);color:var(--tx);box-shadow:var(--sh)}
+.drf{margin-top:auto;font-size:12.5px;color:var(--mu);padding:0 10px}
+@media (min-width:1100px){body{padding-left:300px;max-width:1060px}.dr{display:block;background:none;inset:0 auto 0 0;width:280px}.dr aside{animation:none;width:280px}.pill.mb{display:none}nav{display:none!important}}
+.ist{background:var(--card);border-radius:18px;padding:14px;margin:10px 0;box-shadow:var(--sh)}
+.ist .hd{display:flex;align-items:center;justify-content:space-between;gap:8px}.ist .hd b{font-size:16px}
+.ist .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 8px}
+.ist .nums div{background:var(--bg);border-radius:12px;padding:8px 10px}.ist .nums small{display:block;color:var(--mu);font-size:11.5px}.ist .nums b{font-size:18px}
+.ist p{margin:6px 0 0;font-size:13px;color:var(--mu)}
+.bdg{font-size:12px;font-weight:800;border-radius:8px;padding:2px 8px}.bdg.ok{background:var(--acs);color:var(--ac2)}.bdg.part{background:var(--warn);color:var(--warnt)}.bdg.no{background:#fde2e2;color:#b42318}
 nav{position:fixed;left:0;right:0;bottom:0;z-index:9;display:flex;justify-content:center;padding:0 16px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
 nav div{pointer-events:auto;display:flex;gap:4px;background:color-mix(in srgb,var(--card) 86%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--bd);border-radius:22px;padding:5px;box-shadow:0 10px 30px rgba(0,0,0,.14)}
 nav button{border:0;background:transparent;color:var(--mu);font-size:14px;font-weight:700;padding:10px 18px;border-radius:17px;display:flex;align-items:center;gap:8px}
@@ -96,7 +110,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 .srow .mid div{font-size:13px;color:var(--mu)}
 #sentinel{height:1px}
 </style></head><body>
-<header><h1>Kainos<span>.</span></h1><div style="display:flex;gap:8px"><button class="pill" id="fresh"><i></i><span>…</span></button><button class="pill rf" id="rf" aria-label="Atnaujinti kainas dabar" title="Atnaujinti kainas dabar"><span>↻</span></button></div></header>
+<header><div style="display:flex;align-items:center;gap:10px"><button class="pill mb" id="menu" aria-label="Meniu">☰</button><h1>Kainos<span>.</span></h1></div><div style="display:flex;gap:8px"><button class="pill" id="fresh"><i></i><span>…</span></button><button class="pill rf" id="rf" aria-label="Atnaujinti kainas dabar" title="Atnaujinti kainas dabar"><span>↻</span></button></div></header>
 
 <main id="v1">
  <div class="top" id="top">
@@ -110,6 +124,10 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
  <div id="res"></div><div id="sentinel"></div>
 </main>
 <main id="v2" hidden><div id="cart"></div></main>
+<main id="v3" hidden><div id="info"></div></main>
+<div class="dr" id="dr"><aside><div class="drh"><h1>Kainos<span>.</span></h1></div>
+ <button data-t="1" class="on">🏷️ <span>Pasiūlymai</span></button><button data-t="2">🧺 <span>Krepšelis</span></button><button data-t="3">📊 <span>Informacija</span></button>
+ <div class="drf" id="drf"></div></aside></div>
 
 <nav><div><button id="n1" class="on">🏷️ Pasiūlymai</button><button id="n2">🧺 Krepšelis <span class="cnt" id="cc"></span></button></div></nav>
 <div id="toast"></div>
@@ -142,13 +160,13 @@ function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
  const B=[["Pienas ŽEMAITIJOS 2,5 % 1 l",1.09,2],["Vištienos krūtinėlės filė 1 kg",7.5,1],["Kiaušiniai M 10 vnt.",2.9,2],["Duona juoda 600 g",1.4,3],["Bananai 1 kg",1.5,0],["Spagečiai 500 g",1.8,4]];
  const items=[];B.forEach(([n,p,c])=>S.forEach((s,j)=>items.push([j,n,+(p*k[j]).toFixed(2),"l","2099-12-31","2026-01-01",+(p*1.3).toFixed(2),c])));
  return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
-function init(j,d){demo=!!d;DB=j;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
+function init(j,d){demo=!!d;DB=j;DB.items_total=(j.items||[]).length;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
   return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2]),sz:sizeOf(a[1])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));if(!sel.size)sel=new Set(have);
  const sc=ls("cats3");cats=new Set((sc||[]).filter(c=>DB.cats.some(x=>x.id==c)));
- drawStores();draw();fresh()}
+ drawStores();draw();fresh();if(!$("#v3").hidden)drawInfo()}
 async function load(){try{const r=await fetch("prices.json",{cache:"no-cache"});const j=await r.json();if(!j.items||!j.items.length)throw 0;init(j,false)}catch(e){init(demoData(),true)}}
 function fresh(){const b=$("#fresh"),t=b.querySelector("span");if(!DB.updated){t.textContent="Nėra duomenų";return}
  const d=new Date(DB.updated),h=(Date.now()-d)/36e5,tm=d.toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"});
@@ -241,13 +259,32 @@ $("#cart").onclick=e=>{const b=e.target.closest("button");if(!b){const nm=e.targ
  if(d.del!=null)cart.splice(+d.del,1);else if(d.m!=null){cart[d.m].n--;if(cart[d.m].n<1)cart.splice(+d.m,1)}else if(d.p!=null)cart[d.p].n++;else if(d.ck!=null)cart[d.ck].done=!cart[d.ck].done;else return;drawCart()};
 
 function draw(){drawList();saveCart()}
-function tab(n){$("#v1").hidden=n!=1;$("#v2").hidden=n!=2;$("#n1").classList.toggle("on",n==1);$("#n2").classList.toggle("on",n==2);scrollTo(0,0);n==1?drawList():drawCart()}
+function tab(n){[1,2,3].forEach(k=>$("#v"+k).hidden=n!=k);$("#n1").classList.toggle("on",n==1);$("#n2").classList.toggle("on",n==2);
+ document.querySelectorAll("#dr aside>button").forEach(b=>b.classList.toggle("on",b.dataset.t==n));if(innerWidth<1100)$("#dr").classList.remove("show");
+ scrollTo(0,0);n==1?drawList():n==2?drawCart():drawInfo()}
+$("#menu").onclick=()=>$("#dr").classList.add("show");
+$("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");const b=e.target.closest("[data-t]");if(b)tab(+b.dataset.t)};
+const SRC={Maxima:"maxima.lt pasiūlymai",Rimi:"rimi.lt akcijos + leidinys",Lidl:"lidl.lt leidiniai (PDF)",Norfa:"norfa.lt leidiniai (PDF)",Promo:"akcijos.lt leidiniai (OCR)",IKI:"iki.lt"};
+function drawInfo(){const st=DB.status||{},el=$("#info");
+ const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
+ let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~08:00.</div>
+  <div class="ist"><div class="nums"><div><small>Rodoma programėlėje</small><b>${shown}</b></div><div><small>Parduotuvių su duomenimis</small><b>${new Set(DB.rows.map(r=>r.s)).size} / ${DB.stores.length}</b></div><div><small>Pasibaigusių paslėpta</small><b>${Math.max(0,all-shown)}</b></div></div></div>`;
+ DB.stores.forEach(s=>{const x=st[s]||{},rows=DB.rows.filter(r=>r.s==s),n=rows.length,disc=rows.filter(r=>r.old).length,last=[...new Set(rows.map(r=>r.until).filter(Boolean))].sort().pop();
+  const parsed=x.parsed!=null?x.parsed:0,found=x.found||x.pages||x.pubs||0;
+  const cls=n==0?"no":x.warn?"part":"ok",lbl=n==0?"Nėra duomenų":x.warn?"Dalinai":"Veikia";
+  h+=`<div class="ist"><div class="hd"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="bdg ${cls}">${lbl}</span></div>
+   <div class="nums"><div><small>${x.pages?"Puslapių (OCR)":x.found?"Rasta kortelių/prekių":"Leidinių / PDF"}</small><b>${found||"–"}</b></div><div><small>Atpažinta prekių</small><b>${parsed||"–"}</b></div><div><small>Rodoma dabar</small><b>${n}</b></div></div>
+   <p>${esc(SRC[s]||"")}${disc?` · su nuolaida ${disc}`:""}${last?` · galioja iki ${fd(last)}`:""}${x.seconds?` · ${x.seconds} s`:""}</p>
+   ${x.warn?`<p>⚠️ ${esc(x.warn)}</p>`:""}${x.info?`<p>${esc(x.info)}</p>`:""}</div>`});
+ h+=DB.run&&DB.run.url?`<p class="sum" style="margin:14px 2px">Techninė informacija: <a href="${DB.run.url}" target="_blank" rel="noopener" style="color:var(--ac2)">rinkimo žurnalas GitHub</a></p>`:"";
+ el.innerHTML=h}
 $("#n1").onclick=()=>tab(1);$("#n2").onclick=()=>tab(2);
 let tm;$("#q").oninput=e=>{clearTimeout(tm);tm=setTimeout(()=>{Q=e.target.value;lim=60;drawList()},140)};
 $("#x").onclick=()=>{$("#q").value="";Q="";lim=60;drawList();$("#q").focus()};
 $("#sort").onchange=e=>{sortBy=e.target.value;ls("sort3",sortBy);lim=60;drawList()};
 addEventListener("scroll",()=>$("#top").classList.toggle("stuck",scrollY>60),{passive:true});
-$("#fresh").onclick=()=>{const st=DB.status||{};
+$("#fresh").onclick=()=>tab(3);
+const _oldFresh=()=>{const st=DB.status||{};
  const rows=DB.stores.map(s=>{const r=DB.rows.filter(x=>x.s==s),last=[...new Set(r.map(x=>x.until).filter(Boolean))].sort().pop();
   const w=Object.values(st[s]||{}).filter(v=>typeof v=="string").join("; ");
   return `<div class="srow"><span class="st" style="background:${col(s)}">${s}</span><div class="mid"><div>${r.length?`${r.length} pasiūlymų${last?` · iki ${fd(last)}`:""}`:"Leidinių gauti nepavyko"}</div>${w?`<div>${esc(w)}</div>`:""}</div></div>`}).join("");
