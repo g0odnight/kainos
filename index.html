@@ -28,7 +28,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .sb input::-webkit-search-cancel-button{display:none}
 .sb .x{border:0;background:var(--bg);color:var(--mu);width:30px;height:30px;border-radius:50%;font-size:14px}
 .hs{display:flex;gap:8px;overflow-x:auto;padding:10px 0 0;scrollbar-width:none;margin:0 -16px;padding-left:16px;padding-right:16px}.hs::-webkit-scrollbar{display:none}
-#cats{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:48px}
+#cats{flex-wrap:nowrap}#cats .chip{padding:6px 10px;font-size:13px;gap:5px;min-width:0}.chip.clr{color:var(--mu);border-style:dashed}.chip.clr:disabled{opacity:.4}.chip.more.act{border-color:var(--tx);color:var(--tx)}
 @media (hover:hover){.hs{scrollbar-width:thin;padding-bottom:6px;cursor:grab}.hs::-webkit-scrollbar{display:block;height:6px}.hs::-webkit-scrollbar-thumb{background:var(--bd);border-radius:9px}}
 .chip{flex:none;border:1.5px solid var(--bd);background:var(--card);color:var(--mu);border-radius:99px;padding:7px 13px;font-size:14px;font-weight:650;display:flex;align-items:center;gap:7px;white-space:nowrap}
 .chip .dot{width:10px;height:10px;border-radius:50%}.chip:not(.on) .dot{opacity:.3}
@@ -118,7 +118,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
   <div class="sb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
    <input id="q" type="search" enterkeyhint="search" placeholder="Ieškoti prekės…" autocomplete="off" aria-label="Paieška"><button class="x" id="x" hidden aria-label="Išvalyti">✕</button></div>
   <div class="wrapchips" id="stores"></div>
-  <div class="hs" id="cats"></div>
+  <div class="wrapchips" id="cats"></div>
  </div>
  <div class="bar"><div class="sum" id="sum"></div>
   <select class="sel" id="sort" aria-label="Rūšiuoti"><option value="price">Pigiausios</option><option value="desc">Brangiausios</option><option value="unit">€ už kg / l</option><option value="off">Didžiausia nuolaida</option><option value="az">A–Ž</option></select></div>
@@ -216,16 +216,18 @@ $("#stores").onclick=e=>{const b=e.target.closest("button");if(!b)return;const h
 function catCounts(){const c={};base().forEach(r=>c[r.c]=(c[r.c]||0)+1);return c}
 function drawCats(){const cnt=catCounts(),tot=Object.values(cnt).reduce((a,b)=>a+b,0);
  const vis=DB.cats.filter(c=>cnt[c.id]||cats.has(c.id));
- $("#cats").innerHTML=`<button class="chip more" data-sheet="1">☰ Visos kategorijos</button><button class="chip cat ${!cats.size?"on":""}" data-c="">Visos <small>${tot}</small></button>`+
-  vis.map(c=>`<button class="chip cat ${cats.has(c.id)?"on":""}" data-c="${c.id}">${c.icon} ${esc(c.name)} <small>${cnt[c.id]||0}</small></button>`).join("")}
-$("#cats").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.sheet)return catSheet();
- const c=b.dataset.c;if(!c)cats.clear();else{cats.has(c)?cats.delete(c):(cats.clear(),cats.add(c))}ls("cats3",[...cats]);lim=60;draw()};
+ const selN=[...cats].reduce((a,c)=>a+(cnt[c]||0),0),one=cats.size==1?DB.cats.find(c=>cats.has(c.id)):null;
+ $("#cats").innerHTML=`<button class="chip more ${cats.size?"act":""}" data-sheet="1">☰ ${one?one.icon+" "+esc(one.name.length>13?one.name.slice(0,12)+"…":one.name):"Kategorijos"+(cats.size?" ("+cats.size+")":"")}</button>`+
+  `<button class="chip cat ${!cats.size?"on":""}" data-c="">Visos <small>${tot}</small></button>`+
+  `<button class="chip clr" data-clr="1" ${cats.size?"":"disabled"}>✕ Išvalyti filtrą</button>`}
+$("#cats").onclick=e=>{const b=e.target.closest("button");if(!b||b.disabled)return;if(b.dataset.sheet)return catSheet();
+ cats.clear();ls("cats3",[]);lim=60;draw()};   // „Visos“ ir „Išvalyti filtrą“ – nuima visas pasirinktas kategorijas
 function catSheet(){const cnt=catCounts();let pick=new Set(cats);
- const render=()=>{$("#sheetc").innerHTML=`<h2>Kategorijos</h2><div class="grid"><button class="gc ${!pick.size?"on":""}" data-c=""><span>✨</span>Visi pasiūlymai</button>`+
+ const render=()=>{$("#sheetc").innerHTML=`<h2>Kategorijos</h2><div class="grid"><button class="gc ${!pick.size?"on":""}" data-c=""><span>✨</span>Visos</button>`+
   DB.cats.map(c=>`<button class="gc ${pick.has(c.id)?"on":""}" data-c="${c.id}" ${cnt[c.id]?"":"style='opacity:.45'"}><span>${c.icon}</span>${esc(c.name)}<small>${cnt[c.id]||0}</small></button>`).join("")+
-  `</div><div class="sticky-b"><button class="btn gh" id="cl0">Atšaukti</button><button class="btn" id="ap">Taikyti</button></div>`;
+  `</div><div class="sticky-b"><button class="btn gh" id="cl0">${pick.size?"Išvalyti":"Atšaukti"}</button><button class="btn" id="ap">Taikyti${pick.size?" ("+pick.size+")":""}</button></div>`;
   $("#sheetc .grid").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;const c=b.dataset.c;if(!c)pick.clear();else pick.has(c)?pick.delete(c):pick.add(c);render()};
-  $("#cl0").onclick=closeSheet;$("#ap").onclick=()=>{cats=pick;ls("cats3",[...cats]);lim=60;closeSheet();draw()}};
+  $("#cl0").onclick=()=>{if(pick.size){pick.clear();render()}else closeSheet()};$("#ap").onclick=()=>{cats=pick;ls("cats3",[...cats]);lim=60;closeSheet();draw()}};
  render();$("#sheet").classList.add("show")}
 document.querySelectorAll(".hs").forEach(el=>{
  el.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&el.scrollWidth>el.clientWidth){el.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
