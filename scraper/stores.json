@@ -128,11 +128,7 @@
     },
     "leaflets": {
       "enabled": true,
-      "pages": [
-        "https://epromo.lt/lt/leidiniai"
-      ],
-      "pdfs": [],
-      "viewer_regex": "epromo\\.lt/lt/leidiniai/[A-Za-z0-9_-]+"
+      "promo_akcijos": "https://akcijos.lt/promo-cash-carry-akcijos"
     }
   }
 }

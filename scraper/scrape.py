@@ -296,7 +296,51 @@ def crawl_rimi_offers(page, url):
         print(f"   Rimi akcijos psl. {n + 1}: +{len(new)} (viso {len(items)})")
     return items
 
+def crawl_promo(ctx, page, url, max_pages=60):
+    """Promo: akcijos.lt leidinių puslapių paveikslėliai -> OCR (promo.py), tik patikrintos poros."""
+    import promo
+    page.goto(url, wait_until="domcontentloaded", timeout=90000)
+    try: page.wait_for_load_state("networkidle", timeout=15000)
+    except Exception: pass
+    today = datetime.date.today().strftime("%Y%m%d")
+    pubs = {}
+    for h in page.eval_on_selector_all("a[href]", "e=>e.map(x=>x.href)"):
+        m = re.search(r"akcijos\.lt/promo-cash-carry[\w-]*?-(\d{8})-(\d{8})/?$", h)
+        if m and m.group(2) >= today: pubs[h.rstrip("/")] = (m.group(1), m.group(2))
+    print(f"   Promo leidiniai: {len(pubs)}")
+    items, done = {}, 0
+    for pub, (a, b) in sorted(pubs.items(), key=lambda x: "indu" in x[0]):   # indų katalogas – paskutinis
+        frm, until = f"{a[:4]}-{a[4:6]}-{a[6:]}", f"{b[:4]}-{b[4:6]}-{b[6:]}"
+        try:
+            page.goto(pub, wait_until="domcontentloaded", timeout=90000)
+            try: page.wait_for_load_state("networkidle", timeout=15000)
+            except Exception: pass
+            imgs = page.eval_on_selector_all("img", "e=>e.map(x=>x.currentSrc||x.src||x.getAttribute('data-src')||'')")
+            ids = [m.group(1) for x in imgs for m in [re.search(r"/publications/img/promo-cash-carry/(\d+)/page-\d+", x)] if m]
+            if not ids: continue
+            pid = max(set(ids), key=ids.count)
+            nm = re.search(r"(\d+)\s*puslapi", page.inner_text("body")); n = int(nm.group(1)) if nm else 30
+        except Exception as e:
+            print("   Promo klaida:", pub, e); continue
+        got = 0
+        for k in range(1, n + 1):
+            if done >= max_pages: break
+            try:
+                r = ctx.request.get(f"https://cdn.akcijos.lt/publications/img/promo-cash-carry/{pid}/page-{k}.jpg", timeout=60000)
+                if r.status != 200: break
+                res = promo.parse_image(r.body()); done += 1
+            except Exception as e:
+                print("   Promo OCR klaida:", e); continue
+            for name, price, _ in res:
+                items[(name, price)] = (until, frm, None); got += 1
+        print(f"   Promo {pub.split('/')[-1]}: {n} psl., {got} prekių")
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("promo_akcijos"):
+        try: return crawl_promo(ctx, page, c["promo_akcijos"])
+        except Exception as e:
+            print("   Promo klaida:", e); return {}
     pre = {}
     if c.get("rimi_offers"):   # e. parduotuvės akcijos + toliau savaitinis leidinys (sujungiama)
         try: pre = crawl_rimi_offers(page, c["rimi_offers"])
