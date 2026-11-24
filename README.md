@@ -2,44 +2,33 @@
 
 Programėlė: https://g0odnight.github.io/kainos/
 
-Parduotuvių **kainų leidinių** akcijos vienoje vietoje: paieška, parduotuvių ir kategorijų filtrai, rūšiavimas, krepšelis.
-Serverio nėra: GitHub Actions kasdien ~09:00 (Vilniaus laiku) surenka leidinius į `prices.json`, o programėlė telefone tik skaito tą failą.
+Parduotuvių **akcijos ir leidinių pasiūlymai** vienoje vietoje: paieška, parduotuvių ir kategorijų filtrai, rūšiavimas, krepšelis.
+Serverio nėra: GitHub Actions kasdien ~09:00 (Vilniaus laiku) surenka pasiūlymus į `prices.json`, o programėlė telefone tik skaito tą failą.
 
-## Kaip tai veikia
+## Šaltiniai
 
-| Parduotuvė | Šaltinis | Kur renkama |
-|---|---|---|
-| Maxima | maxima.lt/leidiniai (iPaper tekstas) | GitHub debesyje |
-| Rimi | rimi.lt savaitinis leidinys (iPaper tekstas) | GitHub debesyje |
-| Lidl | lidl.lt leidinių PDF | GitHub debesyje |
-| Norfa | norfa.lt/leidiniai → „Atsisiųsti leidinį“ PDF | GitHub debesyje |
-| IKI, Promo | jų leidinių puslapiai | **tavo kompiuteryje** (žr. žemiau) |
+| Parduotuvė | Iš kur renkama |
+|---|---|
+| Maxima | maxima.lt/pasiulymai + leidinys iš akcijuseklys.lt |
+| Rimi | rimi.lt e. parduotuvės akcijos, savaitinis leidinys + katalogai iš akcijuseklys.lt |
+| Lidl | lidl.lt leidinių PDF + ne maisto ir kiti leidiniai iš akcijuseklys.lt |
+| Norfa | norfa.lt leidinių PDF + kalėdinis katalogas iš akcijuseklys.lt |
+| IKI, Promo, Šilas, Vynoteka | akcijuseklys.lt (atsarginis variantas IKI, Promo, Šilui – leidinio paveikslėlių OCR) |
 
-IKI ir Promo svetainės saugomos „Cloudflare“ ir atmeta užklausas iš debesų serverių,
-todėl šias dvi parduotuves renka tas pats skriptas, paleistas tavo kompiuteryje įprastame Chrome lange.
+Ta pati prekė iš kelių šaltinių rodoma vieną kartą (ta pati kaina ir panašus pavadinimas).
+Grupinės nuolaidos be konkrečios kainos („-30 % visiems šampūnams“) nerodomos.
 
-## IKI ir Promo: rinkimas tavo kompiuteryje (nebūtina)
+## Paleidimas
 
-Kompiuteris turi būti įjungtas apie 08:40. Vienkartinis nustatymas (~10 min.):
-
-1. Įdiek Python 3.12: `winget install Python.Python.3.12` (PowerShell) ir Google Chrome, jei dar nėra.
-2. GitHub: repo **Settings → Actions → Runners → New self-hosted runner → Windows**. Įvykdyk ten parodytas komandas
-   PowerShell'e (aplanke, pvz., `C:\actions-runner`). Paskutinį žingsnį `./run.cmd` pakeisk į `./svc.cmd install` ir `./svc.cmd start`,
-   kad veiktų fone.
-   *Pastaba:* kad atsidarytų Chrome langas, runner turi veikti kaip tavo vartotojas, ne kaip „Network Service“.
-   Paprasčiausia – nediegti kaip paslaugos, o įdėti `run.cmd` į *Startup* aplanką (Win+R → `shell:startup`).
-3. Repo **Settings → Secrets and variables → Actions → Variables → New variable**: `LOCAL_RUNNER` = `1`.
-4. Patikrink: **Actions → scrape-local → Run workflow**.
-
-Jei svetainė vis tiek parodys „ar ne robotas“ patikrinimą, tą dieną tos parduotuvės duomenys tiesiog liks seni.
-
-## Rankinis paleidimas
-
-**Actions → scrape → Run workflow** (debesis) arba **scrape-local** (kompiuteris).
+- Automatiškai: kasdien 09:00 (atsarginiai paleidimai vėliau, jei GitHub pavėluoja).
+- Programėlėje: mygtukas ↻ (reikia GitHub rakto su teise „Actions: Read and write“ tik šiam repo; raktas saugomas tik telefone).
+- Ranka: **Actions → scrape → Run workflow** (galima nurodyti tik kai kurias parduotuves, pvz. `Šilas`).
 
 ## Failai
 
 - `index.html`, `sw.js`, `manifest.webmanifest`, `icon.svg` – programėlė (PWA, galima „Įdiegti“ į telefono ekraną).
 - `prices.json` – duomenys (generuojami automatiškai, ranka neredaguoti).
-- `scraper/scrape.py` – rinkimas; `leaflets.py`, `lidl.py` – leidinių skaitymas; `categories.py` – kategorijos; `stores.json` – adresai.
+- `scraper/scrape.py` – rinkimas; `categories.py` – kategorijos; `stores.json` – parduotuvių nustatymai;
+  `leaflets.py`, `lidl.py`, `norfa.py` – PDF skaitymas; `iki.py`, `promo.py`, `silas.py` – OCR (atsarginis); `fixnames.py` – OCR pavadinimų taisymas;
+  `recat.py` – kategorijų perskaičiavimas be naujo rinkimo.
 - Diagnostika po kiekvieno paleidimo įrašoma į šaką `debug-out`.

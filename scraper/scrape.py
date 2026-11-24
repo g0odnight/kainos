@@ -109,6 +109,8 @@ def ocr_image(body):
 PDF_DATES = {}
 STATS, CUR = {}, {"store": ""}
 
+DOM = {"Maxima": "maxima.lt", "Rimi": "rimi.lt", "Lidl": "lidl.lt", "Norfa": "norfa.lt", "IKI": "iki.lt", "Promo": "promo.lt"}
+
 def note(source=None, **counts):
     """Statistika programėlės „Informacija“ puslapiui: šaltiniai ir kiekiai."""
     st = STATS.setdefault(CUR["store"], {"sources": [], "found": 0, "parsed": 0})
@@ -200,7 +202,7 @@ def crawl_norfa(ctx, page, url):
                 f.write(b); f.flush()
                 res = norfa.parse(f.name, until, frm)
             print(f"   Norfa {href} ({frm}–{until}): {len(res)} prekių")
-            note("norfa.lt leidiniai (PDF)", parsed=len(res), pubs=1)
+            note("norfa.lt leidinių PDF", parsed=len(res), pubs=1)
             for x in res: items[(x[0], x[1])] = (x[2], x[3], x[4])
         except Exception as e:
             print("   Norfa klaida:", href, e)
@@ -483,7 +485,7 @@ def crawl_akcijuseklys(ctx, slug, store=""):
             if prev: items.pop(prev, None)
             seen[k] = (name, price); items[(name, price)] = (until, frm, old, deal)
         print(f"   akcijuseklys {ln}: {len(live)} prekių su kaina")
-        note("akcijuseklys.lt leidiniai", pubs=1, found=len(live))
+        note("akcijuseklys.lt", pubs=1, found=len(live))
         time.sleep(0.4)
     return items
 
@@ -569,7 +571,7 @@ def crawl_official(ctx, page, store, c):
             if DEBUG: dump(f"text_{store}_{k}.txt", vtext[:30000])
             res = (leaflets.parse_maxima(vtext, year) if leaflets.is_maxima_text(vtext) else leaflets.parse_ipaper(vtext, year) if leaflets.is_ipaper_text(vtext) else leaflets.parse_text(vtext, year))
             print(f"      tekstas: {len(res)} prekių")
-            note("leidinys (iPaper tekstas)", pubs=1, parsed=len(res))
+            note(DOM.get(CUR["store"], "") + " leidinys", pubs=1, parsed=len(res))
             for r in res: items[(r[0], r[1])] = (r[2], r[3], r[4] if len(r) > 4 else None)
         if not p and not items:
             txt = "\n".join(ocr_image(b) for u2, b in list(imgs.items())[:60])
@@ -588,7 +590,7 @@ def crawl_official(ctx, page, store, c):
                 res, mode = leaflets.parse_pdf(f.name, store=store)
                 if DEBUG: dump("pdftext_" + re.sub(r"\W+", "_", u)[-40:] + ".txt", leaflets.pdf_text(f.name)[0][:15000]);
             print(f"   {u[-60:]}: {len(res)} prekių ({mode})")
-            note("leidinių PDF", pubs=1, parsed=len(res))
+            note(DOM.get(CUR["store"], "") + " leidinių PDF", pubs=1, parsed=len(res))
             d0 = PDF_DATES.get(u, ("", ""))
             for r in res: items[(r[0], r[1])] = (r[2] or d0[1], r[3] or d0[0], r[4] if len(r) > 4 else None)
         except Exception as e:

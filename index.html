@@ -307,7 +307,7 @@ let tt;function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("sh
 
 // ---------- krepšelis ----------
 function drawCart(){saveCart();const el=$("#cart");
- if(!cart.length){el.innerHTML=`<div class="empty"><big>🧺</big>Krepšelis tuščias.<br>Pasiūlymų sąraše spausk prekę arba „+“.</div>`;return}
+ if(!cart.length){el.innerHTML=`<div class="empty"><big>🧺</big>Krepšelis tuščias.<br>Pasiūlymų sąraše spausk „+“ prie prekės.</div>`;return}
  const g={};cart.forEach((c,i)=>(g[c.s]=g[c.s]||[]).push([c,i]));
  let tot=0,save=0,cnt=0,h="";
  Object.entries(g).forEach(([s,arr])=>{const sub=arr.reduce((a,[c])=>a+c.price*c.n,0);
@@ -332,14 +332,14 @@ $("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");cons
 const SRC={Maxima:"maxima.lt + akcijuseklys.lt",Rimi:"rimi.lt akcijos + leidiniai",Lidl:"lidl.lt PDF + akcijuseklys.lt",Norfa:"norfa.lt PDF + akcijuseklys.lt",Promo:"akcijuseklys.lt leidiniai",IKI:"akcijuseklys.lt leidiniai","Šilas":"akcijuseklys.lt leidiniai",Vynoteka:"akcijuseklys.lt leidiniai"};
 function drawInfo(){const st=DB.status||{},el=$("#info");
  const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
- let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~09:00.</div>
+ let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – ${new Date().getHours()<9&&!(u&&u.toDateString()==new Date().toDateString()&&u.getHours()>=9)?"šiandien":"rytoj"} ~09:00.<br>Rodomos tik prekės su konkrečia kaina – grupinės nuolaidos („-30 % visiems šampūnams“) nerodomos.</div>
   <div class="ist"><div class="nums"><div><small>Rodoma programėlėje</small><b>${shown}</b></div><div><small>Parduotuvių su duomenimis</small><b>${new Set(DB.rows.map(r=>r.s)).size} / ${DB.stores.length}</b></div><div><small>Pasibaigusių paslėpta</small><b>${Math.max(0,all-shown)}</b></div></div></div>`;
  DB.stores.forEach(s=>{const x=st[s]||{},rows=DB.rows.filter(r=>r.s==s),n=rows.length,disc=rows.filter(r=>r.old).length,last=[...new Set(rows.map(r=>r.until).filter(Boolean))].sort().pop();
-  const parsed=x.parsed!=null?x.parsed:0,found=x.found||x.pages||x.pubs||0;
   const cls=n==0?"no":x.warn?"part":"ok",lbl=n==0?"Nėra duomenų":x.warn?"Dalinai":"Veikia";
+  const src=(x.sources||[]).map(v=>v.replace(/\s*\(.*?\)/g,"")).join(" + ")||SRC[s]||"";
   h+=`<div class="ist"><div class="hd"><b><span class="st" style="background:${col(s)}">${s}</span></b><span class="bdg ${cls}">${lbl}</span></div>
-   <div class="nums"><div><small>${x.pages?"Puslapių (OCR)":x.found?"Rasta kortelių/prekių":"Leidinių / PDF"}</small><b>${found||"–"}</b></div><div><small>Atpažinta prekių</small><b>${parsed||"–"}</b></div><div><small>Rodoma dabar</small><b>${n}</b></div></div>
-   <p>${esc(SRC[s]||"")}${disc?` · su nuolaida ${disc}`:""}${last?` · galioja iki ${fd(last)}`:""}${x.seconds?` · ${x.seconds} s`:""}</p>
+   <div class="nums"><div><small>Rodoma prekių</small><b>${n}</b></div><div><small>Su sena kaina</small><b>${disc||"–"}</b></div><div><small>Galioja iki</small><b>${last?fd(last):"–"}</b></div></div>
+   <p>Šaltinis: ${esc(src)}</p>
    ${x.warn?`<p>⚠️ ${esc(x.warn)}</p>`:""}${x.info?`<p>${esc(x.info)}</p>`:""}</div>`});
  h+=DB.run&&DB.run.url?`<p class="sum" style="margin:14px 2px">Techninė informacija: <a href="${DB.run.url}" target="_blank" rel="noopener" style="color:var(--ac2)">rinkimo žurnalas GitHub</a></p>`:"";
  el.innerHTML=h}
@@ -349,12 +349,6 @@ $("#x").onclick=()=>{$("#q").value="";Q="";lim=60;drawList();$("#q").focus()};
 $("#sort").onchange=e=>{sortBy=e.target.value;ls("sort3",sortBy);lim=60;drawList()};
 addEventListener("scroll",()=>$("#top").classList.toggle("stuck",scrollY>60),{passive:true});
 $("#fresh").onclick=()=>tab(3);
-const _oldFresh=()=>{const st=DB.status||{};
- const rows=DB.stores.map(s=>{const r=DB.rows.filter(x=>x.s==s),last=[...new Set(r.map(x=>x.until).filter(Boolean))].sort().pop();
-  const w=Object.values(st[s]||{}).filter(v=>typeof v=="string").join("; ");
-  return `<div class="srow"><span class="st" style="background:${col(s)}">${s}</span><div class="mid"><div>${r.length?`${r.length} pasiūlymų${last?` · iki ${fd(last)}`:""}`:"Leidinių gauti nepavyko"}</div>${w?`<div>${esc(w)}</div>`:""}</div></div>`}).join("");
- $("#sheetc").innerHTML=`<h2>Duomenys</h2><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+".<br>Kainos iš parduotuvių leidinių, atnaujinamos kasdien ~09:00.":""}</div>${rows}<div class="sticky-b"><button class="btn" id="cl">Uždaryti</button></div>`;
- $("#sheet").classList.add("show");$("#cl").onclick=closeSheet};
 
 // ---------- atnaujinimas iš programėlės (GitHub Actions per API) ----------
 const GH=(()=>{const h=location.hostname,p=location.pathname.split("/").filter(Boolean);return h.endsWith("github.io")?{o:h.split(".")[0],r:p[0]||"kainos"}:{o:"g0odnight",r:"kainos"}})();
@@ -385,7 +379,6 @@ function rfSheet(msg){const has=!!tok();
 async function startRun(){try{
   const t=new Date().toISOString();
   await gh("/workflows/scrape.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
-  try{await gh("/workflows/scrape-local.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})})}catch(e){}
   job={t,msg:"Paleista, laukiama eilėje…",upd:DB.updated};ls("rfjob",job);rfSheet();poll()
  }catch(e){rfSheet(e.message)}}
 async function poll(){clearTimeout(pollT);if(!job)return;$("#rf").classList.add("spin");
