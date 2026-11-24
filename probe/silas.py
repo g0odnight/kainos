@@ -1,14 +1,15 @@
-import json, pathlib, re
+import json, pathlib, subprocess, sys
+sys.path.insert(0, "scraper")
 from playwright.sync_api import sync_playwright
+import lidl
 out = pathlib.Path("probe/out"); out.mkdir(parents=True, exist_ok=True)
-res = []
+url = "https://assets.leaflets.schwarz/leaflets/pdfs/01a1f981-a994-74f4-a464-72681c5766e6/NE-MAISTO-PREKIU-PASIULYMAI-Nuo-lapkricio-23-d-00.pdf"
 with sync_playwright() as pw:
-    b = pw.chromium.launch(); ctx = b.new_context(locale="lt-LT")
-    for ln in ("/parduotuve/vynoteka/br_c5383401", "/parduotuve/vynoteka/br_15aec898"):
-        h = ctx.request.get("https://www.akcijuseklys.lt" + ln, timeout=60000).text()
-        m = next((m for m in re.finditer(r"<script[^>]*>(\{\"pages\".*?)</script>", h, re.S)), None)
-        for x in json.loads(m.group(1))["deals"]:
-            if re.search(r"inkin", x.get("title") or "", re.I): res.append({k: x.get(k) for k in ("title", "details", "promoPrice", "regularPrice", "promoLabel", "pageNumber")})
-    b.close()
-(out / "vyn.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
-for r in res: print(json.dumps(r, ensure_ascii=False))
+    b = pw.chromium.launch(); ctx = b.new_context()
+    r = ctx.request.get(url, timeout=120000); (out / "nm.pdf").write_bytes(r.body()); b.close()
+xml = subprocess.run(["pdftotext", "-bbox-layout", "probe/out/nm.pdf", "-"], capture_output=True, text=True).stdout
+(out / "nm.xml").write_text(xml)
+res = lidl.parse_xml(xml)
+(out / "nm_parsed.json").write_text(json.dumps(res, ensure_ascii=False, indent=0))
+print("parsed", len(res))
+for x in res: print(x)

@@ -36,9 +36,10 @@
       ],
       "pdfs": [],
       "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+",
-      "offers_url": "https://www.maxima.lt/pasiulymai"
+      "offers_url": "https://www.maxima.lt/pasiulymai",
+      "akcijuseklys": "maxima"
     },
-    "info": "Savaitės pasiūlymai iš maxima.lt/pasiulymai, dauguma su AČIŪ kortele."
+    "info": "Savaitės pasiūlymai iš maxima.lt ir visas leidinys iš akcijuseklys.lt. Dauguma kainų – su AČIŪ kortele."
   },
   "Rimi": {
     "catalog": {
@@ -65,9 +66,10 @@
       ],
       "pdfs": [],
       "viewer_regex": "leidiniai\\.rimi\\.lt/\\d{4}/weekly/[\\w-]+/?$",
-      "rimi_offers": "https://www.rimi.lt/e-parduotuve/lt/akcijos"
+      "rimi_offers": "https://www.rimi.lt/e-parduotuve/lt/akcijos",
+      "akcijuseklys": "rimi"
     },
-    "info": "E. parduotuvės akcijos (kainos su Mano Rimi kortele; dalis gali galioti tik internetu) ir savaitinis leidinys."
+    "info": "E. parduotuvės akcijos (kainos su Mano Rimi kortele, dalis gali galioti tik internetu), savaitinis leidinys ir katalogai."
   },
   "Lidl": {
     "catalog": {
@@ -84,9 +86,10 @@
       ],
       "pdfs": [],
       "viewer_regex": "lidl\\.lt/l/lt/leidinys/(maisto-prekiu|ne-maisto|bajoru|maisto-idejos)",
-      "max_viewers": 4
+      "max_viewers": 4,
+      "akcijuseklys": "lidl"
     },
-    "info": "Leidinių PDF iš lidl.lt."
+    "info": "Leidiniai iš lidl.lt ir akcijuseklys.lt, įskaitant ne maisto prekių ir žaislų leidinius."
   },
   "IKI": {
     "catalog": {
@@ -98,9 +101,11 @@
     },
     "leaflets": {
       "enabled": true,
-      "manoakcijos": "iki"
+      "manoakcijos": "iki",
+      "akcijuseklys": "iki",
+      "ak_primary": true
     },
-    "info": "IKI leidiniai iš manoakcijos.lt (paveikslėliai, OCR). Kaina apskaičiuojama iš kiekio ir kainos už kg/l, todėl prekės be jų (pvz. „-40 % kruopoms“, „1+1“) neįtraukiamos."
+    "info": "IKI leidiniai iš akcijuseklys.lt."
   },
   "Norfa": {
     "catalog": {
@@ -115,9 +120,10 @@
       "norfa": true,
       "pages": [
         "https://www.norfa.lt/leidiniai/"
-      ]
+      ],
+      "akcijuseklys": "norfa"
     },
-    "info": "Leidinių PDF iš norfa.lt (kaina tikrinama pagal kainą už kg/l)."
+    "info": "Leidiniai iš norfa.lt ir akcijuseklys.lt, įskaitant kalėdinį katalogą."
   },
   "Promo": {
     "catalog": {
@@ -129,9 +135,11 @@
     },
     "leaflets": {
       "enabled": true,
-      "promo_akcijos": "https://akcijos.lt/promo-cash-carry-akcijos"
+      "promo_akcijos": "https://akcijos.lt/promo-cash-carry-akcijos",
+      "akcijuseklys": "promo",
+      "ak_primary": true
     },
-    "info": "Leidinių paveikslėliai iš akcijos.lt, skaitomi OCR. Rodomos tik patikrintos kainos, todėl ne visos prekės."
+    "info": "Promo Cash&Carry leidiniai iš akcijuseklys.lt."
   },
   "Šilas": {
     "catalog": {
@@ -145,8 +153,24 @@
       "enabled": true,
       "akcijuseklys": "silas",
       "manoakcijos": "silas",
-      "parser": "silas"
+      "parser": "silas",
+      "ak_primary": true
     },
-    "info": "Šilo leidinys iš akcijuseklys.lt (prekės su kainomis tekstu). Grupinės nuolaidos be kainos („-25 % visiems…“) nerodomos. Jei šaltinis neveiktų – leidinio paveikslėliai iš manoakcijos.lt (OCR)."
+    "info": "Šilo leidinys iš akcijuseklys.lt."
+  },
+  "Vynoteka": {
+    "catalog": {
+      "enabled": false,
+      "category_urls": [],
+      "page_param": "page",
+      "max_pages": 20,
+      "selectors": {}
+    },
+    "leaflets": {
+      "enabled": true,
+      "akcijuseklys": "vynoteka",
+      "ak_primary": true
+    },
+    "info": "Vynotekos leidiniai iš akcijuseklys.lt."
   }
 }
