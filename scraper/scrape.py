@@ -451,7 +451,7 @@ def ak_leaflet(html, store=""):
             deal = f"kaina už {int(mv.group(1))} vnt."
         det = ak_details(x.get("details"))
         title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
-        if store == "Lidl" and title.isupper() and len(title.split()) <= 4 and not re.search(r"\d", title + (x.get("details") or "")):
+        if store == "Lidl" and title.isupper() and len(title.split()) <= 4 and not re.search(r"\d", title):
             continue   # leidinio skyriaus antraštė („MUZIKOS INSTRUMENTAI“, „ŽINOMI PREKIŲ ŽENKLAI“), ne prekė
         name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
         if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()

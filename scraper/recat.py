@@ -10,5 +10,8 @@ for it in d["items"]:
     if nm != it[1]: it[1] = nm; n += 1
     c = categories.classify(it[1])
     if c != "kita" and c in ids and ids[it[7]] != c: it[7] = ids.index(c); n += 1
+# Lidl leidinio skyrių antraštės („MUZIKOS INSTRUMENTAI“) – ne prekės
+L = d["stores"].index("Lidl") if "Lidl" in d["stores"] else -1
+d["items"] = [it for it in d["items"] if not (it[0] == L and it[1].isupper() and len(it[1].split()) <= 4 and not re.search(r"\d", it[1]))]
 p.write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 print("pakeista (kategorijos ir pavadinimai):", n)
