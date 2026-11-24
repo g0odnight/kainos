@@ -35,6 +35,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .chip.on{color:var(--tx);border-color:var(--tx)}
 .chip.cat.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
 .chip small{font-weight:500;opacity:.65}
+.wrapchips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0 0}.wrapchips .chip{padding:6px 11px;font-size:13.5px;gap:6px}
 .chip.more{border-style:dashed}
 .bar{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 2px;gap:10px}
 .sum{font-size:14px;color:var(--mu)}.sum b{color:var(--tx)}
@@ -116,7 +117,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
  <div class="top" id="top">
   <div class="sb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
    <input id="q" type="search" enterkeyhint="search" placeholder="Ieškoti prekės…" autocomplete="off" aria-label="Paieška"><button class="x" id="x" hidden aria-label="Išvalyti">✕</button></div>
-  <div class="hs" id="stores"></div>
+  <div class="wrapchips" id="stores"></div>
   <div class="hs" id="cats"></div>
  </div>
  <div class="bar"><div class="sum" id="sum"></div>
@@ -134,7 +135,7 @@ h3{margin:22px 2px 6px;font-size:13px;letter-spacing:.06em;text-transform:upperc
 <div class="sheet" id="sheet"><div id="sheetc"></div></div>
 
 <script>
-const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#475569","Šilas":"#15803d"};
+const COL={Maxima:"#e11d2e",Rimi:"#ea6a00",Lidl:"#0b5ed7",IKI:"#7c3aed",Norfa:"#0d9488",Promo:"#475569","Šilas":"#15803d",Vynoteka:"#9f1239"};
 const FALLBACK_CATS=[{id:"kita",name:"Kita",icon:"🛒"}];
 let DB={stores:[],rows:[],cats:FALLBACK_CATS,updated:null,status:{}},sel=new Set(),cats=new Set(),cart=[],sortBy="price",Q="",lim=60,demo=false;
 const $=s=>document.querySelector(s);
@@ -186,7 +187,10 @@ function init(j,d){demo=!!d;DB=j;DB.items_total=(j.items||[]).length;if(!Array.i
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
   return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2]),sz:sizeOf(a[1])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
- sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));if(!sel.size)sel=new Set(have);
+ const known=ls("known3")||(saved||[]);
+ sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));
+ [...have].forEach(s=>{if(!known.includes(s))sel.add(s)});   // naujos parduotuvės – iškart pažymėtos
+ if(!sel.size)sel=new Set(have);ls("known3",[...new Set([...known,...have])]);
  const sc=ls("cats3");cats=new Set((sc||[]).filter(c=>DB.cats.some(x=>x.id==c)));
  drawStores();draw();fresh();if(!$("#v3").hidden)drawInfo()}
 async function load(){try{const r=await fetch("prices.json",{cache:"no-cache"});const j=await r.json();if(!j.items||!j.items.length)throw 0;init(j,false)}catch(e){init(demoData(),true)}}
@@ -202,9 +206,10 @@ const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(stem);
 const matchQ=(r,t)=>t.every(x=>r.n.includes(x));
 function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
 function list(){return base().filter(r=>!cats.size||cats.has(r.c))}
-function drawStores(){const have=[...new Set(DB.rows.map(r=>r.s))],all=have.every(s=>sel.has(s));
+function haveStores(){const s=new Set(DB.rows.map(r=>r.s));return DB.stores.filter(x=>s.has(x))}
+function drawStores(){const have=haveStores(),all=have.every(s=>sel.has(s));
  $("#stores").innerHTML=`<button class="chip ${all?"on":""}" data-all="1">Visos</button>`+have.map(s=>`<button class="chip ${sel.has(s)&&!all?"on":""}" data-s="${s}"><span class="dot" style="background:${col(s)}"></span>${s}</button>`).join("")}
-$("#stores").onclick=e=>{const b=e.target.closest("button");if(!b)return;const have=[...new Set(DB.rows.map(r=>r.s))];
+$("#stores").onclick=e=>{const b=e.target.closest("button");if(!b)return;const have=haveStores();
  if(b.dataset.all)sel=new Set(have);else{const s=b.dataset.s,all=have.every(x=>sel.has(x));
   if(all)sel=new Set([s]);else{sel.has(s)?sel.delete(s):sel.add(s);if(!sel.size)sel=new Set(have)}}
  ls("sel3",[...sel]);lim=60;drawStores();draw()};
@@ -288,7 +293,7 @@ function tab(n){[1,2,3].forEach(k=>$("#v"+k).hidden=n!=k);$("#n1").classList.tog
  scrollTo(0,0);n==1?drawList():n==2?drawCart():drawInfo()}
 $("#menu").onclick=()=>$("#dr").classList.add("show");
 $("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");const b=e.target.closest("[data-t]");if(b)tab(+b.dataset.t)};
-const SRC={Maxima:"maxima.lt pasiūlymai",Rimi:"rimi.lt akcijos + leidinys",Lidl:"lidl.lt leidiniai (PDF)",Norfa:"norfa.lt leidiniai (PDF)",Promo:"akcijos.lt leidiniai (OCR)",IKI:"manoakcijos.lt leidiniai (OCR)","Šilas":"akcijuseklys.lt leidiniai"};
+const SRC={Maxima:"maxima.lt + akcijuseklys.lt",Rimi:"rimi.lt akcijos + leidiniai",Lidl:"lidl.lt PDF + akcijuseklys.lt",Norfa:"norfa.lt PDF + akcijuseklys.lt",Promo:"akcijuseklys.lt leidiniai",IKI:"akcijuseklys.lt leidiniai","Šilas":"akcijuseklys.lt leidiniai",Vynoteka:"akcijuseklys.lt leidiniai"};
 function drawInfo(){const st=DB.status||{},el=$("#info");
  const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
  let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~08:00.</div>

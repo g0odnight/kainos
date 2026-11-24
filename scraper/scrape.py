@@ -404,51 +404,107 @@ def crawl_manoakcijos(ctx, page, slug, max_pages=60, parser="iki"):
         note("manoakcijos.lt leidiniai (OCR)", pubs=1, pages=k - 1, parsed=got)
     return items
 
-def ak_leaflet(html):
+CARD = {"Maxima": "su AČIŪ kortele", "Rimi": "su Mano Rimi kortele", "Lidl": "su Lidl Plus", "IKI": "su IKI kortele",
+        "Norfa": "su kortele", "Promo": "su kortele", "Šilas": "su kortele", "Vynoteka": "su kortele"}
+
+def _eur(v): return f"{v:.2f}".replace(".", ",") + " €"
+
+def ak_details(det):
+    """Aprašą sutrumpinam iki to, kas naudinga: kiekis, rūšys, dydis. Kainos, art. nr., ilgi aprašymai – lauk."""
+    keep = []
+    for seg in re.split(r"\s*[•;]\s*|,\s+(?=\D)", det or ""):
+        seg = seg.strip(" ,.")
+        if not seg or re.search(r"€|Eur\b|Eur/|kaina|art\.|^ir IKI|IKI EXPRESS|nurodytos su nuolaida|^\d{5,}$", seg, re.I): continue
+        if re.match(r"įvairių (spalvų|rūšių|dydžių|dizainų)$", seg, re.I): continue
+        if re.match(r"nuo \d", seg, re.I) or "®" in seg: continue
+        if len(seg) > 25 and not re.search(r"\d\s*(g|kg|ml|l|vnt|pak|por\w*|rink)\b", seg): continue
+        keep.append(seg)
+    return ", ".join(keep)[:70]
+
+def ak_leaflet(html, store=""):
     """akcijuseklys.lt leidinio puslapyje įdėtas JSON su visomis leidinio prekėmis -> [(pavadinimas, kaina, nuo, iki, sena, žymė)]."""
     m = next((m for m in re.finditer(r"<script[^>]*>(\{\"pages\".*?)</script>", html, re.S)), None)
     if not m: return None
     d = json.loads(m.group(1)); out = []
     for x in d.get("deals", []):
         if not x.get("promoPrice") or not x.get("title"): continue   # grupinė nuolaida be kainos („-25 % gėrimams“) – nerodom
-        price = float(x["promoPrice"]); old = float(x["regularPrice"]) if x.get("regularPrice") else None
-        det = re.sub(r"^(įvairių (spalvų|rūšių|dydžių|dizainų)[,;]?\s*)", "", (x.get("details") or "")).strip(" ,;")
-        if re.search(r"kainos parduotuvėse|nurodytos su nuolaida", det, re.I): det = ""
-        det = re.sub(r"[,;]?\s*1\s*(kg|l)\s*(grynosios masės\s*)?(kaina\s*)?[-–—]\s*\d+[,.]\d{2}\s*€?", "", det).strip(" ,;")   # kaina už kg – programėlė skaičiuoja pati
-        title = re.sub(r"\s+", " ", x["title"]).strip()
+        total = float(x["promoPrice"]); old = float(x["regularPrice"]) if x.get("regularPrice") else None
+        lab = (x.get("promoLabel") or "").strip(); n = x.get("bundleQuantity") or 1
+        price, deal = total, ""
+        mb = re.match(r"^(\d+)\s*\+\s*(\d+)$", lab)
+        mv = re.match(r"^(\d+)\s*(vnt\.?|x|=\s*pigiau)$", lab, re.I)
+        if mb and int(mb.group(1)) + int(mb.group(2)) > 1:   # „2+1“: moki už 2, gauni 3
+            q = int(mb.group(1)) + int(mb.group(2)); price = total / q; deal = f"{lab}: {q} vnt. už {_eur(total)}"
+            old = old / q if old else None
+        elif mv and int(mv.group(1)) > 1:                    # „2 vnt. už 3,49 €“, „4 = pigiau“, „3x“
+            q = int(mv.group(1)); price = total / q; deal = f"{q} vnt. už {_eur(total)}"
+            old = old / q if old else None
+        det = ak_details(x.get("details"))
+        title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
         name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
-        deal = "su kortele" if x.get("loyaltyCardRequired") else ""
+        if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()
         frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
-        if 0.05 < price < 2000: out.append((name[:140], round(price, 2), frm, until, old if old and old > price else None, deal))
+        if 0.05 < price < 5000:
+            out.append((name[:140], round(price + 1e-9, 3 if deal and "vnt. už" in deal else 2), frm, until,
+                        round(old, 2) if old and old > price + 0.004 else None, deal))
     return out
 
-def crawl_akcijuseklys(ctx, slug):
+def crawl_akcijuseklys(ctx, slug, store=""):
     """akcijuseklys.lt: kiekvieno leidinio puslapyje – visų prekių JSON (pavadinimas, kaina, sena kaina, galiojimas)."""
     base = "https://www.akcijuseklys.lt"
     get = lambda u: ctx.request.get(u, timeout=60000, headers={"Accept-Language": "lt-LT,lt;q=0.9"})
     r = get(f"{base}/parduotuve/{slug}")
     if r.status != 200: print("   akcijuseklys:", r.status); return {}
     links = list(dict.fromkeys(re.findall(r'href="(/parduotuve/' + re.escape(slug) + r'/br_[0-9a-f]+)"', r.text())))
-    today = datetime.date.today().isoformat(); items = {}
-    for ln in links[:6]:
+    today = datetime.date.today().isoformat(); items = {}; old_streak = 0
+    for ln in links[:25]:
         r = get(base + ln)
         if r.status != 200: continue
-        deals = ak_leaflet(r.text()) or []
+        deals = ak_leaflet(r.text(), store) or []
         live = [d for d in deals if not d[3] or d[3] >= today]
-        if deals and not live: continue   # pasibaigęs leidinys
-        for name, price, frm, until, old, deal in live: items[(name, price)] = (until, frm, old, deal)
+        if deals and not live:
+            old_streak += 1
+            if old_streak >= 4: break   # toliau tik seni leidiniai
+            continue
+        old_streak = 0
+        for name, price, frm, until, old, deal in live: items.setdefault((name, price), (until, frm, old, deal))
         print(f"   akcijuseklys {ln}: {len(live)} prekių su kaina")
-        note("akcijuseklys.lt leidiniai", pubs=1, found=len(live), parsed=len(live))
-        time.sleep(0.5)
+        note("akcijuseklys.lt leidiniai", pubs=1, found=len(live))
+        time.sleep(0.4)
     return items
 
+def _toks(n):
+    return {w for w in re.findall(r"[a-z0-9]{3,}", categories.norm(n)) if w not in ("rusiu", "ivairiu", "vnt", "pak", "su", "arba")}
+
+def merge_extra(base, extra):
+    """Pridedam papildomo šaltinio prekes, kurių dar nėra (ta pati kaina ir panašus pavadinimas = ta pati prekė)."""
+    by_price = {}
+    for (n, p) in base: by_price.setdefault(round(p, 2), []).append(_toks(n))
+    added = 0
+    for (n, p), u in extra.items():
+        t = _toks(n)
+        dup = any(len(t & o) >= max(1, 0.5 * min(len(t), len(o))) for o in by_price.get(round(p, 2), []) if o)
+        if not dup:
+            base[(n, p)] = u; by_price.setdefault(round(p, 2), []).append(t); added += 1
+    return added
+
 def crawl_leaflets(ctx, page, store, c):
+    """Oficialus šaltinis + akcijuseklys.lt. Kai „ak_primary“ – akcijuseklys pagrindinis, o OCR tik atsarginis."""
+    ak = {}
     if c.get("akcijuseklys"):
-        try:
-            items = crawl_akcijuseklys(ctx, c["akcijuseklys"])
-            if items: return items
-        except Exception as e:
-            print("   akcijuseklys klaida:", e)
+        try: ak = crawl_akcijuseklys(ctx, c["akcijuseklys"], store)
+        except Exception as e: print("   akcijuseklys klaida:", e)
+        if ak and c.get("ak_primary"):
+            note(parsed=len(ak)); return ak
+    try: items = crawl_official(ctx, page, store, c)
+    except Exception as e: print("   oficialus šaltinis klaida:", e); items = {}
+    if ak:
+        n = merge_extra(items, ak)
+        print(f"   + akcijuseklys.lt: {n} papildomų prekių (iš {len(ak)})")
+        note(parsed=n)
+    return items
+
+def crawl_official(ctx, page, store, c):
     if c.get("manoakcijos"):
         try: return crawl_manoakcijos(ctx, page, c["manoakcijos"], parser=c.get("parser", "iki"))
         except Exception as e:
@@ -600,7 +656,8 @@ def main():
             status[store] = st
         br.close()
     out_items = []
-    OCR = {"IKI", "Promo"}
+    # OCR taisymai (raidės, nuotrupos, dublikatai) – tik parduotuvėms, kurių duomenys šįkart gauti per OCR
+    OCR = {st for st in stores if any("OCR" in x for x in status.get(st, {}).get("sources", []))}
     vocab = fixnames.build_vocab([n for st in stores if st not in OCR for (n, _p) in new.get((st, "l"), oldmap.get((st, "l"), {}))])
     for store in stores:
         for kind in ("l",):
