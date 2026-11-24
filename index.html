@@ -298,7 +298,7 @@ $("#dr").onclick=e=>{if(e.target.id=="dr")$("#dr").classList.remove("show");cons
 const SRC={Maxima:"maxima.lt + akcijuseklys.lt",Rimi:"rimi.lt akcijos + leidiniai",Lidl:"lidl.lt PDF + akcijuseklys.lt",Norfa:"norfa.lt PDF + akcijuseklys.lt",Promo:"akcijuseklys.lt leidiniai",IKI:"akcijuseklys.lt leidiniai","Šilas":"akcijuseklys.lt leidiniai",Vynoteka:"akcijuseklys.lt leidiniai"};
 function drawInfo(){const st=DB.status||{},el=$("#info");
  const all=(DB.items_total||0),shown=DB.rows.length,u=DB.updated?new Date(DB.updated):null;
- let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~08:00.</div>
+ let h=`<h2 style="margin:8px 2px 4px;letter-spacing:-.3px">Informacija</h2><div class="sum">${u?"Paskutinis rinkimas: <b>"+u.toLocaleString("lt-LT",{month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+"</b>":"Duomenų dar nėra"}${DB.run&&DB.run.event=="schedule"?" (automatinis)":DB.run&&DB.run.event?" (paleista ranka)":""}. Kitas automatinis – rytoj ~09:00.</div>
   <div class="ist"><div class="nums"><div><small>Rodoma programėlėje</small><b>${shown}</b></div><div><small>Parduotuvių su duomenimis</small><b>${new Set(DB.rows.map(r=>r.s)).size} / ${DB.stores.length}</b></div><div><small>Pasibaigusių paslėpta</small><b>${Math.max(0,all-shown)}</b></div></div></div>`;
  DB.stores.forEach(s=>{const x=st[s]||{},rows=DB.rows.filter(r=>r.s==s),n=rows.length,disc=rows.filter(r=>r.old).length,last=[...new Set(rows.map(r=>r.until).filter(Boolean))].sort().pop();
   const parsed=x.parsed!=null?x.parsed:0,found=x.found||x.pages||x.pubs||0;
@@ -319,7 +319,7 @@ const _oldFresh=()=>{const st=DB.status||{};
  const rows=DB.stores.map(s=>{const r=DB.rows.filter(x=>x.s==s),last=[...new Set(r.map(x=>x.until).filter(Boolean))].sort().pop();
   const w=Object.values(st[s]||{}).filter(v=>typeof v=="string").join("; ");
   return `<div class="srow"><span class="st" style="background:${col(s)}">${s}</span><div class="mid"><div>${r.length?`${r.length} pasiūlymų${last?` · iki ${fd(last)}`:""}`:"Leidinių gauti nepavyko"}</div>${w?`<div>${esc(w)}</div>`:""}</div></div>`}).join("");
- $("#sheetc").innerHTML=`<h2>Duomenys</h2><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+".<br>Kainos iš parduotuvių leidinių, atnaujinamos kasdien ~08:00.":""}</div>${rows}<div class="sticky-b"><button class="btn" id="cl">Uždaryti</button></div>`;
+ $("#sheetc").innerHTML=`<h2>Duomenys</h2><div class="sum">${DB.updated?"Atnaujinta "+new Date(DB.updated).toLocaleString("lt-LT")+".<br>Kainos iš parduotuvių leidinių, atnaujinamos kasdien ~09:00.":""}</div>${rows}<div class="sticky-b"><button class="btn" id="cl">Uždaryti</button></div>`;
  $("#sheet").classList.add("show");$("#cl").onclick=closeSheet};
 
 // ---------- atnaujinimas iš programėlės (GitHub Actions per API) ----------
@@ -335,7 +335,7 @@ let job=ls("rfjob")||null,pollT=null;
 function rfSheet(msg){const has=!!tok();
  $("#sheetc").innerHTML=`<h2>Atnaujinti kainas dabar</h2>`+(job?`<div class="prog" id="prog"><b>${esc(job.msg||"Vykdoma…")}</b>Paleista ${new Date(job.t).toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"})}. Užtrunka ~20–30 min., programėlę galima uždaryti.</div>`:"")+
  (msg?`<div class="note">${esc(msg)}</div>`:"")+
- (has?`<p class="sum">Paleis tą patį kainų surinkimą, kuris vyksta kasdien 08:00. Kai baigsis, kainos programėlėje atsinaujins pačios.</p>
+ (has?`<p class="sum">Paleis tą patį kainų surinkimą, kuris vyksta kasdien 09:00. Kai baigsis, kainos programėlėje atsinaujins pačios.</p>
    <div class="sticky-b"><button class="btn gh" id="tokx">Pamiršti raktą</button><button class="btn" id="go" ${job?"disabled style='opacity:.5'":""}>↻ Paleisti</button></div>`
   :`<p class="sum">Vienkartinis nustatymas: reikia GitHub prieigos rakto, kuris leidžia tik paleisti šio repo kainų surinkimą. Raktas saugomas tik šiame telefone.</p>
    <ol class="steps"><li>Atidaryk <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com → Fine-grained token</a>.</li>

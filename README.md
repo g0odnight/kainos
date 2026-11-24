@@ -3,7 +3,7 @@
 Programėlė: https://g0odnight.github.io/kainos/
 
 Parduotuvių **kainų leidinių** akcijos vienoje vietoje: paieška, parduotuvių ir kategorijų filtrai, rūšiavimas, krepšelis.
-Serverio nėra: GitHub Actions kasdien ~08:00 (Vilniaus laiku) surenka leidinius į `prices.json`, o programėlė telefone tik skaito tą failą.
+Serverio nėra: GitHub Actions kasdien ~09:00 (Vilniaus laiku) surenka leidinius į `prices.json`, o programėlė telefone tik skaito tą failą.
 
 ## Kaip tai veikia
 
