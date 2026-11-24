@@ -32,6 +32,21 @@ META = [
 # (kategorija, regex) – tikrinimo tvarka
 RULES = [
     # tikslūs išimčių atvejai (prieš bendras taisykles)
+    # pavadinime yra „maisto“ žodis, bet prekė ne ta (2026-11 peržiūra)
+    ("namai", r"(zvak|zvakut|kepsnine\b|spaustuv|smulkintuv|skustukas|\bindelis\b|pjaustykl|in\.? ?sviestui|sviestuv|kekso forma|kiaurasamt|silik\. forma|dekor\.? vais|uogu sakel|kavamal|kostium|decoris|kilimelis susiu|\bgrandikl)"),
+    ("namai", r"^(?!.*(tesl|misin|\d+ ?g\b)).*kepimo (rinkin|rink\.|indas|irank)"),
+    ("vaikai", r"(\bzaid\.|zaislas|zaislin|gerardo|\bspire\b|interaktyv|slaimo|smashers|lav\. rink|automod|traktori|siuksliavez|autovez|games for fun|car ?mania|\bkrass\b|lenkt\.? automobil|\bkosmos\b|captivz|constructor|playgro|plastilin|play.?doh|\bwelly\b|motociklas)"),
+    ("kosmetika", r"(von\.? druska|vonios druska|lakst\.? kauke|veido kauke|pl\.? ?aliejus|plauku aliej|pedu sviest|kosmet\.? rink|kosmetikos rinkin|makiazo valikl|kirpimo masinel|kondicion\. elseve|pl\.? kondicion)"),
+    ("buitine", r"(aut\.? ?gaiv|auto\.? oro gaiv|autom?\.? oro gaiv|autom\.? kvapas)"),
+    ("saldumynai", r"(kinder surpri|^(?!.*gerber).*sviest\w*\.? sausain|sausainiai su sviest|saus\. .*su sviest|kiausiniu sausain|\boreo\b|sokoladine eglut|saldainiai .*\bgin\b|sald\.? rink|sokoladinis (kaledu )?senel)"),
+    ("pienas", r"(sur(is|io) su viski|augalin\w* (kremas|rieb)|augaliniais rieb|creme cuisine)"),
+    ("konservai", r"(padaz\w* .*(whisk|bourbon))"),
+    ("saldyta", r"(plomb\.|plombyr)"),
+    ("alkoholis", r"(spirtinis gerimas|(?<![\d,.])[1-9]\d?(?:[.,]\d)? ?% alk)"),
+    ("zuvis", r"(samu plesik|\bsamu\b)"),
+    ("mesa", r"(kulseliu mes)"),
+    ("gerimai", r"^(?!.*dantu).*\bcola\b"),
+    ("kava", r"(^arb\. (?!zvak))"),
     # grupinės nuolaidos (dažnai naudininku: „padažams“, „sūriams“, „vaikų maistui“)
     ("konservai", r"(padazams|kecupui|mutti)"),
     ("vaikai", r"(vaiku maist|vaiku prieziur|tommee|marmaluzi)"),
@@ -83,9 +98,9 @@ RULES = [
     ("bakaleja", r"(pagalveles|kukuruzu dribs|avizin)"),
     ("gyvunai", r"(katem|kates\b|kaciu|kaciuk|katei\b|\bsun(ims|u|ys|iui|eliams)\b|sunim|sunu\b|gyvun|pasaras|pasaro|kraik|grauzik|papug|akvarium|pedigree|whiskas|felix|friskies|purina|kitekat|chappi)"),
     ("vaikai", r"(kudik|sauskel|vystykl|zinduk|pampers|huggies|nuo \d+ men|vaikisk|vaikams)"),
-    ("buitine", r"(\bw5\b|svaros prek|skalb|indaplov|ploviklis|plovikl|valikl|minkstikl|balikl|dezinf|kalkiu|\bwc\b|siuksliu|maiseli|kempin|sluost|\bariel|persil|lenor|fairy|finish|domestos|vanish|calgon|\bcif\b|purio|formil|silan|tualetinis popier|popierinis ranksl|servetel|kvapikl|oro gaiv|allin ?(1|one)|\bdiscs\b|folija|kepimo popier|maistine pleve)"),
+    ("buitine", r"(\bw5\b|svaros prek|skalb|indaplov|ploviklis|plovikl|valikl|minkstikl|balikl|dezinf|kalkiu|\bwc\b|siuksliu|maiseli|kempin|sluost|\bariel|\bpersil\b|lenor|fairy(?! things)|finish|domestos|vanish|calgon|\bcif\b|purio|formil|silan|tualetinis popier|popierinis ranksl|servetel|kvapikl|oro gaiv|allin ?(1|one)|\bdiscs\b|folija|kepimo popier|maistine pleve)"),
     ("kosmetika", r"(sampun|kondicionier|\bmuil|dantu|burnos|dezodor|antiperspir|kosmet|veido|rank(u|ų) krem|kuno|losjon|plauk|skutim|skustuv|higien|\bvatos|vatos|paklotel|tamponai|ikl(u|i)ot|kvepal|tualetinis vanduo|sensodyne|colgate|nivea|gillette|dus(o|ui) (gel|zele)|duso zel|vonios|nagu|lupu|makiaz|pastiles)"),
-    ("augalai", r"(\begle\b|eglut(e|es)\b(?!.{0,20}(sokolad|saldain))|egle |kenis|puansetij|selagin|phalaenops|orchid(?!.{0,8}vanil)|\bgel(e|es|iu)\b|vazon|augal|puokst|sodinuk|trasos|zemes misin|tulpi|amarili)"),
+    ("augalai", r"(\begle\b|eglut(e|es)\b(?!.{0,20}(sokolad|saldain))|egle |kenis|puansetij|selagin|phalaenops|orchid(?!.{0,8}vanil)|\bgel(e|es|iu)\b|vazon|augal(?!in)|puokst|sodinuk|trasos|zemes misin|tulpi|amarili)"),
     ("namai", r"(akumuliator|grezt|slifuokl|\bpjuk|irankiu|irankis|parkside|silvercrest|ernesto|livarno|crivit|lupilu|esmara|lempa|lemput|zibint|girliand|baterij|kabel|patalyn|pagalv|antklod|rankslu|chalat|kojin|marskin|kelnes|striuk|\bbatai|slepet|zaisl|zaidim|\blego|\blel(e|es)\b|keptuv|puod(as|ai|ukas)|peili|\bindai\b|lekst|puodel|stiklin|taure|termos|zvak|dekoracij|elektrin|maisytuv|virdul|gruzdintuv|svarstykl|laikrod|kuprin|lagamin|dvirat|pieno putu|rinkinys martinelia|dollhouse|gabby|stitch|frozen|magic studio)"),
     ("alkoholis", r"(\bvyn(as|o|ai|u)?\b(?!uog)|vynas|sampan(?!.{0,10}skonio)|\balus\b|\balaus\b|degtin|\bviski|whisk|konjak|brendis|brandy|\bromas\b|\bgin\b|dzinas|likeris|likerio|trauktin|sidras|\bvodka|prosecco|martini|stiprus gerim|spiritin|captain morgan|tekila)"),
     ("kava", r"(kava|kavos|kavine|lavazza|jacobs|nescafe|paulig|pellini|dallmayr|arbat|kakava|kakavos (milt|gerim)|cikorij|karstas sokoladas)"),
@@ -95,7 +110,7 @@ RULES = [
     ("saldyta", r"((?<!at)saldyt(?!uv)|\bledai|ledai|\bledu\b|plombyr|\bpica|picos|koldun|virtiniai|ceburek|panzerotti)"),
     ("kulinarija", r"(kulinar|apkepel|rizotas|\bsalotos\b(?! lap)|salotos,|\bsalotu\b|susi\b|sushi|griliu? visti|kepta visti|paruostas maist|patiekal|cepelin|balandel|vedarai|kugel|suktinuk|wrap|kotlet|\bblynai|\bplovas|sriuba(?!.{0,20}(sausa|koncentr|kub))|paruosti valgyti|vitello|lasagn|lazanij)"),
     ("zuvis", r"(zuv|lasis|lasiu|lasisa|lasisos|silk|krevet|ikrai|\bikr|tun(as|ai|u)\b|sprot|skumbr|strimel|menk|upetak|karpi|lydek|kalmar|midij|krab|surimi|juru ?geryb|wide ocean|\beser|juri?nis eser|ersket|stint|omar|astuonkoj|polok|heke|tilapij|dorad|lasis)"),
-    ("mesa", r"(mes(a|os)\b|mesos|visti|vistuk|visciuk|kiauli|jautien|versien|aviena|antien|kalakut|triusi|zverien|sernien|elnien|desr|sosis|kumpi|skiland|\bsonin|\bfars|kepsnin|saslik|broiler|blauzdel|sparnel|kepenel|pastet|saliam|salami|mortadel|chorizo|prosciutto|iberico|bekon|vytint|nugarin|pjausn|mente\b|sprandin|karbonad|paukstien|\bfile\b|\bfile )"),
+    ("mesa", r"(mes(a|os)\b|mesos|visti|vistuk|visciuk|kiauli|jautien|versien|aviena|antien|kalakut|triusi|zverien|sernien|elnien|desr|sosis|kumpi|skiland|\bsonin|\bfars|kepsnin(?!e\b)|saslik|broiler|blauzdel|sparnel|kepenel|pastet|saliam|salami|mortadel|chorizo|prosciutto|iberico|bekon|vytint|nugarin|pjausn|mente\b|sprandin|karbonad|paukstien|\bfile\b|\bfile )"),
     ("pienas", r"(pien(as|o)(?!.{0,25}sokolad)|\buht\b|jogurt|kefyr|varsk|sur(is|io|iu|iai|elis|eliai)|sureli|sviest|grietin|kiausin|margarin|pudingas|mocarel|mozzarel|\bfeta\b|parmez|parmigiano|gouda|cheddar|maskarpon|mascarpon|rikota|ricotta|ayran|pasukos|rugpien|tvarog|glaistyt|lydytas|brie\b|camembert|gorgonzol)"),
     ("konditerija", r"(panet|pandoro|profitrol|sluoksniuot|tortas|\btort(o|ai|eliai|elis)\b|pyrag|keks|eklera|beze|spurg|kibin|desert|stolen|meduol|vyniotin|ruletas|tiramisu|kuciuk|sakot|bandel(e|es) su|cinamonin|kruasan|croissant)"),
     ("saldumynai", r"(sokolad|saldain|sausain|vafl|zefyr|marmelad|guminuk|kramtom|karamel|batonel|iriso|halva|praline|triufel|lindt|milka|kinder|ferrero|raffaello|toblerone|snickers|twix|\bmars\b|bounty|m&m|haribo|\bruta\b|marcipan|pinigeliai|\bnuga\b|drazes|draze|advento kalendorius|cukrines lazdel|lazdele ?mega)"),

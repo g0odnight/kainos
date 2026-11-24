@@ -1,4 +1,4 @@
-const C="kainos-v17";
+const C="kainos-v18";
 self.addEventListener("install",e=>self.skipWaiting());
 self.addEventListener("activate",e=>e.waitUntil(clients.claim()));
 // tinklas pirma (kad matytum šviežias kainas), jei nėra ryšio – kešas
