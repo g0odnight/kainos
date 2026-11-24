@@ -103,7 +103,7 @@ RULES = [
     ("duona", r"(baget|duon|grudaini|batonas|\bbaton\b|bandel|bandut|raguol|ciabat|bagete|\bbagel|tortilij|lavas|\bpita\b|skrebuc|tosto|kepinys|kepiniai|plutele|sumustiniu)"),
     ("uzkandziai", r"(riesut|migdol|lazdyn|anakard|pistacij|sauleg|moliugu sekl|uzkand|alyvuog(?!.{0,15}aliej))"),
     ("vaisiai", r"(mangas|mandar ?nai|obuol|banan|mandarin|apelsin|citrin|\bkiv|kiwi|agurk|pomidor|\bmork|bulv|kopust|svogun|darzov|vaisi(ai|u)\b|avokad|persimon|\buog(os|u)\b|braskes|avietes|melynes|spanguol|salotos lap|salotu lap|paprik|brokol|kalafior|grybai|grybu|pievagryb|ananas|vynuog|kriaus|cesnak|burokel|cukinij|moliug|granat|greipfrut|laim(as|ai)\b|petrazol|krapai|ridik|salier|porai|sparag|mango|slyv|abrikos|persik|nektarin|arbuz|melion|datul|figos|imbier|zalumyn|rukola|spinat|batat|artisok|kokos(as|ai)\b)"),
-    ("konservai", r"(catnis|konserv|zirnel|pupel|kukuruz|pomidoru padaz|savo sultyse|marinuot|raugint|agurkeliai|troskin|uogien|dzem|kompot|\bmedus|kecup|majonez|garstyc|padaz|uztepel|tyre|alyvuoges)"),
+    ("konservai", r"(catnis|konserv|zirnel|pupel|kukuruz|pomidoru padaz|savo sultyse|marinuot|raugint|agurkeliai|troskin|uogien|dzem(?!per)|kompot|\bmedus|kecup|majonez|garstyc|padaz|uztepel|tyre|alyvuoges)"),
     ("bakaleja", r"(raviol|makaron|spagec|\bryz(iai|iu|ai)|balandos|dziuvesel|panko|kruop|grikiai|miltai|cukrus|cukraus|druska|druskos|aliejus|aliejaus|aliejui|\bactas|dribs|avizin|musli|granol|prieskon|pipir|cinamonas|vanil|mieles|sultinys|buljon|kubel|ramen|nudel|lakst|kuskus|bulgur|avinzirn|lesi(ai|u)|\bpasta\b|kepimo|glajus|glazur|papuosim|pabarstuk|sirup|cukruot|razin|dziovint|sekl(os|u)|kokoso droz|krakmol|zelatin|tagliolin|penne|fusilli|kepiniams)"),
 ]
 
