@@ -105,6 +105,22 @@ RULES = [
     ("vaisiai", r"(mangas|mandar ?nai|obuol|banan|mandarin|apelsin|citrin|\bkiv|kiwi|agurk|pomidor|\bmork|bulv|kopust|svogun|darzov|vaisi(ai|u)\b|avokad|persimon|\buog(os|u)\b|braskes|avietes|melynes|spanguol|salotos lap|salotu lap|paprik|brokol|kalafior|grybai|grybu|pievagryb|ananas|vynuog|kriaus|cesnak|burokel|cukinij|moliug|granat|greipfrut|laim(as|ai)\b|petrazol|krapai|ridik|salier|porai|sparag|mango|slyv|abrikos|persik|nektarin|arbuz|melion|datul|figos|imbier|zalumyn|rukola|spinat|batat|artisok|kokos(as|ai)\b)"),
     ("konservai", r"(catnis|konserv|zirnel|pupel|kukuruz|pomidoru padaz|savo sultyse|marinuot|raugint|agurkeliai|troskin|uogien|dzem(?!per)|kompot|\bmedus|kecup|majonez|garstyc|padaz|uztepel|tyre|alyvuoges)"),
     ("bakaleja", r"(raviol|makaron|spagec|\bryz(iai|iu|ai)|balandos|dziuvesel|panko|kruop|grikiai|miltai|cukrus|cukraus|druska|druskos|aliejus|aliejaus|aliejui|\bactas|dribs|avizin|musli|granol|prieskon|pipir|cinamonas|vanil|mieles|sultinys|buljon|kubel|ramen|nudel|lakst|kuskus|bulgur|avinzirn|lesi(ai|u)|\bpasta\b|kepimo|glajus|glazur|papuosim|pabarstuk|sirup|cukruot|razin|dziovint|sekl(os|u)|kokoso droz|krakmol|zelatin|tagliolin|penne|fusilli|kepiniams)"),
+    # paskutinės: sutrumpinti (Rimi) pavadinimai, kurių ankstesnės taisyklės neatpažino
+    ("namai", r"(\bpedk\b|pedk\.|\bvyr\.? ?apat|pizama|aut\.? ?gaiv|automobilio gaiv|staltiese|\bdubuo\b|luminarc|mentele|serv\.? ?rinkin|indeliu|kaspin|dovanu (popier|krepsel|maisel)|krepinis popier|pakabinam|zvaigzd|girlaind|nykstuk|cozy home|dekor|atspindint|zvake|zvakid|lekst|puodel|taure|stiklin|padekl|rankine|kuprin|lagamin)"),
+    ("vaikai", r"(matchbox|rastar|\blavin|staigmena|jellykings|metal mashines|automobiliuk|meskiuk|\bciul\.|avent|\bhipp\b|hot wheels|barbie|pliusin|minkstas zais)"),
+    ("buitine", r"(tual\.? ?gaiv|tualeto gaiv|pop\.? ?ranksl|skal\.? ?pri|tri-bio|batu krem|\bindu plov|grindu|stiklu valy)"),
+    ("zuvis", r"(\bkrev\.)"),
+    ("gyvunai", r"(\bkat\.|\bed\.|edalas|\bsun\.)"),
+    ("bakaleja", r"(balzam\w*\.? ?act)"),
+    ("kosmetika", r"(hig\.? ?paket|drek\.|kilig|\bd\.? ?zele|dus\.? ?zel|puršk\.? ?kond|pursk\.? ?kond|pursk\.? ?dez|\bdez\.|balzam(?!.{0,6}act)|listerine|b\.? ?sk\.? ?skyst|rexona|neutrogena|garnier|loreal|l'oreal|dove\b|palmolive|schauma|syoss|head ?& ?shoulders|pantene|(?<!balzam\.)(?<!acto )kremas\b(?!.{0,20}act))"),
+    ("kava", r"((^|\s)arb\.)"),
+    ("gerimai", r"(\bgaz\.|cido|hohes c|vais\.? ?sult|\bsk\.? ?ger|\bger\.)"),
+    ("konservai", r"(\bkons\.)"),
+    ("bakaleja", r"(priesk|sausi pusryciai|miltu misin|\bmakar\.|tako\b|sriub)"),
+    ("uzkandziai", r"(trapuc|siaudeliai|lazdeles|karaliskasis misinys|kraker)"),
+    ("pienas", r"(\bvars\.|\bsur\.|\bjog\.)"),
+    ("saldumynai", r"(\bsaus\. su|saus\..{0,15}(sok|sk\.)|sald\. rinkin|pien\. sald|\bsok\.)"),
+    ("alkoholis", r"^(?!.*(nekt|sult|ger\.|gaz|vand|limon|sirup|\bvit\.)).*(0,75 l|0,7 l)$"),
 ]
 
 def norm(s):
