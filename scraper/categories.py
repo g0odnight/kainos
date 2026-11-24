@@ -32,6 +32,20 @@ META = [
 # (kategorija, regex) – tikrinimo tvarka
 RULES = [
     # tikslūs išimčių atvejai (prieš bendras taisykles)
+    # grupinės nuolaidos (dažnai naudininku: „padažams“, „sūriams“, „vaikų maistui“)
+    ("konservai", r"(padazams|kecupui|mutti)"),
+    ("vaikai", r"(vaiku maist|vaiku prieziur|tommee|marmaluzi)"),
+    ("kosmetika", r"(prezervatyv|lubrikant|\btaft\b|oral-b|sukuosenos)"),
+    ("buitine", r"(buitin\w* chemij|coccolino|arbre vert|acappella|lappel)"),
+    ("gyvunai", r"(optimeal|pavadel)"),
+    ("namai", r"(automobili\w* (prek|prieziur)|automobiliniams|ledo grandikl|sniego sepet|maisto laikymo|maisto ruosimo|virtuves (prek|reikm)|klijams|tvirtinimo|dovanu pakavimo|kalendoriams|kaledine apranga|kaledinia?i? nykstuk|vienkartin\w* (dezut|irank|ind|lekst)|tortu padekl|daugkartinio naudojimo|varikliu alyv)"),
+    ("mesa", r"(mesai\b|krekenavos gaminiams|mazeikiu mesine|nematekas|giminiu produkcija)"),
+    ("pienas", r"(suriams|pelesiniams)"),
+    ("zuvis", r"(\btunams|sukutes)"),
+    ("saldumynai", r"(saldumynams|saldumynai geisha|hematogen|magic of winter)"),
+    ("bakaleja", r"(sausiems pusryciams|sultiniams|sultiniai|sriuboms|(produkcij\w*|visai|produktams).{0,30}(maggi|knorr|santa maria|bonduelle|oetker|gourmet green|bornibus)|(maggi|knorr|bonduelle|oetker|bornibus).{0,20}produkcij|\bmedui\b)"),
+    ("uzkandziai", r"(o!nuts|onuts)"),
+    ("gerimai", r"(\bgirai\b)"),
     ("vaikai", r"((?<!kirpimo )masinel|traukin|kaladel|gelezinkel|virtuvel|vagonel|lavinam|ridenimo|teleskop|sraigtaspar|kvadrokopter|nuotoliniu budu valdom|muzikos instrument|klavisin|sintezator|zemelap|mokomas|walkie|spalvoti piestuk)"),
     ("namai", r"(^(?!.*(zaisl|lego)).*(siurbl|valytuv|plaktuk)|uzuolaid|sildytuv|kilimas|irigator|kraujospud|masazinis pistolet|kompresor|pledas|paltas|puodu rinkin|klimato stotel|kroviklis|kedut|sluot|plakikl|trintuv|tualeto reikmen|paklode|rakt\w* pakabuk|puosu rinkin)"),
     ("saldumynai", r"(roulette|ritineliai|karamele su pieno|surio sausain)"),
