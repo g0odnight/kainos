@@ -19,7 +19,7 @@ with sync_playwright() as pw:
             if r.status != 200: break
             body = r.body(); (out / f"{d}_{k:02d}.webp").write_bytes(body)
             res = iki.parse_image(body)
-            lines = [l["t"] for l in ocr_lines(body)]
+            lines = ocr_lines(body, scale=300)
             rep.append({"page": f"{d}_{k:02d}", "items": res, "lines": lines})
             print(d, k, len(res))
     (out / "report.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1))
