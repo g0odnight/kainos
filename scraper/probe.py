@@ -18,16 +18,16 @@ with sync_playwright() as pw:
         (OUT / f"{k}_text.txt").write_text(pg.inner_text("body")[:40000], encoding="utf-8")
         (OUT / f"{k}_html.txt").write_text(pg.content()[:300000], encoding="utf-8")
         return links
-    for k, u in (("home", "https://manoakcijos.lt/"), ("iki", "https://manoakcijos.lt/parduotuves/iki")):
+    for k, u in (("leaf", "https://manoakcijos.lt/parduotuves/iki/iki-23-11-26-29-11-26-fiohy/1"), ("leaf2", "https://manoakcijos.lt/parduotuves/iki/iki-23-11-26-29-11-26-fiohy/2"), ("hitai", "https://manoakcijos.lt/dienos-hitai/puslapis/1")):
         try: grab(k, u)
         except Exception as e: rep[k] = {"err": str(e)[:300]}
-    try:
-        links = (OUT / "iki_links.txt").read_text().splitlines()
-        lf = [l.split(" | ")[0] for l in links if re.search(r"iki", l, re.I) and re.search(r"leidin|/\d{4,}", l)]
-        rep["iki_leaflet_links"] = lf[:20]
-        if lf: grab("leaf", lf[0])
-    except Exception as e: rep["leaf_err"] = str(e)[:300]
-    for k, u in (("about", "https://manoakcijos.lt/apie-mus"), ("privacy", "https://manoakcijos.lt/privatumo-politika")):
+    for name in ("image00.webp", "image01.webp", "image00.jpg"):
+        try:
+            r = ctx.request.get("https://app.manoakcijos.lt/261129_261123_iki_fiohy/" + name, timeout=60000); b = r.body()
+            (OUT / ("iki_" + name + ".bin")).write_bytes(b)
+            rep[name] = [r.status, r.headers.get("content-type"), len(b), subprocess.run(["identify", str(OUT / ("iki_" + name + ".bin"))], capture_output=True, text=True).stdout.strip()]
+        except Exception as e: rep[name] = str(e)[:200]
+    for k, u in (("terms", "https://manoakcijos.lt/taisykles-paslaugos"),):
         try: grab(k, u)
         except Exception as e: rep[k] = {"err": str(e)[:200]}
     br.close()
