@@ -246,8 +246,10 @@ const GH=(()=>{const h=location.hostname,p=location.pathname.split("/").filter(B
 const API=`https://api.github.com/repos/${GH.o}/${GH.r}/actions`;
 const tok=()=>ls("ghtok")||"";
 async function gh(path,opt={}){const r=await fetch(API+path,{...opt,headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+tok(),"X-GitHub-Api-Version":"2022-11-28",...(opt.headers||{})}});
- if(r.status==401||r.status==403)throw new Error("Raktas netinka arba neturi teisės „Actions: Read and write“.");
- if(!r.ok&&r.status!=204)throw new Error("GitHub klaida "+r.status);return r.status==204?null:r.json()}
+ if(!r.ok&&r.status!=204){let m="";try{m=(await r.json()).message||""}catch(e){}
+  const why=r.status==401?"GitHub nepriima rakto (401: neteisingas, pasibaigęs arba nukopijuotas ne visas).":r.status==403?"Raktas neturi teisės (403). Patikrink: Repository access → Only select repositories → "+GH.o+"/"+GH.r+" ir Permissions → Actions: Read and write.":r.status==404?"Nerasta (404): raktas neturi prieigos prie repo "+GH.o+"/"+GH.r+" (Repository access).":"GitHub klaida "+r.status+".";
+  throw new Error(why+(m?" GitHub: „"+m+"“":""))}
+ return r.status==204?null:r.json()}
 let job=ls("rfjob")||null,pollT=null;
 function rfSheet(msg){const has=!!tok();
  $("#sheetc").innerHTML=`<h2>Atnaujinti kainas dabar</h2>`+(job?`<div class="prog" id="prog"><b>${esc(job.msg||"Vykdoma…")}</b>Paleista ${new Date(job.t).toLocaleTimeString("lt-LT",{hour:"2-digit",minute:"2-digit"})}. Užtrunka ~20–30 min., programėlę galima uždaryti.</div>`:"")+
@@ -263,7 +265,7 @@ function rfSheet(msg){const has=!!tok();
  $("#sheet").classList.add("show");
  const c2=$("#cl2");if(c2)c2.onclick=closeSheet;
  const tx=$("#tokx");if(tx)tx.onclick=()=>{ls("ghtok","");rfSheet()};
- const ok=$("#tokok");if(ok)ok.onclick=()=>{const v=$("#tokin").value.trim();if(!/^(github_pat_|ghp_)\w{20,}/.test(v))return rfSheet("Tai nepanašu į GitHub raktą (turi prasidėti github_pat_…).");ls("ghtok",v);startRun()};
+ const ok=$("#tokok");if(ok)ok.onclick=()=>{const v=$("#tokin").value.replace(/[\s\u200b-\u200d\ufeff"']/g,"");if(!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(v))return rfSheet("Įklijuotas tekstas nepanašus į GitHub raktą: turi prasidėti „github_pat_“ (įklijuota "+v.length+" simb., pradžia „"+esc(v.slice(0,11))+"“).");ls("ghtok",v);startRun()};
  const go=$("#go");if(go&&!job)go.onclick=startRun}
 async function startRun(){try{
   const t=new Date().toISOString();
