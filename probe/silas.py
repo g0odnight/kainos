@@ -19,6 +19,7 @@ with sync_playwright() as pw:
             m = next((m for m in re.finditer(r"<script[^>]*>(\{\"pages\".*?)</script>", h, re.S)), None)
             raw = json.loads(m.group(1))["deals"] if m else []
             live = [x for x in d if not x[3] or x[3] >= today]
+            if live: rep[slug].setdefault("raw", []).extend([x for x in raw if (x.get("activeTo") or "9")[:10] >= today])
             rep[slug]["leaflets"].append({"ln": ln, "title": t.group(1) if t else "", "deals": len(raw), "priced": len(d), "live": len(live),
                 "dates": collections.Counter((x[2], x[3]) for x in d).most_common(2), "sample": live[:8]})
     b.close()
