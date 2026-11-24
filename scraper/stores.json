@@ -37,7 +37,9 @@
       "pdfs": [],
       "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+",
       "offers_url": "https://www.maxima.lt/pasiulymai",
-      "akcijuseklys": "maxima"
+      "akcijuseklys": "maxima",
+      "themed_viewers": true,
+      "viewer_skip": "aciu_\\d+|atidarymas"
     },
     "info": "Savaitės pasiūlymai iš maxima.lt ir visas leidinys iš akcijuseklys.lt. Dauguma kainų – su AČIŪ kortele."
   },
