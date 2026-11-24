@@ -32,6 +32,13 @@ META = [
 # (kategorija, regex) – tikrinimo tvarka
 RULES = [
     # tikslūs išimčių atvejai (prieš bendras taisykles)
+    ("vaikai", r"((?<!kirpimo )masinel|traukin|kaladel|gelezinkel|virtuvel|vagonel|lavinam|ridenimo|teleskop|sraigtaspar|kvadrokopter|nuotoliniu budu valdom|muzikos instrument|klavisin|sintezator|zemelap|mokomas|walkie|spalvoti piestuk)"),
+    ("namai", r"(^(?!.*(zaisl|lego)).*(siurbl|valytuv|plaktuk)|uzuolaid|sildytuv|kilimas|irigator|kraujospud|masazinis pistolet|kompresor|pledas|paltas|puodu rinkin|klimato stotel|kroviklis|kedut|sluot|plakikl|trintuv|tualeto reikmen|paklode|rakt\w* pakabuk|puosu rinkin)"),
+    ("saldumynai", r"(roulette|ritineliai|karamele su pieno|surio sausain)"),
+    ("vaisiai", r"(^(?!.*(jogurt|varsk|dziovint)).*silauog)"),
+    ("buitine", r"(nosinait)"),
+    ("duona", r"(riestain)"),
+    ("alkoholis", r"(^rinkinys nr)"),
     ("buitine", r"(valymo (pasta|priemon|servet|milt)|cillit|mr\.? ?soda)"),
     ("bakaleja", r"(stiklin\w* makaron)"),
     ("konservai", r"(sur\w*.{0,30}(pad\.|padaz))"),

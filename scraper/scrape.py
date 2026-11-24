@@ -451,6 +451,8 @@ def ak_leaflet(html, store=""):
             deal = f"kaina už {int(mv.group(1))} vnt."
         det = ak_details(x.get("details"))
         title = re.sub(r"\s+", " ", unescape(x["title"])).strip()
+        if store == "Lidl" and title.isupper() and len(title.split()) <= 4 and not re.search(r"\d", title + (x.get("details") or "")):
+            continue   # leidinio skyriaus antraštė („MUZIKOS INSTRUMENTAI“, „ŽINOMI PREKIŲ ŽENKLAI“), ne prekė
         name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
         if x.get("loyaltyCardRequired"): deal = (CARD.get(store, "su kortele") + (", " + deal if deal else "")).strip()
         frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
@@ -684,7 +686,9 @@ def main():
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items():
-                n = re.sub(r",?\s+\b(AW|SS|CH|HW|FW)\d{2}\b", "", n).strip(" ,")   # sezonų kodai (Rimi)
+                n = re.sub(r"\s*\|\s*", ", ", n.replace("\u00a0", " "))
+                n = re.sub(r"\s{2,}", " ", n)
+                n = re.sub(r"[,\s]*(?<![A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž])(AW|SS|CH|HW|FW)\d{2}\b", "", n).strip(" ,")   # sezonų kodai (Rimi)
                 n = re.sub(r"\s+\d{6,}$", "", n)                                       # prekės kodas gale
                 if store in OCR:
                     n = re.sub(r"\s[\"'|~^]+[^\W\d_]{0,2}(?=\s)", "", fixnames.restore(n, vocab))
