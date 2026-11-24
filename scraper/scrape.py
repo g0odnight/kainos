@@ -197,7 +197,68 @@ def crawl_norfa(ctx, page, url):
             print("   Norfa klaida:", href, e)
     return items
 
+MX_CARDS_JS = """()=>{const all=[...document.querySelectorAll('div,li,article,a')].filter(e=>{const t=e.innerText||'';return /Iki\\s*\\d{1,2}\\.\\d{2}/.test(t)&&/€/.test(t)&&t.length<600&&e.querySelector('img')});
+ const min=all.filter(e=>!all.some(o=>o!==e&&e.contains(o)));return min.map(e=>e.innerText)}"""
+
+def parse_maxima_card(t, year):
+    lines = [l.strip() for l in t.split("\n") if l.strip()]
+    flat = " ".join(lines)
+    m = re.search(r"(?<![\d,])(\d{1,3})\s+(\d{2})\s*€", flat)
+    if not m: return None
+    price = int(m.group(1)) + int(m.group(2)) / 100
+    if re.search(r"\d+\s*vnt\.?\s*už", flat, re.I):
+        k = re.search(r"(\d+)\s*vnt\.?\s*už", flat, re.I); price = price / int(k.group(1))
+    old = None
+    for o in re.findall(r"(?<!– )(?<!≤ )(\d{1,3},\d{2})\s*€", flat):
+        v = float(o.replace(",", "."))
+        if price < v < price * 4 and not re.search(r"1\s*(kg|l|vnt\.?)\s*[–≤≤-]\s*" + re.escape(o), flat): old = v; break
+    u = re.search(r"Iki\s*(\d{1,2})\.(\d{2})", flat)
+    until = ""
+    if u:
+        mo, d = int(u.group(1)), int(u.group(2)); y = year + (1 if mo < datetime.date.today().month - 6 else 0)
+        until = "%04d-%02d-%02d" % (y, mo, d)
+    names = [l for l in lines if len(re.findall(r"[^\W\d_]", l)) >= 4 and not re.match(r"^(Iki|Tik su|ačiū|1 (kg|l|vnt)|nuo|\d+ vnt\.? už|Pasiūlym|Įprasta)", l, re.I) and "€" not in l]
+    if not names: return None
+    name = max(names[:3], key=len).replace("*", "").strip()
+    return name[:120], round(price, 2), until, "", old
+
+def crawl_maxima_offers(page, url):
+    year = datetime.date.today().year
+    page.goto(url, wait_until="domcontentloaded", timeout=90000)
+    try: page.wait_for_load_state("networkidle", timeout=20000)
+    except Exception: pass
+    for sel in ("#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll", "#CybotCookiebotDialogBodyButtonDecline", "text=Leisti visus slapukus"):
+        try: page.click(sel, timeout=2000); break
+        except Exception: pass
+    last = -1
+    for _ in range(80):
+        page.mouse.wheel(0, 4000); page.wait_for_timeout(700)
+        for b in page.query_selector_all("button:has-text('daugiau'), a:has-text('Rodyti daugiau')"):
+            try: b.click(timeout=1000); page.wait_for_timeout(800)
+            except Exception: pass
+        n = len(page.evaluate(MX_CARDS_JS))
+        if n == last: break
+        last = n
+    cards = page.evaluate(MX_CARDS_JS)
+    if DEBUG:
+        dump("maxima_offers_cards.txt", "\n\n=====\n".join(cards[:400]))
+        dump("maxima_offers_page.txt", page.content()[:400000])
+    items = {}
+    for t in cards:
+        r = parse_maxima_card(t, year)
+        if r: items[(r[0], r[1])] = (r[2], r[3], r[4])
+    print(f"   Maxima pasiūlymai: {len(cards)} kortelių, {len(items)} prekių")
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("offers_url"):
+        try:
+            items = crawl_maxima_offers(page, c["offers_url"])
+            if len(items) >= 30:
+                today = datetime.date.today().isoformat()
+                return {k: u for k, u in items.items() if not u[0] or u[0] >= today}
+        except Exception as e:
+            print("   Maxima pasiūlymų klaida:", e)
     if c.get("norfa"):
         items = crawl_norfa(ctx, page, c["pages"][0])
         today = datetime.date.today().isoformat()

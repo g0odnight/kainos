@@ -35,7 +35,8 @@
         "https://www.maxima.lt/leidiniai"
       ],
       "pdfs": [],
-      "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+"
+      "viewer_regex": "maxima\\.lt/leidiniai/[A-Za-z0-9_-]+",
+      "offers_url": "https://www.maxima.lt/pasiulymai"
     }
   },
   "Rimi": {
