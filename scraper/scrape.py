@@ -253,7 +253,47 @@ def crawl_maxima_offers(page, url):
     print(f"   Maxima pasiūlymai: {len(cards)} kortelių, {len(items)} prekių")
     return items
 
+RIMI_JS = """()=>[...document.querySelectorAll('.js-product-container')].map(e=>{
+  let g={};try{g=JSON.parse(e.getAttribute('data-gtm-eec-product')||'{}')}catch(x){}
+  const tx=el=>el?(el.textContent||'').replace(/\\s+/g,' ').trim():'';
+  const lab=e.querySelector('.price-label__price');
+  let label=null;if(lab){const M=tx(lab.querySelector('.major')),C=tx(lab.querySelector('.cents'));if(M!=='')label=parseFloat(M+'.'+(C||'00'))}
+  const sr=tx(e.querySelector('.card__price .sr-only'));const pm=sr.match(/(\\d+[.,]\\d+)/);
+  return {id:g.id||e.getAttribute('data-gtms-product-id'),name:g.name||e.getAttribute('data-gtms-click-name')||'',gtm:g.price,label,
+          price:pm?parseFloat(pm[1].replace(',','.')):null,unit:sr,per:tx(e.querySelector('.card__price-per [aria-hidden]'))}})"""
+
+def crawl_rimi_offers(page, url):
+    items, seen = {}, set()
+    for n in range(0, 40):
+        u = f"{url}?currentPage={n + 1}&pageSize=100" if n else f"{url}?pageSize=100"
+        try:
+            page.goto(u, wait_until="domcontentloaded", timeout=90000)
+            try: page.wait_for_load_state("networkidle", timeout=12000)
+            except Exception: pass
+            cards = page.evaluate(RIMI_JS)
+        except Exception as e:
+            print("   Rimi akcijų klaida:", e); break
+        new = [c for c in cards if c["id"] not in seen]
+        if DEBUG and n < 2: dump(f"rimi_offers_{n}.json", json.dumps(cards[:60], ensure_ascii=False, indent=1))
+        if not new: break
+        for c in new:
+            seen.add(c["id"])
+            name = (c["name"] or "").strip()
+            reg = c["price"] or c["gtm"]
+            price = c["label"] or reg
+            if not name or not price: continue
+            old = reg if c["label"] and reg and reg > price + 0.004 else None
+            items[(name[:120], round(price, 2))] = ("", "", old)
+        print(f"   Rimi akcijos psl. {n + 1}: +{len(new)} (viso {len(items)})")
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("rimi_offers"):
+        try:
+            items = crawl_rimi_offers(page, c["rimi_offers"])
+            if len(items) >= 30: return items
+        except Exception as e:
+            print("   Rimi akcijų klaida:", e)
     if c.get("offers_url"):
         try:
             items = crawl_maxima_offers(page, c["offers_url"])

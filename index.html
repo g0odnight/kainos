@@ -48,6 +48,7 @@ h1{font-size:26px;margin:0;letter-spacing:-.6px;font-weight:850}h1 span{color:va
 .nm{font-size:15px;line-height:1.3;font-weight:620;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .meta{font-size:12.5px;color:var(--mu);margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .st{color:#fff;border-radius:7px;padding:1px 7px;font-weight:750;font-size:11.5px;letter-spacing:.1px}
+.tg.sz{font-weight:700;color:var(--tx)}
 .tg{background:var(--bg);border-radius:7px;padding:1px 7px}.tg.soon{background:var(--warn);color:var(--warnt)}
 .pr{text-align:right;flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .pr b{font-size:19px;letter-spacing:-.4px;line-height:1.1}
@@ -131,6 +132,8 @@ function valid(r){if(r.from&&r.from>today)return `<span class="tg soon">Nuo ${fd
 function unit(n,p){const t=norm(n),m=t.match(/(\d+(?:\.\d+)?)\s*(?:x\s*(\d+(?:\.\d+)?)\s*)?(kg|g|ml|l)\b/);
  if(!m)return null;let q=parseFloat(m[1])*(m[2]?parseFloat(m[2]):1);if(!q)return null;const u=m[3];
  const v=u=="g"?p/q*1000:u=="ml"?p/q*1000:p/q;return{v,l:u=="g"||u=="kg"?"kg":"l"}}
+const SZ=/(\d+\s*[x×]\s*)?\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(kg|g|ml|l|vnt\.?|rit\.?|pak\.?)(?![\wąčęėįšųūž])/gi;
+const sizeOf=n=>{const m=n.match(SZ);if(!m)return"";const w=m.filter(x=>/(kg|g|ml|l)\b/i.test(x));return (w.length?w[w.length-1]:m[m.length-1]).replace(/\s+/g," ").trim()};
 const catOf=id=>DB.cats.find(c=>c.id==id)||DB.cats[DB.cats.length-1];
 
 function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
@@ -140,7 +143,7 @@ function demoData(){const S=["Maxima","Rimi","Lidl"],k=[1,1.06,.93];
  return{stores:S,items,updated:new Date().toISOString(),status:{},cats:C}}
 function init(j,d){demo=!!d;DB=j;if(!Array.isArray(DB.cats)||!DB.cats.length)DB.cats=FALLBACK_CATS;
  DB.rows=j.items.filter(a=>(a[3]||"l")=="l"&&!(a[4]&&a[4]<today)).map((a,i)=>{const old=a[6]&&a[6]>a[2]?a[6]:null;
-  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2])}});
+  return{id:i,s:j.stores[a[0]],name:a[1],price:a[2],deal:a[8]||"",until:a[4]||"",from:a[5]||"",old,off:old?Math.round((1-a[2]/old)*100):0,c:(DB.cats[a[7]]||DB.cats[DB.cats.length-1]).id,n:norm(a[1]+" "+j.stores[a[0]]),u:unit(a[1],a[2]),sz:sizeOf(a[1])}});
  const have=new Set(DB.rows.map(r=>r.s));const saved=ls("sel3");
  sel=new Set((saved&&saved.length?saved:[...have]).filter(s=>have.has(s)));if(!sel.size)sel=new Set(have);
  const sc=ls("cats3");cats=new Set((sc||[]).filter(c=>DB.cats.some(x=>x.id==c)));
@@ -191,7 +194,7 @@ const key=r=>sortBy=="unit"?(r.u?r.u.v:1e9):sortBy=="desc"?-r.price:sortBy=="off
 const cmp=(a,b)=>sortBy=="az"?a.name.localeCompare(b.name,"lt"):key(a)-key(b)||a.price-b.price;
 function card(r,best){const inc=cart.find(c=>c.id==r.id),ct=catOf(r.c);
  return `<div class="card ${best?"best":""}" data-id="${r.id}"><div class="ic" style="--c:${col(r.s)}">${ct.icon}</div>
- <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
+ <div class="mid"><div class="nm">${esc(r.name)}</div><div class="meta"><span class="st" style="background:${col(r.s)}">${r.s}</span>${r.sz?`<span class="tg sz">⚖ ${esc(r.sz)}</span>`:""}${r.u?`<span class="tg">${eur(r.u.v)}/${r.u.l}</span>`:""}${valid(r)}</div></div>
  <div class="pr">${best?'<span class="bt">PIGIAUSIA</span>':r.off>=5?`<span class="off">−${r.off}%</span>`:""}<b>${eur(r.price)}</b>${r.deal?`<span class="deal">${esc(r.deal)}</span>`:r.old?`<s>${eur(r.old)}</s>`:""}</div>
  <button class="add ${inc?"in":""}" data-add="${r.id}" aria-label="Į krepšelį">${inc?"✓"+(inc.n>1?inc.n:""):"+"}</button></div>`}
 let cur=[];

@@ -63,7 +63,8 @@
         "https://www.rimi.lt/asortimentas/rimi-savaitinis-leidinys"
       ],
       "pdfs": [],
-      "viewer_regex": "leidiniai\\.rimi\\.lt/\\d{4}/weekly/[\\w-]+/?$"
+      "viewer_regex": "leidiniai\\.rimi\\.lt/\\d{4}/weekly/[\\w-]+/?$",
+      "rimi_offers": "https://www.rimi.lt/e-parduotuve/lt/akcijos"
     }
   },
   "Lidl": {
