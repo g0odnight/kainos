@@ -143,9 +143,10 @@
     },
     "leaflets": {
       "enabled": true,
+      "akcijuseklys": "silas",
       "manoakcijos": "silas",
       "parser": "silas"
     },
-    "info": "Šilo leidiniai iš manoakcijos.lt (paveikslėliai, OCR). Kaina apskaičiuojama iš kiekio ir kainos už kg/l, todėl prekės be jų (pvz. drabužiai, „-25 % visiems…“) neįtraukiamos."
+    "info": "Šilo leidinys iš akcijuseklys.lt (prekės su kainomis tekstu). Grupinės nuolaidos be kainos („-25 % visiems…“) nerodomos. Jei šaltinis neveiktų – leidinio paveikslėliai iš manoakcijos.lt (OCR)."
   }
 }

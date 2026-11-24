@@ -7,6 +7,11 @@ on:
     - cron: "30 7 * * *"
     - cron: "30 9 * * *"
   workflow_dispatch:
+    inputs:
+      store:
+        description: "Tik šios parduotuvės (pvz. Šilas arba IKI,Promo); tuščia – visos"
+        required: false
+        default: ""
 permissions:
   contents: write
 concurrency: scrape
@@ -29,9 +34,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-lit imagemagick
           pip install -r scraper/requirements.txt && playwright install --with-deps chromium
       - if: steps.chk.outputs.run == 'true'
-        run: python scraper/scrape.py
+        run: python scraper/scrape.py ${STORE:+--store "$STORE"}
         env:
           DEBUG: "1"
+          STORE: ${{ github.event.inputs.store }}
           EVENT: ${{ github.event_name }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
       - if: always() && steps.chk.outputs.run == 'true'

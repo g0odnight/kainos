@@ -5,6 +5,7 @@
   python scraper/scrape.py --probe URL [--store Rimi]   # ką randa viename puslapyje (+ PDF nuorodos)
   python scraper/scrape.py --pdf failas.pdf     # kaip išparsintų leidinį
 """
+from html import unescape
 import argparse, datetime, json, os, pathlib, re, tempfile, time
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 from playwright.sync_api import sync_playwright
@@ -403,7 +404,51 @@ def crawl_manoakcijos(ctx, page, slug, max_pages=60, parser="iki"):
         note("manoakcijos.lt leidiniai (OCR)", pubs=1, pages=k - 1, parsed=got)
     return items
 
+def ak_leaflet(html):
+    """akcijuseklys.lt leidinio puslapyje įdėtas JSON su visomis leidinio prekėmis -> [(pavadinimas, kaina, nuo, iki, sena, žymė)]."""
+    m = next((m for m in re.finditer(r"<script[^>]*>(\{\"pages\".*?)</script>", html, re.S)), None)
+    if not m: return None
+    d = json.loads(m.group(1)); out = []
+    for x in d.get("deals", []):
+        if not x.get("promoPrice") or not x.get("title"): continue   # grupinė nuolaida be kainos („-25 % gėrimams“) – nerodom
+        price = float(x["promoPrice"]); old = float(x["regularPrice"]) if x.get("regularPrice") else None
+        det = re.sub(r"^(įvairių (spalvų|rūšių|dydžių|dizainų)[,;]?\s*)", "", (x.get("details") or "")).strip(" ,;")
+        if re.search(r"kainos parduotuvėse|nurodytos su nuolaida", det, re.I): det = ""
+        det = re.sub(r"[,;]?\s*1\s*(kg|l)\s*(grynosios masės\s*)?(kaina\s*)?[-–—]\s*\d+[,.]\d{2}\s*€?", "", det).strip(" ,;")   # kaina už kg – programėlė skaičiuoja pati
+        title = re.sub(r"\s+", " ", x["title"]).strip()
+        name = f"{title}, {det}" if det and det.lower() not in title.lower() else title
+        deal = "su kortele" if x.get("loyaltyCardRequired") else ""
+        frm, until = (x.get("activeFrom") or "")[:10], (x.get("activeTo") or "")[:10]
+        if 0.05 < price < 2000: out.append((name[:140], round(price, 2), frm, until, old if old and old > price else None, deal))
+    return out
+
+def crawl_akcijuseklys(ctx, slug):
+    """akcijuseklys.lt: kiekvieno leidinio puslapyje – visų prekių JSON (pavadinimas, kaina, sena kaina, galiojimas)."""
+    base = "https://www.akcijuseklys.lt"
+    get = lambda u: ctx.request.get(u, timeout=60000, headers={"Accept-Language": "lt-LT,lt;q=0.9"})
+    r = get(f"{base}/parduotuve/{slug}")
+    if r.status != 200: print("   akcijuseklys:", r.status); return {}
+    links = list(dict.fromkeys(re.findall(r'href="(/parduotuve/' + re.escape(slug) + r'/br_[0-9a-f]+)"', r.text())))
+    today = datetime.date.today().isoformat(); items = {}
+    for ln in links[:6]:
+        r = get(base + ln)
+        if r.status != 200: continue
+        deals = ak_leaflet(r.text()) or []
+        live = [d for d in deals if not d[3] or d[3] >= today]
+        if deals and not live: continue   # pasibaigęs leidinys
+        for name, price, frm, until, old, deal in live: items[(name, price)] = (until, frm, old, deal)
+        print(f"   akcijuseklys {ln}: {len(live)} prekių su kaina")
+        note("akcijuseklys.lt leidiniai", pubs=1, found=len(live), parsed=len(live))
+        time.sleep(0.5)
+    return items
+
 def crawl_leaflets(ctx, page, store, c):
+    if c.get("akcijuseklys"):
+        try:
+            items = crawl_akcijuseklys(ctx, c["akcijuseklys"])
+            if items: return items
+        except Exception as e:
+            print("   akcijuseklys klaida:", e)
     if c.get("manoakcijos"):
         try: return crawl_manoakcijos(ctx, page, c["manoakcijos"], parser=c.get("parser", "iki"))
         except Exception as e:
@@ -555,7 +600,7 @@ def main():
             status[store] = st
         br.close()
     out_items = []
-    OCR = {"IKI", "Promo", "Šilas"}
+    OCR = {"IKI", "Promo"}
     vocab = fixnames.build_vocab([n for st in stores if st not in OCR for (n, _p) in new.get((st, "l"), oldmap.get((st, "l"), {}))])
     for store in stores:
         for kind in ("l",):
