@@ -235,9 +235,14 @@ function fresh(){const b=$("#fresh"),t=b.querySelector("span");if(!DB.updated){t
 
 // ---------- filtrai ----------
 // paprastas lietuviškų galūnių nukirpimas: „kiaušiniai“ randa ir „kiaušinių“, „pienas“ – ir „pieno“
-const stem=w=>{if(w.length<5)return w;const m=w.match(/^(.{4,}?)(iais|iams|iai|iu|ius|ais|ams|ai|as|is|ys|us|es|os|ems|ui|e|a|o|u|i|y)$/);return m?m[1]:w};
-const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(stem);
-const matchQ=(r,t)=>t.every(x=>r.n.includes(x));
+// Paieška: kiekvienas žodis ieškomas nuo žodžio pradžios. Pilnas žodis su galūne („ledai“, „pienas“) randa ir kitas
+// jo formas („ledų“, „pieno“), bet ne kitus žodžius („pledas“, „pelėda“); nebaigtas rašyti žodis („kiau“) – kaip pradžia.
+const END="iais|iams|iai|iu|ius|ais|ams|ai|as|is|ys|us|es|os|ems|ui|e|a|o|u|i|y";
+const esc_re=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const term=w=>{const m=w.length>=5&&w.match(new RegExp("^([a-z0-9]{3,}?)("+END+")$"));
+ return m?new RegExp("(^|[^a-z0-9])"+esc_re(m[1])+"[a-z]{1,3}(?![a-z])"):new RegExp("(^|[^a-z0-9])"+esc_re(w))};
+const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(term);
+const matchQ=(r,t)=>t.every(x=>x.test(r.n));
 function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
 function list(){return base().filter(r=>!cats.size||cats.has(r.c))}
 function haveStores(){const s=new Set(DB.rows.map(r=>r.s));return DB.stores.filter(x=>s.has(x))}
