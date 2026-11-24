@@ -417,9 +417,17 @@ def ak_details(det):
         if not seg or re.search(r"€|Eur\b|Eur/|kaina|art\.|^ir IKI|IKI EXPRESS|nurodytos su nuolaida|^\d{5,}$", seg, re.I): continue
         if re.match(r"įvairių (spalvų|rūšių|dydžių|dizainų)$", seg, re.I): continue
         if re.match(r"(nuo \d|ieškoti)", seg, re.I) or "®" in seg: continue
-        if len(seg) > 25 and not re.search(r"\d\s*(g|kg|ml|l|vnt|pak|por\w*|rink)\b", seg): continue
+        seg = re.sub(r"\s+\d{6,}$", "", seg)   # Lidl prekės kodas
+        if len(seg) > 25:   # ilgas aprašymas – paliekam tik kiekį (jei yra)
+            q = re.findall(r"\d+(?:[,.]\d+)?\s*(?:x\s*\d+(?:[,.]\d+)?\s*)?(?:g|kg|ml|l|vnt\.?|por\w*|rink\.?)(?!\w)", seg)
+            if not q: continue
+            seg = ", ".join(dict.fromkeys(x.strip() for x in q))
         keep.append(seg)
-    return ", ".join(keep)[:70]
+    # pirmenybė kiekiui (g, l, vnt.), o iš kitų – ne daugiau 2 trumpų dalių, kad pavadinimas liktų skaitomas
+    q = [k for k in keep if re.search(r"\d\s*(g|kg|ml|l|vnt|pak|por\w*|rink)\b", k)]
+    other = [k for k in keep if k not in q and not re.match(r"[A-Z]:", k)][:2]
+    out = ", ".join(dict.fromkeys(other + q))
+    return out if len(out) <= 50 else out[:50].rsplit(" ", 1)[0].rstrip(",;:")
 
 def ak_leaflet(html, store=""):
     """akcijuseklys.lt leidinio puslapyje įdėtas JSON su visomis leidinio prekėmis -> [(pavadinimas, kaina, nuo, iki, sena, žymė)]."""

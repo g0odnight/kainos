@@ -32,7 +32,17 @@ META = [
 # (kategorija, regex) – tikrinimo tvarka
 RULES = [
     # tikslūs išimčių atvejai (prieš bendras taisykles)
-    ("vaikai", r"(lipduk|^(?!.*(sokolad|kinder|smarties|kit kat|saldain|favorina)).*figurel|zaisl|\blego\b|delion|konstrukt|kurybinis rinkinys|kurybos rinkin|hot wheels|barbie|stalo zaidim|\brc\b|balansinis|spalvinimo|plius\.|pliusin|kemperis|robotas|magnetuk|\d+ m\+)"),
+    ("augalai", r"(^(?!.*lego).*(\brozes\b|chrizantem|frezij|skintos|skintu|tulpes))"),
+    ("saldumynai", r"(advento kalendoriai$|advento kalendorius .{0,30}(sokolad|kinder|milka|lindt|kit kat|ferrero|saldain)|tepamasis kremas|nutella|skanestu rinkin)"),
+    ("alkoholis", r"(chardonnay|merlot|sauvignon|cabernet|riesling|cremant|appassimento|primitivo|tempranillo)"),
+    ("zuvis", r"(pleksn|argentin|austres|sardines|sardin)"),
+    ("mesa", r"(\bantis\b(?!\.)|anties)"),
+    ("kulinarija", r"(kebabas|pietu rinkin|^(?!.*milt).*tempura|\bsusi\b)"),
+    ("bakaleja", r"(tapijok|kataifi|\bfilo\b|^(?!.*saldyt).*\btesla\b)"),
+    ("duona", r"(prancuziski batonai|batonai\b)"),
+    ("vaisiai", r"(baklazan(as|ai)\b|(?<!dziovinti )\bmangai\b|salota iceberg|\bsalota\b)"),
+    ("buitine", r"(valymo putos|kvapui|demems|tirpikl|valymo irengin)"),
+    ("vaikai", r"(lipduk|^(?!.*(sald|sokolad)).*kamuol|\blel(e|ems|es|iu)\b|vienarag|mikroskop|eksperiment|paspirtuk|arkliuk|clementoni|mini brands|miniatiur|^(?!.*(sokolad|kinder|smarties|kit kat|saldain|favorina)).*figurel|zaisl|\blego\b|delion|konstrukt|kurybinis rinkinys|kurybos rinkin|hot wheels|barbie|stalo zaidim|\brc\b|balansinis|spalvinimo|plius\.|pliusin|kemperis|robotas|magnetuk|\d+ m\+)"),
     ("pienas", r"(\bkiausiniai\b|kiausiniu \d|kefyro gerim|pieno gerim|kastinys)"),
     ("saldyta", r"(alaus tesloje|\bledai\b|\bledu\b(?! saldain))"),
     ("kulinarija", r"(\bkibin(as|ai)\b|sumustinis\b|kebabo)"),
@@ -41,7 +51,7 @@ RULES = [
     ("mesa", r"(servelat|sardel|kabanos|varliu slaunel)"),
     ("saldumynai", r"(saldumynu rinkin|saldainiu rinkin|saldiniu rinkin|ledinuk|celebrations|snow balls)"),
     ("buitine", r"(avalynes|impregnant|namu kvap|automobiliu kvap)"),
-    ("namai", r"(^(?!.*(vaik|kudik)).*(kepur|pirstin|salikas|ausines|gobtuv|beret|slepet|kojin)|kaledin(e|es|iai|is) (dekor|egl|papuos|kepur)|dekoracij|girliand|dirbtine eglut|egles virsune|eglutes papuos|dubenel|tortine|\bsamtis|serviravimo|zirkles|atidarytuv|asotis|gertuve|termo |kanceliar|tusinuk|piesimo|kaledu senis su)"),
+    ("namai", r"(^(?!.*(vaik|kudik)).*(kepur|pirstin|salikas|ausines|gobtuv|beret|slepet|kojin|apatiniai|marskinel|trumpik)|(?<!pl\. )(?<!plauku )dazai|drob(e|iu)|pakabai|pjovimo|slifav|kombain|lygintuv|klaviatur|\bpele\b|fotoaparat|patefon|knyg|aukst\w* slegio|kaledin(e|es|iai|is) (dekor|egl|papuos|kepur)|dekoracij|girliand|dirbtine eglut|egles virsune|eglutes papuos|dubenel|tortine|\bsamtis|serviravimo|zirkles|atidarytuv|asotis|gertuve|termo |kanceliar|tusinuk|piesimo|kaledu senis su)"),
     ("duona", r"(\bbatonas\b|prancuziskas batonas|bagete)"),
     ("bakaleja", r"(pagalveles|kukuruzu dribs|avizin)"),
     ("gyvunai", r"(katem|kates\b|kaciu|kaciuk|katei\b|\bsun(ims|u|ys|iui|eliams)\b|sunim|sunu\b|gyvun|pasaras|pasaro|kraik|grauzik|papug|akvarium|pedigree|whiskas|felix|friskies|purina|kitekat|chappi)"),
