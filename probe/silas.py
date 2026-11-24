@@ -1,25 +1,24 @@
-import re, sys, json, pathlib
-sys.path.insert(0, "scraper")
+import json, pathlib, re
 from playwright.sync_api import sync_playwright
-import iki
-from promo import ocr_lines
 out = pathlib.Path("probe/out"); out.mkdir(parents=True, exist_ok=True)
+caps = []
 with sync_playwright() as pw:
-    b = pw.chromium.launch(); ctx = b.new_context(locale="lt-LT"); p = ctx.new_page()
-    p.goto("https://manoakcijos.lt/parduotuves/silas", wait_until="domcontentloaded", timeout=90000)
-    try: p.wait_for_load_state("networkidle", timeout=15000)
-    except Exception: pass
-    imgs = p.eval_on_selector_all("img", "e=>e.map(x=>x.currentSrc||x.src||'')")
-    ds = sorted({m.group(1) for x in imgs for m in [re.search(r"app\.manoakcijos\.lt/([^/]+_silas_\w+)/image00", x)] if m})
-    print(ds)
-    rep = []
-    for d in ds:
-        for k in range(1, 40):
-            r = ctx.request.get(f"https://app.manoakcijos.lt/{d}/image{k:02d}.webp", timeout=60000)
-            if r.status != 200: break
-            body = r.body(); (out / f"{d}_{k:02d}.webp").write_bytes(body)
-            res = iki.parse_image(body)
-            lines = ocr_lines(body, scale=300)
-            rep.append({"page": f"{d}_{k:02d}", "items": res, "lines": lines})
-            print(d, k, len(res))
-    (out / "report.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1))
+    b = pw.chromium.launch(); ctx = b.new_context(locale="lt-LT", user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"); p = ctx.new_page()
+    def on_resp(r):
+        try:
+            ct = r.headers.get("content-type", "")
+            if "json" in ct or ("akcijuseklys" in r.url and "image" not in ct and not r.url.split("?")[0].endswith((".js", ".css", ".webp", ".png", ".woff2", ".svg"))):
+                caps.append({"url": r.url, "status": r.status, "ct": ct, "body": r.text()[:200000]})
+        except Exception as e: caps.append({"url": r.url, "err": str(e)})
+    p.on("response", on_resp)
+    for n in (1, 2, 10):
+        p.goto(f"https://www.akcijuseklys.lt/parduotuve/silas/br_76a6a6cb?page={n}", wait_until="domcontentloaded", timeout=90000)
+        try: p.wait_for_load_state("networkidle", timeout=20000)
+        except Exception: pass
+        p.wait_for_timeout(3000)
+        (out / f"page{n}.html").write_text(p.content())
+        (out / f"page{n}.txt").write_text(p.inner_text("body"))
+        p.screenshot(path=str(out / f"page{n}.png"), full_page=True)
+    b.close()
+(out / "net.json").write_text(json.dumps(caps, ensure_ascii=False, indent=1))
+print(len(caps), [c["url"][:120] for c in caps][:80])
