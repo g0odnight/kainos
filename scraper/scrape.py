@@ -277,11 +277,28 @@ RIMI_JS = """()=>[...document.querySelectorAll('.js-product-container')].map(e=>
   const lab=e.querySelector('.price-label__price');
   let label=null;if(lab){const M=tx(lab.querySelector('.major')),C=tx(lab.querySelector('.cents'));if(M!=='')label=parseFloat(M+'.'+(C||'00'))}
   const sr=tx(e.querySelector('.card__price .sr-only'));const pm=sr.match(/(\\d+[.,]\\d+)/);
-  return {id:g.id||e.getAttribute('data-gtms-product-id'),name:g.name||e.getAttribute('data-gtms-click-name')||'',gtm:g.price,label,
+  return {id:g.id||e.getAttribute('data-gtms-product-id'),name:g.name||e.getAttribute('data-gtms-click-name')||'',gtm:g.price,cat:g.category||'',label,
           price:pm?parseFloat(pm[1].replace(',','.')):null,unit:sr,per:tx(e.querySelector('.card__price-per [aria-hidden]'))}})"""
+
+def rimi_tree(page):
+    """SH kodas -> skyrių pavadinimų kelias (iš Rimi kategorijų medžio)."""
+    out = {}
+    try:
+        tree = page.evaluate("()=>fetch('/e-parduotuve/api/v1/content/category-tree?locale=lt').then(r=>r.json())")
+        def walk(nodes, path):
+            for n in nodes:
+                m = re.search(r"/c/(SH-?[\d-]+)", n.get("url") or "")
+                p = path + [n.get("name") or ""]
+                if m: out[m.group(1).replace("SH", "SH-").replace("SH--", "SH-")] = p
+                walk(n.get("descendants") or [], p)
+        walk(tree.get("categories") or [], [])
+    except Exception as e:
+        print("   Rimi kategorijų medis:", e)
+    return out
 
 def crawl_rimi_offers(page, url):
     items, seen = {}, set()
+    tree = None
     for n in range(0, 90):
         u = f"{url}?currentPage={n + 1}&pageSize=100" if n else f"{url}?pageSize=100"
         try:
@@ -301,7 +318,9 @@ def crawl_rimi_offers(page, url):
             price = c["label"] or reg
             if not name or not price: continue
             old = reg if c["label"] and reg and reg > price + 0.004 else None
-            items[(name[:120], round(price, 2))] = ("", "", old)
+            if tree is None: tree = rimi_tree(page)
+            code = (c.get("cat") or "").replace("SH", "SH-").replace("SH--", "SH-")
+            items[(name[:120], round(price, 2))] = ("", "", old, "", tree.get(code, []))
         print(f"   Rimi akcijos psl. {n + 1}: +{len(new)} (viso {len(items)})")
     note("rimi.lt e. parduotuvės akcijos", found=len(seen), parsed=len(items))
     return items
@@ -419,6 +438,11 @@ def crawl_leaflets(ctx, page, store, c):
     for k, u in pre.items(): items.setdefault(k, u)
     return items
 
+def cat_of(n, u):
+    c = categories.classify(n)
+    if c == "kita" and len(u) > 4 and u[4]: c = categories.classify_hint(u[4])
+    return c
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--store"); ap.add_argument("--probe"); ap.add_argument("--pdf")
@@ -477,7 +501,7 @@ def main():
         for kind in ("l",):
             d = new.get((store, kind), oldmap.get((store, kind), {}))
             for (n, p), u in d.items():
-                out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(categories.classify(n)), u[3] if len(u) > 3 else ""])
+                out_items.append([stores.index(store), n, p, kind, u[0], u[1], u[2] if len(u) > 2 else None, categories.IDS.index(cat_of(n, u)), u[3] if len(u) > 3 else ""])
     out_items.sort(key=lambda x: (x[1], x[2]))
     for _s in cfg:
         if _s not in status and _s in old.get("status", {}): status[_s] = old["status"][_s]   # nevykdyta – paliekam seną informaciją

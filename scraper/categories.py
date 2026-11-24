@@ -71,3 +71,18 @@ def classify(name):
     for cid, rx in _R:
         if rx.search(t): return cid
     return "kita"
+
+
+# Rimi e. parduotuvės skyriai -> mūsų kategorijos (kai pagal pavadinimą neatpažinta)
+TOP = {"vaisiai, darzoves ir geles": "vaisiai", "augaliniai produktai": "bakaleja", "pieno produktai ir kiausiniai": "pienas",
+       "duonos gaminiai": "duona", "mesa ir zuvis": "mesa", "saldytas maistas": "saldyta", "bakaleja": "bakaleja",
+       "rimi konditerija ir kulinarija": "kulinarija", "vaiku ir kudikiu prekes": "vaikai", "saldumynai ir uzkandziai": "saldumynai",
+       "gerimai": "gerimai", "alkoholiniai ir nealkoholiniai gerimai": "alkoholis", "kosmetika ir higiena": "kosmetika",
+       "buitines chemijos ir valymo priemones": "buitine", "gyvunu prekes": "gyvunai", "namu ukio ir laisvalaikio prekes": "namai"}
+
+def classify_hint(path):
+    """path – Rimi skyrių pavadinimai nuo bendriausio iki tiksliausio."""
+    for p in reversed(path[1:]):
+        c = classify(p)
+        if c != "kita": return c
+    return TOP.get(norm(path[0]).strip(), "kita") if path else "kita"
