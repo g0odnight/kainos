@@ -264,7 +264,7 @@ RIMI_JS = """()=>[...document.querySelectorAll('.js-product-container')].map(e=>
 
 def crawl_rimi_offers(page, url):
     items, seen = {}, set()
-    for n in range(0, 40):
+    for n in range(0, 90):
         u = f"{url}?currentPage={n + 1}&pageSize=100" if n else f"{url}?pageSize=100"
         try:
             page.goto(u, wait_until="domcontentloaded", timeout=90000)
