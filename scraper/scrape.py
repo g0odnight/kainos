@@ -197,7 +197,7 @@ def crawl_norfa(ctx, page, url):
             print("   Norfa klaida:", href, e)
     return items
 
-MX_CARDS_JS = """()=>{const all=[...document.querySelectorAll('div,li,article,a')].filter(e=>{const t=e.innerText||'';return /Iki\\s*\\d{1,2}\\.\\d{2}/.test(t)&&/€/.test(t)&&t.length<600&&e.querySelector('img')});
+MX_CARDS_JS = """()=>{const all=[...document.querySelectorAll('div,li,article,a')].filter(e=>{const t=e.innerText||'';return /Iki\\s*\\d{1,2}\\.\\d{2}/.test(t)&&/€/.test(t)&&t.length<700&&t.split('\\n').some(l=>(l.match(/[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]/g)||[]).length>=10&&!/^(Iki|Tik su)/i.test(l.trim()))});
  const min=all.filter(e=>!all.some(o=>o!==e&&e.contains(o)));return min.map(e=>e.innerText)}"""
 
 def parse_maxima_card(t, year):
@@ -267,6 +267,9 @@ def crawl_leaflets(ctx, page, store, c):
     pdfs = set(c.get("pdfs", [])); viewers = set(c.get("viewers", []))
     for u in c.get("pages", []):
         p, v = find_pdfs(page, u, c.get("viewer_regex")); pdfs |= p; viewers |= v
+    for v in list(viewers):   # Rimi: naujas savaitinis leidinys kartais pasirodo anksčiau nei nuoroda puslapyje
+        m = re.search(r"(savaitinis-leidinys-nr-)(\d+)", v)
+        if m: viewers.add(v.replace(m.group(0), m.group(1) + str(int(m.group(2)) + 1)))
     if not viewers and not pdfs:   # nieko neradom - bandom pačius puslapius kaip peržiūrą
         viewers = set(c.get("pages", []))
         print(f"   {store}: nuorodų nerasta, bandom pačius puslapius")
