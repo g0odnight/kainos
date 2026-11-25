@@ -262,19 +262,25 @@ $("#stores").onclick=e=>{const b=e.target.closest("button");if(!b)return;const h
   if(all)sel=new Set([s]);else{sel.has(s)?sel.delete(s):sel.add(s);if(!sel.size)sel=new Set(have)}}
  ls("sel3",[...sel]);lim=60;drawStores();draw()};
 function catCounts(){const c={};base().forEach(r=>c[r.c]=(c[r.c]||0)+1);return c}
+// maisto / ne maisto grupės (kategorija „Kita“ – nė vienoje)
+const GRP=[["food","🍽️","Maisto prekės","Maistas",FOOD.filter(c=>c!="kita")],["nonf","🧺","Ne maisto prekės","Ne maistas",NONF.filter(c=>c!="kita")]];
+const grpOf=set=>GRP.find(g=>{const ids=g[4].filter(c=>DB.cats.some(x=>x.id==c));return set.size==ids.length&&ids.every(c=>set.has(c))});
 function drawCats(){const cnt=catCounts(),tot=Object.values(cnt).reduce((a,b)=>a+b,0);
  const vis=DB.cats.filter(c=>cnt[c.id]||cats.has(c.id));
  const selN=[...cats].reduce((a,c)=>a+(cnt[c]||0),0),one=cats.size==1?DB.cats.find(c=>cats.has(c.id)):null;
- $("#cats").innerHTML=`<button class="chip more ${cats.size?"act":""}" data-sheet="1">☰ ${one?one.icon+" "+esc(one.name.length>13?one.name.slice(0,12)+"…":one.name):"Kategorijos"+(cats.size?" ("+cats.size+")":"")}</button>`+
+ const g=grpOf(cats);
+ $("#cats").innerHTML=`<button class="chip more ${cats.size?"act":""}" data-sheet="1">☰ ${g?g[1]+" "+g[3]:one?one.icon+" "+esc(one.name.length>13?one.name.slice(0,12)+"…":one.name):"Kategorijos"+(cats.size?" ("+cats.size+")":"")}</button>`+
   `<button class="chip cat ${!cats.size?"on":""}" data-c="">Visos <small>${tot}</small></button>`+
   `<button class="chip clr" data-clr="1" ${cats.size?"":"disabled"}>✕ Išvalyti filtrą</button>`}
 $("#cats").onclick=e=>{const b=e.target.closest("button");if(!b||b.disabled)return;if(b.dataset.sheet)return catSheet();
  cats.clear();ls("cats3",[]);lim=60;draw()};   // „Visos“ ir „Išvalyti filtrą“ – nuima visas pasirinktas kategorijas
 function catSheet(){const cnt=catCounts();let pick=new Set(cats);
  const render=()=>{$("#sheetc").innerHTML=`<h2>Kategorijos</h2><div class="grid"><button class="gc ${!pick.size?"on":""}" data-c=""><span>✨</span>Visos</button>`+
+  GRP.map(g=>`<button class="gc ${grpOf(pick)==g?"on":""}" data-g="${g[0]}"><span>${g[1]}</span>${g[2]}<small>${g[4].reduce((a,c)=>a+(cnt[c]||0),0)}</small></button>`).join("")+
   DB.cats.map(c=>`<button class="gc ${pick.has(c.id)?"on":""}" data-c="${c.id}" ${cnt[c.id]?"":"style='opacity:.45'"}><span>${c.icon}</span>${esc(c.name)}<small>${cnt[c.id]||0}</small></button>`).join("")+
   `</div><div class="sticky-b"><button class="btn gh" id="cl0">${pick.size?"Išvalyti":"Atšaukti"}</button><button class="btn" id="ap">Taikyti${pick.size?" ("+pick.size+")":""}</button></div>`;
-  $("#sheetc .grid").onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;const c=b.dataset.c;if(!c)pick.clear();else pick.has(c)?pick.delete(c):pick.add(c);render()};
+  $("#sheetc .grid").onclick=e=>{const gb=e.target.closest("[data-g]");if(gb){const g=GRP.find(x=>x[0]==gb.dataset.g);pick=grpOf(pick)==g?new Set():new Set(g[4].filter(c=>DB.cats.some(x=>x.id==c)));return render()}
+   const b=e.target.closest("[data-c]");if(!b)return;const c=b.dataset.c;if(!c)pick.clear();else pick.has(c)?pick.delete(c):pick.add(c);render()};
   $("#cl0").onclick=()=>{if(pick.size){pick.clear();render()}else closeSheet()};$("#ap").onclick=()=>{cats=pick;ls("cats3",[...cats]);lim=60;closeSheet();draw()}};
  render();$("#sheet").classList.add("show")}
 document.querySelectorAll(".hs").forEach(el=>{
