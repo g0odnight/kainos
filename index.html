@@ -416,6 +416,21 @@ $("#rf").onclick=()=>rfSheet();
 if(job){if(Date.now()-new Date(job.t)>90*60e3){job=null;ls("rfjob",null)}else poll()}
 cart=Array.isArray(ls("cart3"))?ls("cart3"):[];
 sortBy=ls("sort3")||"price";$("#sort").value=sortBy;
-load();
+// GitHub suplanuotus paleidimus kartais praleidžia – jei po 09:15 kainos dar neatnaujintos šiandien, paleidžiam patys (jei telefone yra raktas)
+async function autoRun(){try{
+ if(!tok()||job||demo)return;
+ const vh=+new Date().toLocaleString("en-GB",{timeZone:"Europe/Vilnius",hour:"2-digit",hourCycle:"h23"}),vd=d=>new Date(d).toLocaleDateString("lt-LT",{timeZone:"Europe/Vilnius"});
+ if(vh<9||new Date().getMinutes()<15&&vh==9)return;
+ const u=DB.updated&&new Date(DB.updated);
+ if(u&&vd(u)==vd(Date.now())&&+u.toLocaleString("en-GB",{timeZone:"Europe/Vilnius",hour:"2-digit",hourCycle:"h23"})>=9)return;
+ const last=ls("autorun");if(last&&Date.now()-last<45*60e3)return;
+ const r=await gh("/workflows/scrape.yml/runs?per_page=5");
+ if((r.workflow_runs||[]).some(x=>x.status!="completed"))return;
+ ls("autorun",Date.now());
+ const t=new Date().toISOString();
+ await gh("/workflows/scrape.yml/dispatches",{method:"POST",body:JSON.stringify({ref:"main"})});
+ job={t,msg:"Paleista automatiškai…",upd:DB.updated};ls("rfjob",job);toast("Kainos dar neatnaujintos – renkamos dabar…");poll()
+}catch(e){}}
+load().then(autoRun);
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script></body></html>

@@ -1,11 +1,14 @@
 name: scrape
 on:
   schedule:
-    - cron: "0 6 * * *"   # 09:00 Vilniuje vasarą
-    - cron: "0 7 * * *"   # 09:00 Vilniuje žiemą (should_run.py praleidžia nereikalingą)
-    - cron: "40 7 * * *"  # atsarginiai: GitHub kartais praleidžia ar vėlina suplanuotus paleidimus
-    - cron: "30 8 * * *"
-    - cron: "30 10 * * *"
+    # ne apvaliomis minutėmis: GitHub apkrautu metu dažniausiai praleidžia „:00“ paleidimus
+    - cron: "11 6 * * *"   # 09:11 Vilniuje vasarą
+    - cron: "7 7 * * *"    # 09:07 Vilniuje žiemą (should_run.py praleidžia nereikalingus)
+    - cron: "43 7 * * *"   # atsarginiai, jei GitHub praleido ar vėlina
+    - cron: "19 8 * * *"
+    - cron: "52 8 * * *"
+    - cron: "37 10 * * *"
+    - cron: "23 13 * * *"
   workflow_dispatch:
     inputs:
       store:
