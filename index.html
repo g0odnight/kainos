@@ -250,7 +250,10 @@ const term=w=>{const m=w.length>=4&&w.match(new RegExp("^([a-z0-9]{3,}?)("+END+"
  if(!m)return new RegExp("(^|[^a-z0-9])"+esc_re(w));
  const tail=/^(iai|ai|ys)$/.test(m[2])?"(?:"+PL+")":"[a-z]{1,4}";
  return new RegExp("(^|[^a-z0-9])("+esc_re(m[1])+tail+"(?![a-z])|"+esc_re(w)+")")};
-const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(term);
+// sinonimai: leidiniuose ledai dažnai vadinami „Plombyras“, „Eskimo“ ir pan., be žodžio „ledai“
+const SYN=[[/^led(ai|u|ams|us|ais)?$/,/(^|[^a-z])(plomb|eskimo|sorbet|gelat|ledin(iai|is) desert)/]];
+const term2=w=>{const r=term(w),x=SYN.find(s=>s[0].test(w));return x?{test:n=>r.test(n)||x[1].test(n)}:r};
+const terms=()=>norm(Q).split(/\s+/).filter(Boolean).map(term2);
 const matchQ=(r,t)=>t.every(x=>x.test(r.n));
 function base(){const t=terms();return DB.rows.filter(r=>sel.has(r.s)&&matchQ(r,t))}
 function list(){return base().filter(r=>!cats.size||cats.has(r.c))}
