@@ -1,0 +1,5 @@
+https://www.lidl.lt/l/lt/leidinys/maisto-prekiu-pasiulymai-20261123-kw48-pr/ar/0?lf=HHZ
+frames=['https://www.lidl.lt/l/lt/leidinys/maisto-prekiu-pasiulymai-20261123-kw48-pr/view/flyer/page/1?lf=HHZ']
+pdf=[]
+imgs=[]
+json_items=0

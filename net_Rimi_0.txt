@@ -1,0 +1,400 @@
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/1/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/x-javascript; char https://consent.cookiebot.eu/7311864d-a697-4b9a-80e7-d0281448af1a/cc.js?renew=false&referer=leidiniai.rimi.lt&dnt=false&init=false&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880084164/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 text/html; charset=utf-8 https://viewer.ipaper.io/rimi-baltic/lithuania/2026/other/rimi-christmas-2026-lt/-/minipapers/maxispread/maxispread.aspx
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/04522cba-d3e8-47d7-9b95-8db7b9639987/Pages/1/Normal.jpg?token=HS256-u6t-FGPUCf6DbYR47FBFGQtmZjer2hnpZcpoZjrWfXo&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f04522cba-d3e8-4
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=2
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/1/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=3
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/1/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880087099/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=4
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880087565/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D4
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/1/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/x-javascript; char https://consent.cookiebot.eu/7311864d-a697-4b9a-80e7-d0281448af1a/cc.js?renew=false&referer=leidiniai.rimi.lt&dnt=false&init=false&culture=lt
+200 text/html; charset=utf-8 https://viewer.ipaper.io/rimi-baltic/lithuania/2026/other/rimi-christmas-2026-lt/-/minipapers/maxispread/maxispread.aspx
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/04522cba-d3e8-47d7-9b95-8db7b9639987/Pages/1/Normal.jpg?token=HS256-tZ3OVBwPC25812-1SXqB4ZfFsAGPivx2kDO105dYxzs&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f04522cba-d3e8-4
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=5
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880088365/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D5
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/1/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=6
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880088708/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D6
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=7
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/3/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880089031/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D7
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/2/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=8
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=9
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/5/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/4/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=10
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880090029/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D10
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 application/x-javascript; char https://consent.cookiebot.eu/7311864d-a697-4b9a-80e7-d0281448af1a/cc.js?renew=false&referer=leidiniai.rimi.lt&dnt=false&init=false&culture=lt
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=11
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/8/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/7/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/15/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/6/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880090368/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D11
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=12
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880090710/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D12
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/15/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=13
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/12/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/11/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/15/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/10/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/16/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/9/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44f
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880090997/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D13
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=14
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/15/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/16/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880091332/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D14
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=15
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/15/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/14/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/16/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/13/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/17/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880091642/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D15
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=16
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/16/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880091945/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D16
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/17/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=17
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-aYSylmrjc6_-UxZY2TCMIZQpJ-6iES
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/17/Zoom.jpg?token=HS256-4sMgh0VTiDMRi3KRwSdJgXL1LiHdzl-HlVsFW33YON0&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/html https://consentcdn.cookiebot.eu/sdk/bc-v5.min.html
+200 application/json https://consentcdn.cookiebot.eu/consentconfig/7311864d-a697-4b9a-80e7-d0281448af1a/settings.json
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880092243/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D17
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748142917025/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3
+200 application/json; charset=utf- https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-48/?Page=18
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 image/jpeg https://files.cdn.ipaper.io/iPaper/Files/e702f4a3-0450-4950-8fc5-6212f39ce883.jpg
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-Light.woff2
+200 font/woff2 https://rimibaltic-web-res.cloudinary.com/raw/upload/v1737708361/fonts/Neris-SemiBold.woff2
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-K6PZ7KR
+200 application/json; charset=utf- https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Enrichments/v1/1795507417/IhyeQrEMI35TgslnzML82PraRnTCXSwv-v59AmjLCkKmpiTjxUz-h-P~CtoCBjCQ/Page1-41.json?token=HS256-i8nKu9dYxDHFuwRwgK97nFGnPfQO0h
+200 image/png https://files.cdn.ipaper.io/iPaper/Files/2158b069-10d3-4cd5-ae19-00b61dc7c0b5.png
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/6e5ff16f-e226-44f1-b742-c3d94def6c92/Pages/18/Zoom.jpg?token=HS256-GUtTSB3iWy2svqOdWaiZmY_Tcvh_GKeruGeTdzTPp3w&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2f6e5ff16f-e226-44
+200 application/javascript https://consent.cookiebot.eu/uc.js?cbid=7311864d-a697-4b9a-80e7-d0281448af1a&implementation=gtm&consentmode-dataredaction=dynamic&culture=lt
+200 text/javascript; charset=utf-8 https://embeds.ipaper.io/v2/1795880092512/MTYtMTkxMjg=.js?iper=https%3A%2F%2Fleidiniai.rimi.lt%2F2026%2Fweekly%2Frimi-savaitinis-leidinys-nr-48%2F%3FPage%3D18
+200 text/html; charset=utf-8 https://embeds.ipaper.io/v1/639314748851541419/popups/MTYtMTkxMjg%3d/view/15642
+200 application/javascript https://embeds.ipaper.io/Scripts/dist/popup_content.bundle.js?v=4bee4da403134fb1105f6c8ce08b79e3

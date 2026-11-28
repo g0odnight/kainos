@@ -1,0 +1,400 @@
+200 text/html; charset=UTF-8 https://www.maxima.lt/leidiniai/kaledu_menuo
+200 text/css https://www.maxima.lt/build/website/54.4c5bdccd.css
+200 text/css https://www.maxima.lt/build/website/app.ac31540a.css
+200 application/javascript https://consent.cookiebot.com/uc.js
+200 image/webp https://www.maxima.lt/upl/media/x80/04/7594-MicrosoftTeams-image%20%2838%29.webp?v=5-0
+200 image/webp https://www.maxima.lt/upl/media/x80/05/7595-MicrosoftTeams-image%20%2839%29.webp?v=3-0
+200 image/svg+xml https://www.maxima.lt/build/website/images/close.f9156737.svg
+200 image/svg+xml https://www.maxima.lt/build/website/images/app.b56b49bd.svg
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/08/26488-barbora.cb77f51f.svg?v=1-0
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/01/26481-ic_services.641fa0cd.svg?v=1-0
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/02/26482-notification_question.svg?v=1-0
+200 image/webp https://www.maxima.lt/upl/media/80x80/03/26483-ic_phone_x.6c7ba155.webp?v=1-0
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/07/26487-Facebook.svg?v=1-0
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/04/26484-instagram.00ac042b.svg?v=1-0
+200 image/svg+xml https://www.maxima.lt/upl/media/80x80/06/26486-linkedin.b01e1c73.svg?v=1-0
+200 font/woff2 https://www.maxima.lt/build/website/fonts/ProximaNova-Bold.3b645d69.woff2
+200 font/woff2 https://www.maxima.lt/build/website/fonts/ProximaNova-Regular.312c064f.woff2
+200 font/woff2 https://www.maxima.lt/build/website/fonts/bootstrap-icons.b7bcc075.woff2
+200 application/json https://consentcdn.cookiebot.com/consentconfig/472cf60d-7d78-458c-9ce2-7c329e3b18be/settings.json
+200 application/javascript https://www.maxima.lt/build/website/runtime.5e99be46.js
+200 text/javascript https://www.maxima.lt/build/website/app.a6dff2ca.js
+200 text/javascript https://www.maxima.lt/build/website/54.5b2ea608.js
+200 text/html https://consentcdn.cookiebot.com/sdk/bc-v5.min.html
+200 application/x-javascript https://cdn.ipaper.io/flipbooks/api/v3/latest.js
+200 application/x-javascript https://consentcdn.cookiebot.com/consentconfig/472cf60d-7d78-458c-9ce2-7c329e3b18be/state.js
+200 application/javascript; charse https://www.googletagmanager.com/gtm.js?id=GTM-MGQXPV
+200 text/javascript https://www.google-analytics.com/analytics.js
+301 text/html https://track.adform.net/serving/scripts/trackpoint/async/
+200 text/javascript https://s2.adform.net/banners/scripts/st/trackpoint-async.js
+200 application/x-javascript; char https://connect.facebook.net/en_US/fbevents.js
+200 application/javascript; charse https://www.googletagmanager.com/gtag/js?id=G-XXLYQNS7W4&cx=c&gtm=4e6bi0h2
+200 text/javascript https://s2.adform.net/banners/scripts/st/trackpoint-async.js
+200  https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=1&ae=g&auid=198380298.1795879602&dt=KAL%C4%96D%C5%B2%20M%C4%96NUO&en=page_view&dl=https%3A%2F%2Fwww.maxima.lt%2Fleidiniai%2Fkaledu_menuo&scrsrc=www.googletagmanager.co
+200 image/gif https://dmp.adform.net/dmp/profile/?pid=10468&sg=pagr-leid
+200 image/gif https://dmp.adform.net/dmp/profile/?pid=10468&sg=max_09
+200 image/gif https://dmp.adform.net/dmp/profile/?pid=10468&sg=max_26
+200 image/gif https://dmp.adform.net/dmp/profile/?pid=10468&sg=max_28
+200 image/gif https://dmp.adform.net/dmp/profile/?pid=10468&sg=m_001
+200 text/plain https://www.google-analytics.com/j/collect?v=1&_v=j102&a=133155913&t=pageview&_s=1&dl=https%3A%2F%2Fwww.maxima.lt%2Fleidiniai%2Fkaledu_menuo&ul=lt-lt&dt=KAL%C4%96D%C5%B2%20M%C4%96NUO&sr=1280x720&vp=1280x720&_u=QACAAEABAA
+200 application/x-javascript; char https://connect.facebook.net/signals/config/1558277577675706?v=2.9.441&r=stable&domain=www.maxima.lt&hme=abf59d235177e3601acac6035d7c2a28fadbda4b0c64009bc203ceed9fa8bb90&ex_m=119%2C243%2C172%2C27%2C82%2C83%2C163%2C78%2C7
+200 application/javascript; charse https://www.googletagmanager.com/gtag/destination?id=DC-8287313&cx=c&gtm=4e6bi0h2
+200 application/javascript; charse https://www.googletagmanager.com/gtag/destination?id=DC-10463411&cx=c&gtm=4e6bi0h2
+200 application/javascript; charse https://www.googletagmanager.com/gtag/destination?id=AW-10832569816&cx=c&gtm=4e6bi0h2
+204 text/plain https://analytics.google.com/g/collect?v=2&tid=G-XXLYQNS7W4&gtm=45je6bi0h2v898239732za20gzb71772313zd71772313xf1&_p=1795879628853&gcs=G111&gcd=13v3v3v3v5l1&npa=0&dma=0&gdid=dMWZhNz&_eu=AAgAACQC&_prs=ok&are=1&cid=14532785
+204 text/plain https://analytics.google.com/g/collect?v=2&tid=G-XXLYQNS7W4&gtm=45je6bi0h2v898239732za20ozb71772313zd71772313xf1&_p=1795879628853&gcs=G111&gcd=13v3v3v3v5l1&npa=0&dma=0&gdid=dMWZhNz&_eu=EgAAACQC&are=1&cid=1453278577.17958
+302 text/html; charset=UTF-8 https://8287313.fls.doubleclick.net/activityi;src=8287313;type=mxm_visi;cat=maxim0;rcb=10;ord=4882866346854;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChromium%3B
+200 text/html; charset=UTF-8 https://8287313.fls.doubleclick.net/activityi;dc_pre=CJSb7fr8qpgDFSLOwgQds4QRGQ;src=8287313;type=mxm_visi;cat=maxim0;rcb=10;ord=4882866346854;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessCh
+302 text/html; charset=UTF-8 https://10463411.fls.doubleclick.net/activityi;src=10463411;type=visit0;cat=allvi0;rcb=1;ord=4429345560068;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChromium%3B1
+200 text/html; charset=UTF-8 https://10463411.fls.doubleclick.net/activityi;dc_pre=CNqL8Pr8qpgDFXVxwwAdo8cHRA;src=10463411;type=visit0;cat=allvi0;rcb=1;ord=4429345560068;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChr
+200  https://www.google.com/measurement/conversion?random=1795879629067&cv=11&tid=G-XXLYQNS7W4&fst=1795879629067&fmt=8&en=leidiniai&gtm=45je6bi0h2v898239732za20gzb71772313zd71772313xecxf1&gcs=G111&gcd=13v3v3v3v5l1&dma=0&tag_e
+200 text/javascript; charset=utf-8 https://track.adform.net/Serving/TrackPoint/?pm=2551969&ADFPageName=https%3A%2F%2Fmaxima.lt%2Fleidiniai&ADFdivider=%7C&ord=118995370299&ADFtpmode=2&loc=https%3A%2F%2Fwww.maxima.lt%2Fleidiniai%2Fkaledu_menuo&Set1=lt-LT%7C
+200 text/javascript; charset=utf-8 https://track.adform.net/Serving/TrackPoint/?pm=2551969&ADFPageName=maxima.lt&ADFdivider=%7C&ord=107991798627&ADFtpmode=2&loc=https%3A%2F%2Fwww.maxima.lt%2Fleidiniai%2Fkaledu_menuo&Set1=lt-LT%7Clt-LT%7C1280x720%7C24
+200 application/x-javascript; char https://connect.facebook.net/signals/config/178705553038652?v=2.9.441&r=stable&domain=www.maxima.lt&hme=abf59d235177e3601acac6035d7c2a28fadbda4b0c64009bc203ceed9fa8bb90&ex_m=119%2C243%2C172%2C27%2C82%2C83%2C163%2C78%2C77
+200 text/plain https://www.facebook.com/tr/
+302 text/html; charset=UTF-8 https://ad.doubleclick.net/activity;src=8287313;type=mxm_visi;cat=maxim0;rcb=10;ord=4882866346854;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChromium%3B131.0.6778
+302 text/html; charset=UTF-8 https://ad.doubleclick.net/activity;src=10463411;type=visit0;cat=allvi0;rcb=1;ord=4429345560068;npa=0;auiddc=198380298.1795879602;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChromium%3B131.0.6778.3
+200  https://www.google.com/ccm/collect?rcb=16&frm=0&apvc=0&ae=g&auid=198380298.1795879602&dt=KAL%C4%96D%C5%B2%20M%C4%96NUO&tid=AW-10832569816&dl=https%3A%2F%2Fwww.maxima.lt%2Fleidiniai%2Fkaledu_menuo&scrsrc=www.googletagmana
+200  https://www.google.com/rmkt/collect/10832569816/?random=1795879629238&cv=11&fst=1795879629238&fmt=8&bg=ffffff&guid=ON&async=1&gtm=45be6bi0h2z871772313za20gzb71772313zd71772313xeaxf1&gcd=13v3v3v3v5l1&dma=0&tag_exp=1156169
+200 application/x-javascript; char https://connect.facebook.net/signals/config/1348997928854112?v=2.9.441&r=stable&domain=www.maxima.lt&hme=abf59d235177e3601acac6035d7c2a28fadbda4b0c64009bc203ceed9fa8bb90&ex_m=119%2C243%2C172%2C27%2C82%2C83%2C163%2C78%2C7
+200 image/gif https://adservice.google.com/ddm/fls/z/dc_pre=CJSb7fr8qpgDFSLOwgQds4QRGQ;src=8287313;type=mxm_visi;cat=maxim0;rcb=10;ord=4882866346854;npa=0;auiddc=*;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChr
+200 image/gif https://adservice.google.com/ddm/fls/z/dc_pre=CNqL8Pr8qpgDFXVxwwAdo8cHRA;src=10463411;type=visit0;cat=allvi0;rcb=1;ord=4429345560068;npa=0;auiddc=*;gdid=dMWZhNz;uaa=x64;uab=64;uafvl=HeadlessChrome%3B131.0.6778.33%7CChrom
+200 text/javascript; charset=UTF-8 https://googleads.g.doubleclick.net/pagead/viewthroughconversion/10832569816/?random=1795879629238&cv=11&fst=1795879629238&bg=ffffff&guid=ON&async=1&gtm=45be6bi0h2z871772313za20gzb71772313zd71772313xeaxf1&gcd=13v3v3v3v5l
+200 text/plain https://www.facebook.com/tr/
+200 application/x-javascript; char https://connect.facebook.net/signals/config/4048288852061369?v=2.9.441&r=stable&domain=www.maxima.lt&hme=abf59d235177e3601acac6035d7c2a28fadbda4b0c64009bc203ceed9fa8bb90&ex_m=119%2C243%2C172%2C27%2C82%2C83%2C163%2C78%2C7
+200 text/plain https://www.facebook.com/tr/
+200 text/plain https://www.facebook.com/tr/
+200 image/gif https://www.google.com/pagead/1p-user-list/10832569816/?random=1795879629238&cv=11&fst=1795878000000&bg=ffffff&guid=ON&async=1&gtm=45be6bi0h2z871772313za20gzb71772313zd71772313xeaxf1&gcd=13v3v3v3v5l1&dma=0&tag_exp=115616
+302 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo
+200 image/gif https://www.google.com/gmp/conversion/_dc_unique_id=9092196948192527114;_dc_ptd=ChEIgJSq2AYQspnWtYij9JbOARIfANXB4tCXpRBle_PcpZa3NpGAsAu1KcKhbaDr2puLBA;_dc_time=1795879629;cid=CAQS4gEAogo4ddmKgVpyQ1T5SVKhvFOqAc_9KVq7OlYkE
+200 image/gif https://www.google.com/gmp/conversion/_dc_unique_id=7839467843890243800;_dc_ptd=ChEIgJSq2AYQspnWtYij9JbOARIfANXB4tBYy7kGyVj4KMTqbeJAqdY-0sq_07xiq2ekmg;_dc_time=1795879629;cid=CAQS4gEAogo4dcS1vFh40_YikQIQHzOT8Q0HyC8eQOLnw
+204  https://www.maxima.lt/csp/report
+204  https://www.maxima.lt/csp/report
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/1/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/2/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879630148/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+204 text/plain https://analytics.google.com/g/collect?v=2&tid=G-XXLYQNS7W4&gtm=45je6bi0h2v898239732za20gzb71772313zd71772313xf1&_p=1795879628853&gcs=G111&gcd=13v3v3v3v5l1&npa=0&dma=0&gdid=dMWZhNz&_eu=EEAAACQC&ae=a&are=1&cid=1453278577.
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=2
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/2/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/1/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879645103/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D2
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=3
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/2/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/1/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879645413/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D3
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=4
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879645747/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D4
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=5
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/2/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879645988/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D5
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=6
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879646279/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D6
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=7
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/5/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/4/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/3/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879646544/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D7
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=8
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879646802/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D8
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=9
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879647055/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D9
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/6/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=10
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879647349/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D10
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=11
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/7/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 text/javascript https://embeds.ipaper.io/v2/1795879647600/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D11
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=12
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879647858/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D12
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=13
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/15/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/9/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879648164/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D13
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/8/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49b
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=14
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/15/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879648463/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D14
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=15
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/15/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/11/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/10/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879648780/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D15
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=16
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/15/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879649107/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D16
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=17
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/15/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/14/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/13/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/12/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879649417/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D17
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=18
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879649721/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D18
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=19
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/19/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/18/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/17/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/16/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879649962/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D19
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=20
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879650266/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D20
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=21
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879650516/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D21
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=22
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 text/javascript https://embeds.ipaper.io/v2/1795879650760/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D22
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/22/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=23
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/23/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/22/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/24/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/21/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879650998/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D23
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/25/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/20/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=24
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/24/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/25/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/26/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879651241/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D24
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=25
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/25/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/24/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/26/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/23/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879651480/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D25
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=26
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/26/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879651757/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D26
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=27
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 text/javascript https://embeds.ipaper.io/v2/1795879652030/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D27
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=28
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/28/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879652270/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D28
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=29
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 text/javascript https://embeds.ipaper.io/v2/1795879652527/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D29
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/29/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=30
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/30/Zoom.jpg?token=HS256-XpHlEWR84h_zKsZjLTZ4oEIHaVtYw9YFKWg2xo7PN1o&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879652782/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D30
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=31
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 text/javascript https://embeds.ipaper.io/v2/1795879653035/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D31
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/31/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=32
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 text/javascript https://embeds.ipaper.io/v2/1795879653294/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D32
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=33
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/33/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879653548/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D33
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics
+200 text/html; charset=utf-8 https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/?Page=34
+200 text/css https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop.bundle_gzip.css
+200 application/javascript https://cdn.ipaper.io/Cache/509/509.69.0.0/Frontend-Desktop/desktop_gzip.js
+200 image/jpeg https://cdn.ipaper.io/iPaper/Papers/c3c3d389-162a-49b8-99d7-4e111fb23ed1/Pages/34/Zoom.jpg?token=HS256-DeGPUJSAHjeDQXEeggGEhOg20aGVg5LHlaysDsY6Iis&token_ignore_params=true&token_path=%2fiPaper%2fPapers%2fc3c3d389-162a-49
+200 text/javascript https://embeds.ipaper.io/v2/1795879653799/MTYtMjQzODk=.js?iper=https%3A%2F%2Fviewer.ipaper.io%2Fmaxima%2Fteminiai-menesiai%2Fkaledu_menuo%2F%3FPage%3D34
+200 application/json; charset=utf- https://viewer.ipaper.io/maxima/teminiai-menesiai/kaledu_menuo/Modules/Statistics/Statistics.asmx/RegisterStatistics

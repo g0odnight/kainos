@@ -1,0 +1,7 @@
+<a href="https://apps.apple.com/app/rimi/id1392404561" target="_blank" class="banner-button" data-close="" data-smart-banner-content="ios">
+            Atsisiųsti
+        </a>
+
+<a href="https://play.google.com/store/apps/details?id=lv.rimi.card" target="_blank" class="banner-button" data-close="" data-smart-banner-content="android">
+            Atsisiųsti
+        </a>

@@ -1,0 +1,3 @@
+<a class="btn btn-primary smart-app-banner__cta" href="https://play.google.com/store/apps/details?id=lt.maxima.aciu" target="_blank" rel="noopener noreferrer">
+        Atsisiųsti
+      </a>

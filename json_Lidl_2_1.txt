@@ -1,0 +1,3 @@
+https://asset.schwarz/track/manifest.json
+
+{"resources.html": {"file": "index.2246fce8.min.js", "isEntry": true, "src": "resources.html"}}

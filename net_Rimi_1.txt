@@ -1,0 +1,4 @@
+404 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-49/
+200 text/css https://leidiniai.rimi.lt/Error/error.bundle.css
+404 text/html; charset=utf-8 https://leidiniai.rimi.lt/2026/weekly/rimi-savaitinis-leidinys-nr-49/?Page=2
+200 text/css https://leidiniai.rimi.lt/Error/error.bundle.css

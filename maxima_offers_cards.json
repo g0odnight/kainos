@@ -1,0 +1,1592 @@
+[
+ {
+  "name": "Mandarinai*, 1 kg",
+  "int": "1",
+  "frac": "39",
+  "old": "1,99 €",
+  "off": "-30%",
+  "meta": "1,99 € -30% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Mandarinai*, 1 kg 1 39 € 1,99 € -30% Iki 11.30"
+ },
+ {
+  "name": "Pomidorai*, 1 kg",
+  "int": "2",
+  "frac": "19",
+  "old": "2,95 €",
+  "off": "-25%",
+  "meta": "2,95 € -25% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pomidorai*, 1 kg 2 19 € 2,95 € -25% Iki 11.30"
+ },
+ {
+  "name": "Citrinos*, 1 kg",
+  "int": "1",
+  "frac": "59",
+  "old": "2,19 €",
+  "off": "-27%",
+  "meta": "2,19 € -27% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Citrinos*, 1 kg 1 59 € 2,19 € -27% Iki 11.30"
+ },
+ {
+  "name": "Raudonosios besėklės vynuogės*, fasuotos, 500 g",
+  "int": "2",
+  "frac": "49",
+  "old": "3,29 €",
+  "off": "-24%",
+  "meta": "3,29 € -24% | 1 kg – 4,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Raudonosios besėklės vynuogės*, fasuotos, 500 g 2 49 € 3,29 € -24% 1 kg – 4,98 € Iki 11.30"
+ },
+ {
+  "name": "Brokolis*, 1 vnt.",
+  "int": "1",
+  "frac": "29",
+  "old": "1,65 €",
+  "off": "-21%",
+  "meta": "1,65 € -21% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Brokolis*, 1 vnt. 1 29 € 1,65 € -21% Iki 11.30"
+ },
+ {
+  "name": "Didžiosios kriaušės CONFERENCE*, 1 kg",
+  "int": "1",
+  "frac": "79",
+  "old": "2,39 €",
+  "off": "-25%",
+  "meta": "2,39 € -25% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Didžiosios kriaušės CONFERENCE*, 1 kg 1 79 € 2,39 € -25% Iki 11.30"
+ },
+ {
+  "name": "Avokadas*, 1 vnt.",
+  "int": "0",
+  "frac": "45",
+  "old": "0,79 €",
+  "off": "-43%",
+  "meta": "0,79 € -43% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Avokadas*, 1 vnt. 0 45 € 0,79 € -43% Iki 11.30"
+ },
+ {
+  "name": "Svogūnai*, 1 kg",
+  "int": "0",
+  "frac": "33",
+  "old": "0,45 €",
+  "off": "-26%",
+  "meta": "0,45 € -26% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Svogūnai*, 1 kg 0 33 € 0,45 € -26% Iki 11.30"
+ },
+ {
+  "name": "Persimonai*, 1 kg",
+  "int": "2",
+  "frac": "39",
+  "old": "3,49 €",
+  "off": "-31%",
+  "meta": "3,49 € -31% | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Persimonai*, 1 kg 2 39 € 3,49 € -31% Iki 11.29"
+ },
+ {
+  "name": "Ilgavaisis agurkas plėvelėje*, 1 vnt.",
+  "int": "0",
+  "frac": "75",
+  "old": "0,95 €",
+  "off": "-21%",
+  "meta": "0,95 € -21% | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Ilgavaisis agurkas plėvelėje*, 1 vnt. 0 75 € 0,95 € -21% Iki 11.29"
+ },
+ {
+  "name": "Atšaldytas kiaulienos kumpis be kaulo*, sveriamas, 1 kg",
+  "int": "2",
+  "frac": "49",
+  "old": "3,29 €",
+  "off": "-24%",
+  "meta": "3,29 € -24% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Atšaldytas kiaulienos kumpis be kaulo*, sveriamas, 1 kg 2 49 € 3,29 € -24% Iki 11.30"
+ },
+ {
+  "name": "Šviežios viščiukų broilerių blauzdelės WELL DONE*, 500 g",
+  "int": "1",
+  "frac": "49",
+  "old": "2,19 €",
+  "off": "-31%",
+  "meta": "2,19 € -31% | 1 kg – 2,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šviežios viščiukų broilerių blauzdelės WELL DONE*, 500 g 1 49 € 2,19 € -31% 1 kg – 2,98 € Iki 11.30"
+ },
+ {
+  "name": "Šviežios kiaulienos storosios; plonosios dešrelės WELL DONE*, 2 rūšių, 400 g",
+  "int": "1",
+  "frac": "99",
+  "old": "2,25 €",
+  "off": "-11%",
+  "meta": "2,25 € -11% | 1 kg – 4,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šviežios kiaulienos storosios; plonosios dešrelės WELL DONE*, 2 rūšių, 400 g 1 99 € 2,25 € -11% 1 kg – 4,98 € Iki 11.30"
+ },
+ {
+  "name": "Šviežia RUMŠIŠKIŲ viščiukų broilerių filė, užauginta be antibiotikų*, 500 g",
+  "int": "3",
+  "frac": "49",
+  "old": "5,49 €",
+  "off": "-36%",
+  "meta": "5,49 € -36% | 1 kg – 6,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šviežia RUMŠIŠKIŲ viščiukų broilerių filė, užauginta be antibiotikų*, 500 g 3 49 € 5,49 € -36% 1 kg – 6,98 € Iki 11.30"
+ },
+ {
+  "name": "Viščiukų sparnelių peteliai; vid. dalys VILNIAUS PAUKŠTYNAS PREMIUM*, 3 rūšių, 500 g",
+  "int": "3",
+  "frac": "19",
+  "old": "3,99 €",
+  "off": "-20%",
+  "meta": "3,99 € -20% | 1 kg – 6,38 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Viščiukų sparnelių peteliai; vid. dalys VILNIAUS PAUKŠTYNAS PREMIUM*, 3 rūšių, 500 g 3 19 € 3,99 € -20% 1 kg – 6,38 € Iki 11.30"
+ },
+ {
+  "name": "Lėtai virti kiaulienos šonkauliai BIOVELA*, 2 rūšių, a. r., 900 g",
+  "int": "7",
+  "frac": "99",
+  "old": "9,99 €",
+  "off": "-20%",
+  "meta": "9,99 € -20% | 1 kg – 8,88 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Lėtai virti kiaulienos šonkauliai BIOVELA*, 2 rūšių, a. r., 900 g 7 99 € 9,99 € -20% 1 kg – 8,88 € Iki 11.30"
+ },
+ {
+  "name": "Pjaustytas vytintas KLEBONIŠKAS saliamis SAMSONAS*, a. r., 200 g",
+  "int": "3",
+  "frac": "49",
+  "old": "4,29 €",
+  "off": "-18%",
+  "meta": "4,29 € -18% | 1 kg – 17,45 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pjaustytas vytintas KLEBONIŠKAS saliamis SAMSONAS*, a. r., 200 g 3 49 € 4,29 € -18% 1 kg – 17,45 € Iki 11.30"
+ },
+ {
+  "name": "Šaltai rūkyti kiaulienos šoninės kubeliai MORLINY*, a. r., 200 g",
+  "int": "1",
+  "frac": "99",
+  "old": "2,29 €",
+  "off": "-13%",
+  "meta": "2,29 € -13% | 1 kg – 9,95 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaltai rūkyti kiaulienos šoninės kubeliai MORLINY*, a. r., 200 g 1 99 € 2,29 € -13% 1 kg – 9,95 € Iki 11.30"
+ },
+ {
+  "name": "Virtas liežuvio vyniotinis ROKIŠKIO MĖSINĖ*, a. r., 350 g",
+  "int": "3",
+  "frac": "49",
+  "old": "3,99 €",
+  "off": "-12%",
+  "meta": "3,99 € -12% | 1 kg – 9,97 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Virtas liežuvio vyniotinis ROKIŠKIO MĖSINĖ*, a. r., 350 g 3 49 € 3,99 € -12% 1 kg – 9,97 € Iki 11.30"
+ },
+ {
+  "name": "Pjaustytas MILANO saliamis; kiaulienos kumpis PROSCIUTTO WELL DONE*, 2 rūšių, a. r., 80–100 g",
+  "int": "1",
+  "frac": "79",
+  "old": "1,99 €",
+  "off": "-10%",
+  "meta": "1,99 € -10% | 1 kg ≤ 22,38 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pjaustytas MILANO saliamis; kiaulienos kumpis PROSCIUTTO WELL DONE*, 2 rūšių, a. r., 80–100 g 1 79 € 1,99 € -10% 1 kg ≤ 22,38 € Iki 11.30"
+ },
+ {
+  "name": "Karštai rūkytos lazdelės STIX KABANOSSI BIOVELA*, 3 rūšių, a. r., 100 g",
+  "int": "1",
+  "frac": "59",
+  "old": "2,15 €",
+  "off": "-26%",
+  "meta": "2,15 € -26% | 1 kg – 15,90 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Karštai rūkytos lazdelės STIX KABANOSSI BIOVELA*, 3 rūšių, a. r., 100 g 1 59 € 2,15 € -26% 1 kg – 15,90 € Iki 11.30"
+ },
+ {
+  "name": "Smulkinta kiauliena ir jautiena KREKENAVOS GRYNUOLIAI*, rieb. ne daug. kaip 20 %, 350g",
+  "int": "1",
+  "frac": "79",
+  "old": "2,29 €",
+  "off": "-21%",
+  "meta": "2,29 € -21% | 1 kg – 5,11 € | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Smulkinta kiauliena ir jautiena KREKENAVOS GRYNUOLIAI*, rieb. ne daug. kaip 20 %, 350g 1 79 € 2,29 € -21% 1 kg – 5,11 € Iki 11.29"
+ },
+ {
+  "name": "Virtas pjaust. kalakutienos; kiaul.; višt. kumpis BIOVELA*, 3 rūšių, I r.; a. r., 2 pak. × 90 g",
+  "int": "2",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 16,61 € | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Virtas pjaust. kalakutienos; kiaul.; višt. kumpis BIOVELA*, 3 rūšių, I r.; a. r., 2 pak. × 90 g 2 99 € 2 vnt. už 1 kg – 16,61 € Iki 11.29"
+ },
+ {
+  "name": "UAT pienas FARM MILK*, 3,2 % rieb., 1 l",
+  "int": "0",
+  "frac": "69",
+  "old": "0,89 €",
+  "off": "-22%",
+  "meta": "0,89 € -22% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "UAT pienas FARM MILK*, 3,2 % rieb., 1 l 0 69 € 0,89 € -22% Iki 11.30"
+ },
+ {
+  "name": "Glaistytas varškės sūrelis NYKŠTUKAS*, 10 rūšių, 21–25,7 % rieb., 3 vnt. × 150 g",
+  "int": "1",
+  "frac": "39",
+  "old": "",
+  "off": "",
+  "meta": "3 vnt. už | 1 kg – 10,30 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Glaistytas varškės sūrelis NYKŠTUKAS*, 10 rūšių, 21–25,7 % rieb., 3 vnt. × 150 g 1 39 € 3 vnt. už 1 kg – 10,30 € Iki 11.30"
+ },
+ {
+  "name": "VILKYŠKIŲ varškės užtepėlė; kremas VILVI*, 3 rūšių, 18–19 % rieb., 2 ind. × 150 g",
+  "int": "2",
+  "frac": "85",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 9,50 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "VILKYŠKIŲ varškės užtepėlė; kremas VILVI*, 3 rūšių, 18–19 % rieb., 2 ind. × 150 g 2 85 € 2 vnt. už 1 kg – 9,50 € Iki 11.30"
+ },
+ {
+  "name": "Kietasis ROKIŠKIO sūris GRAND*, brandintas 12 mėn., 37 % rieb. s. m., 180 g",
+  "int": "2",
+  "frac": "95",
+  "old": "3,29 €",
+  "off": "-10%",
+  "meta": "3,29 € -10% | 1 kg – 16,39 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kietasis ROKIŠKIO sūris GRAND*, brandintas 12 mėn., 37 % rieb. s. m., 180 g 2 95 € 3,29 € -10% 1 kg – 16,39 € Iki 11.30"
+ },
+ {
+  "name": "Saldaus pieno sūris SAULIAUS JASINEVIČIAUS ŪKIS*, sveriamas, 22 % rieb. s. m., 1 kg",
+  "int": "11",
+  "frac": "59",
+  "old": "12,99 €",
+  "off": "-10%",
+  "meta": "12,99 € -10% | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Saldaus pieno sūris SAULIAUS JASINEVIČIAUS ŪKIS*, sveriamas, 22 % rieb. s. m., 1 kg 11 59 € 12,99 € -10% Iki 11.30 nuo"
+ },
+ {
+  "name": "Geriamasis jogurtas JO, plombyro skonio, su žemuogėmis*, 2,4 % rieb., 900 g",
+  "int": "2",
+  "frac": "19",
+  "old": "2,49 €",
+  "off": "-12%",
+  "meta": "2,49 € -12% | 1 kg – 2,43 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Geriamasis jogurtas JO, plombyro skonio, su žemuogėmis*, 2,4 % rieb., 900 g 2 19 € 2,49 € -12% 1 kg – 2,43 € Iki 11.30"
+ },
+ {
+  "name": "Migdolinis gėrimas ALPRO be cukrų*, 1 l",
+  "int": "2",
+  "frac": "29",
+  "old": "3,29 €",
+  "off": "-30%",
+  "meta": "3,29 € -30% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Migdolinis gėrimas ALPRO be cukrų*, 1 l 2 29 € 3,29 € -30% Iki 11.30"
+ },
+ {
+  "name": "Varškė GRAIKIŠKA AMFORA*, 7 rūšių, 0,8 % rieb., 2 ind. × 200 g",
+  "int": "2",
+  "frac": "69",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 6,73 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Varškė GRAIKIŠKA AMFORA*, 7 rūšių, 0,8 % rieb., 2 ind. × 200 g 2 69 € 2 vnt. už 1 kg – 6,73 € Iki 11.30"
+ },
+ {
+  "name": "Šokoladinis batonėlis KINDER PINGUI*, 28,3 % rieb., 2 vnt. × 1 pak.(4 vnt. × 30 g)",
+  "int": "3",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 16,63 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šokoladinis batonėlis KINDER PINGUI*, 28,3 % rieb., 2 vnt. × 1 pak.(4 vnt. × 30 g) 3 99 € 2 vnt. už 1 kg – 16,63 € Iki 11.30"
+ },
+ {
+  "name": "Produktams ACTIMEL*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Produktams ACTIMEL* -30 % Iki 11.30"
+ },
+ {
+  "name": "Šviežia atlantinių lašišų filė su oda*, 1 kg",
+  "int": "12",
+  "frac": "99",
+  "old": "16,99 €",
+  "off": "-23%",
+  "meta": "16,99 € -23% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šviežia atlantinių lašišų filė su oda*, 1 kg 12 99 € 16,99 € -23% Iki 11.30"
+ },
+ {
+  "name": "Tunų pjausniai WELL DONE*, 2 rūšių, 185 g",
+  "int": "2",
+  "frac": "29",
+  "old": "2,89 €",
+  "off": "-20%",
+  "meta": "2,89 € -20% | 1 kg – 12,38 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Tunų pjausniai WELL DONE*, 2 rūšių, 185 g 2 29 € 2,89 € -20% 1 kg – 12,38 € Iki 11.30"
+ },
+ {
+  "name": "Šaltai rūkyta; sūdyta lašišų filė ZIGMAS su oda*, 2 rūšių, 160 g",
+  "int": "4",
+  "frac": "19",
+  "old": "4,99 €",
+  "off": "-16%",
+  "meta": "4,99 € -16% | 1 kg – 26,19 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaltai rūkyta; sūdyta lašišų filė ZIGMAS su oda*, 2 rūšių, 160 g 4 19 € 4,99 € -16% 1 kg – 26,19 € Iki 11.30"
+ },
+ {
+  "name": "Atitirpinta itališka apkepėlė MANTINGA FOOD ON FOOT*, 2 rūšių, 2 vnt. × 125 g",
+  "int": "1",
+  "frac": "25",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 5,00 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Atitirpinta itališka apkepėlė MANTINGA FOOD ON FOOT*, 2 rūšių, 2 vnt. × 125 g 1 25 € 2 vnt. už 1 kg – 5,00 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Sumuštinis FRESH WALK GOOD ONE su kebabų vištiena ir pikant. padažu*, 205 g",
+  "int": "2",
+  "frac": "19",
+  "old": "2,59 €",
+  "off": "-15%",
+  "meta": "2,59 € -15% | 1 kg – 10,68 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sumuštinis FRESH WALK GOOD ONE su kebabų vištiena ir pikant. padažu*, 205 g 2 19 € 2,59 € -15% 1 kg – 10,68 € Iki 11.30"
+ },
+ {
+  "name": "Pyragėlis MARCIPANINIS SUKUTIS*, 2 vnt. × 60 g",
+  "int": "0",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 8,25 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pyragėlis MARCIPANINIS SUKUTIS*, 2 vnt. × 60 g 0 99 € 2 vnt. už 1 kg – 8,25 € Iki 11.30"
+ },
+ {
+  "name": "Prancūziška bandelė su dešrele, kečupu ir garstyčiomis*, 2 vnt. × 110 g",
+  "int": "1",
+  "frac": "49",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 6,77 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prancūziška bandelė su dešrele, kečupu ir garstyčiomis*, 2 vnt. × 110 g 1 49 € 2 vnt. už 1 kg – 6,77 € Iki 11.30"
+ },
+ {
+  "name": "Šaldyta pica DR. OETKER FELICIANA*, 4 rūšių, 2 dėž. × 320–360 g",
+  "int": "3",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg ≤ 6,23 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaldyta pica DR. OETKER FELICIANA*, 4 rūšių, 2 dėž. × 320–360 g 3 99 € 2 vnt. už 1 kg ≤ 6,23 € Iki 11.30"
+ },
+ {
+  "name": "Šaldyti žuvų piršteliai ESVA*, 450 g",
+  "int": "2",
+  "frac": "39",
+  "old": "2,69 €",
+  "off": "-11%",
+  "meta": "2,69 € -11% | 1 kg – 5,31 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaldyti žuvų piršteliai ESVA*, 450 g 2 39 € 2,69 € -11% 1 kg – 5,31 € Iki 11.30"
+ },
+ {
+  "name": "Šaldyti koldūnai PINIGĖLIAI su mėsos įdaru*, 500 g",
+  "int": "2",
+  "frac": "69",
+  "old": "2,99 €",
+  "off": "-10%",
+  "meta": "2,99 € -10% | 1 kg – 5,38 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaldyti koldūnai PINIGĖLIAI su mėsos įdaru*, 500 g 2 69 € 2,99 € -10% 1 kg – 5,38 € Iki 11.30"
+ },
+ {
+  "name": "Šaldyti blynai WELL DONE*, 3 rūšių, 370 g",
+  "int": "2",
+  "frac": "19",
+  "old": "2,49 €",
+  "off": "-12%",
+  "meta": "2,49 € -12% | 1 kg – 5,92 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaldyti blynai WELL DONE*, 3 rūšių, 370 g 2 19 € 2,49 € -12% 1 kg – 5,92 € Iki 11.30"
+ },
+ {
+  "name": "Valgomieji ledai ragelyje AURUM*, 3 rūšių, 98 g",
+  "int": "0",
+  "frac": "99",
+  "old": "1,19 €",
+  "off": "-16%",
+  "meta": "1,19 € -16% | 1 kg – 10,10 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Valgomieji ledai ragelyje AURUM*, 3 rūšių, 98 g 0 99 € 1,19 € -16% 1 kg – 10,10 € Iki 11.30"
+ },
+ {
+  "name": "Plombyras; valgomieji ledai puodelyje KLASIKA*, 3 rūšių, 65–85 g",
+  "int": "0",
+  "frac": "65",
+  "old": "0,89 €",
+  "off": "-26%",
+  "meta": "0,89 € -26% | 1 kg ≤ 10,00 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Plombyras; valgomieji ledai puodelyje KLASIKA*, 3 rūšių, 65–85 g 0 65 € 0,89 € -26% 1 kg ≤ 10,00 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Vaniliniai valgomieji ledai indelyje WELL DONE*, 3 rūšių, 310 g",
+  "int": "2",
+  "frac": "99",
+  "old": "3,69 €",
+  "off": "-18%",
+  "meta": "3,69 € -18% | 1 kg – 9,65 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Vaniliniai valgomieji ledai indelyje WELL DONE*, 3 rūšių, 310 g 2 99 € 3,69 € -18% 1 kg – 9,65 € Iki 11.30"
+ },
+ {
+  "name": "Raguolis 7 DAYS*, 8 rūšių, 2 vnt. × 60 g",
+  "int": "0",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 8,25 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Raguolis 7 DAYS*, 8 rūšių, 2 vnt. × 60 g 0 99 € 2 vnt. už 1 kg – 8,25 € Iki 11.30"
+ },
+ {
+  "name": "Sausainiai MILKA*, 4 rūšių, 2 pak. × 140–175 g",
+  "int": "4",
+  "frac": "39",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg ≤ 15,68 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sausainiai MILKA*, 4 rūšių, 2 pak. × 140–175 g 4 39 € 2 vnt. už 1 kg ≤ 15,68 € Iki 11.30"
+ },
+ {
+  "name": "Sausainiai BAHLSEN HIT*, 3 rūšių, 220 g",
+  "int": "1",
+  "frac": "59",
+  "old": "1,79 €",
+  "off": "-11%",
+  "meta": "1,79 € -11% | 1 kg – 7,23 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sausainiai BAHLSEN HIT*, 3 rūšių, 220 g 1 59 € 1,79 € -11% 1 kg – 7,23 € Iki 11.30"
+ },
+ {
+  "name": "Sausainiams ir krekeriams GAIDELIS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sausainiams ir krekeriams GAIDELIS* -20 % Iki 11.29"
+ },
+ {
+  "name": "Sausainiams GAIDELIS*, 11 rūšių, 160 g",
+  "int": "0",
+  "frac": "52",
+  "old": "0,65 €",
+  "off": "-20%",
+  "meta": "0,65 € -20% | 1 kg – 3,25 € | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sausainiams GAIDELIS*, 11 rūšių, 160 g 0 52 € 0,65 € -20% 1 kg – 3,25 € Iki 11.29"
+ },
+ {
+  "name": "Pieninio šokolado saldainiai MALTESERS su traškiu įdaru*, 68 g",
+  "int": "1",
+  "frac": "49",
+  "old": "2,19 €",
+  "off": "-31%",
+  "meta": "2,19 € -31% | 1 kg – 21,91 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pieninio šokolado saldainiai MALTESERS su traškiu įdaru*, 68 g 1 49 € 2,19 € -31% 1 kg – 21,91 € Iki 11.30"
+ },
+ {
+  "name": "Dražė M&M’S*, 3 rūšių, 77–82 g",
+  "int": "1",
+  "frac": "49",
+  "old": "1,99 €",
+  "off": "-25%",
+  "meta": "1,99 € -25% | 1 kg ≤ 19,35 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Dražė M&M’S*, 3 rūšių, 77–82 g 1 49 € 1,99 € -25% 1 kg ≤ 19,35 € Iki 11.30"
+ },
+ {
+  "name": "Vaflinis batonėlis KINDER BUENO*, 2 rūšių, 2 vnt. × 39–43 g",
+  "int": "1",
+  "frac": "59",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg ≤ 20,38 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Vaflinis batonėlis KINDER BUENO*, 2 rūšių, 2 vnt. × 39–43 g 1 59 € 2 vnt. už 1 kg ≤ 20,38 € Iki 11.30"
+ },
+ {
+  "name": "Saldainiai MIGLĖ*, sveriami, 1 kg",
+  "int": "7",
+  "frac": "99",
+  "old": "9,49 €",
+  "off": "-15%",
+  "meta": "9,49 € -15% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Saldainiai MIGLĖ*, sveriami, 1 kg 7 99 € 9,49 € -15% Iki 11.30"
+ },
+ {
+  "name": "Saldainiai RAFFAELLO*, 230 g",
+  "int": "4",
+  "frac": "79",
+  "old": "5,39 €",
+  "off": "-11%",
+  "meta": "5,39 € -11% | 1 kg – 20,83 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Saldainiai RAFFAELLO*, 230 g 4 79 € 5,39 € -11% 1 kg – 20,83 € Iki 11.30"
+ },
+ {
+  "name": "Šokoladas TOBLERONE*, 4 rūšių, 2 vnt. × 100 g",
+  "int": "5",
+  "frac": "59",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 27,95 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šokoladas TOBLERONE*, 4 rūšių, 2 vnt. × 100 g 5 59 € 2 vnt. už 1 kg – 27,95 € Iki 11.30"
+ },
+ {
+  "name": "Šokoladas RITTER SPORT*, 4 rūšių, 2 vnt. × 100 g",
+  "int": "4",
+  "frac": "39",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 21,95 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šokoladas RITTER SPORT*, 4 rūšių, 2 vnt. × 100 g 4 39 € 2 vnt. už 1 kg – 21,95 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Guminukai SOUR PATCH*, 2 rūšių, 2 pak. × 99–102 g",
+  "int": "4",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg ≤ 25,23 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Guminukai SOUR PATCH*, 2 rūšių, 2 pak. × 99–102 g 4 99 € 2 vnt. už 1 kg ≤ 25,23 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Guminukai HARIBO*, 6 rūšių, 2 pak. × 160–175 g",
+  "int": "4",
+  "frac": "39",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg ≤ 13,72 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Guminukai HARIBO*, 6 rūšių, 2 pak. × 160–175 g 4 39 € 2 vnt. už 1 kg ≤ 13,72 € Iki 11.30"
+ },
+ {
+  "name": "Guminukai VIDAL*, 12 rūšių, 2 pak. × 90 g",
+  "int": "1",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 11,06 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Guminukai VIDAL*, 12 rūšių, 2 pak. × 90 g 1 99 € 2 vnt. už 1 kg – 11,06 € Iki 11.30"
+ },
+ {
+  "name": "Ledinukai HALLS*, 10 rūšių, 2 pak. × 34 g",
+  "int": "0",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 14,78 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Ledinukai HALLS*, 10 rūšių, 2 pak. × 34 g 0 99 € 2 vnt. už 1 kg – 14,78 € Iki 11.30"
+ },
+ {
+  "name": "Makaronai LA MOLISANA*, 3 rūšių, 500 g",
+  "int": "0",
+  "frac": "99",
+  "old": "1,39 €",
+  "off": "-28%",
+  "meta": "1,39 € -28% | 1 kg – 1,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Makaronai LA MOLISANA*, 3 rūšių, 500 g 0 99 € 1,39 € -28% 1 kg – 1,98 € Iki 11.30"
+ },
+ {
+  "name": "Padažams ir kečupui HELLMANN’S*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Padažams ir kečupui HELLMANN’S* -15 % Iki 11.30"
+ },
+ {
+  "name": "KLASIKINIS pomidorų padažas WELL DONE*, 480 g",
+  "int": "0",
+  "frac": "99",
+  "old": "1,29 €",
+  "off": "-23%",
+  "meta": "1,29 € -23% | 1 kg – 2,06 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "KLASIKINIS pomidorų padažas WELL DONE*, 480 g 0 99 € 1,29 € -23% 1 kg – 2,06 € Iki 11.30"
+ },
+ {
+  "name": "Aviečių uogienė WELL DONE*, 350 g",
+  "int": "2",
+  "frac": "39",
+  "old": "2,79 €",
+  "off": "-14%",
+  "meta": "2,79 € -14% | 1 kg – 6,83 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Aviečių uogienė WELL DONE*, 350 g 2 39 € 2,79 € -14% 1 kg – 6,83 € Iki 11.30"
+ },
+ {
+  "name": "Kokosų gėrimas SANTA MARIA*, 18 % rieb., 2 pak. × 250 ml",
+  "int": "2",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 l – 5,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kokosų gėrimas SANTA MARIA*, 18 % rieb., 2 pak. × 250 ml 2 99 € 2 vnt. už 1 l – 5,98 € Iki 11.30"
+ },
+ {
+  "name": "Tortilijos WRAP ORIGINAL SANTA MARIA*, 371 g",
+  "int": "2",
+  "frac": "69",
+  "old": "3,19 €",
+  "off": "-15%",
+  "meta": "3,19 € -15% | 1 kg – 7,25 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Tortilijos WRAP ORIGINAL SANTA MARIA*, 371 g 2 69 € 3,19 € -15% 1 kg – 7,25 € Iki 11.30"
+ },
+ {
+  "name": "Ryžiai GRALLA PREMIUM*, 3 rūšių, 800 g",
+  "int": "1",
+  "frac": "99",
+  "old": "2,29 €",
+  "off": "-13%",
+  "meta": "2,29 € -13% | 1 kg – 2,49 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Ryžiai GRALLA PREMIUM*, 3 rūšių, 800 g 1 99 € 2,29 € -13% 1 kg – 2,49 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Greitai paruošiamas aštrus ramenas SAM YANG*, 4 rūšių, 130–140 g",
+  "int": "1",
+  "frac": "89",
+  "old": "2,29 €",
+  "off": "-17%",
+  "meta": "2,29 € -17% | 1 kg ≤ 14,53 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Greitai paruošiamas aštrus ramenas SAM YANG*, 4 rūšių, 130–140 g 1 89 € 2,29 € -17% 1 kg ≤ 14,53 € Iki 11.30"
+ },
+ {
+  "name": "Greitai paruošiama avižinių; grikių dribsnių košė ACTIVUS*, 3 rūšių, 60 g",
+  "int": "0",
+  "frac": "85",
+  "old": "0,95 €",
+  "off": "-10%",
+  "meta": "0,95 € -10% | 1 kg – 14,17 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Greitai paruošiama avižinių; grikių dribsnių košė ACTIVUS*, 3 rūšių, 60 g 0 85 € 0,95 € -10% 1 kg – 14,17 € Iki 11.30"
+ },
+ {
+  "name": "Smulkus rudasis cukrus WELL DONE*, 500 g",
+  "int": "0",
+  "frac": "85",
+  "old": "0,99 €",
+  "off": "-14%",
+  "meta": "0,99 € -14% | 1 kg – 1,70 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Smulkus rudasis cukrus WELL DONE*, 500 g 0 85 € 0,99 € -14% 1 kg – 1,70 € Iki 11.30"
+ },
+ {
+  "name": "Granola WELL DONE*, 3 rūšių, 350 g",
+  "int": "2",
+  "frac": "49",
+  "old": "2,99 €",
+  "off": "-16%",
+  "meta": "2,99 € -16% | 1 kg – 7,11 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Granola WELL DONE*, 3 rūšių, 350 g 2 49 € 2,99 € -16% 1 kg – 7,11 € Iki 11.30"
+ },
+ {
+  "name": "Aliejui BASSO*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Aliejui BASSO* -25 % Iki 11.29"
+ },
+ {
+  "name": "Ryžių užkandis CHAZZ*, 2 rūšių, 100 g",
+  "int": "1",
+  "frac": "69",
+  "old": "1,89 €",
+  "off": "-10%",
+  "meta": "1,89 € -10% | 1 kg – 16,90 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Ryžių užkandis CHAZZ*, 2 rūšių, 100 g 1 69 € 1,89 € -10% 1 kg – 16,90 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Bulvių traškučiai TAFFEL*, 3 rūšių, 180 g",
+  "int": "1",
+  "frac": "29",
+  "old": "1,89 €",
+  "off": "-31%",
+  "meta": "1,89 € -31% | 1 kg – 7,17 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Bulvių traškučiai TAFFEL*, 3 rūšių, 180 g 1 29 € 1,89 € -31% 1 kg – 7,17 € Iki 11.30"
+ },
+ {
+  "name": "Kepti bulvių traškučiai LAY’S OVEN BAKED*, 3 rūšių, 110 g",
+  "int": "1",
+  "frac": "45",
+  "old": "2,19 €",
+  "off": "-33%",
+  "meta": "2,19 € -33% | 1 kg – 13,18 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kepti bulvių traškučiai LAY’S OVEN BAKED*, 3 rūšių, 110 g 1 45 € 2,19 € -33% 1 kg – 13,18 € Iki 11.30"
+ },
+ {
+  "name": "Krekeriai TUC*, 8 rūšių, 2 vnt. × 100 g",
+  "int": "1",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 9,95 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Krekeriai TUC*, 8 rūšių, 2 vnt. × 100 g 1 99 € 2 vnt. už 1 kg – 9,95 € Iki 11.30"
+ },
+ {
+  "name": "Lęšių traškučiai OHO!*, 3 rūšių, 100 g",
+  "int": "0",
+  "frac": "79",
+  "old": "0,99 €",
+  "off": "-20%",
+  "meta": "0,99 € -20% | 1 kg – 7,90 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Lęšių traškučiai OHO!*, 3 rūšių, 100 g 0 79 € 0,99 € -20% 1 kg – 7,90 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Traškučiai ALFREDO’S KETTLE*, 3 rūšių, 100–130 g",
+  "int": "1",
+  "frac": "59",
+  "old": "1,99 €",
+  "off": "-20%",
+  "meta": "1,99 € -20% | 1 kg ≤ 15,90 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Traškučiai ALFREDO’S KETTLE*, 3 rūšių, 100–130 g 1 59 € 1,99 € -20% 1 kg ≤ 15,90 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Krekeriai; duonos traškučiai SELGA NATURE*, 4 rūšių, 2 pak. × 200 g",
+  "int": "3",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 9,98 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Krekeriai; duonos traškučiai SELGA NATURE*, 4 rūšių, 2 pak. × 200 g 3 99 € 2 vnt. už 1 kg – 9,98 € Iki 11.30"
+ },
+ {
+  "name": "Glaistytos kukurūzų lazdelės AHA, vanilės skonio*, 250 g",
+  "int": "2",
+  "frac": "99",
+  "old": "3,89 €",
+  "off": "-23%",
+  "meta": "3,89 € -23% | 1 kg – 11,96 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Glaistytos kukurūzų lazdelės AHA, vanilės skonio*, 250 g 2 99 € 3,89 € -23% 1 kg – 11,96 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Lazdynų riešutai WELL DONE*, 200 g",
+  "int": "3",
+  "frac": "49",
+  "old": "4,79 €",
+  "off": "-27%",
+  "meta": "4,79 € -27% | 1 kg – 17,45 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Lazdynų riešutai WELL DONE*, 200 g 3 49 € 4,79 € -27% 1 kg – 17,45 € Iki 11.30"
+ },
+ {
+  "name": "Džiovintiems vaisiams SUMMMER*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Džiovintiems vaisiams SUMMMER* -20 % Iki 11.30"
+ },
+ {
+  "name": "Saulėgrąžos YES*, 9 rūšių, 2 pak. × 150 g",
+  "int": "2",
+  "frac": "79",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 9,30 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Saulėgrąžos YES*, 9 rūšių, 2 pak. × 150 g 2 79 € 2 vnt. už 1 kg – 9,30 € Iki 11.30"
+ },
+ {
+  "name": "Liofilizuotos braškės; avietės; vyšnios PICKS*, 3 rūšių, 90 g",
+  "int": "1",
+  "frac": "99",
+  "old": "2,49 €",
+  "off": "-20%",
+  "meta": "2,49 € -20% | 1 kg – 22,11 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Liofilizuotos braškės; avietės; vyšnios PICKS*, 3 rūšių, 90 g 1 99 € 2,49 € -20% 1 kg – 22,11 € Iki 11.30"
+ },
+ {
+  "name": "Marinuoti agurkėliai SPILVA*, 3–6 cm, 670 g",
+  "int": "2",
+  "frac": "79",
+  "old": "3,19 €",
+  "off": "-12%",
+  "meta": "3,19 € -12% | 1 kg – 4,16 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Marinuoti agurkėliai SPILVA*, 3–6 cm, 670 g 2 79 € 3,19 € -12% 1 kg – 4,16 € Iki 11.30"
+ },
+ {
+  "name": "Konservuota agurkų sriuba WELL DONE*, 480 g",
+  "int": "1",
+  "frac": "35",
+  "old": "1,59 €",
+  "off": "-15%",
+  "meta": "1,59 € -15% | 1 kg – 2,81 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Konservuota agurkų sriuba WELL DONE*, 480 g 1 35 € 1,59 € -15% 1 kg – 2,81 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Produkcijai MUTTI*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Produkcijai MUTTI* -15 % Iki 11.30"
+ },
+ {
+  "name": "Žolelių arbata ŽOLYNĖLIS*, 3 rūšių, 1 dėž. (20 pak.)",
+  "int": "1",
+  "frac": "79",
+  "old": "1,99 €",
+  "off": "-10%",
+  "meta": "1,99 € -10% | 1 pak. – 0,09 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Žolelių arbata ŽOLYNĖLIS*, 3 rūšių, 1 dėž. (20 pak.) 1 79 € 1,99 € -10% 1 pak. – 0,09 € Iki 11.30"
+ },
+ {
+  "name": "Kavos pupelės PUPA*, 3 rūšių, 1 kg",
+  "int": "15",
+  "frac": "99",
+  "old": "17,99 €",
+  "off": "-11%",
+  "meta": "17,99 € -11% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kavos pupelės PUPA*, 3 rūšių, 1 kg 15 99 € 17,99 € -11% Iki 11.30"
+ },
+ {
+  "name": "Malta kava PAULIG CLASSIC*, 500 g",
+  "int": "5",
+  "frac": "79",
+  "old": "6,69 €",
+  "off": "-13%",
+  "meta": "6,69 € -13% | 1 kg – 11,58 € | Iki 11.29",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Malta kava PAULIG CLASSIC*, 500 g 5 79 € 6,69 € -13% 1 kg – 11,58 € Iki 11.29"
+ },
+ {
+  "name": "Negazuotas mineralinis vanduo TICHĖ*, 2 but. × 2 l",
+  "int": "1",
+  "frac": "39",
+  "old": "",
+  "off": "",
+  "meta": "1+1 | 1 l – 0,35 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Negazuotas mineralinis vanduo TICHĖ*, 2 but. × 2 l 1 39 € 1+1 1 l – 0,35 € Iki 12.07"
+ },
+ {
+  "name": "Šaltai arbatai NESTEA*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šaltai arbatai NESTEA* -25 % Iki 12.07"
+ },
+ {
+  "name": "Gazuotas gėrimas GO BOTANICALS*, 3 rūšių, 330 ml",
+  "int": "0",
+  "frac": "89",
+  "old": "1,59 €",
+  "off": "-44%",
+  "meta": "1,59 € -44% | 1 l – 2,70 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gazuotas gėrimas GO BOTANICALS*, 3 rūšių, 330 ml 0 89 € 1,59 € -44% 1 l – 2,70 € Iki 12.07"
+ },
+ {
+  "name": "Gazuotas gėrimas COCA-COLA; COCA-COLA ZERO; FANTA; SPRITE*, 4 rūšių, 3 but. × 500 ml",
+  "int": "2",
+  "frac": "69",
+  "old": "",
+  "off": "",
+  "meta": "3 vnt. už | 1 l – 1,79 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gazuotas gėrimas COCA-COLA; COCA-COLA ZERO; FANTA; SPRITE*, 4 rūšių, 3 but. × 500 ml 2 69 € 3 vnt. už 1 l – 1,79 € Iki 12.07"
+ },
+ {
+  "name": "Granatų sultys GRANDA*, 1 l",
+  "int": "2",
+  "frac": "59",
+  "old": "3,29 €",
+  "off": "-21%",
+  "meta": "3,29 € -21% | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Granatų sultys GRANDA*, 1 l 2 59 € 3,29 € -21% Iki 12.07"
+ },
+ {
+  "name": "Nealkoholinis alus CORONA CERO*, 330 ml",
+  "int": "1",
+  "frac": "09",
+  "old": "1,55 €",
+  "off": "-29%",
+  "meta": "1,55 € -29% | 1 l – 3,30 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Nealkoholinis alus CORONA CERO*, 330 ml 1 09 € 1,55 € -29% 1 l – 3,30 € Iki 12.07"
+ },
+ {
+  "name": "Sultims, sulčių gėrimams, nektarams PFANNER*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sultims, sulčių gėrimams, nektarams PFANNER* -30 % Iki 12.07"
+ },
+ {
+  "name": "Nealkoholinis putojantis vynas; gėrimas MIONETTO*, 4 rūšių, 2 but. × 500–750 ml",
+  "int": "9",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "1+1 | 1 l ≤ 9,99 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Nealkoholinis putojantis vynas; gėrimas MIONETTO*, 4 rūšių, 2 but. × 500–750 ml 9 99 € 1+1 1 l ≤ 9,99 € Iki 12.07"
+ },
+ {
+  "name": "Mineraliniam vandeniui RASA*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Mineraliniam vandeniui RASA* -35 % Iki 12.07"
+ },
+ {
+  "name": "Sultims, sulčių gėrimams, nektarams TYMBARK*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Sultims, sulčių gėrimams, nektarams TYMBARK* -30 % Iki 12.07"
+ },
+ {
+  "name": "Negazuotas izotoninis gėrimas OSHEE*, 3 rūšių, 750–555 ml",
+  "int": "0",
+  "frac": "99",
+  "old": "1,65 €",
+  "off": "-40%",
+  "meta": "1,65 € -40% | 1 l ≤ 1,78 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Negazuotas izotoninis gėrimas OSHEE*, 3 rūšių, 750–555 ml 0 99 € 1,65 € -40% 1 l ≤ 1,78 € Iki 12.07"
+ },
+ {
+  "name": "Gėrimams MIRINDA, 7UP, MOUNTAIN DEW*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gėrimams MIRINDA, 7UP, MOUNTAIN DEW* -45 % Iki 12.07"
+ },
+ {
+  "name": "Girai RUGILĖ*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Girai RUGILĖ* -30 % Iki 12.07"
+ },
+ {
+  "name": "Energinis gėrimas CULT*, 4 rūšių, 2 skard. × 500 ml",
+  "int": "1",
+  "frac": "59",
+  "old": "",
+  "off": "",
+  "meta": "1+1 | 1 l – 1,59 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Energinis gėrimas CULT*, 4 rūšių, 2 skard. × 500 ml 1 59 € 1+1 1 l – 1,59 € Iki 12.07"
+ },
+ {
+  "name": "Nealkoholinis kokteilis MIX*, 3 rūšių, 330 ml",
+  "int": "0",
+  "frac": "89",
+  "old": "1,29 €",
+  "off": "-31%",
+  "meta": "1,29 € -31% | 1 l – 2,70 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Nealkoholinis kokteilis MIX*, 3 rūšių, 330 ml 0 89 € 1,29 € -31% 1 l – 2,70 € Iki 12.07"
+ },
+ {
+  "name": "Prekėms PAMPERS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prekėms PAMPERS* -40 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Pieno mišinys FRISOLAC GOLD COMFORT 2*, 400 g",
+  "int": "8",
+  "frac": "99",
+  "old": "12,99 €",
+  "off": "-30%",
+  "meta": "12,99 € -30% | 1 kg – 22,48 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Pieno mišinys FRISOLAC GOLD COMFORT 2*, 400 g 8 99 € 12,99 € -30% 1 kg – 22,48 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Kūdikių maistui SEMPER ir GOODIES*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kūdikių maistui SEMPER ir GOODIES* -30 % Iki 12.07"
+ },
+ {
+  "name": "Kūdikių maistui GERBER*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kūdikių maistui GERBER* -30 % Iki 12.07"
+ },
+ {
+  "name": "Kūdikių maistui PONN*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kūdikių maistui PONN* -30 % Iki 12.07"
+ },
+ {
+  "name": "Drėgnosios kūdikių servetėlės BAMBO NATURE*, 1 pak. (80 vnt.)",
+  "int": "2",
+  "frac": "29",
+  "old": "3,89 €",
+  "off": "-41%",
+  "meta": "3,89 € -41% | 1 vnt. – 0,03 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Drėgnosios kūdikių servetėlės BAMBO NATURE*, 1 pak. (80 vnt.) 2 29 € 3,89 € -41% 1 vnt. – 0,03 € Iki 12.07"
+ },
+ {
+  "name": "Kačių ėdalui WHISKAS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kačių ėdalui WHISKAS* -30 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Konservuotas kačių ėdalas GOURMET GOLD*, 4 rūšių, 3 ind. × 45 g",
+  "int": "1",
+  "frac": "99",
+  "old": "",
+  "off": "",
+  "meta": "3 vnt. už | 1 kg – 7,80 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Konservuotas kačių ėdalas GOURMET GOLD*, 4 rūšių, 3 ind. × 45 g 1 99 € 3 vnt. už 1 kg – 7,80 € Iki 12.07"
+ },
+ {
+  "name": "Gyvūnų ėdalui FRISKIES*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gyvūnų ėdalui FRISKIES* -30 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Gyvūnų ėdalui CLUB 4 PAWS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gyvūnų ėdalui CLUB 4 PAWS* -30 % Perkant 2 ar daugiau Iki 12.07 nuo"
+ },
+ {
+  "name": "Šunų ėdalui CANIS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Šunų ėdalui CANIS* -35 % Perkant 2 ar daugiau Iki 12.07 nuo"
+ },
+ {
+  "name": "Kačių skanėstas DREAMIES*, 4 rūšių, 2 pak. × 60 g",
+  "int": "2",
+  "frac": "69",
+  "old": "",
+  "off": "",
+  "meta": "2 vnt. už | 1 kg – 22,42 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kačių skanėstas DREAMIES*, 4 rūšių, 2 pak. × 60 g 2 69 € 2 vnt. už 1 kg – 22,42 € Iki 12.07"
+ },
+ {
+  "name": "Prekėms PEDIGREE*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prekėms PEDIGREE* -35 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Gyvūnų prekėms NATURE LIVING*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Gyvūnų prekėms NATURE LIVING* -25 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "KOSMETIKAI AR BURNOS PRIEŽIŪROS PRIEMONĖMS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "KOSMETIKAI AR BURNOS PRIEŽIŪROS PRIEMONĖMS* -40 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "Moterų higienos priemonėms DISCREET ar TAMPAX*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Moterų higienos priemonėms DISCREET ar TAMPAX* -30 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Moterų higienos priemonėms ALWAYS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Moterų higienos priemonėms ALWAYS* -30 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Prezervatyvams LIFE STYLES*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prezervatyvams LIFE STYLES* -30 % Perkant 2 ar daugiau Iki 12.07 nuo"
+ },
+ {
+  "name": "Tualetinis popierius ZEWA DELUXE WHITE*, 3 sluoksnių, 1 pak. (24 rit.)",
+  "int": "7",
+  "frac": "99",
+  "old": "17,99 €",
+  "off": "-55%",
+  "meta": "17,99 € -55% | 1 rit. – 0,33 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Tualetinis popierius ZEWA DELUXE WHITE*, 3 sluoksnių, 1 pak. (24 rit.) 7 99 € 17,99 € -55% 1 rit. – 0,33 € Iki 12.07"
+ },
+ {
+  "name": "Tualetinis popierius LAMBI*, 1 pak. (8 rit.)",
+  "int": "2",
+  "frac": "99",
+  "old": "5,99 €",
+  "off": "-50%",
+  "meta": "5,99 € -50% | 1 rit. – 0,37 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Tualetinis popierius LAMBI*, 1 pak. (8 rit.) 2 99 € 5,99 € -50% 1 rit. – 0,37 € Iki 12.07"
+ },
+ {
+  "name": "Popieriniai rankšluosčiai BLOOM JUMBO*, 2 sluoksnių, 1 rit. (400 lapelių)",
+  "int": "1",
+  "frac": "49",
+  "old": "2,99 €",
+  "off": "-50%",
+  "meta": "2,99 € -50% | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Popieriniai rankšluosčiai BLOOM JUMBO*, 2 sluoksnių, 1 rit. (400 lapelių) 1 49 € 2,99 € -50% Iki 12.07"
+ },
+ {
+  "name": "Skalbimo kapsulės ARIEL*, 2 rūšių, 1 dėž. (30 vnt.)",
+  "int": "13",
+  "frac": "19",
+  "old": "21,99 €",
+  "off": "-40%",
+  "meta": "21,99 € -40% | 1 vnt. – 0,44 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Skalbimo kapsulės ARIEL*, 2 rūšių, 1 dėž. (30 vnt.) 13 19 € 21,99 € -40% 1 vnt. – 0,44 € Iki 12.07"
+ },
+ {
+  "name": "Prekėms COCCOLINO*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prekėms COCCOLINO* -40 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Skalbimo gelis PERSIL*, 3 rūšių, 900–990 ml",
+  "int": "5",
+  "frac": "55",
+  "old": "9,29 €",
+  "off": "-40%",
+  "meta": "9,29 € -40% | 1 l ≤ 6,17 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Skalbimo gelis PERSIL*, 3 rūšių, 900–990 ml 5 55 € 9,29 € -40% 1 l ≤ 6,17 € Iki 12.07"
+ },
+ {
+  "name": "Skystasis skalbiklis PERWOLL*, 40 skalbimų, 3 rūšių, 2 l",
+  "int": "7",
+  "frac": "09",
+  "old": "14,29 €",
+  "off": "-50%",
+  "meta": "14,29 € -50% | 1 l – 3,55 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Skystasis skalbiklis PERWOLL*, 40 skalbimų, 3 rūšių, 2 l 7 09 € 14,29 € -50% 1 l – 3,55 € Iki 12.07"
+ },
+ {
+  "name": "Kvapiosios granulės LENOR*, 3 rūšių, 270 g",
+  "int": "5",
+  "frac": "59",
+  "old": "9,39 €",
+  "off": "-40%",
+  "meta": "9,39 € -40% | 1 kg – 20,70 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kvapiosios granulės LENOR*, 3 rūšių, 270 g 5 59 € 9,39 € -40% 1 kg – 20,70 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Skalbiamieji lapeliai DR. BECKMANN*, 1 dėž. (40 vnt.)",
+  "int": "3",
+  "frac": "99",
+  "old": "6,49 €",
+  "off": "-38%",
+  "meta": "6,49 € -38% | 1 vnt. – 0,10 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Skalbiamieji lapeliai DR. BECKMANN*, 1 dėž. (40 vnt.) 3 99 € 6,49 € -38% 1 vnt. – 0,10 € Iki 12.07"
+ },
+ {
+  "name": "Audinių baliklis ACE REGULAR*, 1 l",
+  "int": "1",
+  "frac": "59",
+  "old": "2,09 €",
+  "off": "-23%",
+  "meta": "2,09 € -23% | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Audinių baliklis ACE REGULAR*, 1 l 1 59 € 2,09 € -23% Iki 12.07"
+ },
+ {
+  "name": "Indaplovių tabletės; kapsulės SOMAT EXCELLENCE*, 2 rūšių, 1 pak. (42; 60 vnt.)",
+  "int": "14",
+  "frac": "19",
+  "old": "28,49 €",
+  "off": "-50%",
+  "meta": "28,49 € -50% | 1 vnt. ≤ 0,34 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Indaplovių tabletės; kapsulės SOMAT EXCELLENCE*, 2 rūšių, 1 pak. (42; 60 vnt.) 14 19 € 28,49 € -50% 1 vnt. ≤ 0,34 € Iki 12.07"
+ },
+ {
+  "name": "Indaplovių tabletės TRI-BIO*, 1 dėž. (25 vnt.)",
+  "int": "5",
+  "frac": "89",
+  "old": "9,85 €",
+  "off": "-40%",
+  "meta": "9,85 € -40% | 1 vnt. – 0,24 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Indaplovių tabletės TRI-BIO*, 1 dėž. (25 vnt.) 5 89 € 9,85 € -40% 1 vnt. – 0,24 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Indų ploviklis PUR*, 2 rūšių, 450 ml",
+  "int": "1",
+  "frac": "39",
+  "old": "1,99 €",
+  "off": "-30%",
+  "meta": "1,99 € -30% | 1 l – 3,09 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Indų ploviklis PUR*, 2 rūšių, 450 ml 1 39 € 1,99 € -30% 1 l – 3,09 € Iki 12.07"
+ },
+ {
+  "name": "Skalbimo gelio papildymo pakuotė MAYERI*, 3 rūšių, 1,5 l",
+  "int": "4",
+  "frac": "79",
+  "old": "7,99 €",
+  "off": "-40%",
+  "meta": "7,99 € -40% | 1 l – 3,19 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Skalbimo gelio papildymo pakuotė MAYERI*, 3 rūšių, 1,5 l 4 79 € 7,99 € -40% 1 l – 3,19 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Kilimų valymo putos; tualeto valymo gelis THE PINK STUFF*, 2 rūšių, 500–750 ml",
+  "int": "2",
+  "frac": "79",
+  "old": "3,99 €",
+  "off": "-30%",
+  "meta": "3,99 € -30% | 1 l ≤ 5,58 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Kilimų valymo putos; tualeto valymo gelis THE PINK STUFF*, 2 rūšių, 500–750 ml 2 79 € 3,99 € -30% 1 l ≤ 5,58 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Prekėms L’ARBRE*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prekėms L’ARBRE* -30 % Perkant 2 ar daugiau Iki 12.07 nuo"
+ },
+ {
+  "name": "Purškiamasis oro gaiviklis AIRWICK PURE*, 250 ml",
+  "int": "4",
+  "frac": "19",
+  "old": "5,79 €",
+  "off": "-27%",
+  "meta": "5,79 € -27% | 1 l – 16,76 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Purškiamasis oro gaiviklis AIRWICK PURE*, 250 ml 4 19 € 5,79 € -27% 1 l – 16,76 € Iki 12.07"
+ },
+ {
+  "name": "WC valiklis HARPIC*, 2 rūšių, 750 ml",
+  "int": "1",
+  "frac": "99",
+  "old": "3,59 €",
+  "off": "-44%",
+  "meta": "3,59 € -44% | 1 l – 2,65 € | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "WC valiklis HARPIC*, 2 rūšių, 750 ml 1 99 € 3,59 € -44% 1 l – 2,65 € Iki 12.07"
+ },
+ {
+  "name": "Valikliams CIF*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Valikliams CIF* -30 % Perkant 2 ar daugiau Iki 12.07"
+ },
+ {
+  "name": "Avalynės impregnantas NANO DANGA*, 100 ml",
+  "int": "5",
+  "frac": "49",
+  "old": "8,99 €",
+  "off": "-38%",
+  "meta": "8,99 € -38% | 1 l – 54,90 € | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Avalynės impregnantas NANO DANGA*, 100 ml 5 49 € 8,99 € -38% 1 l – 54,90 € Iki 12.07 nuo"
+ },
+ {
+  "name": "Prekėms ACAPPELLA, LAPPEL, WHITE EDITION*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 12.07 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Prekėms ACAPPELLA, LAPPEL, WHITE EDITION* -50 % Perkant 2 ar daugiau Iki 12.07 nuo"
+ },
+ {
+  "name": "KNYGOMS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "KNYGOMS* -40 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "PATALYNEI, ANTKLODĖMS, PAGALVĖMS, RANKŠLUOSČIAMS, PLEDAMS AR STALTIESĖMS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "PATALYNEI, ANTKLODĖMS, PAGALVĖMS, RANKŠLUOSČIAMS, PLEDAMS AR STALTIESĖMS* -40 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "PUODAMS, KEPTUVĖMS, SERVIRAVIMO INDAMS, ĮRANKIAMS, KEPIMO INDAMS, POPIERIUI AR FOLIJAI*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "PUODAMS, KEPTUVĖMS, SERVIRAVIMO INDAMS, ĮRANKIAMS, KEPIMO INDAMS, POPIERIUI AR FOLIJAI* -40 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "BUITINEI TECHNIKAI, LEMPUTĖMS, ELEMENT., ILGIKLIAMS AR ŽIBINTUVĖLIAMS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "BUITINEI TECHNIKAI, LEMPUTĖMS, ELEMENT., ILGIKLIAMS AR ŽIBINTUVĖLIAMS* -30 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "AUTOMOBILIŲ PREKĖMS*",
+  "int": "",
+  "frac": "",
+  "old": "",
+  "off": "",
+  "meta": "Perkant 2 ar daugiau | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "AUTOMOBILIŲ PREKĖMS* -40 % Perkant 2 ar daugiau Iki 11.30"
+ },
+ {
+  "name": "Įvairių gėlių puokštė SOFIA*, 35 cm, 1 puokštė",
+  "int": "6",
+  "frac": "99",
+  "old": "10,99 €",
+  "off": "-36%",
+  "meta": "10,99 € -36% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Įvairių gėlių puokštė SOFIA*, 35 cm, 1 puokštė 6 99 € 10,99 € -36% Iki 11.30"
+ },
+ {
+  "name": "Eustomų puokštė*, 50 cm, 1 puokštė – 5 vnt.",
+  "int": "8",
+  "frac": "99",
+  "old": "11,99 €",
+  "off": "-25%",
+  "meta": "11,99 € -25% | 1 vnt. – 1,80 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Eustomų puokštė*, 50 cm, 1 puokštė – 5 vnt. 8 99 € 11,99 € -25% 1 vnt. – 1,80 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Rožių puokštė*, 40 cm, 1 puokštė – 9 vnt.",
+  "int": "4",
+  "frac": "49",
+  "old": "5,99 €",
+  "off": "-25%",
+  "meta": "5,99 € -25% | 1 vnt. – 0,50 € | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Rožių puokštė*, 40 cm, 1 puokštė – 9 vnt. 4 49 € 5,99 € -25% 1 vnt. – 0,50 € Iki 11.30"
+ },
+ {
+  "name": "Chrizantemų puokštė*, 50 cm, 1 puokštė – 5 vnt.",
+  "int": "5",
+  "frac": "99",
+  "old": "7,99 €",
+  "off": "-25%",
+  "meta": "7,99 € -25% | 1 vnt. – 1,20 € | Iki 11.30 | nuo",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Chrizantemų puokštė*, 50 cm, 1 puokštė – 5 vnt. 5 99 € 7,99 € -25% 1 vnt. – 1,20 € Iki 11.30 nuo"
+ },
+ {
+  "name": "Vazoninė gėlė orchidėja*, 50 cm, 1 vaz.",
+  "int": "7",
+  "frac": "99",
+  "old": "13,99 €",
+  "off": "-42%",
+  "meta": "13,99 € -42% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Vazoninė gėlė orchidėja*, 50 cm, 1 vaz. 7 99 € 13,99 € -42% Iki 11.30"
+ },
+ {
+  "name": "Vazoninė gėlė puošniausioji karpažolė*, 35 cm, 1 vaz.",
+  "int": "2",
+  "frac": "89",
+  "old": "3,79 €",
+  "off": "-23%",
+  "meta": "3,79 € -23% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Vazoninė gėlė puošniausioji karpažolė*, 35 cm, 1 vaz. 2 89 € 3,79 € -23% Iki 11.30"
+ },
+ {
+  "name": "Eglė CONICA*, 40 cm, 1 vaz.",
+  "int": "3",
+  "frac": "99",
+  "old": "6,49 €",
+  "off": "-38%",
+  "meta": "6,49 € -38% | Iki 11.30",
+  "card": "Tik su AČIŪ kortele",
+  "all": "Eglė CONICA*, 40 cm, 1 vaz. 3 99 € 6,49 € -38% Iki 11.30"
+ }
+]

@@ -1,0 +1,5 @@
+https://www.lidl.lt/l/lt/leidinys/maisto-idejos-kaledoms-2026/ar/0?lf=THF
+frames=['https://www.lidl.lt/l/lt/leidinys/maisto-idejos-kaledoms-2026/view/flyer/page/40?lf=THF', 'about:blank']
+pdf=['https://assets.leaflets.schwarz/leaflets/pdfs/01a1b1ff-e271-7117-9a36-db8cda6bdfe3/Maisto-idejos-Kaledoms-Svenciu-skoniu-magija-Verta-00.pdf']
+imgs=[]
+json_items=0

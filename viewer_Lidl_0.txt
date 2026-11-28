@@ -1,0 +1,5 @@
+https://www.lidl.lt/l/lt/leidinys/bajoru-kel-6-visoriai-kw48/ar/0?lf=HHZ
+frames=['https://www.lidl.lt/l/lt/leidinys/bajoru-kel-6-visoriai-kw48/view/flyer/page/2?lf=HHZ', 'about:blank']
+pdf=['https://assets.leaflets.schwarz/leaflets/pdfs/01a1f811-f79c-711e-8a29-cc9ad6a16228/Bajoru-kel-6-Visoriai-VILNIUS-Dvigubink-su-Lidl-Plus-00.pdf']
+imgs=[]
+json_items=0

@@ -1,0 +1,602 @@
+[
+ {
+  "id": "244679",
+  "name": "Liet. bulvės GALA/PAROL, kl. 2, d. 45+, 1 kg",
+  "gtm": 0.72,
+  "cat": "SH-15-1-4",
+  "label": 0.29,
+  "price": 0.45,
+  "unit": "0.45 € už kg",
+  "per": "0,45 €/kg"
+ },
+ {
+  "id": "975517",
+  "name": "Cukinija, 1 vnt.",
+  "gtm": 1.19,
+  "cat": "SH-15-1-8",
+  "label": 0.79,
+  "price": 1.19,
+  "unit": "1.19 € už vnt.",
+  "per": "1,19 €/vnt."
+ },
+ {
+  "id": "808449",
+  "name": "Raudonosios pupelės RIMI, 400 g / 240 g",
+  "gtm": 0.99,
+  "cat": "SH-2-10-66",
+  "label": 0.79,
+  "price": 0.99,
+  "unit": "0.99 € už vnt.",
+  "per": "4,13 €/kg"
+ },
+ {
+  "id": "248955",
+  "name": "ROKIŠKIO sviestas, 82 % rieb., 200 g",
+  "gtm": 2.79,
+  "cat": "SH-11-10-34",
+  "label": 1.29,
+  "price": 2.79,
+  "unit": "2.79 € už vnt.",
+  "per": "13,95 €/kg"
+ },
+ {
+  "id": "286441",
+  "name": "Valgomieji batatai, 1 kg",
+  "gtm": 1.72,
+  "cat": "SH-15-1-4",
+  "label": 1.79,
+  "price": 2.29,
+  "unit": "2.29 € už kg",
+  "per": "2,29 €/kg"
+ },
+ {
+  "id": "801792",
+  "name": "Sviestinės pupelės RIMI, 400 g / 250 g",
+  "gtm": 0.99,
+  "cat": "SH-2-10-66",
+  "label": 0.79,
+  "price": 0.99,
+  "unit": "0.99 € už vnt.",
+  "per": "3,96 €/kg"
+ },
+ {
+  "id": "905518",
+  "name": "Didysis avokadas SELECTION BY RIMI, 1 vnt.",
+  "gtm": 1.99,
+  "cat": "SH-15-3-4",
+  "label": 0.99,
+  "price": 1.99,
+  "unit": "1.99 € už vnt.",
+  "per": "1,99 €/vnt."
+ },
+ {
+  "id": "150511",
+  "name": "Skrudinimo duona TOSTE, 500g",
+  "gtm": 1.27,
+  "cat": "SH-3-2-8",
+  "label": null,
+  "price": 1.27,
+  "unit": "1.27 € už vnt.",
+  "per": "2,54 €/kg"
+ },
+ {
+  "id": "1355116",
+  "name": "Gazuotas mineralinis vanduo VYTAUTAS, 1,5l",
+  "gtm": 0.85,
+  "cat": "SH-4-10-16",
+  "label": 0.55,
+  "price": 0.85,
+  "unit": "0.85 € už vnt.",
+  "per": "0,57 €/l"
+ },
+ {
+  "id": "803267",
+  "name": "Ant kr. laik. vištų kiauš. RIMI, M, 10 vnt.",
+  "gtm": 1.89,
+  "cat": "SH-11-6-13",
+  "label": null,
+  "price": 1.89,
+  "unit": "1.89 € už vnt.",
+  "per": "0,19 €/vnt."
+ },
+ {
+  "id": "814805",
+  "name": "Bananai Cavendish 18+ Rimi Eco, 1 kg",
+  "gtm": 1.79,
+  "cat": "SH-15-3-14",
+  "label": null,
+  "price": 1.79,
+  "unit": "1.79 € už kg",
+  "per": "1,79 €/kg"
+ },
+ {
+  "id": "297277",
+  "name": "Žal.bes.vynuog Sugar Crisp Rimi,1kl,500g",
+  "gtm": 2.99,
+  "cat": "SH-15-3-21",
+  "label": 2.29,
+  "price": 2.99,
+  "unit": "2.99 € už vnt.",
+  "per": "5,98 €/kg"
+ },
+ {
+  "id": "807538",
+  "name": "Atšaldyta atlantinių lašišų filė, 1 kg",
+  "gtm": 13.99,
+  "cat": "SH-9-16-51",
+  "label": null,
+  "price": 13.99,
+  "unit": "13.99 € už kg",
+  "per": "13,99 €/kg"
+ },
+ {
+  "id": "807736",
+  "name": "Pomidorų gabaliukai RIMI, 400 g",
+  "gtm": 1.55,
+  "cat": "SH-2-10-61",
+  "label": 0.99,
+  "price": 1.55,
+  "unit": "1.55 € už vnt.",
+  "per": "3,87 €/kg"
+ },
+ {
+  "id": "974977",
+  "name": "Šilauogės RIMI, 400 g",
+  "gtm": 6.39,
+  "cat": "SH-15-3-23",
+  "label": null,
+  "price": 6.39,
+  "unit": "6.39 € už vnt.",
+  "per": "15,97 €/kg"
+ },
+ {
+  "id": "808614",
+  "name": "Greitai užšaldyti žirneliai RIMI, 400 g",
+  "gtm": 1.51,
+  "cat": "SH-13-5-21",
+  "label": 1.05,
+  "price": 1.51,
+  "unit": "1.51 € už vnt.",
+  "per": "3,77 €/kg"
+ },
+ {
+  "id": "808637",
+  "name": "Pjaustytos žal. šparaginės pupelės RIMI, 400g",
+  "gtm": 1.29,
+  "cat": "SH-13-5-21",
+  "label": 0.9,
+  "price": 1.29,
+  "unit": "1.29 € už vnt.",
+  "per": "3,22 €/kg"
+ },
+ {
+  "id": "189817",
+  "name": "Makaronai LA MOLISANA FUSILLI, 500 g",
+  "gtm": 1.89,
+  "cat": "SH-2-11-73",
+  "label": 1.99,
+  "price": 1.89,
+  "unit": "1.89 € už vnt.",
+  "per": "3,78 €/kg"
+ },
+ {
+  "id": "1359696",
+  "name": "Gaz.natūral. mineralinis vanduo BIRUTĖ, 1,5l",
+  "gtm": 0.85,
+  "cat": "SH-4-10-16",
+  "label": 0.49,
+  "price": 0.85,
+  "unit": "0.85 € už vnt.",
+  "per": "0,57 €/l"
+ },
+ {
+  "id": "812015",
+  "name": "Kosmetiniai vatos padeliai ALMEDA, 120 vnt.",
+  "gtm": 1.15,
+  "cat": "SH-6-11-59",
+  "label": 0.92,
+  "price": 1.15,
+  "unit": "1.15 € už vnt.",
+  "per": "0,01 €/vnt."
+ },
+ {
+  "id": "801105",
+  "name": "Saldūs kukurūzai RIMI, 340g/285g",
+  "gtm": 1.39,
+  "cat": "SH-2-10-60",
+  "label": 0.99,
+  "price": 1.39,
+  "unit": "1.39 € už vnt.",
+  "per": "4,88 €/kg"
+ },
+ {
+  "id": "210718",
+  "name": "Granatai, 1 kg",
+  "gtm": 1.75,
+  "cat": "SH-15-3-16",
+  "label": 1.89,
+  "price": 3.49,
+  "unit": "3.49 € už kg",
+  "per": "3,49 €/kg"
+ },
+ {
+  "id": "7244375",
+  "name": "Kepimo popierius RIMI, 8m",
+  "gtm": 1.49,
+  "cat": "SH-10-33-92",
+  "label": 0.74,
+  "price": 1.49,
+  "unit": "1.49 € už vnt.",
+  "per": "1,49 €/vnt."
+ },
+ {
+  "id": "4002308",
+  "name": "Viso grūdo tamsi AGOTOS duona su raugu, 300 g",
+  "gtm": 0.83,
+  "cat": "SH-3-2-10",
+  "label": null,
+  "price": 0.83,
+  "unit": "0.83 € už vnt.",
+  "per": "2,77 €/kg"
+ },
+ {
+  "id": "810343",
+  "name": "Sūd. atlant. lašišų filė RIMI MARE,100g",
+  "gtm": 2.99,
+  "cat": "SH-9-1-8",
+  "label": null,
+  "price": 2.99,
+  "unit": "2.99 € už vnt.",
+  "per": "29,90 €/kg"
+ },
+ {
+  "id": "805762",
+  "name": "Negazuotas šaltinio vanduo RIMI, 5 l",
+  "gtm": 1.49,
+  "cat": "SH-4-10-17",
+  "label": 1.19,
+  "price": 1.49,
+  "unit": "1.49 € už vnt.",
+  "per": "0,30 €/l"
+ },
+ {
+  "id": "809287",
+  "name": "Kalakutienos faršas RIMI, 500 g",
+  "gtm": 2.59,
+  "cat": "SH-9-24-2",
+  "label": null,
+  "price": 2.59,
+  "unit": "2.59 € už vnt.",
+  "per": "5,18 €/kg"
+ },
+ {
+  "id": "816077",
+  "name": "Pop. rankšl. RIMI , 2 sl. 600 l.",
+  "gtm": 4.79,
+  "cat": "SH-10-21",
+  "label": 2.69,
+  "price": 4.79,
+  "unit": "4.79 € už vnt.",
+  "per": "4,79 €/vnt."
+ },
+ {
+  "id": "179322",
+  "name": "Nat.negaz. mineralinis vanduo RASA LIGHT, 5l",
+  "gtm": 1.99,
+  "cat": "SH-4-10-17",
+  "label": 1.29,
+  "price": 1.99,
+  "unit": "1.99 € už vnt.",
+  "per": "0,40 €/l"
+ },
+ {
+  "id": "808638",
+  "name": "Greitai užšaldyti brokoliai RIMI, 400 g",
+  "gtm": 1.89,
+  "cat": "SH-13-5-21",
+  "label": 1.29,
+  "price": 1.89,
+  "unit": "1.89 € už vnt.",
+  "per": "4,72 €/kg"
+ },
+ {
+  "id": "299574",
+  "name": "Mažos morkytės RIMI, 200 g",
+  "gtm": 1.09,
+  "cat": "SH-15-1-16",
+  "label": null,
+  "price": 1.09,
+  "unit": "1.09 € už vnt.",
+  "per": "5,45 €/kg"
+ },
+ {
+  "id": "928472",
+  "name": "Viso grūdo skrudinimo duona TOSTE, 500g",
+  "gtm": 2.04,
+  "cat": "SH-3-2-8",
+  "label": null,
+  "price": 2.04,
+  "unit": "2.04 € už vnt.",
+  "per": "4,08 €/kg"
+ },
+ {
+  "id": "7244319",
+  "name": "Kepimo popierius RIMI, 20 lapų",
+  "gtm": 1.79,
+  "cat": "SH-10-33-92",
+  "label": 0.89,
+  "price": 1.79,
+  "unit": "1.79 € už vnt.",
+  "per": "0,09 €/vnt."
+ },
+ {
+  "id": "807746",
+  "name": "Pomidorų gabaliukai su baziliku RIMI, 400 g",
+  "gtm": 1.65,
+  "cat": "SH-2-10-61",
+  "label": 0.99,
+  "price": 1.65,
+  "unit": "1.65 € už vnt.",
+  "per": "4,12 €/kg"
+ },
+ {
+  "id": "192776",
+  "name": "Mini tortilijos SANTA MARIA ORIGINAL, 200g",
+  "gtm": 2.65,
+  "cat": "SH-2-15-98",
+  "label": 1.59,
+  "price": 2.65,
+  "unit": "2.65 € už vnt.",
+  "per": "13,25 €/kg"
+ },
+ {
+  "id": "623265",
+  "name": "Šiukšlių maišai PACLAN Premium 35l,15vnt",
+  "gtm": 2.45,
+  "cat": "SH-10-25",
+  "label": 1.22,
+  "price": 2.45,
+  "unit": "2.45 € už vnt.",
+  "per": "0,16 €/vnt."
+ },
+ {
+  "id": "812115",
+  "name": "Šald. krev. be kiautų RIMI, ASC, 31/40, 400 g",
+  "gtm": 8.99,
+  "cat": "SH-13-3-10",
+  "label": 9.99,
+  "price": 8.99,
+  "unit": "8.99 € už vnt.",
+  "per": "22,47 €/kg"
+ },
+ {
+  "id": "1359670",
+  "name": "Negazuotas mineralinis vanduo NEPTŪNAS, 1,5l",
+  "gtm": 0.86,
+  "cat": "SH-4-10-17",
+  "label": 0.49,
+  "price": 0.86,
+  "unit": "0.86 € už vnt.",
+  "per": "0,57 €/l"
+ },
+ {
+  "id": "298041",
+  "name": "Mandarinai SINFONIA, 1kl., 1,5kg",
+  "gtm": 4.99,
+  "cat": "SH-15-3-6",
+  "label": 3.99,
+  "price": 4.99,
+  "unit": "4.99 € už vnt.",
+  "per": "3,33 €/kg"
+ },
+ {
+  "id": "7046692",
+  "name": "Šiukšlių maišai PACLAN Eco, 60l, 15vnt",
+  "gtm": 3.59,
+  "cat": "SH-10-25",
+  "label": 1.79,
+  "price": 3.59,
+  "unit": "3.59 € už vnt.",
+  "per": "0,24 €/vnt."
+ },
+ {
+  "id": "975524",
+  "name": "Baklažanas, 1vnt.",
+  "gtm": 1.49,
+  "cat": "SH-15-1-15",
+  "label": 0.99,
+  "price": 1.49,
+  "unit": "1.49 € už vnt.",
+  "per": "4,97 €/kg"
+ },
+ {
+  "id": "196892",
+  "name": "Sausainiai GAIDELIS KLASIKA, 160 g",
+  "gtm": 0.65,
+  "cat": "SH-12-5",
+  "label": 0.45,
+  "price": 0.65,
+  "unit": "0.65 € už vnt.",
+  "per": "4,06 €/kg"
+ },
+ {
+  "id": "287698",
+  "name": "Natūralus ROKIŠKIO NAMINIS pienas, 3,5 %, 2 l",
+  "gtm": 2.29,
+  "cat": "SH-11-8-17",
+  "label": null,
+  "price": 2.29,
+  "unit": "2.29 € už vnt.",
+  "per": "1,15 €/l"
+ },
+ {
+  "id": "808622",
+  "name": "Greitai užšald. žiediniai kopūstai RIMI, 400g",
+  "gtm": 1.39,
+  "cat": "SH-13-5-21",
+  "label": 0.97,
+  "price": 1.39,
+  "unit": "1.39 € už vnt.",
+  "per": "3,47 €/kg"
+ },
+ {
+  "id": "162087",
+  "name": "Tortilijos SANTA MARIA ORIGINAL, 8 vnt, 320 g",
+  "gtm": 3.19,
+  "cat": "SH-2-15-98",
+  "label": 2.19,
+  "price": 3.19,
+  "unit": "3.19 € už vnt.",
+  "per": "9,97 €/kg"
+ },
+ {
+  "id": "801780",
+  "name": "Keturių rūšių pupelių mišinys RIMI, 400 g",
+  "gtm": 0.99,
+  "cat": "SH-2-10-66",
+  "label": 0.79,
+  "price": 0.99,
+  "unit": "0.99 € už vnt.",
+  "per": "4,13 €/kg"
+ },
+ {
+  "id": "182147",
+  "name": "Pilno grūdo makar. LA MOLISANA RADIAT., 500 g",
+  "gtm": 1.99,
+  "cat": "SH-2-11-77",
+  "label": 1.19,
+  "price": 1.99,
+  "unit": "1.99 € už vnt.",
+  "per": "3,98 €/kg"
+ },
+ {
+  "id": "140580",
+  "name": "Meksikietiškos tortilijos TEX MEX, 371g",
+  "gtm": 3.79,
+  "cat": "SH-2-15-98",
+  "label": 2.59,
+  "price": 3.79,
+  "unit": "3.79 € už vnt.",
+  "per": "10,22 €/kg"
+ },
+ {
+  "id": "123630",
+  "name": "Pistacijos kepintos ir sūdytos PIGIAU 500g",
+  "gtm": 7.99,
+  "cat": "SH-2-3-19",
+  "label": 7.89,
+  "price": 7.99,
+  "unit": "7.99 € už vnt.",
+  "per": "15,98 €/kg"
+ },
+ {
+  "id": "280774",
+  "name": "Puskietis sūris SVALIA, 45 % rieb., 240 g",
+  "gtm": 2.39,
+  "cat": "SH-11-9-21",
+  "label": null,
+  "price": 2.39,
+  "unit": "2.39 € už vnt.",
+  "per": "9,96 €/kg"
+ },
+ {
+  "id": "152530",
+  "name": "Lukštentos moliūgų sėklos ARIMEX, 100g",
+  "gtm": 2.39,
+  "cat": "SH-2-3-21",
+  "label": 1.65,
+  "price": 2.39,
+  "unit": "2.39 € už vnt.",
+  "per": "23,90 €/kg"
+ },
+ {
+  "id": "196376",
+  "name": "Kokosų gėrimas SANTA MARIA ORIGINAL, 250ml",
+  "gtm": 2.55,
+  "cat": "SH-2-15-96",
+  "label": 1.89,
+  "price": 2.55,
+  "unit": "2.55 € už vnt.",
+  "per": "10,20 €/l"
+ },
+ {
+  "id": "816942",
+  "name": "Viščiukų filė be antibiotikų RIMI, 500 g",
+  "gtm": 2.99,
+  "cat": "SH-9-12-41",
+  "label": null,
+  "price": 2.99,
+  "unit": "2.99 € už vnt.",
+  "per": "5,98 €/kg"
+ },
+ {
+  "id": "276595",
+  "name": "Grietinė VILVI, 30 % rieb., 350 g",
+  "gtm": 2.69,
+  "cat": "SH-11-2-1",
+  "label": 1.79,
+  "price": 2.69,
+  "unit": "2.69 € už vnt.",
+  "per": "7,69 €/kg"
+ },
+ {
+  "id": "189818",
+  "name": "Makaronai LA MOLISANA PENNE, 500 g",
+  "gtm": 1.89,
+  "cat": "SH-2-11-73",
+  "label": 1.99,
+  "price": 1.89,
+  "unit": "1.89 € už vnt.",
+  "per": "3,78 €/kg"
+ },
+ {
+  "id": "809825",
+  "name": "Jautienos antrekoto kepsnys RIMI, 200g",
+  "gtm": 6.49,
+  "cat": "SH-9-8-21",
+  "label": null,
+  "price": 6.49,
+  "unit": "6.49 € už vnt.",
+  "per": "32,45 €/kg"
+ },
+ {
+  "id": "285144",
+  "name": "Švž. ančiukų filė su oda LAPINO PUOTA, 1 kg",
+  "gtm": 6.35,
+  "cat": "SH-9-12-38",
+  "label": null,
+  "price": 11.99,
+  "unit": "11.99 € už kg",
+  "per": "11,99 €/kg"
+ },
+ {
+  "id": "273732",
+  "name": "Plėš. sūrio lazdelės PIK-NIK, 40% rieb., 140g",
+  "gtm": 2.19,
+  "cat": "SH-11-9-10",
+  "label": null,
+  "price": 2.19,
+  "unit": "2.19 € už vnt.",
+  "per": "15,64 €/kg"
+ },
+ {
+  "id": "253014",
+  "name": "Juoda duona AGOTOS, 375 g",
+  "gtm": 1.03,
+  "cat": "SH-3-2-10",
+  "label": null,
+  "price": 1.03,
+  "unit": "1.03 € už vnt.",
+  "per": "2,75 €/kg"
+ },
+ {
+  "id": "114563",
+  "name": "Makaronai LA MOLISANA FARFALLE, 500 g",
+  "gtm": 1.89,
+  "cat": "SH-2-11-73",
+  "label": 1.99,
+  "price": 1.89,
+  "unit": "1.89 € už vnt.",
+  "per": "3,78 €/kg"
+ }
+]
